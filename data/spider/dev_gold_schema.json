@@ -1,0 +1,8112 @@
+{
+  "concert_singer\tHow many singers do we have?": {
+    "singer": [
+      "*"
+    ]
+  },
+  "concert_singer\tWhat is the total number of singers?": {
+    "singer": [
+      "*"
+    ]
+  },
+  "concert_singer\tShow name, country, age for all singers ordered by age from the oldest to the youngest.": {
+    "singer": [
+      "Name",
+      "Country",
+      "Age"
+    ]
+  },
+  "concert_singer\tWhat are the names, countries, and ages for every singer in descending order of age?": {
+    "singer": [
+      "Name",
+      "Country",
+      "Age"
+    ]
+  },
+  "concert_singer\tWhat is the average, minimum, and maximum age of all singers from France?": {
+    "singer": [
+      "Age",
+      "Country"
+    ]
+  },
+  "concert_singer\tWhat is the average, minimum, and maximum age for all French singers?": {
+    "singer": [
+      "Age",
+      "Country"
+    ]
+  },
+  "concert_singer\tShow the name and the release year of the song by the youngest singer.": {
+    "singer": [
+      "Song_Name",
+      "Song_release_year",
+      "Age"
+    ]
+  },
+  "concert_singer\tWhat are the names and release years for all the songs of the youngest singer?": {
+    "singer": [
+      "Song_Name",
+      "Song_release_year",
+      "Age"
+    ]
+  },
+  "concert_singer\tWhat are all distinct countries where singers above age 20 are from?": {
+    "singer": [
+      "Country",
+      "Age"
+    ]
+  },
+  "concert_singer\tWhat are  the different countries with singers above age 20?": {
+    "singer": [
+      "Country",
+      "Age"
+    ]
+  },
+  "concert_singer\tShow all countries and the number of singers in each country.": {
+    "singer": [
+      "Country"
+    ]
+  },
+  "concert_singer\tHow many singers are from each country?": {
+    "singer": [
+      "Country"
+    ]
+  },
+  "concert_singer\tList all song names by singers above the average age.": {
+    "singer": [
+      "Song_Name",
+      "Age"
+    ]
+  },
+  "concert_singer\tWhat are all the song names by singers who are older than average?": {
+    "singer": [
+      "Song_Name",
+      "Age"
+    ]
+  },
+  "concert_singer\tShow location and name for all stadiums with a capacity between 5000 and 10000.": {
+    "stadium": [
+      "Location",
+      "Name",
+      "Capacity"
+    ]
+  },
+  "concert_singer\tWhat are the locations and names of all stations with capacity between 5000 and 10000?": {
+    "stadium": [
+      "Location",
+      "Name",
+      "Capacity"
+    ]
+  },
+  "concert_singer\tWhat is the maximum capacity and the average of all stadiums ?": {
+    "stadium": [
+      "Capacity",
+      "Average"
+    ]
+  },
+  "concert_singer\tWhat is the average and maximum capacities for all stadiums ?": {
+    "stadium": [
+      "Capacity"
+    ]
+  },
+  "concert_singer\tWhat is the name and capacity for the stadium with highest average attendance?": {
+    "stadium": [
+      "Name",
+      "Capacity",
+      "Average"
+    ]
+  },
+  "concert_singer\tWhat is the name and capacity for the stadium with the highest average attendance?": {
+    "stadium": [
+      "Name",
+      "Capacity",
+      "Average"
+    ]
+  },
+  "concert_singer\tHow many concerts are there in year 2014 or 2015?": {
+    "concert": [
+      "Year"
+    ]
+  },
+  "concert_singer\tHow many concerts occurred in 2014 or 2015?": {
+    "concert": [
+      "Year"
+    ]
+  },
+  "concert_singer\tShow the stadium name and the number of concerts in each stadium.": {
+    "stadium": [
+      "Name",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID"
+    ]
+  },
+  "concert_singer\tFor each stadium, how many concerts play there?": {
+    "stadium": [
+      "Name",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID"
+    ]
+  },
+  "concert_singer\tShow the stadium name and capacity with most number of concerts in year 2014 or after.": {
+    "stadium": [
+      "Name",
+      "Capacity",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tWhat is the name and capacity of the stadium with the most concerts after 2013 ?": {
+    "stadium": [
+      "Name",
+      "Capacity",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tWhich year has most number of concerts?": {
+    "concert": [
+      "Year"
+    ]
+  },
+  "concert_singer\tWhat is the year that had the most concerts?": {
+    "concert": [
+      "Year"
+    ]
+  },
+  "concert_singer\tShow the stadium names without any concert.": {
+    "stadium": [
+      "Name",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID"
+    ]
+  },
+  "concert_singer\tWhat are the names of the stadiums without any concerts?": {
+    "stadium": [
+      "Name",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID"
+    ]
+  },
+  "concert_singer\tShow countries where a singer above age 40 and a singer below 30 are from.": {
+    "singer": [
+      "Country",
+      "Age"
+    ]
+  },
+  "concert_singer\tShow names for all stadiums except for stadiums having a concert in year 2014.": {
+    "stadium": [
+      "Name",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tWhat are the names of all stadiums that did not have a concert in 2014?": {
+    "stadium": [
+      "Name",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tShow the name and theme for all concerts and the number of singers in each concert.": {
+    "concert": [
+      "concert_Name",
+      "Theme",
+      "concert_ID"
+    ],
+    "singer_in_concert": [
+      "concert_ID"
+    ]
+  },
+  "concert_singer\tWhat are the names , themes , and number of singers for every concert ?": {
+    "concert": [
+      "concert_Name",
+      "Theme",
+      "concert_ID"
+    ],
+    "singer_in_concert": [
+      "concert_ID"
+    ]
+  },
+  "concert_singer\tList singer names and number of concerts for each singer.": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "singer_in_concert": [
+      "Singer_ID"
+    ]
+  },
+  "concert_singer\tWhat are the names of the singers and number of concerts for each person?": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "singer_in_concert": [
+      "Singer_ID"
+    ]
+  },
+  "concert_singer\tList all singer names in concerts in year 2014.": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "singer_in_concert": [
+      "Singer_ID",
+      "concert_ID"
+    ],
+    "concert": [
+      "concert_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tWhat are the names of the singers who performed in a concert in 2014?": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "singer_in_concert": [
+      "Singer_ID",
+      "concert_ID"
+    ],
+    "concert": [
+      "concert_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\twhat is the name and nation of the singer who have a song having 'Hey' in its name?": {
+    "singer": [
+      "Name",
+      "Country",
+      "Song_Name"
+    ]
+  },
+  "concert_singer\tWhat is the name and country of origin of every singer who has a song with the word 'Hey' in its title?": {
+    "singer": [
+      "Name",
+      "Country",
+      "Song_Name"
+    ]
+  },
+  "concert_singer\tFind the name and location of the stadiums which some concerts happened in the years of both 2014 and 2015.": {
+    "stadium": [
+      "Name",
+      "Location",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tWhat are the names and locations of the stadiums that had concerts that occurred in both 2014 and 2015?": {
+    "stadium": [
+      "Name",
+      "Location",
+      "Stadium_ID"
+    ],
+    "concert": [
+      "Stadium_ID",
+      "Year"
+    ]
+  },
+  "concert_singer\tFind the number of concerts happened in the stadium with the highest capacity .": {
+    "stadium": [
+      "Stadium_ID",
+      "Capacity"
+    ],
+    "concert": [
+      "Stadium_ID"
+    ]
+  },
+  "concert_singer\tWhat are the number of concerts that occurred in the stadium with the largest capacity ?": {
+    "stadium": [
+      "Stadium_ID",
+      "Capacity"
+    ],
+    "concert": [
+      "Stadium_ID"
+    ]
+  },
+  "pets_1\tFind the number of pets whose weight is heavier than 10.": {
+    "Pets": [
+      "weight"
+    ]
+  },
+  "pets_1\tHow many pets have a greater weight than 10?": {
+    "Pets": [
+      "weight"
+    ]
+  },
+  "pets_1\tFind the weight of the youngest dog.": {
+    "Pets": [
+      "weight",
+      "pet_age"
+    ]
+  },
+  "pets_1\tHow much does the youngest dog weigh?": {
+    "Pets": [
+      "weight",
+      "pet_age"
+    ]
+  },
+  "pets_1\tFind the maximum weight for each type of pet. List the maximum weight and pet type.": {
+    "Pets": [
+      "weight",
+      "PetType"
+    ]
+  },
+  "pets_1\tList the maximum weight and type for each type of pet.": {
+    "Pets": [
+      "weight",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind number of pets owned by students who are older than 20.": {
+    "Student": [
+      "StuID",
+      "Age"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tHow many pets are owned by students that have an age greater than 20?": {
+    "Student": [
+      "StuID",
+      "Age"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tFind the number of dog pets that are raised by female students (with sex F).": {
+    "Student": [
+      "StuID",
+      "Sex"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tHow many dog pets are raised by female students?": {
+    "Student": [
+      "StuID",
+      "Sex"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the number of distinct type of pets.": {
+    "Pets": [
+      "PetType"
+    ]
+  },
+  "pets_1\tHow many different types of pet are there?": {
+    "Pets": [
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the first name of students who have cat or dog pet.": {
+    "Student": [
+      "Fname",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat are the first names of every student who has a cat or dog as a pet?": {
+    "Student": [
+      "Fname",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the first name of students who have both cat and dog pets .": {
+    "Student": [
+      "Fname",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat are the students' first names who have both cats and dogs as pets?": {
+    "Student": [
+      "Fname",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the major and age of students who do not have a cat pet.": {
+    "Student": [
+      "Major",
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat major is every student who does not own a cat as a pet, and also how old are they?": {
+    "Student": [
+      "Major",
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the id of students who do not have a cat pet.": {
+    "Student": [
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat are the ids of the students who do not own cats as pets?": {
+    "Student": [
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the first name and age of students who have a dog but do not have a cat as a pet.": {
+    "Student": [
+      "Fname",
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat is the first name of every student who has a dog but does not have a cat?": {
+    "Student": [
+      "Fname",
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the type and weight of the youngest pet.": {
+    "Pets": [
+      "PetType",
+      "weight",
+      "pet_age"
+    ]
+  },
+  "pets_1\tWhat type of pet is the youngest animal, and how much does it weigh?": {
+    "Pets": [
+      "PetType",
+      "weight",
+      "pet_age"
+    ]
+  },
+  "pets_1\tFind the id and weight of all pets whose age is older than 1.": {
+    "Pets": [
+      "PetID",
+      "weight",
+      "pet_age"
+    ]
+  },
+  "pets_1\tWhat is the id and weight of every pet who is older than 1?": {
+    "Pets": [
+      "PetID",
+      "weight",
+      "pet_age"
+    ]
+  },
+  "pets_1\tFind the average and maximum age for each type of pet.": {
+    "Pets": [
+      "pet_age",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat is the average and maximum age for each pet type?": {
+    "Pets": [
+      "pet_age",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the average weight for each pet type.": {
+    "Pets": [
+      "weight",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat is the average weight for each type of pet?": {
+    "Pets": [
+      "weight",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the first name and age of students who have a pet.": {
+    "Student": [
+      "Fname",
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tWhat are the different first names and ages of the students who do have pets?": {
+    "Student": [
+      "Fname",
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tFind the id of the pet owned by student whose last name is ‘Smith’.": {
+    "Has_Pet": [
+      "PetID",
+      "StuID"
+    ],
+    "Student": [
+      "StuID",
+      "LName"
+    ]
+  },
+  "pets_1\tWhat is the id of the pet owned by the student whose last name is 'Smith'?": {
+    "Has_Pet": [
+      "PetID",
+      "StuID"
+    ],
+    "Student": [
+      "StuID",
+      "LName"
+    ]
+  },
+  "pets_1\tFind the number of pets for each student who has any pet and student id.": {
+    "Student": [
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tFor students who have pets , how many pets does each student have ? list their ids instead of names .": {
+    "Student": [
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tFind the first name and gender of student who have more than one pet.": {
+    "Student": [
+      "Fname",
+      "Sex",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tWhat is the first name and gender of the all the students who have more than one pet?": {
+    "Student": [
+      "Fname",
+      "Sex",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tFind the last name of the student who has a cat that is age 3.": {
+    "Student": [
+      "LName",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "pet_age",
+      "PetType"
+    ]
+  },
+  "pets_1\tWhat is the last name of the student who has a cat that is 3 years old?": {
+    "Student": [
+      "LName",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID",
+      "PetID"
+    ],
+    "Pets": [
+      "PetID",
+      "pet_age",
+      "PetType"
+    ]
+  },
+  "pets_1\tFind the average age of students who do not have any pet .": {
+    "Student": [
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "pets_1\tWhat is the average age for all students who do not own any pets ?": {
+    "Student": [
+      "Age",
+      "StuID"
+    ],
+    "Has_Pet": [
+      "StuID"
+    ]
+  },
+  "car_1\tHow many continents are there?": {},
+  "car_1\tWhat is the number of continents?": {},
+  "car_1\tHow many countries does each continent have? List the continent id, continent name and the number of countries.": {
+    "continents": [
+      "ContId",
+      "Continent"
+    ],
+    "countries": [
+      "Continent"
+    ]
+  },
+  "car_1\tFor each continent, list its id, name, and how many countries it has?": {
+    "continents": [
+      "ContId",
+      "Continent"
+    ],
+    "countries": [
+      "Continent"
+    ]
+  },
+  "car_1\tHow many countries are listed?": {},
+  "car_1\tHow many countries exist?": {},
+  "car_1\tHow many models does each car maker produce? List maker full name, id and the number.": {
+    "car_makers": [
+      "FullName",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhat is the full name of each car maker, along with its id and how many models it produces?": {
+    "car_makers": [
+      "FullName",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhich model of the car has the minimum horsepower?": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Horsepower"
+    ]
+  },
+  "car_1\tWhat is the model of the car with the smallest amount of horsepower?": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Horsepower"
+    ]
+  },
+  "car_1\tFind the model of the car whose weight is below the average weight.": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Weight"
+    ]
+  },
+  "car_1\tWhat is the model for the car with a weight smaller than the average?": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Weight"
+    ]
+  },
+  "car_1\tFind the name of the makers that produced some cars in the year of 1970?": {
+    "car_makers": [
+      "Maker",
+      "Id"
+    ],
+    "model_list": [
+      "Maker",
+      "Model"
+    ],
+    "cars_data": [
+      "Id",
+      "Year"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ]
+  },
+  "car_1\tWhat is the name of the different car makers who produced a car in 1970?": {
+    "car_makers": [
+      "Maker",
+      "Id"
+    ],
+    "model_list": [
+      "Maker",
+      "Model"
+    ],
+    "cars_data": [
+      "Id",
+      "Year"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ]
+  },
+  "car_1\tFind the make and production time of the cars that were produced in the earliest year?": {
+    "car_names": [
+      "Make",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Year",
+      "Id"
+    ]
+  },
+  "car_1\tWhat is the maker of the carr produced in the earliest year and what year was it?": {
+    "car_names": [
+      "Make",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Year",
+      "Id"
+    ]
+  },
+  "car_1\tWhich distinct car models are the produced after 1980?": {
+    "model_list": [
+      "Model"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Year"
+    ]
+  },
+  "car_1\tWhat are the different models for the cards produced after 1980?": {
+    "model_list": [
+      "Model"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Year"
+    ]
+  },
+  "car_1\tHow many car makers are there in each continents? List the continent name and the count.": {
+    "continents": [
+      "Continent",
+      "ContId"
+    ],
+    "countries": [
+      "Continent",
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat is the name of each continent and how many car makers are there in each one?": {
+    "continents": [
+      "Continent",
+      "ContId"
+    ],
+    "countries": [
+      "Continent",
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhich of the countries has the most car makers? List the country name.": {
+    "countries": [
+      "CountryName",
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat is the name of the country with the most car makers?": {
+    "countries": [
+      "CountryName",
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tHow many car models are produced by each maker ? Only list the count and the maker full name .": {
+    "car_makers": [
+      "FullName",
+      "Maker",
+      "Id"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhat is the number of car models that are produced by each maker and what is the id and full name of each maker?": {
+    "car_makers": [
+      "FullName",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhat is the accelerate of the car make amc hornet sportabout (sw)?": {
+    "cars_data": [
+      "Accelerate",
+      "Id"
+    ],
+    "car_names": [
+      "MakeId",
+      "Make"
+    ]
+  },
+  "car_1\tHow much does the car accelerate that makes amc hornet sportabout (sw)?": {
+    "cars_data": [
+      "Accelerate",
+      "Id"
+    ],
+    "car_names": [
+      "MakeId",
+      "Make"
+    ]
+  },
+  "car_1\tHow many car makers are there in france?": {
+    "car_makers": [
+      "Country"
+    ],
+    "countries": [
+      "CountryId",
+      "CountryName"
+    ]
+  },
+  "car_1\tWhat is the number of makers of care in France?": {
+    "car_makers": [
+      "Country"
+    ],
+    "countries": [
+      "CountryId",
+      "CountryName"
+    ]
+  },
+  "car_1\tHow many car models are produced in the usa?": {
+    "car_makers": [
+      "Maker",
+      "Id",
+      "Country"
+    ],
+    "model_list": [
+      "Maker"
+    ],
+    "countries": [
+      "CountryId",
+      "CountryName"
+    ]
+  },
+  "car_1\tWhat is the count of the car models produced in the United States?": {
+    "car_makers": [
+      "Maker",
+      "Id",
+      "Country"
+    ],
+    "model_list": [
+      "Maker"
+    ],
+    "countries": [
+      "CountryId",
+      "CountryName"
+    ]
+  },
+  "car_1\tWhat is the average miles per gallon(mpg) of the cars with 4 cylinders?": {
+    "cars_data": [
+      "MPG",
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhat is the average miles per gallon of all the cards with 4 cylinders?": {
+    "cars_data": [
+      "MPG",
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhat is the smallest weight of the car produced with 8 cylinders on 1974 ?": {
+    "cars_data": [
+      "Weight",
+      "Cylinders",
+      "Year"
+    ]
+  },
+  "car_1\tWhat is the minimum weight of the car with 8 cylinders produced in 1974 ?": {
+    "cars_data": [
+      "Weight",
+      "Cylinders",
+      "Year"
+    ]
+  },
+  "car_1\tWhat are all the makers and models?": {},
+  "car_1\tWhat are the makers and models?": {},
+  "car_1\tWhat are the countries having at least one car maker? List name and id.": {
+    "countries": [
+      "CountryName",
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat are the names and ids of all countries with at least one car maker?": {
+    "countries": [
+      "CountryName",
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat is the number of the cars with horsepower more than 150?": {
+    "cars_data": [
+      "Horsepower"
+    ]
+  },
+  "car_1\tWhat is the number of cars with a horsepower greater than 150?": {
+    "cars_data": [
+      "Horsepower"
+    ]
+  },
+  "car_1\tWhat is the average weight of cars each year?": {
+    "cars_data": [
+      "Weight",
+      "Year"
+    ]
+  },
+  "car_1\tWhat is the average weight and year for each year?": {
+    "cars_data": [
+      "Weight",
+      "Year"
+    ]
+  },
+  "car_1\tWhich countries in europe have at least 3 car manufacturers?": {
+    "countries": [
+      "CountryName",
+      "Continent",
+      "CountryId"
+    ],
+    "continents": [
+      "Continent",
+      "ContId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat are the names of all European countries with at least 3 manufacturers?": {
+    "countries": [
+      "CountryName",
+      "Continent",
+      "CountryId"
+    ],
+    "continents": [
+      "Continent",
+      "ContId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat is the maximum horsepower and the make of the car models with 3 cylinders?": {
+    "cars_data": [
+      "Horsepower",
+      "Id",
+      "Cylinders"
+    ],
+    "car_names": [
+      "Make",
+      "MakeId"
+    ]
+  },
+  "car_1\tWhat is the largest amount of horsepower for the models with 3 cylinders and what make is it?": {
+    "cars_data": [
+      "Horsepower",
+      "Id",
+      "Cylinders"
+    ],
+    "car_names": [
+      "Make",
+      "MakeId"
+    ]
+  },
+  "car_1\tWhich model saves the most gasoline? That is to say, have the maximum miles per gallon.": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "MPG"
+    ]
+  },
+  "car_1\tWhat is the car model with the highest mpg ?": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "MPG"
+    ]
+  },
+  "car_1\tWhat is the average horsepower of the cars before 1980?": {
+    "cars_data": [
+      "Horsepower",
+      "Year"
+    ]
+  },
+  "car_1\tWhat is the average horsepower for all cars produced before 1980 ?": {
+    "cars_data": [
+      "Horsepower",
+      "Year"
+    ]
+  },
+  "car_1\tWhat is the average edispl of the cars of model volvo?": {
+    "cars_data": [
+      "Edispl",
+      "Id"
+    ],
+    "car_names": [
+      "MakeId",
+      "Model"
+    ]
+  },
+  "car_1\tWhat is the average edispl for all volvos?": {
+    "cars_data": [
+      "Edispl",
+      "Id"
+    ],
+    "car_names": [
+      "MakeId",
+      "Model"
+    ]
+  },
+  "car_1\tWhat is the maximum accelerate for different number of cylinders?": {
+    "cars_data": [
+      "Accelerate",
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhat is the maximum accelerate for all the different cylinders?": {
+    "cars_data": [
+      "Accelerate",
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhich model has the most version(make) of cars?": {
+    "car_names": [
+      "Model"
+    ]
+  },
+  "car_1\tWhat model has the most different versions?": {
+    "car_names": [
+      "Model"
+    ]
+  },
+  "car_1\tHow many cars have more than 4 cylinders?": {
+    "cars_data": [
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhat is the number of cars with more than 4 cylinders?": {
+    "cars_data": [
+      "Cylinders"
+    ]
+  },
+  "car_1\thow many cars were produced in 1980?": {
+    "cars_data": [
+      "Year"
+    ]
+  },
+  "car_1\tIn 1980, how many cars were made?": {
+    "cars_data": [
+      "Year"
+    ]
+  },
+  "car_1\tHow many car models were produced by the maker with full name American Motor Company?": {
+    "car_makers": [
+      "Id",
+      "Maker",
+      "FullName"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhat is the number of car models created by the car maker American Motor Company?": {
+    "car_makers": [
+      "Id",
+      "Maker",
+      "FullName"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhich makers designed more than 3 car models? List full name and the id.": {
+    "car_makers": [
+      "FullName",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhat are the names and ids of all makers with more than 3 models?": {
+    "car_makers": [
+      "FullName",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker"
+    ]
+  },
+  "car_1\tWhich distinctive models are produced by maker with the full name General Motors or weighing more than 3500?": {
+    "model_list": [
+      "Model",
+      "Maker"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "car_makers": [
+      "Maker",
+      "Id",
+      "FullName"
+    ],
+    "cars_data": [
+      "Id",
+      "Weight"
+    ]
+  },
+  "car_1\tWhat are the different models created by either the car maker General Motors or weighed more than 3500?": {
+    "model_list": [
+      "Model",
+      "Maker"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "car_makers": [
+      "Maker",
+      "Id",
+      "FullName"
+    ],
+    "cars_data": [
+      "Id",
+      "Weight"
+    ]
+  },
+  "car_1\tIn which years cars were produced weighing no less than 3000 and no more than 4000 ?": {
+    "cars_data": [
+      "Year",
+      "Weight"
+    ]
+  },
+  "car_1\tWhat are the different years in which there were cars produced that weighed less than 4000 and also cars that weighted more than 3000 ?": {
+    "cars_data": [
+      "Year",
+      "Weight"
+    ]
+  },
+  "car_1\tWhat is the horsepower of the car with the largest accelerate?": {
+    "cars_data": [
+      "Horsepower",
+      "Accelerate"
+    ]
+  },
+  "car_1\tWhat is the horsepower of the car with the greatest accelerate?": {
+    "cars_data": [
+      "Horsepower",
+      "Accelerate"
+    ]
+  },
+  "car_1\tFor model volvo, how many cylinders does the car with the least accelerate have?": {
+    "cars_data": [
+      "Cylinders",
+      "Id",
+      "Accelerate"
+    ],
+    "car_names": [
+      "MakeId",
+      "Model"
+    ]
+  },
+  "car_1\tFor a volvo model, how many cylinders does the version with least accelerate have?": {
+    "cars_data": [
+      "Cylinders",
+      "Id",
+      "Accelerate"
+    ],
+    "car_names": [
+      "MakeId",
+      "Model"
+    ]
+  },
+  "car_1\tHow many cars have a larger accelerate than the car with the largest horsepower?": {
+    "cars_data": [
+      "Accelerate",
+      "Horsepower"
+    ]
+  },
+  "car_1\tWhat is the number of cars with a greater accelerate than the one with the most horsepower?": {
+    "cars_data": [
+      "Accelerate",
+      "Horsepower"
+    ]
+  },
+  "car_1\tHow many countries has more than 2 car makers ?": {
+    "countries": [
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tWhat is the number of countries with more than 2 car makers ?": {
+    "countries": [
+      "CountryId"
+    ],
+    "car_makers": [
+      "Country"
+    ]
+  },
+  "car_1\tHow many cars has over 6 cylinders?": {
+    "cars_data": [
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhat is the number of carsw ith over 6 cylinders?": {
+    "cars_data": [
+      "Cylinders"
+    ]
+  },
+  "car_1\tFor the cars with 4 cylinders, which model has the largest horsepower?": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Cylinders",
+      "Horsepower"
+    ]
+  },
+  "car_1\tFor all of the 4 cylinder cars, which model has the most horsepower?": {
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "cars_data": [
+      "Id",
+      "Cylinders",
+      "Horsepower"
+    ]
+  },
+  "car_1\tAmong the cars with more than lowest horsepower, which ones do not have more than 3 cylinders? List the car makeid and make name.": {
+    "car_names": [
+      "MakeId",
+      "Make"
+    ],
+    "cars_data": [
+      "Id",
+      "Horsepower",
+      "Cylinders"
+    ]
+  },
+  "car_1\tAmong the cars that do not have the minimum horsepower , what are the make ids and names of all those with less than 4 cylinders ?": {
+    "car_names": [
+      "MakeId",
+      "Make"
+    ],
+    "cars_data": [
+      "Id",
+      "Horsepower",
+      "Cylinders"
+    ]
+  },
+  "car_1\tWhat is the maximum miles per gallon of the car with 8 cylinders or produced before 1980 ?": {
+    "cars_data": [
+      "MPG",
+      "Cylinders",
+      "Year"
+    ]
+  },
+  "car_1\tWhat is the maximum mpg of the cars that had 8 cylinders or that were produced before 1980 ?": {
+    "cars_data": [
+      "MPG",
+      "Cylinders",
+      "Year"
+    ]
+  },
+  "car_1\tWhich models are lighter than 3500 but not built by the 'Ford Motor Company'?": {
+    "model_list": [
+      "Model",
+      "Maker"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "car_makers": [
+      "Id",
+      "Maker",
+      "FullName"
+    ],
+    "cars_data": [
+      "Id",
+      "Weight"
+    ]
+  },
+  "car_1\tWhat are the different models wthat are lighter than 3500 but were not built by the Ford Motor Company?": {
+    "model_list": [
+      "Model",
+      "Maker"
+    ],
+    "car_names": [
+      "Model",
+      "MakeId"
+    ],
+    "car_makers": [
+      "Id",
+      "Maker",
+      "FullName"
+    ],
+    "cars_data": [
+      "Id",
+      "Weight"
+    ]
+  },
+  "car_1\tWhat are the name of the countries where there is not a single car maker?": {
+    "countries": [
+      "CountryName",
+      "CountryId"
+    ]
+  },
+  "car_1\tWhat are the names of the countries with no car makers?": {
+    "countries": [
+      "CountryName",
+      "CountryId"
+    ]
+  },
+  "car_1\tWhich are the car makers which produce at least 2 models and more than 3 car makers ? List the id and the maker .": {
+    "car_makers": [
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker",
+      "Model"
+    ],
+    "car_names": [
+      "Model"
+    ]
+  },
+  "car_1\tWhat are the ids and makers of all car makers that produce at least 2 models and make more than 3 cars?": {
+    "car_makers": [
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker",
+      "Model"
+    ],
+    "car_names": [
+      "Model"
+    ]
+  },
+  "car_1\tWhat are the id and names of the countries which have more than 3 car makers or produce the 'fiat' model?": {
+    "countries": [
+      "CountryId",
+      "CountryName"
+    ],
+    "car_makers": [
+      "Country",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker",
+      "Model"
+    ]
+  },
+  "car_1\tWhat are the ids and names of all countries that either have more than 3 car makers or produce fiat model ?": {
+    "countries": [
+      "CountryId",
+      "CountryName"
+    ],
+    "car_makers": [
+      "Country",
+      "Id",
+      "Maker"
+    ],
+    "model_list": [
+      "Maker",
+      "Model"
+    ]
+  },
+  "flight_2\tWhich country does Airline \"JetBlue Airways\" belong to?": {
+    "airlines": [
+      "Country",
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat country is Jetblue Airways affiliated with?": {
+    "airlines": [
+      "Country",
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat is the abbreviation of Airline \"JetBlue Airways\"?": {
+    "airlines": [
+      "Abbreviation",
+      "Airline"
+    ]
+  },
+  "flight_2\tWhich abbreviation corresponds to Jetblue Airways?": {
+    "airlines": [
+      "Abbreviation",
+      "Airline"
+    ]
+  },
+  "flight_2\tList all airline names and their abbreviations in \"USA\".": {
+    "airlines": [
+      "Airline",
+      "Abbreviation",
+      "Country"
+    ]
+  },
+  "flight_2\tWhat are the airline names and abbreviations for airlines in the USA?": {
+    "airlines": [
+      "Airline",
+      "Abbreviation",
+      "Country"
+    ]
+  },
+  "flight_2\tList the airport code and name in the city of Anthony.": {
+    "airports": [
+      "AirportCode",
+      "AirportName",
+      "City"
+    ]
+  },
+  "flight_2\tGive the airport code and airport name corresonding to the city Anthony.": {
+    "airports": [
+      "AirportCode",
+      "AirportName",
+      "City"
+    ]
+  },
+  "flight_2\tHow many airlines do we have?": {
+    "airlines": [
+      "*"
+    ]
+  },
+  "flight_2\tWhat is the total number of airlines?": {
+    "airlines": [
+      "*"
+    ]
+  },
+  "flight_2\tHow many airports do we have?": {
+    "airports": [
+      "*"
+    ]
+  },
+  "flight_2\tReturn the number of  airports.": {
+    "airports": [
+      "*"
+    ]
+  },
+  "flight_2\tHow many flights do we have?": {
+    "flights": [
+      "*"
+    ]
+  },
+  "flight_2\tReturn the number of flights.": {
+    "flights": [
+      "*"
+    ]
+  },
+  "flight_2\tWhich airline has abbreviation 'UAL'?": {
+    "airlines": [
+      "Airline",
+      "Abbreviation"
+    ]
+  },
+  "flight_2\tGive the airline with abbreviation 'UAL'.": {
+    "airlines": [
+      "Airline",
+      "Abbreviation"
+    ]
+  },
+  "flight_2\tHow many airlines are from USA?": {
+    "airlines": [
+      "Country"
+    ]
+  },
+  "flight_2\tReturn the number of airlines in the USA.": {
+    "airlines": [
+      "Country"
+    ]
+  },
+  "flight_2\tWhich city and country is the Alton airport at?": {
+    "airports": [
+      "City",
+      "Country",
+      "AirportName"
+    ]
+  },
+  "flight_2\tGive the city and country for the Alton airport.": {
+    "airports": [
+      "City",
+      "Country",
+      "AirportName"
+    ]
+  },
+  "flight_2\tWhat is the airport name for airport 'AKO'?": {
+    "airports": [
+      "AirportName",
+      "AirportCode"
+    ]
+  },
+  "flight_2\tReturn the name of the airport with code 'AKO'.": {
+    "airports": [
+      "AirportName",
+      "AirportCode"
+    ]
+  },
+  "flight_2\tWhat are airport names at City 'Aberdeen'?": {
+    "airports": [
+      "AirportName",
+      "City"
+    ]
+  },
+  "flight_2\tWhat are the names of airports in Aberdeen?": {
+    "airports": [
+      "AirportName",
+      "City"
+    ]
+  },
+  "flight_2\tHow many flights depart from 'APG'?": {
+    "flights": [
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tCount the number of flights departing from 'APG'.": {
+    "flights": [
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tHow many flights have destination ATO?": {
+    "flights": [
+      "DestAirport"
+    ]
+  },
+  "flight_2\tCount the number of flights into ATO.": {
+    "flights": [
+      "DestAirport"
+    ]
+  },
+  "flight_2\tHow many flights depart from City Aberdeen?": {
+    "flights": [
+      "SourceAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tReturn the number of flights departing from Aberdeen.": {
+    "flights": [
+      "SourceAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tHow many flights arriving in Aberdeen city?": {
+    "flights": [
+      "DestAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tReturn the number of flights arriving in Aberdeen.": {
+    "flights": [
+      "DestAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tHow many flights depart from City 'Aberdeen' and have destination City 'Ashley'?": {
+    "flights": [
+      "DestAirport",
+      "SourceAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tHow many flights fly from Aberdeen to Ashley?": {
+    "flights": [
+      "DestAirport",
+      "SourceAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tHow many flights does airline 'JetBlue Airways' have?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tGive the number of Jetblue Airways flights.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tHow many 'United Airlines' flights go to Airport 'ASY'?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tCount the number of United Airlines flights arriving in ASY Airport.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tHow many 'United Airlines' flights depart from Airport 'AHD'?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tReturn the number of United Airlines flights leaving from AHD Airport.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tHow many United Airlines flights go to City 'Aberdeen'?": {
+    "flights": [
+      "DestAirport",
+      "Airline"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ],
+    "airlines": [
+      "uid",
+      "Airline"
+    ]
+  },
+  "flight_2\tCount the number of United Airlines flights that arrive in Aberdeen.": {
+    "flights": [
+      "DestAirport",
+      "Airline"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ],
+    "airlines": [
+      "uid",
+      "Airline"
+    ]
+  },
+  "flight_2\tWhich city has most number of arriving flights?": {
+    "airports": [
+      "City",
+      "AirportCode"
+    ],
+    "flights": [
+      "DestAirport"
+    ]
+  },
+  "flight_2\tWhich city has the most frequent destination airport?": {
+    "airports": [
+      "City",
+      "AirportCode"
+    ],
+    "flights": [
+      "DestAirport"
+    ]
+  },
+  "flight_2\tWhich city has most number of departing flights?": {
+    "airports": [
+      "City",
+      "AirportCode"
+    ],
+    "flights": [
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhich city is the most frequent source airport?": {
+    "airports": [
+      "City",
+      "AirportCode"
+    ],
+    "flights": [
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhat is the code of airport that has the highest number of flights?": {
+    "airports": [
+      "AirportCode"
+    ],
+    "flights": [
+      "DestAirport",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhat is the airport code of the airport with the most flights?": {
+    "airports": [
+      "AirportCode"
+    ],
+    "flights": [
+      "DestAirport",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhat is the code of airport that has fewest number of flights?": {
+    "airports": [
+      "AirportCode"
+    ],
+    "flights": [
+      "DestAirport",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tGive the code of the airport with the least flights.": {
+    "airports": [
+      "AirportCode"
+    ],
+    "flights": [
+      "DestAirport",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhich airline has most number of flights?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat airline serves the most flights?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tFind the abbreviation and country of the airline that has fewest number of flights?": {
+    "airlines": [
+      "Abbreviation",
+      "Country",
+      "uid",
+      "Airline"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat is the abbreviation of the airilne has the fewest flights and what country is it in?": {
+    "airlines": [
+      "Abbreviation",
+      "Country",
+      "uid",
+      "Airline"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat are airlines that have some flight departing from airport 'AHD'?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhich airlines have a flight with source airport AHD?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhat are airlines that have flights arriving at airport 'AHD'?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tWhich airlines have a flight with destination airport AHD?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tFind all airlines that have flights from both airports 'APG' and 'CVO'.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhich airlines have departing flights from both APG and CVO airports?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tFind all airlines that have flights from airport 'CVO' but not from 'APG'.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhich airlines have departures from CVO but not from APG airports?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tFind all airlines that have at least 10 flights.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tWhich airlines have at least 10 flights?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tFind all airlines that have fewer than 200 flights.": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tWhich airlines have less than 200 flights?": {
+    "airlines": [
+      "Airline",
+      "uid"
+    ],
+    "flights": [
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat are flight numbers of Airline \"United Airlines\"?": {
+    "flights": [
+      "FlightNo",
+      "Airline"
+    ],
+    "airlines": [
+      "uid",
+      "Airline"
+    ]
+  },
+  "flight_2\tWhich flight numbers correspond to United Airlines flights?": {
+    "flights": [
+      "FlightNo",
+      "Airline"
+    ],
+    "airlines": [
+      "uid",
+      "Airline"
+    ]
+  },
+  "flight_2\tWhat are flight numbers of flights departing from Airport \"APG\"?": {
+    "flights": [
+      "FlightNo",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tGive the flight numbers of flights leaving from APG.": {
+    "flights": [
+      "FlightNo",
+      "SourceAirport"
+    ]
+  },
+  "flight_2\tWhat are flight numbers of flights arriving at Airport \"APG\"?": {
+    "flights": [
+      "FlightNo",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tGive the flight numbers of flights landing at APG.": {
+    "flights": [
+      "FlightNo",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tWhat are flight numbers of flights departing from City \"Aberdeen \"?": {
+    "flights": [
+      "FlightNo",
+      "SourceAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tGive the flight numbers of flights leaving from Aberdeen.": {
+    "flights": [
+      "FlightNo",
+      "SourceAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tWhat are flight numbers of flights arriving at City \"Aberdeen\"?": {
+    "flights": [
+      "FlightNo",
+      "DestAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tGive the flight numbers of flights arriving in Aberdeen.": {
+    "flights": [
+      "FlightNo",
+      "DestAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tFind the number of flights landing in the city of Aberdeen or Abilene.": {
+    "flights": [
+      "DestAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tHow many flights land in Aberdeen or Abilene?": {
+    "flights": [
+      "DestAirport"
+    ],
+    "airports": [
+      "AirportCode",
+      "City"
+    ]
+  },
+  "flight_2\tFind the name of airports which do not have any flight in and out.": {
+    "airports": [
+      "AirportName",
+      "AirportCode"
+    ],
+    "flights": [
+      "SourceAirport",
+      "DestAirport"
+    ]
+  },
+  "flight_2\tWhich airports do not have departing or arriving flights?": {
+    "airports": [
+      "AirportName",
+      "AirportCode"
+    ],
+    "flights": [
+      "SourceAirport",
+      "DestAirport"
+    ]
+  },
+  "employee_hire_evaluation\tHow many employees are there?": {
+    "employee": [
+      "*"
+    ]
+  },
+  "employee_hire_evaluation\tCount the number of employees": {
+    "employee": [
+      "*"
+    ]
+  },
+  "employee_hire_evaluation\tSort employee names by their age in ascending order.": {
+    "employee": [
+      "Name",
+      "Age"
+    ]
+  },
+  "employee_hire_evaluation\tList the names of employees and sort in ascending order of age.": {
+    "employee": [
+      "Name",
+      "Age"
+    ]
+  },
+  "employee_hire_evaluation\tWhat is the number of employees from each city?": {
+    "employee": [
+      "City"
+    ]
+  },
+  "employee_hire_evaluation\tCount the number of employees for each city.": {
+    "employee": [
+      "City"
+    ]
+  },
+  "employee_hire_evaluation\tWhich cities do more than one employee under age 30 come from?": {
+    "employee": [
+      "City",
+      "Age"
+    ]
+  },
+  "employee_hire_evaluation\tFind the cities that have more than one employee under age 30.": {
+    "employee": [
+      "City",
+      "Age"
+    ]
+  },
+  "employee_hire_evaluation\tFind the number of shops in each location.": {
+    "shop": [
+      "Location"
+    ]
+  },
+  "employee_hire_evaluation\tHow many shops are there in each location?": {
+    "shop": [
+      "Location"
+    ]
+  },
+  "employee_hire_evaluation\tFind the manager name and district of the shop whose number of products is the largest.": {
+    "shop": [
+      "Manager_name",
+      "District",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tWhat are the manager name and district of the shop that sells the largest number of products?": {
+    "shop": [
+      "Manager_name",
+      "District",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tfind the minimum and maximum number of products of all stores.": {
+    "shop": [
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tWhat are the minimum and maximum number of products across all the shops?": {
+    "shop": [
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tReturn the name, location and district of all shops in descending order of number of products.": {
+    "shop": [
+      "Name",
+      "Location",
+      "District",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tSort all the shops by number products in descending order, and return the name, location and district of each shop.": {
+    "shop": [
+      "Name",
+      "Location",
+      "District",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tFind the names of stores whose number products is more than the average number of products.": {
+    "shop": [
+      "Name",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tWhich shops' number products is above the average? Give me the shop names.": {
+    "shop": [
+      "Name",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tfind the name of employee who was awarded the most times in the evaluation.": {
+    "employee": [
+      "Name",
+      "Employee_ID"
+    ],
+    "evaluation": [
+      "Employee_ID"
+    ]
+  },
+  "employee_hire_evaluation\tWhich employee received the most awards in evaluations? Give me the employee name.": {
+    "employee": [
+      "Name",
+      "Employee_ID"
+    ],
+    "evaluation": [
+      "Employee_ID"
+    ]
+  },
+  "employee_hire_evaluation\tFind the name of the employee who got the highest one time bonus.": {
+    "employee": [
+      "Name",
+      "Employee_ID"
+    ],
+    "evaluation": [
+      "Employee_ID",
+      "Bonus"
+    ]
+  },
+  "employee_hire_evaluation\tWhich employee received the biggest bonus? Give me the employee name.": {
+    "employee": [
+      "Name",
+      "Employee_ID"
+    ],
+    "evaluation": [
+      "Employee_ID",
+      "Bonus"
+    ]
+  },
+  "employee_hire_evaluation\tFind the names of employees who never won any award in the evaluation.": {
+    "employee": [
+      "Name",
+      "Employee_ID"
+    ],
+    "evaluation": [
+      "Employee_ID"
+    ]
+  },
+  "employee_hire_evaluation\tWhat are the names of the employees who never received any evaluation?": {
+    "employee": [
+      "Name",
+      "Employee_ID"
+    ],
+    "evaluation": [
+      "Employee_ID"
+    ]
+  },
+  "employee_hire_evaluation\tWhat is the name of the shop that is hiring the largest number of employees?": {
+    "shop": [
+      "Name",
+      "Shop_ID"
+    ],
+    "hiring": [
+      "Shop_ID"
+    ]
+  },
+  "employee_hire_evaluation\tWhich shop has the most employees? Give me the shop name.": {
+    "shop": [
+      "Name",
+      "Shop_ID"
+    ],
+    "hiring": [
+      "Shop_ID"
+    ]
+  },
+  "employee_hire_evaluation\tFind the name of the shops that do not hire any employee.": {
+    "shop": [
+      "Name",
+      "Shop_ID"
+    ],
+    "hiring": [
+      "Shop_ID"
+    ]
+  },
+  "employee_hire_evaluation\tWhich shops run with no employees? Find the shop names": {
+    "shop": [
+      "Name",
+      "Shop_ID"
+    ],
+    "hiring": [
+      "Shop_ID"
+    ]
+  },
+  "employee_hire_evaluation\tFind the number of employees hired in each shop; show the shop name as well.": {
+    "shop": [
+      "Name",
+      "Shop_ID"
+    ],
+    "hiring": [
+      "Shop_ID"
+    ]
+  },
+  "employee_hire_evaluation\tFor each shop, return the number of employees working there and the name of the shop.": {
+    "shop": [
+      "Name",
+      "Shop_ID"
+    ],
+    "hiring": [
+      "Shop_ID"
+    ]
+  },
+  "employee_hire_evaluation\tWhat is total bonus given in all evaluations?": {
+    "evaluation": [
+      "Bonus"
+    ]
+  },
+  "employee_hire_evaluation\tFind the total amount of bonus given in all the evaluations.": {
+    "evaluation": [
+      "Bonus"
+    ]
+  },
+  "employee_hire_evaluation\tGive me all the information about hiring.": {
+    "hiring": [
+      "*"
+    ]
+  },
+  "employee_hire_evaluation\tWhat is all the information about hiring?": {
+    "hiring": [
+      "*"
+    ]
+  },
+  "employee_hire_evaluation\tWhich district has both stores with less than 3000 products and stores with more than 10000 products?": {
+    "shop": [
+      "District",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tFind the districts in which there are both shops selling less than 3000 products and shops selling more than 10000 products.": {
+    "shop": [
+      "District",
+      "Number_products"
+    ]
+  },
+  "employee_hire_evaluation\tHow many different store locations are there?": {
+    "shop": [
+      "Location"
+    ]
+  },
+  "employee_hire_evaluation\tCount the number of distinct store locations.": {
+    "shop": [
+      "Location"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many documents do we have?": {
+    "Documents": [
+      "*"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of documents.": {
+    "Documents": [
+      "*"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tList document IDs, document names, and document descriptions for all documents.": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name",
+      "Document_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids, names, and descriptions for all documents?": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name",
+      "Document_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the document name and template id for document with description with the letter 'w' in it?": {
+    "Documents": [
+      "Document_Name",
+      "Template_ID",
+      "Document_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the names and template ids for documents that contain the letter w in their description.": {
+    "Documents": [
+      "Document_Name",
+      "Template_ID",
+      "Document_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the document id, template id and description for document named \"Robbin CV\"?": {
+    "Documents": [
+      "Document_ID",
+      "Template_ID",
+      "Document_Description",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the document id, template id, and description for the document with the name Robbin CV.": {
+    "Documents": [
+      "Document_ID",
+      "Template_ID",
+      "Document_Description",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many different templates do all document use?": {
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of different templates used for documents.": {
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many documents are using the template with type code 'PPT'?": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of documents that use the PPT template type.": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all template ids and number of documents using each template.": {
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are all different template ids used for documents, and how many times were each of them used?": {
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the id and type code for the template used by the most documents?": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the id and type code of the template that is used for the greatest number of documents.": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow ids for all templates that are used by more than one document.": {
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the template ids of any templates used in more than a single document?": {
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow ids for all templates not used by any document.": {
+    "Templates": [
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids for templates that are not used in any documents?": {
+    "Templates": [
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many templates do we have?": {
+    "Templates": [
+      "*"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of templates.": {
+    "Templates": [
+      "*"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow template ids, version numbers, and template type codes for all templates.": {
+    "Templates": [
+      "Template_ID",
+      "Version_Number",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids, version numbers, and type codes for each template?": {
+    "Templates": [
+      "Template_ID",
+      "Version_Number",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all distinct template type codes for all templates.": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the different template type codes?": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids of templates with template type code PP or PPT?": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the ids of templates that have the code PP or PPT.": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many templates have template type code CV?": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of templates of the type CV.": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the version number and template type code for the template with version number later than 5?": {
+    "Templates": [
+      "Version_Number",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the version numbers and template type codes of templates with a version number greater than 5.": {
+    "Templates": [
+      "Version_Number",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all template type codes and number of templates for each.": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the different template type codes, and how many templates correspond to each?": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhich template type code has most number of templates?": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the type code of the template type that the most templates belong to.": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all template type codes with less than three templates.": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the codes of template types that have fewer than 3 templates?": {
+    "Templates": [
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat the smallest version number and its template type code?": {
+    "Templates": [
+      "Version_Number",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the lowest version number, along with its corresponding template type code.": {
+    "Templates": [
+      "Version_Number",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the template type code of the template used by document with the name \"Data base\"?": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the template type code of the template that is used by a document named Data base.": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all document names using templates with template type code BK.": {
+    "Documents": [
+      "Document_Name",
+      "Template_ID"
+    ],
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the names of documents that use templates with the code BK?": {
+    "Documents": [
+      "Document_Name",
+      "Template_ID"
+    ],
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all template type codes and the number of documents using each type.": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the different template type codes, and how many documents use each type?": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhich template type code is used by most number of documents?": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the code of the template type that is most commonly used in documents.": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all template type codes that are not used by any document.": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the codes of template types that are not used for any document?": {
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all template type codes and descriptions.": {
+    "Ref_Template_Types": [
+      "Template_Type_Code",
+      "Template_Type_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the type codes and descriptions for all template types?": {
+    "Ref_Template_Types": [
+      "Template_Type_Code",
+      "Template_Type_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the template type descriptions for template type code \"AD\".": {
+    "Ref_Template_Types": [
+      "Template_Type_Description",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the template type description of the template type with the code AD.": {
+    "Ref_Template_Types": [
+      "Template_Type_Description",
+      "Template_Type_Code"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the template type code for template type description \"Book\".": {
+    "Ref_Template_Types": [
+      "Template_Type_Code",
+      "Template_Type_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the type code of the template type with the description \"Book\".": {
+    "Ref_Template_Types": [
+      "Template_Type_Code",
+      "Template_Type_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the distinct template type descriptions for the templates ever used by any document?": {
+    "Ref_Template_Types": [
+      "Template_Type_Description",
+      "Template_Type_Code"
+    ],
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the different descriptions for templates that have been used in a document.": {
+    "Ref_Template_Types": [
+      "Template_Type_Description",
+      "Template_Type_Code"
+    ],
+    "Templates": [
+      "Template_Type_Code",
+      "Template_ID"
+    ],
+    "Documents": [
+      "Template_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the template ids with template type description \"Presentation\".": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ],
+    "Ref_Template_Types": [
+      "Template_Type_Code",
+      "Template_Type_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the ids corresponding to templates with the description 'Presentation'.": {
+    "Templates": [
+      "Template_ID",
+      "Template_Type_Code"
+    ],
+    "Ref_Template_Types": [
+      "Template_Type_Code",
+      "Template_Type_Description"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many paragraphs in total?": {
+    "Paragraphs": [
+      "*"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of paragraphs.": {
+    "Paragraphs": [
+      "*"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tHow many paragraphs for the document with name 'Summer Show'?": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ],
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tCount the number of paragraphs in the document named 'Summer Show'.": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ],
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow paragraph details for paragraph with text 'Korea ' .": {
+    "Paragraphs": [
+      "Other_Details",
+      "Paragraph_Text"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the details for the paragraph that includes the text 'Korea ' ?": {
+    "Paragraphs": [
+      "Other_Details",
+      "Paragraph_Text"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all paragraph ids and texts for the document with name 'Welcome to NY'.": {
+    "Paragraphs": [
+      "Paragraph_ID",
+      "Paragraph_Text",
+      "Document_ID"
+    ],
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids and texts of paragraphs in the document titled 'Welcome to NY'?": {
+    "Paragraphs": [
+      "Paragraph_ID",
+      "Paragraph_Text",
+      "Document_ID"
+    ],
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all paragraph texts for the document \"Customer reviews\".": {
+    "Paragraphs": [
+      "Paragraph_Text",
+      "Document_ID"
+    ],
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the paragraph texts for the document with the name 'Customer reviews'?": {
+    "Paragraphs": [
+      "Paragraph_Text",
+      "Document_ID"
+    ],
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all document ids and the number of paragraphs in each document. Order by document id.": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the different document ids along with the number of paragraphs corresponding to each, ordered by id.": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow all document ids, names and the number of paragraphs in each document.": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ],
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids and names of each document, as well as the number of paragraphs in each?": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ],
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tList all document ids with at least two paragraphs.": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids of documents that have 2 or more paragraphs?": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the document id and name with greatest number of paragraphs?": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ],
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the id and name of the document with the most paragraphs.": {
+    "Documents": [
+      "Document_ID",
+      "Document_Name"
+    ],
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the document id with least number of paragraphs?": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tReturn the id of the document with the fewest paragraphs.": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat is the document id with 1 to 2 paragraphs?": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tGive the ids of documents that have between one and two paragraphs.": {
+    "Paragraphs": [
+      "Document_ID"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tShow the document id with paragraph text 'Brazil' and 'Ireland'.": {
+    "Paragraphs": [
+      "Document_ID",
+      "Paragraph_Text"
+    ]
+  },
+  "cre_Doc_Template_Mgt\tWhat are the ids of documents that contain the paragraph text 'Brazil' and 'Ireland'?": {
+    "Paragraphs": [
+      "Document_ID",
+      "Paragraph_Text"
+    ]
+  },
+  "course_teach\tHow many teachers are there?": {
+    "teacher": [
+      "*"
+    ]
+  },
+  "course_teach\tWhat is the total count of teachers?": {
+    "teacher": [
+      "*"
+    ]
+  },
+  "course_teach\tList the names of teachers in ascending order of age.": {
+    "teacher": [
+      "Name",
+      "Age"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers ordered by ascending age?": {
+    "teacher": [
+      "Name",
+      "Age"
+    ]
+  },
+  "course_teach\tWhat are the age and hometown of teachers?": {
+    "teacher": [
+      "Age",
+      "Hometown"
+    ]
+  },
+  "course_teach\tWhat is the age and hometown of every teacher?": {
+    "teacher": [
+      "Age",
+      "Hometown"
+    ]
+  },
+  "course_teach\tList the name of teachers whose hometown is not `` Little Lever Urban District '' .": {
+    "teacher": [
+      "Name",
+      "Hometown"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers whose hometown is not `` Little Lever Urban District '' ?": {
+    "teacher": [
+      "Name",
+      "Hometown"
+    ]
+  },
+  "course_teach\tShow the name of teachers aged either 32 or 33?": {
+    "teacher": [
+      "Name",
+      "Age"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers who are aged either 32 or 33?": {
+    "teacher": [
+      "Name",
+      "Age"
+    ]
+  },
+  "course_teach\tWhat is the hometown of the youngest teacher?": {
+    "teacher": [
+      "Hometown",
+      "Age"
+    ]
+  },
+  "course_teach\tWhere is the youngest teacher from?": {
+    "teacher": [
+      "Hometown",
+      "Age"
+    ]
+  },
+  "course_teach\tShow different hometown of teachers and the number of teachers from each hometown.": {
+    "teacher": [
+      "Hometown"
+    ]
+  },
+  "course_teach\tFor each hometown, how many teachers are there?": {
+    "teacher": [
+      "Hometown"
+    ]
+  },
+  "course_teach\tList the most common hometown of teachers.": {
+    "teacher": [
+      "Hometown"
+    ]
+  },
+  "course_teach\tWhat is the most commmon hometowns for teachers?": {
+    "teacher": [
+      "Hometown"
+    ]
+  },
+  "course_teach\tShow the hometowns shared by at least two teachers.": {
+    "teacher": [
+      "Hometown"
+    ]
+  },
+  "course_teach\tWhat are the towns from which at least two teachers come from?": {
+    "teacher": [
+      "Hometown"
+    ]
+  },
+  "course_teach\tShow names of teachers and the courses they are arranged to teach.": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course": [
+      "Course",
+      "Course_ID"
+    ],
+    "course_arrange": [
+      "Course_ID",
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tWhat is the name of each teacher and what course they teach?": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course": [
+      "Course",
+      "Course_ID"
+    ],
+    "course_arrange": [
+      "Course_ID",
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tShow names of teachers and the courses they are arranged to teach in ascending alphabetical order of the teacher's name.": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course": [
+      "Course",
+      "Course_ID"
+    ],
+    "course_arrange": [
+      "Course_ID",
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers and the courses they teach in ascending alphabetical order by the name of the teacher?": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course": [
+      "Course",
+      "Course_ID"
+    ],
+    "course_arrange": [
+      "Course_ID",
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tShow the name of the teacher for the math course.": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course": [
+      "Course",
+      "Course_ID"
+    ],
+    "course_arrange": [
+      "Course_ID",
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tWhat are the names of the people who teach math courses?": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course": [
+      "Course",
+      "Course_ID"
+    ],
+    "course_arrange": [
+      "Course_ID",
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tShow names of teachers and the number of courses they teach.": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course_arrange": [
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers and how many courses do they teach?": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course_arrange": [
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tShow names of teachers that teach at least two courses.": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course_arrange": [
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers who teach at least two courses?": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course_arrange": [
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tList the names of teachers who have not been arranged to teach courses.": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course_arrange": [
+      "Teacher_ID"
+    ]
+  },
+  "course_teach\tWhat are the names of the teachers whose courses have not been arranged?": {
+    "teacher": [
+      "Name",
+      "Teacher_ID"
+    ],
+    "course_arrange": [
+      "Teacher_ID"
+    ]
+  },
+  "museum_visit\tHow many visitors below age 30 are there?": {
+    "visitor": [
+      "Age"
+    ]
+  },
+  "museum_visit\tFind the names of the visitors whose membership level is higher than 4, and order the results by the level from high to low.": {
+    "visitor": [
+      "Name",
+      "Level_of_membership"
+    ]
+  },
+  "museum_visit\tWhat is the average age of the visitors whose membership level is not higher than 4?": {
+    "visitor": [
+      "Age",
+      "Level_of_membership"
+    ]
+  },
+  "museum_visit\tFind the name and membership level of the visitors whose membership level is higher than 4, and sort by their age from old to young.": {
+    "visitor": [
+      "Name",
+      "Level_of_membership",
+      "Age"
+    ]
+  },
+  "museum_visit\tFind the id and name of the museum that has the most staff members?": {
+    "museum": [
+      "Museum_ID",
+      "Name",
+      "Num_of_Staff"
+    ]
+  },
+  "museum_visit\tFind the average number of staff working for the museums that were open before 2009.": {
+    "museum": [
+      "Num_of_Staff",
+      "Open_Year"
+    ]
+  },
+  "museum_visit\tWhat are the opening year and staff number of the museum named Plaza Museum?": {
+    "museum": [
+      "Num_of_Staff",
+      "Open_Year",
+      "Name"
+    ]
+  },
+  "museum_visit\tfind the names of museums which have more staff than the minimum staff number of all museums opened after 2010.": {
+    "museum": [
+      "Name",
+      "Num_of_Staff",
+      "Open_Year"
+    ]
+  },
+  "museum_visit\tfind the id, name and age for visitors who visited some museums more than once.": {
+    "visitor": [
+      "ID",
+      "Name",
+      "Age"
+    ],
+    "visit": [
+      "visitor_ID"
+    ]
+  },
+  "museum_visit\tWhat are the id, name and membership level of visitors who have spent the largest amount of money in total in all museum tickets?": {
+    "visit": [
+      "visitor_ID",
+      "Total_spent"
+    ],
+    "visitor": [
+      "Name",
+      "Level_of_membership",
+      "ID"
+    ]
+  },
+  "museum_visit\tWhat are the id and name of the museum visited most times?": {
+    "museum": [
+      "Museum_ID",
+      "Name"
+    ],
+    "visit": [
+      "Museum_ID"
+    ]
+  },
+  "museum_visit\tWhat is the name of the museum that had no visitor yet?": {
+    "museum": [
+      "Name",
+      "Museum_ID"
+    ],
+    "visit": [
+      "Museum_ID"
+    ]
+  },
+  "museum_visit\tFind the name and age of the visitor who bought the most tickets at once.": {
+    "visitor": [
+      "Name",
+      "Age",
+      "ID"
+    ],
+    "visit": [
+      "visitor_ID",
+      "Num_of_Ticket"
+    ]
+  },
+  "museum_visit\tWhat are the average and maximum number of tickets bought in all visits?": {
+    "visit": [
+      "Num_of_Ticket"
+    ]
+  },
+  "museum_visit\tWhat is the total ticket expense of the visitors whose membership level is 1?": {
+    "visit": [
+      "Total_spent",
+      "visitor_ID"
+    ],
+    "visitor": [
+      "ID",
+      "Level_of_membership"
+    ]
+  },
+  "museum_visit\tWhat is the name of the visitor who visited both a museum opened before 2009 and a museum opened after 2011?": {
+    "museum": [
+      "Name",
+      "Museum_ID",
+      "Open_Year"
+    ],
+    "visitor": [
+      "Name",
+      "ID"
+    ],
+    "visit": [
+      "visitor_ID",
+      "Museum_ID"
+    ]
+  },
+  "museum_visit\tFind the number of visitors who did not visit any museum opened after 2010.": {
+    "visitor": [
+      "ID"
+    ],
+    "visit": [
+      "visitor_ID",
+      "Museum_ID"
+    ],
+    "museum": [
+      "Museum_ID",
+      "Open_Year"
+    ]
+  },
+  "museum_visit\tHow many museums were opened after 2013 or before 2008?": {
+    "museum": [
+      "Open_Year"
+    ]
+  },
+  "wta_1\tFind the total number of players.": {
+    "players": [
+      "*"
+    ]
+  },
+  "wta_1\tHow many players are there?": {
+    "players": [
+      "*"
+    ]
+  },
+  "wta_1\tFind the total number of matches.": {
+    "matches": [
+      "*"
+    ]
+  },
+  "wta_1\tCount the number of matches.": {
+    "matches": [
+      "*"
+    ]
+  },
+  "wta_1\tList the first name and birth date of all players from the country with code USA.": {
+    "players": [
+      "first_name",
+      "birth_date",
+      "country_code"
+    ]
+  },
+  "wta_1\tWhat are the first names and birth dates of players from the USA?": {
+    "players": [
+      "first_name",
+      "birth_date",
+      "country_code"
+    ]
+  },
+  "wta_1\tFind the average age of losers and winners of all matches.": {
+    "matches": [
+      "loser_age",
+      "winner_age"
+    ]
+  },
+  "wta_1\tWhat are the average ages of losers and winners across matches?": {
+    "matches": [
+      "loser_age",
+      "winner_age"
+    ]
+  },
+  "wta_1\tFind the average rank of winners in all matches.": {
+    "matches": [
+      "winner_rank"
+    ]
+  },
+  "wta_1\tWhat is the average rank for winners in all matches?": {
+    "matches": [
+      "winner_rank"
+    ]
+  },
+  "wta_1\tFind the highest rank of losers in all matches.": {
+    "matches": [
+      "loser_rank"
+    ]
+  },
+  "wta_1\tWhat is the best rank of losers across all matches?": {
+    "matches": [
+      "loser_rank"
+    ]
+  },
+  "wta_1\tfind the number of distinct country codes of all players.": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tHow many distinct countries do players come from?": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tFind the number of distinct name of losers.": {
+    "matches": [
+      "loser_name"
+    ]
+  },
+  "wta_1\tHow many different loser names are there?": {
+    "matches": [
+      "loser_name"
+    ]
+  },
+  "wta_1\tFind the name of tourney that has more than 10 matches.": {
+    "matches": [
+      "tourney_name"
+    ]
+  },
+  "wta_1\tWhat are the names of tournaments that have more than 10 matches?": {
+    "matches": [
+      "tourney_name"
+    ]
+  },
+  "wta_1\tList the names of all winners who played in both 2013 and 2016.": {
+    "matches": [
+      "winner_name",
+      "year"
+    ]
+  },
+  "wta_1\tWhat are the names of players who won in both 2013 and 2016?": {
+    "matches": [
+      "winner_name",
+      "year"
+    ]
+  },
+  "wta_1\tList the number of all matches who played in years of 2013 or 2016.": {
+    "matches": [
+      "year"
+    ]
+  },
+  "wta_1\tHow many matches were played in 2013 or 2016?": {
+    "matches": [
+      "year"
+    ]
+  },
+  "wta_1\tWhat are the country code and first name of the players who won in both tourney WTA Championships and Australian Open?": {
+    "players": [
+      "country_code",
+      "first_name",
+      "player_id"
+    ],
+    "matches": [
+      "winner_id",
+      "tourney_name"
+    ]
+  },
+  "wta_1\tWhat are the first names and country codes for players who won both the WTA Championships and the Australian Open?": {
+    "players": [
+      "country_code",
+      "first_name",
+      "player_id"
+    ],
+    "matches": [
+      "winner_id",
+      "tourney_name"
+    ]
+  },
+  "wta_1\tFind the first name and country code of the oldest player.": {
+    "players": [
+      "first_name",
+      "country_code",
+      "birth_date"
+    ]
+  },
+  "wta_1\tWhat is the first name and country code of the oldest player?": {
+    "players": [
+      "first_name",
+      "country_code",
+      "birth_date"
+    ]
+  },
+  "wta_1\tList the first and last name of all players in the order of birth date.": {
+    "players": [
+      "first_name",
+      "last_name",
+      "birth_date"
+    ]
+  },
+  "wta_1\tWhat are the full names of all players, sorted by birth date?": {
+    "players": [
+      "first_name",
+      "last_name",
+      "birth_date"
+    ]
+  },
+  "wta_1\tList the first and last name of all players who are left / L hand in the order of birth date.": {
+    "players": [
+      "first_name",
+      "last_name",
+      "hand",
+      "birth_date"
+    ]
+  },
+  "wta_1\tWhat are the full names of all left handed players, in order of birth date?": {
+    "players": [
+      "first_name",
+      "last_name",
+      "hand",
+      "birth_date"
+    ]
+  },
+  "wta_1\tFind the first name and country code of the player who did the most number of tours.": {
+    "players": [
+      "country_code",
+      "first_name",
+      "player_id"
+    ],
+    "rankings": [
+      "player_id",
+      "tours"
+    ]
+  },
+  "wta_1\tWhat is the first name and country code of the player with the most tours?": {
+    "players": [
+      "country_code",
+      "first_name",
+      "player_id"
+    ],
+    "rankings": [
+      "player_id",
+      "tours"
+    ]
+  },
+  "wta_1\tFind the year that has the most number of matches.": {
+    "matches": [
+      "year"
+    ]
+  },
+  "wta_1\tWhich year had the most matches?": {
+    "matches": [
+      "year"
+    ]
+  },
+  "wta_1\tFind the name and rank points of the winner who won the most times.": {
+    "matches": [
+      "winner_name",
+      "winner_rank_points"
+    ]
+  },
+  "wta_1\tWhat is the name of the winner who has won the most matches, and how many rank points does this player have?": {
+    "matches": [
+      "winner_name",
+      "winner_rank_points"
+    ]
+  },
+  "wta_1\tFind the name of the winner who has the highest rank points and participated in the Australian Open tourney.": {
+    "matches": [
+      "winner_name",
+      "tourney_name",
+      "winner_rank_points"
+    ]
+  },
+  "wta_1\tWhat is the name of the winner with the most rank points who participated in the Australian Open tournament?": {
+    "matches": [
+      "winner_name",
+      "tourney_name",
+      "winner_rank_points"
+    ]
+  },
+  "wta_1\tfind the names of loser and winner who played in the match with greatest number of minutes.": {
+    "matches": [
+      "winner_name",
+      "loser_name",
+      "minutes"
+    ]
+  },
+  "wta_1\tWhat are the names of the winner and loser who played in the longest match?": {
+    "matches": [
+      "winner_name",
+      "loser_name",
+      "minutes"
+    ]
+  },
+  "wta_1\tFind the average ranking for each player and their first name.": {
+    "rankings": [
+      "ranking",
+      "player_id"
+    ],
+    "players": [
+      "first_name",
+      "player_id"
+    ]
+  },
+  "wta_1\tWhat are the first names of all players, and their average rankings?": {
+    "rankings": [
+      "ranking",
+      "player_id"
+    ],
+    "players": [
+      "first_name",
+      "player_id"
+    ]
+  },
+  "wta_1\tFind the total ranking points for each player and their first name.": {
+    "rankings": [
+      "ranking_points",
+      "player_id"
+    ],
+    "players": [
+      "first_name",
+      "player_id"
+    ]
+  },
+  "wta_1\tWhat are the first names of all players, and their total ranking points?": {
+    "rankings": [
+      "ranking_points",
+      "player_id"
+    ],
+    "players": [
+      "first_name",
+      "player_id"
+    ]
+  },
+  "wta_1\tfind the number of players for each country.": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tHow many players are from each country?": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tfind the code of the country where has the greatest number of players.": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tWhat is the code of the country with the most players?": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tFind the codes of countries that have more than 50 players.": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tWhat are the codes of countries with more than 50 players?": {
+    "players": [
+      "country_code"
+    ]
+  },
+  "wta_1\tFind the total number of tours for each ranking date.": {
+    "rankings": [
+      "tours",
+      "ranking_date"
+    ]
+  },
+  "wta_1\tHow many total tours were there for each ranking date?": {
+    "rankings": [
+      "tours",
+      "ranking_date"
+    ]
+  },
+  "wta_1\tFind the number of matches happened in each year.": {
+    "matches": [
+      "year"
+    ]
+  },
+  "wta_1\tHow many matches were played in each year?": {
+    "matches": [
+      "year"
+    ]
+  },
+  "wta_1\tFind the name and rank of the 3 youngest winners across all matches.": {
+    "matches": [
+      "winner_name",
+      "winner_rank",
+      "winner_age"
+    ]
+  },
+  "wta_1\tWhat are the names and ranks of the three youngest winners across all matches?": {
+    "matches": [
+      "winner_name",
+      "winner_rank",
+      "winner_age"
+    ]
+  },
+  "wta_1\tHow many different winners both participated in the WTA Championships and were left handed?": {
+    "matches": [
+      "winner_name",
+      "tourney_name",
+      "winner_hand"
+    ]
+  },
+  "wta_1\tFind the number of left handed winners who participated in the WTA Championships.": {
+    "matches": [
+      "winner_name",
+      "tourney_name",
+      "winner_hand"
+    ]
+  },
+  "wta_1\tFind the first name, country code and birth date of the winner who has the highest rank points in all matches.": {
+    "players": [
+      "first_name",
+      "country_code",
+      "birth_date",
+      "player_id"
+    ],
+    "matches": [
+      "winner_id",
+      "winner_rank_points"
+    ]
+  },
+  "wta_1\tWhat is the first name, country code, and birth date of the player with the most winner rank points across all matches?": {
+    "players": [
+      "first_name",
+      "country_code",
+      "birth_date",
+      "player_id"
+    ],
+    "matches": [
+      "winner_id",
+      "winner_rank_points"
+    ]
+  },
+  "wta_1\tFind the number of players for each hand type.": {
+    "players": [
+      "hand"
+    ]
+  },
+  "wta_1\tHow many players are there for each hand type?": {
+    "players": [
+      "hand"
+    ]
+  },
+  "battle_death\tHow many ships ended up being 'Captured'?": {
+    "ship": [
+      "disposition_of_ship"
+    ]
+  },
+  "battle_death\tList the name and tonnage ordered by in descending alphaetical order for the names.": {
+    "ship": [
+      "name",
+      "tonnage"
+    ]
+  },
+  "battle_death\tList the name, date and result of each battle.": {
+    "battle": [
+      "name",
+      "date"
+    ]
+  },
+  "battle_death\tWhat is maximum and minimum death toll caused each time?": {
+    "death": [
+      "killed"
+    ]
+  },
+  "battle_death\tWhat is the average number of injuries caused each time?": {
+    "death": [
+      "injured"
+    ]
+  },
+  "battle_death\tWhat are the death and injury situations caused by the ship with tonnage 't'?": {
+    "death": [
+      "killed",
+      "injured",
+      "caused_by_ship_id",
+      "id"
+    ],
+    "ship": [
+      "id",
+      "tonnage"
+    ]
+  },
+  "battle_death\tWhat are the name and results of the battles when the bulgarian commander is not 'Boril'": {
+    "battle": [
+      "name",
+      "result",
+      "bulgarian_commander"
+    ]
+  },
+  "battle_death\tWhat are the different ids and names of the battles that lost any 'Brig' type shipes?": {
+    "battle": [
+      "id",
+      "name"
+    ],
+    "ship": [
+      "id",
+      "name",
+      "lost_in_battle",
+      "ship_type"
+    ]
+  },
+  "battle_death\tWhat are the ids and names of the battles that led to more than 10 people killed in total.": {
+    "battle": [
+      "id",
+      "name"
+    ],
+    "ship": [
+      "id",
+      "name",
+      "lost_in_battle"
+    ],
+    "death": [
+      "id",
+      "caused_by_ship_id",
+      "killed"
+    ]
+  },
+  "battle_death\tWhat is the ship id and name that caused most total injuries?": {
+    "ship": [
+      "id",
+      "name"
+    ],
+    "death": [
+      "id",
+      "caused_by_ship_id"
+    ]
+  },
+  "battle_death\tWhat are the distinct battle names which are between bulgarian commander 'Kaloyan' and latin commander 'Baldwin I'?": {
+    "battle": [
+      "name",
+      "bulgarian_commander",
+      "latin_commander"
+    ]
+  },
+  "battle_death\tHow many different results are there for the battles?": {
+    "battle": [
+      "result"
+    ]
+  },
+  "battle_death\tHow many battles did not lose any ship with tonnage '225'?": {
+    "battle": [
+      "id"
+    ],
+    "ship": [
+      "id",
+      "lost_in_battle",
+      "tonnage"
+    ]
+  },
+  "battle_death\tList the name and date the battle that has lost the ship named 'Lettice' and the ship named 'HMS Atalanta'": {
+    "battle": [
+      "name",
+      "date",
+      "id"
+    ],
+    "ship": [
+      "name",
+      "id",
+      "lost_in_battle"
+    ]
+  },
+  "battle_death\tShow names, results and bulgarian commanders of the battles with no ships lost in the 'English Channel'.": {
+    "battle": [
+      "name",
+      "result",
+      "bulgarian_commander",
+      "id"
+    ],
+    "ship": [
+      "name",
+      "id",
+      "lost_in_battle",
+      "location"
+    ]
+  },
+  "battle_death\tWhat are the notes of the death events which has substring 'East'?": {
+    "death": [
+      "note"
+    ]
+  },
+  "student_transcripts_tracking\twhat are all the addresses including line 1 and line 2?": {
+    "Addresses": [
+      "line_1",
+      "line_2"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the first and second line for all addresses?": {
+    "Addresses": [
+      "line_1",
+      "line_2"
+    ]
+  },
+  "student_transcripts_tracking\tHow many courses in total are listed?": {
+    "Courses": [
+      "*"
+    ]
+  },
+  "student_transcripts_tracking\tHow many courses are there?": {
+    "Courses": [
+      "*"
+    ]
+  },
+  "student_transcripts_tracking\tHow is the math course described?": {
+    "Courses": [
+      "course_description",
+      "course_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the descriptions for all the math courses?": {
+    "Courses": [
+      "course_description",
+      "course_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the zip code of the address in the city Port Chelsea?": {
+    "Addresses": [
+      "zip_postcode",
+      "city"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the zip code for Port Chelsea?": {
+    "Addresses": [
+      "zip_postcode",
+      "city"
+    ]
+  },
+  "student_transcripts_tracking\tWhich department offers the most number of degrees? List department name and id.": {
+    "Departments": [
+      "department_name",
+      "department_id"
+    ],
+    "Degree_Programs": [
+      "department_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the name and id of the department with the most number of degrees ?": {
+    "Departments": [
+      "department_name",
+      "department_id"
+    ],
+    "Degree_Programs": [
+      "department_id"
+    ]
+  },
+  "student_transcripts_tracking\tHow many departments offer any degree?": {
+    "Degree_Programs": [
+      "department_id"
+    ]
+  },
+  "student_transcripts_tracking\tHow many different departments offer degrees?": {
+    "Degree_Programs": [
+      "department_id"
+    ]
+  },
+  "student_transcripts_tracking\tHow many different degree names are offered?": {
+    "Degree_Programs": [
+      "degree_summary_name"
+    ]
+  },
+  "student_transcripts_tracking\tHow many different degrees are offered?": {
+    "Degree_Programs": [
+      "degree_summary_name"
+    ]
+  },
+  "student_transcripts_tracking\tHow many degrees does the engineering department offer?": {
+    "Departments": [
+      "department_id",
+      "department_name"
+    ],
+    "Degree_Programs": [
+      "department_id"
+    ]
+  },
+  "student_transcripts_tracking\tHow many degrees does the engineering department have?": {
+    "Departments": [
+      "department_id",
+      "department_name"
+    ],
+    "Degree_Programs": [
+      "department_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the names and descriptions of all the sections?": {
+    "Sections": [
+      "section_name",
+      "section_description"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the names and descriptions for all the sections?": {
+    "Sections": [
+      "section_name",
+      "section_description"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the names and id of courses having at most 2 sections?": {
+    "Courses": [
+      "course_name",
+      "course_id"
+    ],
+    "Sections": [
+      "course_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the names and ids of every course with less than 2 sections?": {
+    "Courses": [
+      "course_name",
+      "course_id"
+    ],
+    "Sections": [
+      "course_id"
+    ]
+  },
+  "student_transcripts_tracking\tList the section_name in reversed lexicographical order.": {
+    "Sections": [
+      "section_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the names of the sections in reverse alphabetical order?": {
+    "Sections": [
+      "section_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the semester which most student registered in? Show both the name and the id.": {
+    "Semesters": [
+      "semester_name",
+      "semester_id"
+    ],
+    "Student_Enrolment": [
+      "semester_id"
+    ]
+  },
+  "student_transcripts_tracking\tFor each semester, what is the name and id of the one with the most students registered?": {
+    "Semesters": [
+      "semester_name",
+      "semester_id"
+    ],
+    "Student_Enrolment": [
+      "semester_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the description of the department whose name has the substring the computer?": {
+    "Departments": [
+      "department_description",
+      "department_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the department description for the one whose name has the word computer?": {
+    "Departments": [
+      "department_description",
+      "department_name"
+    ]
+  },
+  "student_transcripts_tracking\tWho are enrolled in 2 degree programs in one semester? List the first name, middle name and last name and the id.": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "student_id"
+    ],
+    "Student_Enrolment": [
+      "student_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the first, middle, and last names, along with the ids, of all students who enrolled in 2 degree programs in one semester?": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "student_id"
+    ],
+    "Student_Enrolment": [
+      "student_id"
+    ]
+  },
+  "student_transcripts_tracking\tWho is enrolled in a Bachelor degree program? List the first name, middle name, last name.": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "student_id"
+    ],
+    "Student_Enrolment": [
+      "student_id",
+      "degree_program_id"
+    ],
+    "Degree_Programs": [
+      "degree_program_id",
+      "degree_summary_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the first, middle, and last names for everybody enrolled in a Bachelors program?": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "student_id"
+    ],
+    "Student_Enrolment": [
+      "student_id",
+      "degree_program_id"
+    ],
+    "Degree_Programs": [
+      "degree_program_id",
+      "degree_summary_name"
+    ]
+  },
+  "student_transcripts_tracking\tFind the kind of program which most number of students are enrolled in?": {
+    "Degree_Programs": [
+      "degree_summary_name",
+      "degree_program_id"
+    ],
+    "Student_Enrolment": [
+      "degree_program_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the degree summary name that has the most number of students enrolled?": {
+    "Degree_Programs": [
+      "degree_summary_name",
+      "degree_program_id"
+    ],
+    "Student_Enrolment": [
+      "degree_program_id"
+    ]
+  },
+  "student_transcripts_tracking\tFind the program which most number of students are enrolled in. List both the id and the summary.": {
+    "Degree_Programs": [
+      "degree_program_id",
+      "degree_summary_name"
+    ],
+    "Student_Enrolment": [
+      "degree_program_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the program id and the summary of the degree that has the most students enrolled?": {
+    "Degree_Programs": [
+      "degree_program_id",
+      "degree_summary_name"
+    ],
+    "Student_Enrolment": [
+      "degree_program_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhich student has enrolled for the most times in any program? List the id, first name, middle name, last name, the number of enrollments and student id.": {
+    "Students": [
+      "student_id",
+      "first_name",
+      "middle_name",
+      "last_name"
+    ],
+    "Student_Enrolment": [
+      "student_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the first, middle, and last name, along with the id and number of enrollments, for the student who enrolled the most in any program?": {
+    "Students": [
+      "student_id",
+      "first_name",
+      "middle_name",
+      "last_name"
+    ],
+    "Student_Enrolment": [
+      "student_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhich semesters do not have any student enrolled? List the semester name.": {
+    "Semesters": [
+      "semester_name",
+      "semester_id"
+    ],
+    "Student_Enrolment": [
+      "semester_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the name of the semester with no students enrolled?": {
+    "Semesters": [
+      "semester_name",
+      "semester_id"
+    ],
+    "Student_Enrolment": [
+      "semester_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are all the course names of the courses which ever have students enrolled in?": {
+    "Courses": [
+      "course_name",
+      "course_id"
+    ],
+    "Student_Enrolment_Courses": [
+      "course_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the names of all courses that have some students enrolled?": {
+    "Courses": [
+      "course_name",
+      "course_id"
+    ],
+    "Student_Enrolment_Courses": [
+      "course_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat's the name of the course with most number of enrollments?": {
+    "Courses": [
+      "course_name",
+      "course_id"
+    ],
+    "Student_Enrolment_Courses": [
+      "course_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the name of the course with the most students enrolled?": {
+    "Courses": [
+      "course_name",
+      "course_id"
+    ],
+    "Student_Enrolment_Courses": [
+      "course_id"
+    ]
+  },
+  "student_transcripts_tracking\tFind the last name of the students who currently live in the state of North Carolina but have not registered in any degree program.": {
+    "Students": [
+      "last_name",
+      "current_address_id",
+      "student_id"
+    ],
+    "Addresses": [
+      "address_id",
+      "state_province_county"
+    ],
+    "Student_Enrolment": [
+      "student_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the last name of the students who live in North Carolina but have not registered in any degree programs?": {
+    "Students": [
+      "last_name",
+      "current_address_id",
+      "student_id"
+    ],
+    "Addresses": [
+      "address_id",
+      "state_province_county"
+    ],
+    "Student_Enrolment": [
+      "student_id"
+    ]
+  },
+  "student_transcripts_tracking\tShow the date and id of the transcript with at least 2 course results.": {
+    "Transcripts": [
+      "transcript_date",
+      "transcript_id"
+    ],
+    "Transcript_Contents": [
+      "transcript_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the date and id of the transcript with at least 2 courses listed?": {
+    "Transcripts": [
+      "transcript_date",
+      "transcript_id"
+    ],
+    "Transcript_Contents": [
+      "transcript_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the phone number of the man with the first name Timmothy and the last name Ward?": {
+    "Students": [
+      "cell_mobile_number",
+      "first_name",
+      "last_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the mobile phone number of the student named Timmothy Ward ?": {
+    "Students": [
+      "cell_mobile_number",
+      "first_name",
+      "last_name"
+    ]
+  },
+  "student_transcripts_tracking\tWho is the first student to register? List the first name, middle name and last name.": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "date_first_registered"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the first, middle, and last name of the first student to register?": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "date_first_registered"
+    ]
+  },
+  "student_transcripts_tracking\tWho is the earliest graduate of the school? List the first name, middle name and last name.": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "date_left"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the first, middle, and last name of the earliest school graduate?": {
+    "Students": [
+      "first_name",
+      "middle_name",
+      "last_name",
+      "date_left"
+    ]
+  },
+  "student_transcripts_tracking\tWhose permanent address is different from his or her current address? List his or her first name.": {
+    "Students": [
+      "first_name",
+      "current_address_id",
+      "permanent_address_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the first name of the student whose permanent address is different from his or her current one?": {
+    "Students": [
+      "first_name",
+      "current_address_id",
+      "permanent_address_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhich address holds the most number of students currently? List the address id and all lines.": {
+    "Addresses": [
+      "address_id",
+      "line_1",
+      "line_2"
+    ],
+    "Students": [
+      "current_address_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the id, line 1, and line 2 of the address with the most students?": {
+    "Addresses": [
+      "address_id",
+      "line_1",
+      "line_2"
+    ],
+    "Students": [
+      "current_address_id"
+    ]
+  },
+  "student_transcripts_tracking\tOn average, when were the transcripts printed?": {
+    "Transcripts": [
+      "transcript_date"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the average transcript date?": {
+    "Transcripts": [
+      "transcript_date"
+    ]
+  },
+  "student_transcripts_tracking\tWhen is the first transcript released? List the date and details.": {
+    "Transcripts": [
+      "transcript_date",
+      "other_details"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the earliest date of a transcript release, and what details can you tell me?": {
+    "Transcripts": [
+      "transcript_date",
+      "other_details"
+    ]
+  },
+  "student_transcripts_tracking\tHow many transcripts are released?": {
+    "Transcripts": [
+      "*"
+    ]
+  },
+  "student_transcripts_tracking\tHow many transcripts are listed?": {
+    "Transcripts": [
+      "*"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the last transcript release date?": {
+    "Transcripts": [
+      "transcript_date"
+    ]
+  },
+  "student_transcripts_tracking\tWhen was the last transcript released?": {
+    "Transcripts": [
+      "transcript_date"
+    ]
+  },
+  "student_transcripts_tracking\tHow many times at most can a course enrollment result show in different transcripts? Also show the course enrollment id.": {
+    "Transcript_Contents": [
+      "student_course_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the maximum number of times that a course shows up in different transcripts and what is that course's enrollment id?": {
+    "Transcript_Contents": [
+      "student_course_id"
+    ]
+  },
+  "student_transcripts_tracking\tShow the date of the transcript which shows the least number of results, also list the id.": {
+    "Transcripts": [
+      "transcript_date",
+      "transcript_id"
+    ],
+    "Transcript_Contents": [
+      "transcript_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the date and id of the transcript with the least number of results?": {
+    "Transcripts": [
+      "transcript_date",
+      "transcript_id"
+    ],
+    "Transcript_Contents": [
+      "transcript_id"
+    ]
+  },
+  "student_transcripts_tracking\tFind the semester when both Master students and Bachelor students got enrolled in.": {
+    "Student_Enrolment": [
+      "semester_id",
+      "degree_program_id"
+    ],
+    "Degree_Programs": [
+      "degree_program_id",
+      "degree_summary_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the id of the semester that had both Masters and Bachelors students enrolled?": {
+    "Student_Enrolment": [
+      "semester_id",
+      "degree_program_id"
+    ],
+    "Degree_Programs": [
+      "degree_program_id",
+      "degree_summary_name"
+    ]
+  },
+  "student_transcripts_tracking\tHow many different addresses do the students currently live?": {
+    "Students": [
+      "current_address_id"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the different addresses that have students living there?": {
+    "Students": [
+      "current_address_id"
+    ]
+  },
+  "student_transcripts_tracking\tList all the student details in reversed lexicographical order.": {
+    "Students": [
+      "other_student_details"
+    ]
+  },
+  "student_transcripts_tracking\tWhat other details can you tell me about students in reverse alphabetical order?": {
+    "Students": [
+      "other_student_details"
+    ]
+  },
+  "student_transcripts_tracking\tDescribe the section h.": {
+    "Sections": [
+      "section_description",
+      "section_name"
+    ]
+  },
+  "student_transcripts_tracking\tWhat is the description for the section named h?": {
+    "Sections": [
+      "section_description",
+      "section_name"
+    ]
+  },
+  "student_transcripts_tracking\tFind the first name of the students who permanently live in the country Haiti or have the cell phone number 09700166582 .": {
+    "Students": [
+      "first_name",
+      "permanent_address_id",
+      "cell_mobile_number"
+    ],
+    "Addresses": [
+      "address_id",
+      "country"
+    ]
+  },
+  "student_transcripts_tracking\tWhat are the first names of the students who live in Haiti permanently or have the cell phone number 09700166582 ?": {
+    "Students": [
+      "first_name",
+      "permanent_address_id",
+      "cell_mobile_number"
+    ],
+    "Addresses": [
+      "address_id",
+      "country"
+    ]
+  },
+  "tvshow\tList the title of all cartoons in alphabetical order.": {
+    "Cartoon": [
+      "Title"
+    ]
+  },
+  "tvshow\tWhat are the titles of the cartoons sorted alphabetically?": {
+    "Cartoon": [
+      "Title"
+    ]
+  },
+  "tvshow\tList all cartoon directed by \"Ben Jones\".": {
+    "Cartoon": [
+      "Title",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tWhat are the names of all cartoons directed by Ben Jones?": {
+    "Cartoon": [
+      "Title",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tHow many cartoons were written by \"Joseph Kuhr\"?": {
+    "Cartoon": [
+      "Written_by"
+    ]
+  },
+  "tvshow\tWhat is the number of cartoones written by Joseph Kuhr?": {
+    "Cartoon": [
+      "Written_by"
+    ]
+  },
+  "tvshow\tlist all cartoon titles and their directors ordered by their air date": {
+    "Cartoon": [
+      "Title",
+      "Directed_by",
+      "Original_air_date"
+    ]
+  },
+  "tvshow\tWhat is the name and directors of all the cartoons that are ordered by air date?": {
+    "Cartoon": [
+      "Title",
+      "Directed_by",
+      "Original_air_date"
+    ]
+  },
+  "tvshow\tList the title of all cartoon directed by \"Ben Jones\" or \"Brandon Vietti\".": {
+    "Cartoon": [
+      "Title",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tWhat are the titles of all cartoons directed by Ben Jones or Brandon Vietti?": {
+    "Cartoon": [
+      "Title",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tWhich country has the most of TV Channels? List the country and number of TV Channels it has.": {
+    "TV_Channel": [
+      "Country"
+    ]
+  },
+  "tvshow\tWhat is the country with the most number of TV Channels and how many does it have?": {
+    "TV_Channel": [
+      "Country"
+    ]
+  },
+  "tvshow\tList the number of different series names and contents in the TV Channel table.": {},
+  "tvshow\tHow many different series and contents are listed in the TV Channel table?": {},
+  "tvshow\tWhat is the content of TV Channel with serial name \"Sky Radio\"?": {
+    "TV_Channel": [
+      "Content",
+      "series_name"
+    ]
+  },
+  "tvshow\tWhat is the content of the series Sky Radio?": {
+    "TV_Channel": [
+      "Content",
+      "series_name"
+    ]
+  },
+  "tvshow\tWhat is the Package Option of TV Channel with serial name \"Sky Radio\"?": {
+    "TV_Channel": [
+      "Package_Option",
+      "series_name"
+    ]
+  },
+  "tvshow\tWhat are the Package Options of the TV Channels whose series names are Sky Radio?": {
+    "TV_Channel": [
+      "Package_Option",
+      "series_name"
+    ]
+  },
+  "tvshow\tHow many TV Channel using language English?": {
+    "TV_Channel": [
+      "Language"
+    ]
+  },
+  "tvshow\tHow many TV Channels use the English language?": {
+    "TV_Channel": [
+      "Language"
+    ]
+  },
+  "tvshow\tList the language used least number of TV Channel. List language and number of TV Channel.": {
+    "TV_Channel": [
+      "Language"
+    ]
+  },
+  "tvshow\tWhat are the languages used by the least number of TV Channels and how many channels use it?": {
+    "TV_Channel": [
+      "Language"
+    ]
+  },
+  "tvshow\tList each language and the number of TV Channels using it.": {
+    "TV_Channel": [
+      "Language"
+    ]
+  },
+  "tvshow\tFor each language, list the number of TV Channels that use it.": {
+    "TV_Channel": [
+      "Language"
+    ]
+  },
+  "tvshow\tWhat is the TV Channel that shows the cartoon \"The Rise of the Blue Beetle!\"? List the TV Channel's series name.": {
+    "TV_Channel": [
+      "series_name",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Title"
+    ]
+  },
+  "tvshow\tWhat is the series name of the TV Channel that shows the cartoon \"The Rise of the Blue Beetle\"?": {
+    "TV_Channel": [
+      "series_name",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Title"
+    ]
+  },
+  "tvshow\tList the title of all  Cartoons showed on TV Channel with series name \"Sky Radio\".": {
+    "Cartoon": [
+      "Title",
+      "id",
+      "Channel"
+    ],
+    "TV_Channel": [
+      "id",
+      "series_name"
+    ]
+  },
+  "tvshow\tWhat is the title of all the cartools that are on the TV Channel with the series name \"Sky Radio\"?": {
+    "Cartoon": [
+      "Title",
+      "id",
+      "Channel"
+    ],
+    "TV_Channel": [
+      "id",
+      "series_name"
+    ]
+  },
+  "tvshow\tList the Episode of all TV series sorted by rating.": {
+    "TV_series": [
+      "Episode",
+      "Rating"
+    ]
+  },
+  "tvshow\tWhat are all of the episodes ordered by ratings?": {
+    "TV_series": [
+      "Episode",
+      "Rating"
+    ]
+  },
+  "tvshow\tList top 3 highest Rating  TV series. List the TV series's Episode and Rating.": {
+    "TV_series": [
+      "Episode",
+      "Rating"
+    ]
+  },
+  "tvshow\tWhat are 3 most highly rated episodes in the TV series table and what were those ratings?": {
+    "TV_series": [
+      "Episode",
+      "Rating"
+    ]
+  },
+  "tvshow\tWhat is minimum and maximum share of TV series?": {},
+  "tvshow\tWhat is the maximum and minimum share for the TV series?": {},
+  "tvshow\tWhat is the air date of TV series with Episode \"A Love of a Lifetime\"?": {
+    "TV_series": [
+      "Air_Date",
+      "Episode"
+    ]
+  },
+  "tvshow\tWhen did the episode \"A Love of a Lifetime\" air?": {
+    "TV_series": [
+      "Air_Date",
+      "Episode"
+    ]
+  },
+  "tvshow\tWhat is Weekly Rank of TV series with Episode \"A Love of a Lifetime\"?": {
+    "TV_series": [
+      "Weekly_Rank",
+      "Episode"
+    ]
+  },
+  "tvshow\tWhat is the weekly rank for the episode \"A Love of a Lifetime\"?": {
+    "TV_series": [
+      "Weekly_Rank",
+      "Episode"
+    ]
+  },
+  "tvshow\tWhat is the TV Channel of TV series with Episode \"A Love of a Lifetime\"? List the TV Channel's series name.": {
+    "TV_Channel": [
+      "series_name",
+      "id"
+    ],
+    "TV_series": [
+      "id",
+      "Channel",
+      "Episode"
+    ]
+  },
+  "tvshow\tWhat is the name of the series that has the episode \"A Love of a Lifetime\"?": {
+    "TV_Channel": [
+      "series_name",
+      "id"
+    ],
+    "TV_series": [
+      "id",
+      "Channel",
+      "Episode"
+    ]
+  },
+  "tvshow\tList the Episode of all  TV series showed on TV Channel with series name \"Sky Radio\".": {
+    "TV_series": [
+      "Episode",
+      "id",
+      "Channel"
+    ],
+    "TV_Channel": [
+      "id",
+      "series_name"
+    ]
+  },
+  "tvshow\tWhat is the episode for the TV series named \"Sky Radio\"?": {
+    "TV_series": [
+      "Episode",
+      "id",
+      "Channel"
+    ],
+    "TV_Channel": [
+      "id",
+      "series_name"
+    ]
+  },
+  "tvshow\tFind the number of cartoons directed by each of the listed directors.": {
+    "Cartoon": [
+      "Directed_by"
+    ]
+  },
+  "tvshow\tHow many cartoons did each director create?": {
+    "Cartoon": [
+      "Directed_by"
+    ]
+  },
+  "tvshow\tFind the production code and channel of the most recently aired cartoon .": {
+    "Cartoon": [
+      "Production_code",
+      "Channel",
+      "Original_air_date"
+    ]
+  },
+  "tvshow\tWhat is the produdction code and channel of the most recent cartoon ?": {
+    "Cartoon": [
+      "Production_code",
+      "Channel",
+      "Original_air_date"
+    ]
+  },
+  "tvshow\tFind the package choice and series name of the TV channel that has high definition TV.": {
+    "TV_Channel": [
+      "Package_Option",
+      "series_name",
+      "Hight_definition_TV"
+    ]
+  },
+  "tvshow\tWhat are the package options and the name of the series for the TV Channel that supports high definition TV?": {
+    "TV_Channel": [
+      "Package_Option",
+      "series_name",
+      "Hight_definition_TV"
+    ]
+  },
+  "tvshow\twhich countries' tv channels are playing some cartoon written by Todd Casey?": {
+    "TV_Channel": [
+      "Country",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Written_by"
+    ]
+  },
+  "tvshow\tWhat are the countries that have cartoons on TV that were written by Todd Casey?": {
+    "TV_Channel": [
+      "Country",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Written_by"
+    ]
+  },
+  "tvshow\twhich countries' tv channels are not playing any cartoon written by Todd Casey?": {
+    "TV_Channel": [
+      "Country",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Written_by"
+    ]
+  },
+  "tvshow\tWhat are the countries that are not playing cartoons written by Todd Casey?": {
+    "TV_Channel": [
+      "Country",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Written_by"
+    ]
+  },
+  "tvshow\tFind the series name and country of the tv channel that is playing some cartoons directed by Ben Jones and Michael Chang?": {
+    "TV_Channel": [
+      "series_name",
+      "Country",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tWhat is the series name and country of all TV channels that are playing cartoons directed by Ben Jones and cartoons directed by Michael Chang?": {
+    "TV_Channel": [
+      "series_name",
+      "Country",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tfind the pixel aspect ratio and nation of the tv channels that do not use English.": {
+    "TV_Channel": [
+      "Pixel_aspect_ratio_PAR",
+      "Country",
+      "Language"
+    ]
+  },
+  "tvshow\tWhat is the pixel aspect ratio and country of origin for all TV channels that do not use English?": {
+    "TV_Channel": [
+      "Pixel_aspect_ratio_PAR",
+      "Country",
+      "Language"
+    ]
+  },
+  "tvshow\tfind id of the tv channels that from the countries where have more than two tv channels.": {
+    "TV_Channel": [
+      "id",
+      "Country"
+    ]
+  },
+  "tvshow\tWhat are the ids of all tv channels that have more than 2 TV channels?": {
+    "TV_Channel": [
+      "id",
+      "Country"
+    ]
+  },
+  "tvshow\tfind the id of tv channels that do not play any cartoon directed by Ben Jones.": {
+    "TV_Channel": [
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tWhat are the ids of the TV channels that do not have any cartoons directed by Ben Jones?": {
+    "TV_Channel": [
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tfind the package option of the tv channel that do not have any cartoon directed by Ben Jones.": {
+    "TV_Channel": [
+      "Package_Option",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Directed_by"
+    ]
+  },
+  "tvshow\tWhat are the package options of all tv channels that are not playing any cartoons directed by Ben Jones?": {
+    "TV_Channel": [
+      "Package_Option",
+      "id"
+    ],
+    "Cartoon": [
+      "id",
+      "Channel",
+      "Directed_by"
+    ]
+  },
+  "poker_player\tHow many poker players are there?": {
+    "poker_player": [
+      "*"
+    ]
+  },
+  "poker_player\tCount the number of poker players.": {
+    "poker_player": [
+      "*"
+    ]
+  },
+  "poker_player\tList the earnings of poker players in descending order.": {
+    "poker_player": [
+      "Earnings"
+    ]
+  },
+  "poker_player\tWhat are the earnings of poker players, ordered descending by value?": {
+    "poker_player": [
+      "Earnings"
+    ]
+  },
+  "poker_player\tList the final tables made and the best finishes of poker players.": {
+    "poker_player": [
+      "Final_Table_Made",
+      "Best_Finish"
+    ]
+  },
+  "poker_player\tWhat are the final tables made and best finishes for all poker players?": {
+    "poker_player": [
+      "Final_Table_Made",
+      "Best_Finish"
+    ]
+  },
+  "poker_player\tWhat is the average earnings of poker players?": {
+    "poker_player": [
+      "Earnings"
+    ]
+  },
+  "poker_player\tReturn the average earnings across all poker players.": {
+    "poker_player": [
+      "Earnings"
+    ]
+  },
+  "poker_player\tWhat is the money rank of the poker player with the highest earnings?": {
+    "poker_player": [
+      "Money_Rank",
+      "Earnings"
+    ]
+  },
+  "poker_player\tReturn the money rank of the player with the greatest earnings.": {
+    "poker_player": [
+      "Money_Rank",
+      "Earnings"
+    ]
+  },
+  "poker_player\tWhat is the maximum number of final tables made among poker players with earnings less than 200000?": {
+    "poker_player": [
+      "Final_Table_Made",
+      "Earnings"
+    ]
+  },
+  "poker_player\tReturn the maximum final tables made across all poker players who have earnings below 200000.": {
+    "poker_player": [
+      "Final_Table_Made",
+      "Earnings"
+    ]
+  },
+  "poker_player\tWhat are the names of poker players?": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID"
+    ]
+  },
+  "poker_player\tReturn the names of all the poker players.": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID"
+    ]
+  },
+  "poker_player\tWhat are the names of poker players whose earnings is higher than 300000?": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Earnings"
+    ]
+  },
+  "poker_player\tGive the names of poker players who have earnings above 300000.": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Earnings"
+    ]
+  },
+  "poker_player\tList the names of poker players ordered by the final tables made in ascending order.": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Final_Table_Made"
+    ]
+  },
+  "poker_player\tWhat are the names of poker players, ordered ascending by the number of final tables they have made?": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Final_Table_Made"
+    ]
+  },
+  "poker_player\tWhat is the birth date of the poker player with the lowest earnings?": {
+    "people": [
+      "Birth_Date",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Earnings"
+    ]
+  },
+  "poker_player\tReturn the birth date of the poker player with the lowest earnings.": {
+    "people": [
+      "Birth_Date",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Earnings"
+    ]
+  },
+  "poker_player\tWhat is the money rank of the tallest poker player?": {
+    "poker_player": [
+      "Money_Rank",
+      "People_ID"
+    ],
+    "people": [
+      "People_ID",
+      "Height"
+    ]
+  },
+  "poker_player\tReturn the money rank of the poker player with the greatest height.": {
+    "poker_player": [
+      "Money_Rank",
+      "People_ID"
+    ],
+    "people": [
+      "People_ID",
+      "Height"
+    ]
+  },
+  "poker_player\tWhat is the average earnings of poker players with height higher than 200?": {
+    "poker_player": [
+      "Earnings",
+      "People_ID"
+    ],
+    "people": [
+      "People_ID",
+      "Height"
+    ]
+  },
+  "poker_player\tGive average earnings of poker players who are taller than 200.": {
+    "poker_player": [
+      "Earnings",
+      "People_ID"
+    ],
+    "people": [
+      "People_ID",
+      "Height"
+    ]
+  },
+  "poker_player\tWhat are the names of poker players in descending order of earnings?": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Earnings"
+    ]
+  },
+  "poker_player\tReturn the names of poker players sorted by their earnings descending.": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID",
+      "Earnings"
+    ]
+  },
+  "poker_player\tWhat are different nationalities of people and the corresponding number of people from each nation?": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tHow many people are there of each nationality?": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tWhat is the most common nationality of people?": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tGive the nationality that is most common across all people.": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tWhat are the nationalities that are shared by at least two people?": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tReturn the nationalities for which there are two or more people.": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tList the names and birth dates of people in ascending alphabetical order of name.": {
+    "people": [
+      "Name",
+      "Birth_Date"
+    ]
+  },
+  "poker_player\tWhat are the names and birth dates of people, ordered by their names in alphabetical order?": {
+    "people": [
+      "Name",
+      "Birth_Date"
+    ]
+  },
+  "poker_player\tShow names of people whose nationality is not \"Russia\".": {
+    "people": [
+      "Name",
+      "Nationality"
+    ]
+  },
+  "poker_player\tWhat are the names of people who are not from Russia?": {
+    "people": [
+      "Name",
+      "Nationality"
+    ]
+  },
+  "poker_player\tList the names of people that are not poker players.": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID"
+    ]
+  },
+  "poker_player\tWhat are the names of people who do not play poker?": {
+    "people": [
+      "Name",
+      "People_ID"
+    ],
+    "poker_player": [
+      "People_ID"
+    ]
+  },
+  "poker_player\tHow many distinct nationalities are there?": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "poker_player\tCount the number of different nationalities.": {
+    "people": [
+      "Nationality"
+    ]
+  },
+  "voter_1\tHow many states are there?": {
+    "AREA_CODE_STATE": [
+      "*"
+    ]
+  },
+  "voter_1\tList the contestant numbers and names, ordered by contestant name descending.": {
+    "CONTESTANTS": [
+      "contestant_number",
+      "contestant_name"
+    ]
+  },
+  "voter_1\tList the vote ids, phone numbers and states of all votes.": {
+    "VOTES": [
+      "vote_id",
+      "phone_number",
+      "state"
+    ]
+  },
+  "voter_1\tWhat are the maximum and minimum values of area codes?": {
+    "AREA_CODE_STATE": [
+      "area_code"
+    ]
+  },
+  "voter_1\tWhat is last date created of votes from the state 'CA'?": {
+    "VOTES": [
+      "created",
+      "state"
+    ]
+  },
+  "voter_1\tWhat are the names of the contestants whose names are not 'Jessie Alloway'": {
+    "CONTESTANTS": [
+      "contestant_name"
+    ]
+  },
+  "voter_1\tWhat are the distinct states and create time of all votes?": {
+    "VOTES": [
+      "state",
+      "created"
+    ]
+  },
+  "voter_1\tWhat are the contestant numbers and names of the contestants who had at least two votes?": {
+    "CONTESTANTS": [
+      "contestant_number",
+      "contestant_name"
+    ],
+    "VOTES": [
+      "contestant_number"
+    ]
+  },
+  "voter_1\tOf all the contestants who got voted, what is the contestant number and name of the contestant who got least votes?": {
+    "CONTESTANTS": [
+      "contestant_number",
+      "contestant_name"
+    ],
+    "VOTES": [
+      "contestant_number"
+    ]
+  },
+  "voter_1\tWhat are the number of votes from state 'NY' or 'CA'?": {
+    "VOTES": [
+      "state"
+    ]
+  },
+  "voter_1\tHow many contestants did not get voted?": {
+    "CONTESTANTS": [
+      "contestant_number"
+    ],
+    "VOTES": [
+      "contestant_number"
+    ]
+  },
+  "voter_1\tWhat is the area code in which the most voters voted?": {
+    "AREA_CODE_STATE": [
+      "area_code",
+      "state"
+    ],
+    "VOTES": [
+      "state"
+    ]
+  },
+  "voter_1\tWhat are the create dates, states, and phone numbers of the votes that were for the contestant named 'Tabatha Gehling'?": {
+    "VOTES": [
+      "created",
+      "state",
+      "phone_number",
+      "contestant_number"
+    ],
+    "CONTESTANTS": [
+      "contestant_number",
+      "contestant_name"
+    ]
+  },
+  "voter_1\tList the area codes in which voters voted both for the contestant 'Tabatha Gehling' and the contestant 'Kelly Clauss'.": {
+    "AREA_CODE_STATE": [
+      "area_code",
+      "state"
+    ],
+    "CONTESTANTS": [
+      "contestant_number",
+      "contestant_name"
+    ],
+    "VOTES": [
+      "contestant_number",
+      "state"
+    ]
+  },
+  "voter_1\tReturn the names of the contestants whose names contain the substring 'Al' .": {
+    "CONTESTANTS": [
+      "contestant_name"
+    ]
+  },
+  "world_1\tWhat are the names of all the countries that became independent after 1950?": {
+    "country": [
+      "Name",
+      "IndepYear"
+    ]
+  },
+  "world_1\tGive the names of the nations that were founded after 1950.": {
+    "country": [
+      "Name",
+      "IndepYear"
+    ]
+  },
+  "world_1\tHow many countries have a republic as their form of government?": {
+    "country": [
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tHow many countries have governments that are republics?": {
+    "country": [
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tWhat is the total surface area of the countries in the Caribbean region?": {
+    "country": [
+      "SurfaceArea",
+      "Region"
+    ]
+  },
+  "world_1\tHow much surface area do the countires in the Carribean cover together?": {
+    "country": [
+      "SurfaceArea",
+      "Region"
+    ]
+  },
+  "world_1\tWhich continent is Anguilla in?": {
+    "country": [
+      "Continent",
+      "Name"
+    ]
+  },
+  "world_1\tWhat is the continent name which Anguilla belongs to?": {
+    "country": [
+      "Continent",
+      "Name"
+    ]
+  },
+  "world_1\tWhich region is the city Kabul located in?": {
+    "country": [
+      "Region",
+      "Code",
+      "Name"
+    ],
+    "city": [
+      "CountryCode",
+      "Name"
+    ]
+  },
+  "world_1\tWhat region is Kabul in?": {
+    "country": [
+      "Region",
+      "Code",
+      "Name"
+    ],
+    "city": [
+      "CountryCode",
+      "Name"
+    ]
+  },
+  "world_1\tWhich language is the most popular in Aruba?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "Percentage"
+    ],
+    "country": [
+      "Code",
+      "Name"
+    ]
+  },
+  "world_1\tWhat language is predominantly spoken in Aruba?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "Percentage"
+    ],
+    "country": [
+      "Code",
+      "Name"
+    ]
+  },
+  "world_1\tWhat are the population and life expectancies in Brazil?": {
+    "country": [
+      "Population",
+      "LifeExpectancy",
+      "Name"
+    ]
+  },
+  "world_1\tGive me Brazil’s population and life expectancies.": {
+    "country": [
+      "Population",
+      "LifeExpectancy",
+      "Name"
+    ]
+  },
+  "world_1\tWhat are the region and population of Angola?": {
+    "country": [
+      "Population",
+      "Region",
+      "Name"
+    ]
+  },
+  "world_1\tWhat region does Angola belong to and what is its population?": {
+    "country": [
+      "Population",
+      "Region",
+      "Name"
+    ]
+  },
+  "world_1\tWhat is the average expected life expectancy for countries in the region of Central Africa?": {
+    "country": [
+      "LifeExpectancy",
+      "Region"
+    ]
+  },
+  "world_1\tHow long is the people’s average life expectancy in Central Africa?": {
+    "country": [
+      "LifeExpectancy",
+      "Region"
+    ]
+  },
+  "world_1\tWhat is the name of country that has the shortest life expectancy in Asia?": {
+    "country": [
+      "Name",
+      "Continent",
+      "LifeExpectancy"
+    ]
+  },
+  "world_1\tGive the name of the country in Asia with the lowest life expectancy.": {
+    "country": [
+      "Name",
+      "Continent",
+      "LifeExpectancy"
+    ]
+  },
+  "world_1\tWhat is the total population and maximum GNP in Asia?": {
+    "country": [
+      "Population",
+      "GNP",
+      "Continent"
+    ]
+  },
+  "world_1\tHow many people live in Asia, and what is the largest GNP among them?": {
+    "country": [
+      "Population",
+      "GNP",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat is the average life expectancy in African countries that are republics?": {
+    "country": [
+      "LifeExpectancy",
+      "Continent",
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tGive the average life expectancy for countries in Africa which are republics?": {
+    "country": [
+      "LifeExpectancy",
+      "Continent",
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tWhat is the total surface area of the continents Asia and Europe?": {
+    "country": [
+      "SurfaceArea",
+      "Continent"
+    ]
+  },
+  "world_1\tGive the total surface area covered by countries in Asia or Europe.": {
+    "country": [
+      "SurfaceArea",
+      "Continent"
+    ]
+  },
+  "world_1\tHow many people live in Gelderland district?": {
+    "city": [
+      "Population",
+      "District"
+    ]
+  },
+  "world_1\tWhat is the total population of Gelderland district?": {
+    "city": [
+      "Population",
+      "District"
+    ]
+  },
+  "world_1\tWhat is the average GNP and total population in all nations whose government is US territory?": {
+    "country": [
+      "GNP",
+      "Population",
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tGive the mean GNP and total population of nations which are considered US territory.": {
+    "country": [
+      "GNP",
+      "Population",
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tHow many unique languages are spoken in the world?": {
+    "countrylanguage": [
+      "Language"
+    ]
+  },
+  "world_1\tWhat is the number of distinct languages used around the world?": {
+    "countrylanguage": [
+      "Language"
+    ]
+  },
+  "world_1\tHow many type of governments are in Africa?": {
+    "country": [
+      "GovernmentForm",
+      "Continent"
+    ]
+  },
+  "world_1\tHow many different forms of governments are there in Africa?": {
+    "country": [
+      "GovernmentForm",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat is the total number of languages used in Aruba?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Code",
+      "Name"
+    ]
+  },
+  "world_1\tHow many languages are spoken in Aruba?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Code",
+      "Name"
+    ]
+  },
+  "world_1\tHow many official languages does Afghanistan have?": {
+    "country": [
+      "Code",
+      "Name"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tHow many official languages are spoken in Afghanistan?": {
+    "country": [
+      "Code",
+      "Name"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tWhat is name of the country that speaks the largest number of languages?": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode"
+    ]
+  },
+  "world_1\tGive the name of the nation that uses the greatest amount of languages.": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode"
+    ]
+  },
+  "world_1\tWhich continent has the most diverse languages?": {
+    "country": [
+      "Continent",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode"
+    ]
+  },
+  "world_1\tWhich continent speaks the most languages?": {
+    "country": [
+      "Continent",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode"
+    ]
+  },
+  "world_1\tHow many countries speak both English and Dutch?": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat is the number of nations that use English and Dutch?": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the names of nations speak both English and French?": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tGive the names of nations that speak both English and French.": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the names of nations where both English and French are official languages?": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tGive the names of countries with English and French as official languages.": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tWhat is the number of distinct continents where Chinese is spoken?": {
+    "country": [
+      "Continent",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tHow many continents speak Chinese?": {
+    "country": [
+      "Continent",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the regions that use English or Dutch?": {
+    "country": [
+      "Region",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhich regions speak Dutch or English?": {
+    "country": [
+      "Region",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the countries where either English or Dutch is the official language ?": {
+    "country": [
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tWhich countries have either English or Dutch as an official language?": {
+    "country": [
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tWhich language is the most popular on the Asian continent?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Code",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat is the language that is used by the largest number of Asian nations?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Code",
+      "Continent"
+    ]
+  },
+  "world_1\tWhich languages are spoken by only one country in republic governments?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Code",
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tWhat languages are only used by a single country with a republic government?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Code",
+      "GovernmentForm"
+    ]
+  },
+  "world_1\tFind the city with the largest population that uses English.": {
+    "city": [
+      "Name",
+      "Population",
+      "CountryCode"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat is the most populace city that speaks English?": {
+    "city": [
+      "Name",
+      "Population",
+      "CountryCode"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tFind the name, population and expected life length of asian country with the largest area?": {
+    "country": [
+      "Name",
+      "Population",
+      "LifeExpectancy",
+      "Continent",
+      "SurfaceArea"
+    ]
+  },
+  "world_1\tWhat are the name, population, and life expectancy of the largest Asian country by land?": {
+    "country": [
+      "Name",
+      "Population",
+      "LifeExpectancy",
+      "Continent",
+      "SurfaceArea"
+    ]
+  },
+  "world_1\tWhat is average life expectancy in the countries where English is not the official language?": {
+    "country": [
+      "LifeExpectancy",
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tGive the mean life expectancy of countries in which English is not the official language.": {
+    "country": [
+      "LifeExpectancy",
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language",
+      "IsOfficial"
+    ]
+  },
+  "world_1\tWhat is the total number of people living in the nations that do not use English?": {
+    "country": [
+      "Population",
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tHow many people live in countries that do not speak English?": {
+    "country": [
+      "Population",
+      "Name",
+      "Code"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat is the official language spoken in the country whose head of state is Beatrix?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "IsOfficial"
+    ],
+    "country": [
+      "Code",
+      "HeadOfState"
+    ]
+  },
+  "world_1\tWhat is the official language used in the country the name of whose head of state is Beatrix.": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "IsOfficial"
+    ],
+    "country": [
+      "Code",
+      "HeadOfState"
+    ]
+  },
+  "world_1\tWhat is the total number of unique official languages spoken in the countries that are founded before 1930?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "IsOfficial"
+    ],
+    "country": [
+      "Code",
+      "IndepYear"
+    ]
+  },
+  "world_1\tFor the countries founded before 1930, what is the total number of distinct official languages?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "IsOfficial"
+    ],
+    "country": [
+      "Code",
+      "IndepYear"
+    ]
+  },
+  "world_1\tWhat are the countries that have greater surface area than any country in Europe?": {
+    "country": [
+      "Name",
+      "SurfaceArea",
+      "Continent"
+    ]
+  },
+  "world_1\tWhich countries have greater area than that of any country in Europe?": {
+    "country": [
+      "Name",
+      "SurfaceArea",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat are the African countries that have a  population less than any country in Asia?": {
+    "country": [
+      "Name",
+      "Continent",
+      "Population"
+    ]
+  },
+  "world_1\tWhich African countries have a smaller population than that of any country in Asia?": {
+    "country": [
+      "Name",
+      "Continent",
+      "Population"
+    ]
+  },
+  "world_1\tWhich Asian countries have a population that is larger than any country in Africa?": {
+    "country": [
+      "Name",
+      "Continent",
+      "Population"
+    ]
+  },
+  "world_1\tWhat are the Asian countries which have a population larger than that of any country in Africa?": {
+    "country": [
+      "Name",
+      "Continent",
+      "Population"
+    ]
+  },
+  "world_1\tWhat are the country codes for countries that do not speak English?": {
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tReturn the country codes for countries that do not speak English.": {
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the country codes of countries where people use languages other than English?": {
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tGive the country codes for countries in which people speak langauges that are not English.": {
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the codes of the countries that do not speak English and whose government forms are not Republic?": {
+    "country": [
+      "Code",
+      "GovernmentForm"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tReturn the codes of countries that do not speak English and do not have Republics for governments.": {
+    "country": [
+      "Code",
+      "GovernmentForm"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "Language"
+    ]
+  },
+  "world_1\tWhich cities are in European countries where English is not the official language?": {
+    "city": [
+      "Name",
+      "CountryCode"
+    ],
+    "country": [
+      "Name",
+      "Code",
+      "Continent"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "IsOfficial",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the names of cities in Europe for which English is not the official language?": {
+    "city": [
+      "Name",
+      "CountryCode"
+    ],
+    "country": [
+      "Name",
+      "Code",
+      "Continent"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "IsOfficial",
+      "Language"
+    ]
+  },
+  "world_1\tWhich unique cities are in Asian countries where Chinese is the official language ?": {
+    "city": [
+      "Name",
+      "CountryCode"
+    ],
+    "country": [
+      "Name",
+      "Code",
+      "Continent"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "IsOfficial",
+      "Language"
+    ]
+  },
+  "world_1\tReturn the different names of cities that are in Asia and for which Chinese is the official language.": {
+    "city": [
+      "Name",
+      "CountryCode"
+    ],
+    "country": [
+      "Name",
+      "Code",
+      "Continent"
+    ],
+    "countrylanguage": [
+      "CountryCode",
+      "IsOfficial",
+      "Language"
+    ]
+  },
+  "world_1\tWhat are the name, independence year, and surface area of the country with the smallest population?": {
+    "country": [
+      "Name",
+      "SurfaceArea",
+      "IndepYear",
+      "Population"
+    ]
+  },
+  "world_1\tGive the name, year of independence, and surface area of the country that has the lowest population.": {
+    "country": [
+      "Name",
+      "SurfaceArea",
+      "IndepYear",
+      "Population"
+    ]
+  },
+  "world_1\tWhat are the population, name and leader of the country with the largest area?": {
+    "country": [
+      "Name",
+      "Population",
+      "HeadOfState",
+      "SurfaceArea"
+    ]
+  },
+  "world_1\tGive the name, population, and head of state for the country that has the largest area.": {
+    "country": [
+      "Name",
+      "Population",
+      "HeadOfState",
+      "SurfaceArea"
+    ]
+  },
+  "world_1\tReturn the country name and the numbers of languages spoken for each country that speaks at least 3 languages.": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Name",
+      "Code"
+    ]
+  },
+  "world_1\tWhat are the names of countries that speak more than 2 languages, as well as how many languages they speak?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode"
+    ],
+    "country": [
+      "Name",
+      "Code"
+    ]
+  },
+  "world_1\tFind the number of cities in each district whose population is greater than the average population of cities?": {
+    "city": [
+      "District",
+      "Population"
+    ]
+  },
+  "world_1\tHow many cities in each district have a population that is above the average population across all cities?": {
+    "city": [
+      "District",
+      "Population"
+    ]
+  },
+  "world_1\tFind the government form name and total population for each government form whose average life expectancy is longer than 72.": {
+    "country": [
+      "Population",
+      "GovernmentForm",
+      "LifeExpectancy"
+    ]
+  },
+  "world_1\tWhat are the different government forms and what is the total population of each for government forms that have an average life expectancy greater than 72?": {
+    "country": [
+      "Population",
+      "GovernmentForm",
+      "LifeExpectancy"
+    ]
+  },
+  "world_1\tFind the average life expectancy and total population for each continent where the average life expectancy is shorter than 72?": {
+    "country": [
+      "Population",
+      "LifeExpectancy",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat are the different continents and the total popuation and average life expectancy corresponding to each, for continents that have an average life expectancy less than 72?": {
+    "country": [
+      "Population",
+      "LifeExpectancy",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat are the names and areas of countries with the top 5 largest area?": {
+    "country": [
+      "Name",
+      "SurfaceArea"
+    ]
+  },
+  "world_1\tReturn the names and surface areas of the 5 largest countries.": {
+    "country": [
+      "Name",
+      "SurfaceArea"
+    ]
+  },
+  "world_1\tWhat are names of countries with the top 3 largest population?": {
+    "country": [
+      "Name",
+      "Population"
+    ]
+  },
+  "world_1\tReturn the names of the 3 most populated countries.": {
+    "country": [
+      "Name",
+      "Population"
+    ]
+  },
+  "world_1\tWhat are the names of the nations with the 3 lowest populations?": {
+    "country": [
+      "Name",
+      "Population"
+    ]
+  },
+  "world_1\tReturn the names of the 3 countries with the fewest people.": {
+    "country": [
+      "Name",
+      "Population"
+    ]
+  },
+  "world_1\thow many countries are in Asia?": {
+    "country": [
+      "Continent"
+    ]
+  },
+  "world_1\tCount the number of countries in Asia.": {
+    "country": [
+      "Continent"
+    ]
+  },
+  "world_1\tWhat are the names of the countries that are in the continent of Europe and have a population of 80000?": {
+    "country": [
+      "Name",
+      "Continent",
+      "Population"
+    ]
+  },
+  "world_1\tGive the names of countries that are in Europe and have a population equal to 80000.": {
+    "country": [
+      "Name",
+      "Continent",
+      "Population"
+    ]
+  },
+  "world_1\tWhat is the total population and average area of countries in the continent of North America whose area is bigger than 3000 ?": {
+    "country": [
+      "Population",
+      "SurfaceArea",
+      "Continent"
+    ]
+  },
+  "world_1\tGive the total population and average surface area corresponding to countries in North America that have a surface area greater than 3000 .": {
+    "country": [
+      "Population",
+      "SurfaceArea",
+      "Continent"
+    ]
+  },
+  "world_1\tWhat are the cities whose population is between 160000 and 900000?": {
+    "city": [
+      "Name",
+      "Population"
+    ]
+  },
+  "world_1\tReturn the names of cities that have a population between 160000 and 900000 .": {
+    "city": [
+      "Name",
+      "Population"
+    ]
+  },
+  "world_1\tWhich language is spoken by the largest number of countries?": {
+    "countrylanguage": [
+      "Language"
+    ]
+  },
+  "world_1\tGive the language that is spoken in the most countries.": {
+    "countrylanguage": [
+      "Language"
+    ]
+  },
+  "world_1\tWhat is the language spoken by the largest percentage of people in each country?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "Percentage"
+    ]
+  },
+  "world_1\tWhat are the country codes of the different countries, and what are the languages spoken by the greatest percentage of people for each?": {
+    "countrylanguage": [
+      "Language",
+      "CountryCode",
+      "Percentage"
+    ]
+  },
+  "world_1\tWhat is the total number of countries where Spanish is spoken by the largest percentage of people?": {
+    "countrylanguage": [
+      "Percentage",
+      "Language",
+      "CountryCode"
+    ]
+  },
+  "world_1\tCount the number of countries for which Spanish is the predominantly spoken language.": {
+    "countrylanguage": [
+      "Percentage",
+      "Language",
+      "CountryCode"
+    ]
+  },
+  "world_1\tWhat are the codes of countries where Spanish is spoken by the largest percentage of people?": {
+    "countrylanguage": [
+      "CountryCode",
+      "Percentage",
+      "Language"
+    ]
+  },
+  "world_1\tReturn the codes of countries for which Spanish is the predominantly spoken language.": {
+    "countrylanguage": [
+      "CountryCode",
+      "Percentage",
+      "Language"
+    ]
+  },
+  "orchestra\tHow many conductors are there?": {
+    "conductor": [
+      "*"
+    ]
+  },
+  "orchestra\tCount the number of conductors.": {
+    "conductor": [
+      "*"
+    ]
+  },
+  "orchestra\tList the names of conductors in ascending order of age.": {
+    "conductor": [
+      "Name",
+      "Age"
+    ]
+  },
+  "orchestra\tWhat are the names of conductors, ordered by age?": {
+    "conductor": [
+      "Name",
+      "Age"
+    ]
+  },
+  "orchestra\tWhat are the names of conductors whose nationalities are not \"USA\"?": {
+    "conductor": [
+      "Name",
+      "Nationality"
+    ]
+  },
+  "orchestra\tReturn the names of conductors that do not have the nationality \"USA\".": {
+    "conductor": [
+      "Name",
+      "Nationality"
+    ]
+  },
+  "orchestra\tWhat are the record companies of orchestras in descending order of years in which they were founded?": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra",
+      "Year_of_Founded"
+    ]
+  },
+  "orchestra\tReturn the record companies of orchestras, sorted descending by the years in which they were founded.": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra",
+      "Year_of_Founded"
+    ]
+  },
+  "orchestra\tWhat is the average attendance of shows?": {
+    "show": [
+      "Attendance"
+    ]
+  },
+  "orchestra\tReturn the average attendance across all shows.": {
+    "show": [
+      "Attendance"
+    ]
+  },
+  "orchestra\tWhat are the maximum and minimum share of performances whose type is not \"Live final\".": {
+    "performance": [
+      "Share",
+      "Type"
+    ]
+  },
+  "orchestra\tReturn the maximum and minimum shares for performances that do not have the type \"Live final\".": {
+    "performance": [
+      "Share",
+      "Type"
+    ]
+  },
+  "orchestra\tHow many different nationalities do conductors have?": {
+    "conductor": [
+      "Nationality"
+    ]
+  },
+  "orchestra\tCount the number of different nationalities of conductors.": {
+    "conductor": [
+      "Nationality"
+    ]
+  },
+  "orchestra\tList names of conductors in descending order of years of work.": {
+    "conductor": [
+      "Name",
+      "Year_of_Work"
+    ]
+  },
+  "orchestra\tWhat are the names of conductors, sorted descending by the number of years they have worked?": {
+    "conductor": [
+      "Name",
+      "Year_of_Work"
+    ]
+  },
+  "orchestra\tList the name of the conductor with the most years of work.": {
+    "conductor": [
+      "Name",
+      "Year_of_Work"
+    ]
+  },
+  "orchestra\tWhat is the name of the conductor who has worked the greatest number of years?": {
+    "conductor": [
+      "Name",
+      "Year_of_Work"
+    ]
+  },
+  "orchestra\tShow the names of conductors and the orchestras they have conducted.": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID"
+    ]
+  },
+  "orchestra\tWhat are the names of conductors as well as the corresonding orchestras that they have conducted?": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID"
+    ]
+  },
+  "orchestra\tShow the names of conductors that have conducted more than one orchestras.": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID"
+    ]
+  },
+  "orchestra\tWhat are the names of conductors who have conducted at more than one orchestra?": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID"
+    ]
+  },
+  "orchestra\tShow the name of the conductor that has conducted the most number of orchestras.": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID"
+    ]
+  },
+  "orchestra\tWhat is the name of the conductor who has conducted the most orchestras?": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID"
+    ]
+  },
+  "orchestra\tPlease show the name of the conductor that has conducted orchestras founded after 2008.": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID",
+      "Year_of_Founded"
+    ]
+  },
+  "orchestra\tWhat are the names of conductors who have conducted orchestras founded after the year 2008?": {
+    "conductor": [
+      "Name",
+      "Conductor_ID"
+    ],
+    "orchestra": [
+      "Orchestra",
+      "Conductor_ID",
+      "Year_of_Founded"
+    ]
+  },
+  "orchestra\tPlease show the different record companies and the corresponding number of orchestras.": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra"
+    ]
+  },
+  "orchestra\tHow many orchestras does each record company manage?": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra"
+    ]
+  },
+  "orchestra\tPlease show the record formats of orchestras in ascending order of count.": {
+    "orchestra": [
+      "Major_Record_Format",
+      "Orchestra"
+    ]
+  },
+  "orchestra\tWhat are the major record formats of orchestras, sorted by their frequency?": {
+    "orchestra": [
+      "Major_Record_Format",
+      "Orchestra"
+    ]
+  },
+  "orchestra\tList the record company shared by the most number of orchestras.": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra"
+    ]
+  },
+  "orchestra\tWhat is the record company used by the greatest number of orchestras?": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra"
+    ]
+  },
+  "orchestra\tList the names of orchestras that have no performance.": {
+    "orchestra": [
+      "Orchestra",
+      "Orchestra_ID"
+    ],
+    "performance": [
+      "Orchestra_ID"
+    ]
+  },
+  "orchestra\tWhat are the orchestras that do not have any performances?": {
+    "orchestra": [
+      "Orchestra",
+      "Orchestra_ID"
+    ],
+    "performance": [
+      "Orchestra_ID"
+    ]
+  },
+  "orchestra\tShow the record companies shared by orchestras founded before 2003 and after 2003.": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra",
+      "Year_of_Founded"
+    ]
+  },
+  "orchestra\tWhat are the record companies that are used by both orchestras founded before 2003 and those founded after 2003?": {
+    "orchestra": [
+      "Record_Company",
+      "Orchestra",
+      "Year_of_Founded"
+    ]
+  },
+  "orchestra\tFind the number of orchestras whose record format is \"CD\" or \"DVD\".": {
+    "orchestra": [
+      "Orchestra",
+      "Major_Record_Format"
+    ]
+  },
+  "orchestra\tCount the number of orchestras that have CD or DVD as their record format.": {
+    "orchestra": [
+      "Orchestra",
+      "Major_Record_Format"
+    ]
+  },
+  "orchestra\tShow the years in which orchestras that have given more than one performance are founded.": {
+    "orchestra": [
+      "Year_of_Founded",
+      "Orchestra",
+      "Orchestra_ID"
+    ],
+    "performance": [
+      "Orchestra_ID"
+    ]
+  },
+  "orchestra\tWhat are years of founding for orchestras that have had more than a single performance?": {
+    "orchestra": [
+      "Year_of_Founded",
+      "Orchestra",
+      "Orchestra_ID"
+    ],
+    "performance": [
+      "Orchestra_ID"
+    ]
+  },
+  "network_1\tHow many high schoolers are there?": {
+    "Highschooler": [
+      "*"
+    ]
+  },
+  "network_1\tCount the number of high schoolers.": {
+    "Highschooler": [
+      "*"
+    ]
+  },
+  "network_1\tShow the names and grades of each high schooler.": {
+    "Highschooler": [
+      "name",
+      "grade"
+    ]
+  },
+  "network_1\tWhat are the names and grades for each high schooler?": {
+    "Highschooler": [
+      "name",
+      "grade"
+    ]
+  },
+  "network_1\tShow all the grades of the high schoolers.": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tWhat is the grade of each high schooler?": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tWhat grade is Kyle in?": {
+    "Highschooler": [
+      "grade",
+      "name"
+    ]
+  },
+  "network_1\tReturn the grade for the high schooler named Kyle.": {
+    "Highschooler": [
+      "grade",
+      "name"
+    ]
+  },
+  "network_1\tShow the names of all high schoolers in grade 10.": {
+    "Highschooler": [
+      "name",
+      "grade"
+    ]
+  },
+  "network_1\tWhat are the names of all high schoolers in grade 10?": {
+    "Highschooler": [
+      "name",
+      "grade"
+    ]
+  },
+  "network_1\tShow the ID of the high schooler named Kyle.": {
+    "Highschooler": [
+      "ID",
+      "name"
+    ]
+  },
+  "network_1\tWhat is Kyle's id?": {
+    "Highschooler": [
+      "ID",
+      "name"
+    ]
+  },
+  "network_1\tHow many high schoolers are there in grade 9 or 10?": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tCount the number of high schoolers in grades 9 or 10.": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tShow the number of high schoolers for each grade.": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tHow many high schoolers are in each grade?": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tWhich grade has the most high schoolers?": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tReturn the grade that has the greatest number of high schoolers.": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tShow me all grades that have at least 4 students.": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tWhich grades have 4 or more high schoolers?": {
+    "Highschooler": [
+      "grade"
+    ]
+  },
+  "network_1\tShow the student IDs and numbers of friends corresponding to each.": {
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tHow many friends does each student have?": {
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the names of high school students and their corresponding number of friends.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the names of the high schoolers and how many friends does each have?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat is the name of the high schooler who has the greatest number of friends?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tReturn the name of the high school student with the most friends.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the names of high schoolers who have at least 3 friends.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the names of high schoolers who have 3 or more friends?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the names of all of the high schooler Kyle's friends.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id",
+      "friend_id"
+    ]
+  },
+  "network_1\tReturn the names of friends of the high school student Kyle.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id",
+      "friend_id"
+    ]
+  },
+  "network_1\tHow many friends does the high school student Kyle have?": {
+    "Friend": [
+      "student_id"
+    ],
+    "Highschooler": [
+      "ID",
+      "name"
+    ]
+  },
+  "network_1\tCount the number of friends Kyle has.": {
+    "Friend": [
+      "student_id"
+    ],
+    "Highschooler": [
+      "ID",
+      "name"
+    ]
+  },
+  "network_1\tShow ids of all students who do not have any friends.": {
+    "Highschooler": [
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the ids of high school students who do not have friends?": {
+    "Highschooler": [
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow names of all high school students who do not have any friends.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the names of students who have no friends?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the ids of high schoolers who have friends and are also liked by someone else.": {
+    "Friend": [
+      "student_id"
+    ],
+    "Likes": [
+      "student_id",
+      "liked_id"
+    ]
+  },
+  "network_1\tWhat are the ids of students who both have friends and are liked?": {
+    "Friend": [
+      "student_id"
+    ],
+    "Likes": [
+      "student_id",
+      "liked_id"
+    ]
+  },
+  "network_1\tShow name of all students who have some friends and also are liked by someone else.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ],
+    "Likes": [
+      "student_id",
+      "liked_id"
+    ]
+  },
+  "network_1\tWhat are the names of high schoolers who both have friends and are liked?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ],
+    "Likes": [
+      "student_id",
+      "liked_id"
+    ]
+  },
+  "network_1\tCount the number of likes for each student id.": {
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tHow many likes correspond to each student id?": {
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the names of high schoolers who have likes, and numbers of likes for each.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the names of high schoolers who have likes, and how many likes does each have?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat is the name of the high schooler who has the greatest number of likes?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tGive the name of the student with the most likes.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the names of students who have at least 2 likes.": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the names of students who have 2 or more likes?": {
+    "Highschooler": [
+      "name",
+      "ID"
+    ],
+    "Likes": [
+      "student_id"
+    ]
+  },
+  "network_1\tShow the names of students who have a grade higher than 5 and have at least 2 friends.": {
+    "Highschooler": [
+      "name",
+      "ID",
+      "grade"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat are the names of high schoolers who have a grade of over 5 and have 2 or more friends?": {
+    "Highschooler": [
+      "name",
+      "ID",
+      "grade"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tHow many likes does Kyle have?": {
+    "Likes": [
+      "student_id"
+    ],
+    "Highschooler": [
+      "ID",
+      "name"
+    ]
+  },
+  "network_1\tReturn the number of likes that the high schooler named Kyle has.": {
+    "Likes": [
+      "student_id"
+    ],
+    "Highschooler": [
+      "ID",
+      "name"
+    ]
+  },
+  "network_1\tFind the average grade of all students who have some friends.": {
+    "Highschooler": [
+      "grade",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat is the average grade of students who have friends?": {
+    "Highschooler": [
+      "grade",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tFind the minimum grade of students who have no friends.": {
+    "Highschooler": [
+      "grade",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "network_1\tWhat is the lowest grade of students who do not have any friends?": {
+    "Highschooler": [
+      "grade",
+      "ID"
+    ],
+    "Friend": [
+      "student_id"
+    ]
+  },
+  "dog_kennels\tWhich states have both owners and professionals living there?": {
+    "Owners": [
+      "state"
+    ],
+    "Professionals": [
+      "state"
+    ]
+  },
+  "dog_kennels\tFind the states where both owners and professionals live.": {
+    "Owners": [
+      "state"
+    ],
+    "Professionals": [
+      "state"
+    ]
+  },
+  "dog_kennels\tWhat is the average age of the dogs who have gone through any treatments?": {
+    "Dogs": [
+      "age",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tFind the average age of the dogs who went through treatments.": {
+    "Dogs": [
+      "age",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tWhich professionals live in the state of Indiana or have done treatment on more than 2 treatments? List his or her id, last name and cell phone.": {
+    "Professionals": [
+      "professional_id",
+      "last_name",
+      "cell_number",
+      "state"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tFind the id, last name and cell phone of the professionals who live in the state of Indiana or have performed more than two treatments.": {
+    "Professionals": [
+      "professional_id",
+      "last_name",
+      "cell_number",
+      "state"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhich dogs have not cost their owner more than 1000 for treatment ? List the dog names .": {
+    "Dogs": [
+      "name",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id",
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tWhat are the names of the dogs for which the owner has not spend more than 1000 for treatment ?": {
+    "Dogs": [
+      "name",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id",
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tWhich first names are used for professionals or owners but are not used as dog names?": {
+    "Owners": [
+      "first_name"
+    ],
+    "Professionals": [
+      "first_name"
+    ],
+    "Dogs": [
+      "name"
+    ]
+  },
+  "dog_kennels\tFind the first names that are used for professionals or owners but are not used as dog names.": {
+    "Owners": [
+      "first_name"
+    ],
+    "Professionals": [
+      "first_name"
+    ],
+    "Dogs": [
+      "name"
+    ]
+  },
+  "dog_kennels\tWhich professional did not operate any treatment on dogs? List the professional's id, role and email.": {
+    "Professionals": [
+      "professional_id",
+      "role_code",
+      "email_address"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tGive me the id, role and email of the professionals who did not perform any treatment on dogs.": {
+    "Professionals": [
+      "professional_id",
+      "role_code",
+      "email_address"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhich owner owns the most dogs? List the owner id, first name and last name.": {
+    "Owners": [
+      "owner_id",
+      "first_name",
+      "last_name"
+    ],
+    "Dogs": [
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tReturn the owner id, first name and last name of the owner who has the most dogs.": {
+    "Owners": [
+      "owner_id",
+      "first_name",
+      "last_name"
+    ],
+    "Dogs": [
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tWhich professionals have done at least two treatments? List the professional's id, role, and first name.": {
+    "Professionals": [
+      "professional_id",
+      "role_code",
+      "first_name"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhat are the id, role, and first name of the professionals who have performed two or more treatments?": {
+    "Professionals": [
+      "professional_id",
+      "role_code",
+      "first_name"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhat is the name of the breed with the most dogs?": {
+    "Breeds": [
+      "breed_name",
+      "breed_code"
+    ],
+    "Dogs": [
+      "breed_code"
+    ]
+  },
+  "dog_kennels\tWhich breed do the most dogs have? Give me the breed name.": {
+    "Breeds": [
+      "breed_name",
+      "breed_code"
+    ],
+    "Dogs": [
+      "breed_code"
+    ]
+  },
+  "dog_kennels\tWhich owner has paid for the most treatments on his or her dogs? List the owner id and last name.": {
+    "Owners": [
+      "owner_id",
+      "last_name"
+    ],
+    "Dogs": [
+      "owner_id",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tTell me the owner id and last name of the owner who spent the most on treatments of his or her dogs.": {
+    "Owners": [
+      "owner_id",
+      "last_name"
+    ],
+    "Dogs": [
+      "owner_id",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tWhat is the description of the treatment type that costs the least money in total?": {
+    "Treatment_Types": [
+      "treatment_type_description",
+      "treatment_type_code"
+    ],
+    "Treatments": [
+      "treatment_type_code",
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tGive me the description of the treatment type whose total cost is the lowest.": {
+    "Treatment_Types": [
+      "treatment_type_description",
+      "treatment_type_code"
+    ],
+    "Treatments": [
+      "treatment_type_code",
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tWhich owner has paid the largest amount of money in total for their dogs? Show the owner id and zip code.": {
+    "Owners": [
+      "owner_id",
+      "zip_code"
+    ],
+    "Dogs": [
+      "owner_id",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id",
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tFind the owner id and zip code of the owner who spent the most money in total for his or her dogs.": {
+    "Owners": [
+      "owner_id",
+      "zip_code"
+    ],
+    "Dogs": [
+      "owner_id",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id",
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tWhich professionals have done at least two types of treatments? List the professional id and cell phone.": {
+    "Professionals": [
+      "professional_id",
+      "cell_number"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tFind the id and cell phone of the professionals who operate two or more types of treatments.": {
+    "Professionals": [
+      "professional_id",
+      "cell_number"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhat are the first name and last name of the professionals who have done treatment with cost below average?": {
+    "Professionals": [
+      "first_name",
+      "last_name"
+    ],
+    "Treatments": [
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tWhich professionals have operated a treatment that costs less than the average? Give me theor first names and last names.": {
+    "Professionals": [
+      "first_name",
+      "last_name"
+    ],
+    "Treatments": [
+      "cost_of_treatment"
+    ]
+  },
+  "dog_kennels\tList the date of each treatment, together with the first name of the professional who operated it.": {
+    "Treatments": [
+      "date_of_treatment",
+      "professional_id"
+    ],
+    "Professionals": [
+      "first_name",
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhat are the date and the operating professional's first name of each treatment?": {
+    "Treatments": [
+      "date_of_treatment",
+      "professional_id"
+    ],
+    "Professionals": [
+      "first_name",
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tList the cost of each treatment and the corresponding treatment type description.": {
+    "Treatments": [
+      "cost_of_treatment",
+      "treatment_type_code"
+    ],
+    "Treatment_Types": [
+      "treatment_type_description",
+      "treatment_type_code"
+    ]
+  },
+  "dog_kennels\tWhat are the cost and treatment type description of each treatment?": {
+    "Treatments": [
+      "cost_of_treatment",
+      "treatment_type_code"
+    ],
+    "Treatment_Types": [
+      "treatment_type_description",
+      "treatment_type_code"
+    ]
+  },
+  "dog_kennels\tList each owner's first name, last name, and the size of his for her dog.": {
+    "Owners": [
+      "first_name",
+      "last_name",
+      "owner_id"
+    ],
+    "Dogs": [
+      "size_code",
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tWhat are each owner's first name, last name, and the size of their dog?": {
+    "Owners": [
+      "first_name",
+      "last_name",
+      "owner_id"
+    ],
+    "Dogs": [
+      "size_code",
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tList pairs of the owner's first name and the dogs's name.": {
+    "Owners": [
+      "first_name",
+      "owner_id"
+    ],
+    "Dogs": [
+      "name",
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tWhat are each owner's first name and their dogs's name?": {
+    "Owners": [
+      "first_name",
+      "owner_id"
+    ],
+    "Dogs": [
+      "name",
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tList the names of the dogs of the rarest breed and the treatment dates of them.": {
+    "Dogs": [
+      "name",
+      "dog_id",
+      "breed_code"
+    ],
+    "Treatments": [
+      "date_of_treatment",
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tWhich dogs are of the rarest breed? Show their names and treatment dates.": {
+    "Dogs": [
+      "name",
+      "dog_id",
+      "breed_code"
+    ],
+    "Treatments": [
+      "date_of_treatment",
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tWhich dogs are owned by someone who lives in Virginia? List the owner's first name and the dog's name.": {
+    "Owners": [
+      "first_name",
+      "owner_id",
+      "state"
+    ],
+    "Dogs": [
+      "name",
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tFind the first names of owners living in Virginia and the names of dogs they own.": {
+    "Owners": [
+      "first_name",
+      "owner_id",
+      "state"
+    ],
+    "Dogs": [
+      "name",
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tWhat are the arriving date and the departing date of the dogs who have gone through a treatment?": {
+    "Dogs": [
+      "date_arrived",
+      "date_departed",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tFind the arriving date and the departing date of the dogs that received a treatment.": {
+    "Dogs": [
+      "date_arrived",
+      "date_departed",
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tList the last name of the owner owning the youngest dog.": {
+    "Owners": [
+      "last_name",
+      "owner_id"
+    ],
+    "Dogs": [
+      "owner_id",
+      "age"
+    ]
+  },
+  "dog_kennels\tWho owns the youngest dog? Give me his or her last name.": {
+    "Owners": [
+      "last_name",
+      "owner_id"
+    ],
+    "Dogs": [
+      "owner_id",
+      "age"
+    ]
+  },
+  "dog_kennels\tList the emails of the professionals who live in the state of Hawaii or the state of Wisconsin.": {
+    "Professionals": [
+      "email_address",
+      "state"
+    ]
+  },
+  "dog_kennels\tWhat are the emails of the professionals living in either the state of Hawaii or the state of Wisconsin?": {
+    "Professionals": [
+      "email_address",
+      "state"
+    ]
+  },
+  "dog_kennels\tWhat are the arriving date and the departing date of all the dogs?": {
+    "Dogs": [
+      "date_arrived",
+      "date_departed"
+    ]
+  },
+  "dog_kennels\tList the arrival date and the departure date for all the dogs.": {
+    "Dogs": [
+      "date_arrived",
+      "date_departed"
+    ]
+  },
+  "dog_kennels\tHow many dogs went through any treatments?": {
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tCount the number of dogs that went through a treatment.": {
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tHow many professionals have performed any treatment to dogs?": {
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tFind the number of professionals who have ever treated dogs.": {
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tWhich professionals live in a city containing the substring 'West'? List his or her role, street, city and state.": {
+    "Professionals": [
+      "role_code",
+      "street",
+      "city",
+      "state"
+    ]
+  },
+  "dog_kennels\tFind the role, street, city and state of the professionals living in a city that contains the substring 'West'.": {
+    "Professionals": [
+      "role_code",
+      "street",
+      "city",
+      "state"
+    ]
+  },
+  "dog_kennels\tWhich owners live in the state whose name contains the substring 'North'? List his first name, last name and email.": {
+    "Owners": [
+      "first_name",
+      "last_name",
+      "email_address",
+      "state"
+    ]
+  },
+  "dog_kennels\tReturn the first name, last name and email of the owners living in a state whose name contains the substring 'North'.": {
+    "Owners": [
+      "first_name",
+      "last_name",
+      "email_address",
+      "state"
+    ]
+  },
+  "dog_kennels\tHow many dogs have an age below the average?": {
+    "Dogs": [
+      "age"
+    ]
+  },
+  "dog_kennels\tCount the number of dogs of an age below the average.": {
+    "Dogs": [
+      "age"
+    ]
+  },
+  "dog_kennels\tHow much does the most recent treatment cost?": {
+    "Treatments": [
+      "cost_of_treatment",
+      "date_of_treatment"
+    ]
+  },
+  "dog_kennels\tShow me the cost of the most recently performed treatment.": {
+    "Treatments": [
+      "cost_of_treatment",
+      "date_of_treatment"
+    ]
+  },
+  "dog_kennels\tHow many dogs have not gone through any treatment?": {
+    "Dogs": [
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tTell me the number of dogs that have not received any treatment .": {
+    "Dogs": [
+      "dog_id"
+    ],
+    "Treatments": [
+      "dog_id"
+    ]
+  },
+  "dog_kennels\tHow many owners temporarily do not have any dogs?": {
+    "Owners": [
+      "owner_id"
+    ],
+    "Dogs": [
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tFind the number of owners who do not own any dogs at this moment.": {
+    "Owners": [
+      "owner_id"
+    ],
+    "Dogs": [
+      "owner_id"
+    ]
+  },
+  "dog_kennels\tHow many professionals did not operate any treatment on dogs?": {
+    "Professionals": [
+      "professional_id"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tFind the number of professionals who have not treated any dogs.": {
+    "Professionals": [
+      "professional_id"
+    ],
+    "Treatments": [
+      "professional_id"
+    ]
+  },
+  "dog_kennels\tList the dog name, age and weight of the dogs who have been abandoned? 1 stands for yes, and 0 stands for no.": {
+    "Dogs": [
+      "name",
+      "age",
+      "weight",
+      "abandoned_yn"
+    ]
+  },
+  "dog_kennels\tWhat are the dog name, age and weight of the dogs that were abandoned? Note that 1 stands for yes, and 0 stands for no in the tables.": {
+    "Dogs": [
+      "name",
+      "age",
+      "weight",
+      "abandoned_yn"
+    ]
+  },
+  "dog_kennels\tWhat is the average age of all the dogs?": {
+    "Dogs": [
+      "age"
+    ]
+  },
+  "dog_kennels\tCompute the average age of all the dogs.": {
+    "Dogs": [
+      "age"
+    ]
+  },
+  "dog_kennels\tWhat is the age of the oldest dog?": {
+    "Dogs": [
+      "age"
+    ]
+  },
+  "dog_kennels\tTell me the age of the oldest dog.": {
+    "Dogs": [
+      "age"
+    ]
+  },
+  "dog_kennels\tHow much does each charge type costs? List both charge type and amount.": {
+    "Charges": [
+      "charge_type",
+      "charge_amount"
+    ]
+  },
+  "dog_kennels\tList each charge type and its amount.": {
+    "Charges": [
+      "charge_type",
+      "charge_amount"
+    ]
+  },
+  "dog_kennels\tHow much does the most expensive charge type costs?": {
+    "Charges": [
+      "charge_amount"
+    ]
+  },
+  "dog_kennels\tWhat is the charge amount of the most expensive charge type?": {
+    "Charges": [
+      "charge_amount"
+    ]
+  },
+  "dog_kennels\tList the email, cell phone and home phone of all the professionals.": {
+    "Professionals": [
+      "email_address",
+      "cell_number",
+      "home_phone"
+    ]
+  },
+  "dog_kennels\tWhat are the email, cell phone and home phone of each professional?": {
+    "Professionals": [
+      "email_address",
+      "cell_number",
+      "home_phone"
+    ]
+  },
+  "dog_kennels\tWhat are all the possible breed type and size type combinations?": {
+    "Dogs": [
+      "breed_code",
+      "size_code"
+    ]
+  },
+  "dog_kennels\tFind the distinct breed type and size type combinations for dogs.": {
+    "Dogs": [
+      "breed_code",
+      "size_code"
+    ]
+  },
+  "dog_kennels\tList the first name of all the professionals along with the description of the treatment they have done.": {
+    "Professionals": [
+      "first_name",
+      "professional_id"
+    ],
+    "Treatment_Types": [
+      "treatment_type_description",
+      "treatment_type_code"
+    ],
+    "Treatments": [
+      "professional_id",
+      "treatment_type_code"
+    ]
+  },
+  "dog_kennels\tWhat are each professional's first name and description of the treatment they have performed?": {
+    "Professionals": [
+      "first_name",
+      "professional_id"
+    ],
+    "Treatment_Types": [
+      "treatment_type_description",
+      "treatment_type_code"
+    ],
+    "Treatments": [
+      "professional_id",
+      "treatment_type_code"
+    ]
+  },
+  "singer\tHow many singers are there?": {
+    "singer": [
+      "*"
+    ]
+  },
+  "singer\tWhat is the count of singers?": {
+    "singer": [
+      "*"
+    ]
+  },
+  "singer\tList the name of singers in ascending order of net worth.": {
+    "singer": [
+      "Name",
+      "Net_Worth_Millions"
+    ]
+  },
+  "singer\tWhat are the names of singers ordered by ascending net worth?": {
+    "singer": [
+      "Name",
+      "Net_Worth_Millions"
+    ]
+  },
+  "singer\tWhat are the birth year and citizenship of singers?": {
+    "singer": [
+      "Birth_Year",
+      "Citizenship"
+    ]
+  },
+  "singer\tWhat are the birth years and citizenships of the singers?": {
+    "singer": [
+      "Birth_Year",
+      "Citizenship"
+    ]
+  },
+  "singer\tList the name of singers whose citizenship is not \"France\".": {
+    "singer": [
+      "Name",
+      "Citizenship"
+    ]
+  },
+  "singer\tWhat are the names of the singers who are not French citizens?": {
+    "singer": [
+      "Name",
+      "Citizenship"
+    ]
+  },
+  "singer\tShow the name of singers whose birth year is either 1948 or 1949?": {
+    "singer": [
+      "Name",
+      "Birth_Year"
+    ]
+  },
+  "singer\tWhat are the names of the singers whose birth years are either 1948 or 1949?": {
+    "singer": [
+      "Name",
+      "Birth_Year"
+    ]
+  },
+  "singer\tWhat is the name of the singer with the largest net worth?": {
+    "singer": [
+      "Name",
+      "Net_Worth_Millions"
+    ]
+  },
+  "singer\tWhat is the name of the singer who is worth the most?": {
+    "singer": [
+      "Name",
+      "Net_Worth_Millions"
+    ]
+  },
+  "singer\tShow different citizenship of singers and the number of singers of each citizenship.": {
+    "singer": [
+      "Citizenship"
+    ]
+  },
+  "singer\tFor each citizenship, how many singers are from that country?": {
+    "singer": [
+      "Citizenship"
+    ]
+  },
+  "singer\tPlease show the most common citizenship of singers.": {
+    "singer": [
+      "Citizenship"
+    ]
+  },
+  "singer\tWhat is the most common singer citizenship ?": {
+    "singer": [
+      "Citizenship"
+    ]
+  },
+  "singer\tShow different citizenships and the maximum net worth of singers of each citizenship.": {
+    "singer": [
+      "Citizenship",
+      "Net_Worth_Millions"
+    ]
+  },
+  "singer\tFor each citizenship, what is the maximum net worth?": {
+    "singer": [
+      "Citizenship",
+      "Net_Worth_Millions"
+    ]
+  },
+  "singer\tShow titles of songs and names of singers.": {
+    "song": [
+      "Title",
+      "Singer_ID"
+    ],
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ]
+  },
+  "singer\tWhat are the song titles and singer names?": {
+    "song": [
+      "Title",
+      "Singer_ID"
+    ],
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ]
+  },
+  "singer\tShow distinct names of singers that have songs with sales more than 300000.": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Singer_ID",
+      "Sales"
+    ]
+  },
+  "singer\twhat are the different names of the singers that have sales more than 300000?": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Singer_ID",
+      "Sales"
+    ]
+  },
+  "singer\tShow the names of singers that have more than one song.": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Singer_ID"
+    ]
+  },
+  "singer\tWhat are the names of the singers that have more than one songs?": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Singer_ID"
+    ]
+  },
+  "singer\tShow the names of singers and the total sales of their songs.": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Sales",
+      "Singer_ID"
+    ]
+  },
+  "singer\tFor each singer name, what is the total sales for their songs?": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Sales",
+      "Singer_ID"
+    ]
+  },
+  "singer\tList the name of singers that do not have any song.": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Singer_ID"
+    ]
+  },
+  "singer\tWhat is the sname of every sing that does not have any song?": {
+    "singer": [
+      "Name",
+      "Singer_ID"
+    ],
+    "song": [
+      "Singer_ID"
+    ]
+  },
+  "singer\tShow the citizenship shared by singers with birth year before 1945 and after 1955.": {
+    "singer": [
+      "Citizenship",
+      "Birth_Year"
+    ]
+  },
+  "singer\tWhat are the citizenships that are shared by singers with a birth year before 1945 and after 1955?": {
+    "singer": [
+      "Citizenship",
+      "Birth_Year"
+    ]
+  },
+  "real_estate_properties\tHow many available features are there in total?": {
+    "Other_Available_Features": [
+      "*"
+    ]
+  },
+  "real_estate_properties\tWhat is the feature type name of feature AirCon?": {
+    "Ref_Feature_Types": [
+      "feature_type_name",
+      "feature_type_code"
+    ],
+    "Other_Available_Features": [
+      "feature_type_code",
+      "feature_name"
+    ]
+  },
+  "real_estate_properties\tShow the property type descriptions of properties belonging to that code.": {
+    "Ref_Property_Types": [
+      "property_type_description",
+      "property_type_code"
+    ],
+    "Properties": [
+      "property_type_code"
+    ]
+  },
+  "real_estate_properties\tWhat are the names of properties that are either houses or apartments with more than 1 room?": {
+    "Properties": [
+      "property_name",
+      "property_type_code",
+      "room_count"
+    ]
+  }
+}

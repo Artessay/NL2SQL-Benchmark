@@ -1,0 +1,139 @@
+[
+    {
+        "db_id": "concert_singer",
+        "query": "SELECT count(*) FROM singer",
+        "query_toks": [
+            "SELECT",
+            "count",
+            "(",
+            "*",
+            ")",
+            "FROM",
+            "singer"
+        ],
+        "query_toks_no_value": [
+            "select",
+            "count",
+            "(",
+            "*",
+            ")",
+            "from",
+            "singer"
+        ],
+        "question": "How many singers do we have?",
+        "question_toks": [
+            "How",
+            "many",
+            "singers",
+            "do",
+            "we",
+            "have",
+            "?"
+        ],
+        "sql": {
+            "from": {
+                "table_units": [
+                    [
+                        "table_unit",
+                        1
+                    ]
+                ],
+                "conds": []
+            },
+            "select": [
+                false,
+                [
+                    [
+                        3,
+                        [
+                            0,
+                            [
+                                0,
+                                0,
+                                false
+                            ],
+                            null
+                        ]
+                    ]
+                ]
+            ],
+            "where": [],
+            "groupBy": [],
+            "having": [],
+            "orderBy": [],
+            "limit": null,
+            "intersect": null,
+            "union": null,
+            "except": null
+        }
+    },
+    {
+        "db_id": "concert_singer",
+        "query": "SELECT count(*) FROM singer",
+        "query_toks": [
+            "SELECT",
+            "count",
+            "(",
+            "*",
+            ")",
+            "FROM",
+            "singer"
+        ],
+        "query_toks_no_value": [
+            "select",
+            "count",
+            "(",
+            "*",
+            ")",
+            "from",
+            "singer"
+        ],
+        "question": "What is the total number of singers?",
+        "question_toks": [
+            "What",
+            "is",
+            "the",
+            "total",
+            "number",
+            "of",
+            "singers",
+            "?"
+        ],
+        "sql": {
+            "from": {
+                "table_units": [
+                    [
+                        "table_unit",
+                        1
+                    ]
+                ],
+                "conds": []
+            },
+            "select": [
+                false,
+                [
+                    [
+                        3,
+                        [
+                            0,
+                            [
+                                0,
+                                0,
+                                false
+                            ],
+                            null
+                        ]
+                    ]
+                ]
+            ],
+            "where": [],
+            "groupBy": [],
+            "having": [],
+            "orderBy": [],
+            "limit": null,
+            "intersect": null,
+            "union": null,
+            "except": null
+        }
+    }
+]
