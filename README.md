@@ -1,4 +1,4 @@
-# LLM NL2SQL Benchmark
+# NL2SQL Benchmark
 
 ## Overview
 
@@ -29,6 +29,8 @@ Our evaluation framework supports almost all models that can be downloaded from 
 ```sh
 python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
 ```
+
+## Evaluation Result
 
 ### Bird Dataset
 

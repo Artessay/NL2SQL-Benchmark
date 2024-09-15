@@ -2,10 +2,6 @@ import os
 import json
 import argparse
 
-# DEFAULT_LLM = "Qwen/Qwen2-7B-Instruct"
-# DEFAULT_LLM = "THUDM/glm-4-9b-chat"
-DEFAULT_LLM = "Qwen/Qwen2-72B-Instruct"
-
 def seed_everything(seed: int):  
     import random, os
     import numpy as np
@@ -47,7 +43,7 @@ def get_prompt(schema:str, question:str, evidence:str = None) -> str:
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model_name', type=str, default=DEFAULT_LLM)
+    parser.add_argument('-m', '--model_name', type=str, default="Qwen/Qwen2-72B-Instruct")
     parser.add_argument('-d', '--data_name', type=str, default='bird')
     parser.add_argument('-s', '--strategy', type=str, default='VanillaLinker')
 
