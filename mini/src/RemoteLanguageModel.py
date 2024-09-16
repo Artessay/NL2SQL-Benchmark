@@ -2,17 +2,14 @@ import os
 from openai import OpenAI
 from typing import Dict, List, Union
 
-if __name__ == "__main__":
-    from LanguageModel import LanguageModel
-else:
-    from .LanguageModel import LanguageModel
-
-class RemoteLanguageModel(LanguageModel):
-    def __init__(self, model_name, **kwargs) -> None:
+class RemoteLanguageModel():
+    def __init__(self, model_name, api_key = None, base_url = None, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        api_key = os.environ.get("API_KEY", "API_KEY")
-        base_url = os.environ.get("API_BASE_URL", None)
+        api_key = os.environ.get("API_KEY", api_key)
+        base_url = os.environ.get("API_BASE_URL", base_url)
+        assert api_key is not None, "API_KEY environment variable not set"
+        assert base_url is not None, "API_BASE_URL environment variable not set"
         
         self.model_name = model_name
         self.max_tokens = kwargs.pop("max_tokens", 512)

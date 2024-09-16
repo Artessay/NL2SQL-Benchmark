@@ -4,58 +4,16 @@ import json
 import os
 from openai import AzureOpenAI
 from tqdm import tqdm
-import time
 from concurrent.futures import ThreadPoolExecutor
 import concurrent.futures
 
 from prompt import generate_combined_prompts_one
-
-
-"""openai configure"""
-api_version = "2024-02-01"
-api_base = "https://gcrendpoint.azurewebsites.net"
+from RemoteLanguageModel import RemoteLanguageModel
 
 
 def new_directory(path):
     if not os.path.exists(path):
         os.makedirs(path)
-
-
-def connect_gpt(engine, prompt, max_tokens, temperature, stop, client):
-    """
-    Function to connect to the GPT API and get the response.
-    """
-    MAX_API_RETRY = 10
-    for i in range(MAX_API_RETRY):
-        time.sleep(2)
-        try:
-
-            if engine == "gpt-35-turbo-instruct":
-                result = client.completions.create(
-                    model="gpt-3.5-turbo-instruct",
-                    prompt=prompt,
-                    max_tokens=max_tokens,
-                    temperature=temperature,
-                    stop=stop,
-                )
-                result = result.choices[0].text
-            else:  # gpt-4-turbo, gpt-4, gpt-4-32k, gpt-35-turbo
-                messages = [
-                    {"role": "user", "content": prompt},
-                ]
-                result = client.chat.completions.create(
-                    model=engine,
-                    messages=messages,
-                    temperature=temperature,
-                    max_tokens=max_tokens,
-                    stop=stop,
-                )
-            break
-        except Exception as e:
-            result = "error:{}".format(e)
-            print(result)
-            time.sleep(4)
-    return result
 
 
 def decouple_question_schema(datasets, db_root_path):
@@ -88,15 +46,11 @@ def generate_sql_file(sql_lst, output_path=None):
     return result
 
 
-def init_client(api_key, api_version, engine):
+def init_client(engine, api_key):
     """
-    Initialize the AzureOpenAI client for a worker.
+    Initialize the OpenAI client for a worker.
     """
-    return AzureOpenAI(
-        api_key=api_key,
-        api_version=api_version,
-        base_url=f"{api_base}/openai/deployments/{engine}",
-    )
+    return RemoteLanguageModel(engine, api_key)
 
 
 def post_process_response(response, db_path):
@@ -111,8 +65,8 @@ def worker_function(question_data):
     Function to process each question, set up the client,
     generate the prompt, and collect the GPT response.
     """
-    prompt, engine, client, db_path, question, i = question_data
-    response = connect_gpt(engine, prompt, 512, 0, ["--", "\n\n", ";", "#"], client)
+    prompt, client, db_path, question, i = question_data
+    response = client.chat(prompt)
     sql = post_process_response(response, db_path)
     print(f"Processed {i}th question: {question}")
     return sql, i
@@ -130,7 +84,7 @@ def collect_response_from_gpt(
     """
     Collect responses from GPT using multiple threads.
     """
-    client = init_client(api_key, api_version, engine)
+    client = init_client(engine, api_key)
 
     tasks = [
         (
@@ -140,7 +94,6 @@ def collect_response_from_gpt(
                 sql_dialect=sql_dialect,
                 knowledge=knowledge_list[i],
             ),
-            engine,
             client,
             db_path_list[i],
             question_list[i],

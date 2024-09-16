@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Choose the engine to run, e.g. gpt-4, gpt-4-32k, gpt-4-turbo, gpt-35-turbo, GPT35-turbo-instruct
 engine='qwen2-72b-instruct'
 
