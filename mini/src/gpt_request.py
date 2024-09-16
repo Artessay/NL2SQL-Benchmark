@@ -169,7 +169,7 @@ if __name__ == "__main__":
     args_parser.add_argument("--db_root_path", type=str, default="")
     args_parser.add_argument("--api_key", type=str, required=True)
     args_parser.add_argument(
-        "--engine", type=str, required=True, default="code-davinci-002"
+        "--engine", type=str, required=True, default="qwen2-72b-instruct"
     )
     args_parser.add_argument("--data_output_path", type=str)
     args_parser.add_argument("--chain_of_thought", type=str)
