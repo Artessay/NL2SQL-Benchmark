@@ -87,7 +87,7 @@ def package_sqls(
             db_path_list.append(db_root_path + db_name + "/" + db_name + ".sqlite")
 
     elif mode == "gt":
-        sqls = open(sql_path + data_mode + "_" + sql_dialect + "_gold.sql")
+        sqls = open(sql_path + data_mode + "_" + sql_dialect.lower() + "_gold.sql")
         sql_txt = sqls.readlines()
         # sql_txt = [sql.split('\t')[0] for sql in sql_txt]
         for idx, sql_str in enumerate(sql_txt):

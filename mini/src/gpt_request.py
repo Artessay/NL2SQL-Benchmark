@@ -2,7 +2,6 @@
 import argparse
 import json
 import os
-from openai import AzureOpenAI
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 import concurrent.futures
@@ -46,11 +45,11 @@ def generate_sql_file(sql_lst, output_path=None):
     return result
 
 
-def init_client(engine, api_key):
+def init_client(engine):
     """
     Initialize the OpenAI client for a worker.
     """
-    return RemoteLanguageModel(engine, api_key)
+    return RemoteLanguageModel(engine)
 
 
 def post_process_response(response, db_path):
@@ -75,7 +74,6 @@ def worker_function(question_data):
 def collect_response_from_gpt(
     db_path_list,
     question_list,
-    api_key,
     engine,
     sql_dialect,
     num_threads=3,
@@ -84,7 +82,7 @@ def collect_response_from_gpt(
     """
     Collect responses from GPT using multiple threads.
     """
-    client = init_client(engine, api_key)
+    client = init_client(engine)
 
     tasks = [
         (
@@ -141,7 +139,6 @@ if __name__ == "__main__":
         responses = collect_response_from_gpt(
             db_path_list,
             question_list,
-            args.api_key,
             args.engine,
             args.sql_dialect,
             args.num_processes,
@@ -151,7 +148,6 @@ if __name__ == "__main__":
         responses = collect_response_from_gpt(
             db_path_list,
             question_list,
-            args.api_key,
             args.engine,
             args.sql_dialect,
             args.num_processes,
