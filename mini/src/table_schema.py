@@ -1,3 +1,4 @@
+import os
 import sqlite3
 import pymysql
 import psycopg2
@@ -229,8 +230,13 @@ def generate_schema_prompt_mysql(db_path):
 def connect_postgresql():
     # Open database connection
     # Connect to the database
+    host = os.environ.get("PG_HOST")
+    port = os.environ.get("PG_PORT")
+    user = os.environ.get("PG_USER")
+    password = os.environ.get("PG_PASSWORD")
+
     db = psycopg2.connect(
-        "dbname=BIRD user=root host=localhost password=YOUR_PASSWORD port=5432"
+        f"dbname=BIRD user={user} host={host} password={password} port={port}"
     )
     return db
 

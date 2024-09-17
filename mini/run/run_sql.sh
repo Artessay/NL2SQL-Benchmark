@@ -7,7 +7,9 @@ num_threads=3
 # Choose the SQL dialect to run, e.g. SQLite, MySQL, PostgreSQL
 # PLEASE NOTE: You have to setup the database information in table_schema.py 
 # if you want to run the evaluation script using MySQL or PostgreSQL
-sql_dialect='SQLite'
+# sql_dialect='SQLite'
+# sql_dialect='MySQL'
+sql_dialect='PostgreSQL'
 
 db_root_path='./data/dev_databases/'
 use_knowledge='True'
