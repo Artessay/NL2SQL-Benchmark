@@ -51,7 +51,7 @@ case "${sql_dialect}" in
 esac
 
 # Choose the output path for the generated SQL queries
-if [ "$use_kg" = "True" ]; then
+if [ "$use_knowledge" = "True" ]; then
     data_output_path='./exp_result/turbo_output_kg/'
 else
     data_output_path='./exp_result/turbo_output/'

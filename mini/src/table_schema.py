@@ -1,7 +1,8 @@
-import os
 import sqlite3
-import pymysql
-import psycopg2
+from connection import (
+    connect_mysql,
+    connect_postgresql
+)
 
 db_table_map = {
     "debit_card_specializing": [
@@ -158,20 +159,6 @@ def generate_schema_prompt_sqlite(db_path, num_rows=None):
     return schema_prompt
 
 
-def connect_mysql():
-    # Open database connection
-    # Connect to the database"
-    db = pymysql.connect(
-        host="localhost",
-        user="root",
-        password="YOUR_PASSWORD",
-        database="BIRD",
-        unix_socket="/tmp/mysql.sock",
-        # port=3306,
-    )
-    return db
-
-
 def format_mysql_create_table(table_name, columns_info):
     lines = []
     lines.append(f"CREATE TABLE {table_name}\n(")
@@ -225,20 +212,6 @@ def generate_schema_prompt_mysql(db_path):
     schema_prompt = "\n\n".join(schemas.values())
     db.close()
     return schema_prompt
-
-
-def connect_postgresql():
-    # Open database connection
-    # Connect to the database
-    host = os.environ.get("PG_HOST")
-    port = os.environ.get("PG_PORT")
-    user = os.environ.get("PG_USER")
-    password = os.environ.get("PG_PASSWORD")
-
-    db = psycopg2.connect(
-        f"dbname=BIRD user={user} host={host} password={password} port={port}"
-    )
-    return db
 
 
 def generate_schema_prompt_postgresql(db_path):

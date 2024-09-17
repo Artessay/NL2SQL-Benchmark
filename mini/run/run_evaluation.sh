@@ -2,12 +2,35 @@
 engine='qwen2-72b-instruct'
 
 # Choose the number of threads to run in parallel, 1 for single thread
-num_cpus=56
+num_cpus=16
 meta_time_out=30.0
+
+# Choose the SQL dialect to run, e.g. SQLite, MySQL, PostgreSQL
+# PLEASE NOTE: You have to setup the database information in evaluation_utils.py 
+# if you want to run the evaluation script using MySQL or PostgreSQL
+# sql_dialect='SQLite'
+sql_dialect='PostgreSQL'
 
 db_root_path='./data/dev_databases/'
 data_mode='mini_dev' # dev, train, mini_dev
-diff_json_path='./data/mini_dev_sqlite.json' # _sqlite.json, _mysql.json, _postgresql.json
+
+# Path where the ground truth SQL queries are stored
+case "${sql_dialect}" in
+    SQLite)
+        diff_json_path='./data/mini_dev_sqlite.json'
+        ;;
+    MySQL)
+        diff_json_path='./data/mini_dev_mysql.json'
+        ;;
+    PostgreSQL)
+        diff_json_path='./data/mini_dev_postgresql.json'
+        ;;
+    *)
+        echo "Unsupported sql_dialect: ${sql_dialect}"
+        exit 1
+        ;;
+esac
+
 # Path where the predicted SQL queries are stored
 use_knowledge='True'
 if [ "$use_knowledge" = "True" ]; then
@@ -20,10 +43,15 @@ ground_truth_path='./data/'
 mode_gt='gt'
 mode_predict='gpt'
 
-# Choose the SQL dialect to run, e.g. SQLite, MySQL, PostgreSQL
-# PLEASE NOTE: You have to setup the database information in evaluation_utils.py 
-# if you want to run the evaluation script using MySQL or PostgreSQL
-sql_dialect='SQLite'
+# Load environment variables from .env file
+if [ -f ./.env ]; then
+    set -a
+    source ./.env
+    set +a
+else
+    echo ".env file not found!"
+    exit 1
+fi
 
 echo "starting to compare with knowledge for ex engine: ${engine} sql_dialect: ${sql_dialect}"
 python3 -u ./src/evaluation_ex.py --db_root_path ${db_root_path} --predicted_sql_path ${predicted_sql_path} --data_mode ${data_mode} \

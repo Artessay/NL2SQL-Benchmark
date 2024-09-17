@@ -37,6 +37,7 @@ def execute_model(
         result = [(f"timeout",)]
         res = 0
     except Exception as e:
+        # print(e)
         result = [(f"error",)]  # possibly len(query) > 512 or not executable
         res = 0
     result = {"sql_idx": idx, "res": res}

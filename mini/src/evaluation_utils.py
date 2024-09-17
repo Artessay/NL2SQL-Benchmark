@@ -1,36 +1,15 @@
 import json
-import psycopg2
-import pymysql
 import sqlite3
 
+from connection import (
+    connect_mysql,
+    connect_postgresql
+)
 
 def load_json(dir):
     with open(dir, "r") as j:
         contents = json.loads(j.read())
     return contents
-
-
-def connect_postgresql():
-    # Open database connection
-    # Connect to the database
-    db = psycopg2.connect(
-        "dbname=BIRD user=root host=localhost password=YOUR_PASSWORD port=5432"
-    )
-    return db
-
-
-def connect_mysql():
-    # Open database connection
-    # Connect to the database"
-    db = pymysql.connect(
-        host="localhost",
-        user="root",
-        password="YOUR_PASSWORD",
-        database="BIRD",
-        unix_socket="/tmp/mysql.sock",
-        # port=3306,
-    )
-    return db
 
 
 def connect_db(sql_dialect, db_path):
