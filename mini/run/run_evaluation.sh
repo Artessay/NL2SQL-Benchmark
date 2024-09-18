@@ -9,7 +9,8 @@ meta_time_out=30.0
 # PLEASE NOTE: You have to setup the database information in evaluation_utils.py 
 # if you want to run the evaluation script using MySQL or PostgreSQL
 # sql_dialect='SQLite'
-sql_dialect='PostgreSQL'
+sql_dialect='MySQL'
+# sql_dialect='PostgreSQL'
 
 db_root_path='./data/dev_databases/'
 data_mode='mini_dev' # dev, train, mini_dev
