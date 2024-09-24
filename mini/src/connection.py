@@ -5,13 +5,19 @@ import psycopg2
 def connect_mysql():
     # Open database connection
     # Connect to the database"
+    host = os.environ.get("MYSQL_HOST")
+    port = (int)(os.environ.get("MYSQL_PORT"))
+    user = os.environ.get("MYSQL_USER")
+    password = os.environ.get("MYSQL_PASSWORD")
+    # print(host, port, user, password)
+
     db = pymysql.connect(
-        host="localhost",
-        user="root",
-        password="YOUR_PASSWORD",
+        host=host,
+        port=port,
+        user=user,
+        password=password,
         database="BIRD",
-        unix_socket="/tmp/mysql.sock",
-        # port=3306,
+        # unix_socket="/tmp/mysql.sock",
     )
     return db
 
