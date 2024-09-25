@@ -41,7 +41,8 @@ python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
 | Qwen1.5 7B           | 26.49  | 9.46     | 4.17        | 19.23 |
 | Qwen2 7B             | 45.51  | 25.38    | 19.44       | 36.96 |
 | CodeS 7B             | 24.11  | 7.31     | 5.56        | 17.28 |
-| Code Qwen 7B         | 41.95  | 22.37    | 19.44       | 33.90 |
+| Code Qwen1.5 7B      | 41.95  | 22.37    | 19.44       | 33.90 |
+| Code Qwen2.5 7B      | 56.11  | 34.48    | 33.79       | 47.46 |
 | Symbol LLM 7B        | 21.19  | 6.02     | 6.94        | 15.25 |
 | LLaMA 8B             | 13.73  | 5.38     | 9.03        | 10.76 |
 | SQL Coder 8B         | 42.49  | 22.58    | 17.36       | 34.09 |
@@ -60,7 +61,8 @@ python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
 | **VES**              |        |          |             |       |
 | Qwen 7B              | 27.77  | 9.92     | 4.42        | 20.17 |
 | CodeS 7B             | 26.29  | 8.26     | 5.15        | 18.84 |
-| Code Qwen 7B         | 42.06  | 22.89    | 18.95       | 34.08 |
+| Code Qwen1.5 7B      | 42.06  | 22.89    | 18.95       | 34.08 |
+| Code Qwen2.5 7B      | 58.29  | 36.58    | 34.73       | 49.50 |
 | Symbol LLM 7B        | 23.56  | 8.17     | 11.53       | 17.77 |
 | LLaMA 8B             | 14.18  | 5.47     | 6.93        | 10.86 |
 | SQL Coder 8B         | 43.76  | 23.04    | 17.47       | 35.01 |
