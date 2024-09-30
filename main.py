@@ -32,6 +32,7 @@ def run(args):
         schema = schema_linker.get_schema(sqlite_path, schema_query, question=question)
         
         response = agent.inference(schema, query, evidence)
+        response = response.replace('\n',' ')
         
         print()
         print("On database:", db_name)
@@ -44,7 +45,7 @@ def run(args):
 
     result_file.close()
 
-    if args.data_name in ['bird']:
+    if args.dataset in ['bird']:
         fix_gt(args)
     evaluation(args)
 

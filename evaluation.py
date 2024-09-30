@@ -46,9 +46,9 @@ def run_evaluation_bird(args):
 
 
 def evaluation(args):
-    if args.data_name == 'spider':
+    if args.dataset == 'spider':
         run_evaluation_spider(args)
-    elif args.data_name == 'bird':
+    elif args.dataset == 'bird':
         run_evaluation_bird(args)
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@ from utils import (
 )
 
 def fix_gt(args):
-    assert args.data_name == 'bird'
+    assert args.dataset == 'bird'
     dataset = load_dataset(args.data_path)
     result_file = get_output_file(args.result_path, mode='r')
     output_file = get_output_file(args.gt_result_path, mode='w')
