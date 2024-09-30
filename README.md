@@ -95,3 +95,15 @@ The performance of LLMs on NL2SQL is highly sensitive to the schema linking stra
 | **VES**              |        |          |             |       |
 | Vanilla              | 64.67  | 45.59    | 37.15       | 56.30 |
 | Gold Linker          | 70.40  | 51.30    | 42.28       | 61.96 |
+
+### The Impact of Different Methods on NL2SQL
+
+Qwen2 72B
+
+| Base                 | 59.89  | 40.95    | 38.62       | 52.15 |
+| CoT                  | 32.76  | 15.73    | 13.79       | 25.81 |
+
+Qwen2.5 Coder 7B
+
+| Base                 | 56.11  | 34.48    | 33.79       | 47.46 |
+| CoT                  | 53.62  | 33.84    | 28.28       | 45.24 |
