@@ -12,12 +12,15 @@ class LanguageModel():
     def chat(self, messages: List[Dict[str, str]]) -> str:
         raise NotImplementedError()
 
-    def generate_sql(self, prompt):
+    def generate(self, prompt):
         messages = [
             {"role": "system", "content": self.system_prompt},
             {"role": "user", "content": prompt}
         ]
-        response = self.chat(messages)
+        return self.chat(messages)
+
+    def generate_sql(self, prompt):
+        response = self.generate(prompt)
 
         # fetch code block
         if "```" in response:

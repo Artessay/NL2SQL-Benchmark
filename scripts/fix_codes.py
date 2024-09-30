@@ -7,7 +7,7 @@ from utils import (
 )
 
 def run(args):
-    assert args.model_name == "seeklhy/codes-7b"
+    assert args.language_model == "seeklhy/codes-7b"
 
     dataset = load_dataset(args.data_path)
     result_file = get_output_file(args.result_path, mode='r')

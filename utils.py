@@ -27,34 +27,21 @@ def get_output_file(output_path, mode='w'):
 
     return open(output_path, mode, encoding='utf8')
 
-def get_prompt(schema:str, question:str, evidence:str = None) -> str:
-    # base prompt for the question
-    base_prompt = "The databse schema is as follows:\n" + schema + "\nWrite Sql for the following question: " + question
-    
-    # if extra knowledge is provided, add it to the prompt
-    if evidence is not None:
-        knowledge_prompt = "\n " + "Consider the extra knowledge, it is very useful to help you understand the question and the corresponding sql: " + evidence
-    else:
-        knowledge_prompt = ""
-    
-    base_ans_prompt = "\n" + "And lastly, only write sql with no comments." 
-
-    return base_prompt + knowledge_prompt + base_ans_prompt
-
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model_name', type=str, default="Qwen/Qwen2-72B-Instruct")
-    parser.add_argument('-d', '--data_name', type=str, default='bird')
-    parser.add_argument('-s', '--strategy', type=str, default='VanillaLinker')
+    parser.add_argument('-m', '--method', type=str, default="Base")
+    parser.add_argument('-d', '--dataset', type=str, default='bird')
+    parser.add_argument('-l', '--language_model', type=str, default='Qwen/Qwen2-72B-Instruct')
+    parser.add_argument('-s', '--schema_linker', type=str, default='VanillaLinker')
 
     args = parser.parse_args()
     print(args)
 
-    args.data_path = f'data/{args.data_name}'
-    args.database_path = "data/spider/database" if args.data_name == 'spider' else 'data/bird/dev_databases'
+    args.data_path = f'data/{args.dataset}'
+    args.database_path = "data/spider/database" if args.dataset == 'spider' else 'data/bird/dev_databases'
 
-    args.schema_path = f'output/{args.data_name}/database'
-    args.result_path = f'output/{args.data_name}/{args.model_name}/{args.strategy}/dev_pred.sql'
-    args.gt_result_path = f'output/{args.data_name}/{args.model_name}/{args.strategy}/dev_pred_gt.sql'
+    args.schema_path = f'output/{args.dataset}/database'
+    args.result_path = f'output/{args.dataset}/{args.method}/{args.language_model}/{args.schema_linker}/dev_pred.sql'
+    args.gt_result_path = f'output/{args.dataset}/{args.method}/{args.language_model}/{args.schema_linker}/dev_pred_gt.sql'
 
     return args
