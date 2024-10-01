@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 from model import Base
 
-class Chess(Base):
+class CHESS(Base):
     def __init__(self, args):
         super().__init__(args)
 

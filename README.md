@@ -100,12 +100,20 @@ The performance of LLMs on NL2SQL is highly sensitive to the schema linking stra
 
 Qwen2 72B
 
+| **Bird**             | simple | moderate | challenging | total |
+|----------------------|--------|----------|-------------|-------|
+| count                | 925    | 465      | 144         | 1534  |
+| **ACCURACY**         |        |          |             |       |
 | Base                 | 59.89  | 40.95    | 38.62       | 52.15 |
-| CoT                  | 32.76  | 15.73    | 13.79       | 25.81 |
 | Rule                 | 36.43  | 18.53    | 15.17       | 29.01 |
+| CHESS                | 32.76  | 15.73    | 13.79       | 25.81 |
 
 Qwen2.5 Coder 7B
 
+| **Bird**             | simple | moderate | challenging | total |
+|----------------------|--------|----------|-------------|-------|
+| count                | 925    | 465      | 144         | 1534  |
+| **ACCURACY**         |        |          |             |       |
 | Base                 | 56.11  | 34.48    | 33.79       | 47.46 |
-| CoT                  | 53.62  | 33.84    | 28.28       | 45.24 |
 | Rule                 | 54.27  | 37.72    | 31.03       | 47.07 |
+| CHESS                | 53.62  | 33.84    | 28.28       | 45.24 |
