@@ -1,3 +1,4 @@
+import os
 import sqlite3
 from typing import Dict, List
 
@@ -13,11 +14,17 @@ class SchemaLinker():
 
     def get_schema(
             self, 
-            db_path: str, 
+            database_dir: str, 
+            database_name: str,
             query: str, 
-            question: str,
-    ) -> str:
+            evidence: str = None,
+    ) -> List[str]:
+        # prepare question
+        question = database_name + '\t' + query
+        query = query + ' ' + evidence if evidence else query
+
         # connect to db
+        db_path = os.path.join(database_dir, database_name, f'{database_name}.sqlite')
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
@@ -30,7 +37,7 @@ class SchemaLinker():
         # fetch foreign key info
         foreign_keys_set, foreign_keys_map = self._fetch_foreign_key_info(cursor, table_names)
 
-        schema = ""
+        schema_list = []
         for table_name in table_names:
             columns_info = table_info[table_name]
             
@@ -42,11 +49,11 @@ class SchemaLinker():
             # prepare create table statement and insert statements
             create_statement = self._construct_create_table_statement(table_name, columns_info, selected_columns, foreign_keys_map)
             insert_statements = self._construct_insert_statements(cursor, table_name, selected_columns)
-            schema += create_statement + insert_statements
+            schema_list.append(create_statement + "\n" + insert_statements)
 
         conn.close()
 
-        return schema
+        return schema_list
     
     @abstractmethod
     def _get_selected_columns(self, query: str, table_name: str, columns_info: List, **kwargs) -> List[str]:
@@ -89,7 +96,7 @@ class SchemaLinker():
         # Add foreign key constraints
         create_statement += foreign_keys_contrains
         
-        create_statement = create_statement.rstrip(",\n") + "\n);\n\n"
+        create_statement = create_statement.rstrip(",\n") + "\n);\n"
         return create_statement
 
     def _construct_insert_statements(self, cursor: sqlite3.Cursor, table_name: str, column_names: List[str]) -> str:
@@ -113,9 +120,6 @@ class SchemaLinker():
                 row_values = ', '.join([self._format_sql_value(value) for value in row])
                 insert_statements += f"INSERT INTO `{table_name}` VALUES ({row_values});\n"
                 # insert_statements += f"INSERT INTO `{table_name}` ({column_names_str}) VALUES ({row_values});\n"
-
-            # Add extra newline for formatting if there were any INSERT statements
-            insert_statements += "\n"
 
         return insert_statements
     

@@ -12,6 +12,7 @@ class CoT(Base):
         super().__init__(args)
 
     def inference(self, schema:str, question:str, evidence:str = None):
+        schema = "\n".join(schema) if isinstance(schema, list) else schema
         query = self.get_prompt(schema, question, evidence)
         response = self.model.generate(query)
         try:

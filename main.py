@@ -24,13 +24,8 @@ def run(args):
         query = item['question']
         evidence = item.get('evidence', None)
 
-        sqlite_path = os.path.join(args.database_path, db_name, f'{db_name}.sqlite')
-
         # get schema
-        question = db_name + '\t' + query
-        schema_query = query + ' ' + evidence if evidence else query
-        schema = schema_linker.get_schema(sqlite_path, schema_query, question=question)
-        
+        schema = schema_linker.get_schema(args.database_path, db_name, query, evidence)
         response = agent.inference(schema, query, evidence)
         response = response.replace('\n',' ')
         
