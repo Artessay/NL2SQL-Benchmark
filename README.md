@@ -55,6 +55,7 @@ python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
 | SQL Coder 34B        | 43.78  | 24.73    | 17.36       | 35.53 |
 | Granite code 34B     | 42.92  | 17.46    | 13.10       | 32.40 |
 | Qwen2 72B            | 60.43  | 40.73    | 35.86       | **52.15** |
+| Qwen2.5 72B          | 60.00  | 39.44    | 35.86       | 51.50 |
 
 | **Bird**             | simple | moderate | challenging | total |
 |----------------------|--------|----------|-------------|-------|
@@ -76,6 +77,7 @@ python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
 | SQL Coder 34B        | 46.50  | 28.34    | 17.86       | 38.30 |
 | Granite code 34B     | 43.91  | 18.61    | 12.33       | 33.27 |
 | Qwen2 72B            | 62.63  | 43.47    | 33.84       | 54.11 |
+| Qwen2.5 72B          | 62.81  | 41.29    | 35.66       | 53.73 |
 
 ### The Impact of Schema Linking on NL2SQL
 
