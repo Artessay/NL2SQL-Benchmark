@@ -11,10 +11,20 @@ class CoT(Base):
     def __init__(self, args):
         super().__init__(args)
 
+        self.system_prompt = """
+You are a data science expert.
+Your task is to read the schema, understand the question, think step by step, and generate a valid SQLite query to answer the question.
+Please respond with a JSON object structured as follows:
+{
+    "chain_of_thought_reasoning": "Your thought process on how you arrived at the final SQL query.",
+    "SQL": "Your SQL query in a single string."
+}
+"""
+
     def inference(self, schema:str, question:str, evidence:str = None):
         schema = "\n".join(schema) if isinstance(schema, list) else schema
         query = self.get_prompt(schema, question, evidence)
-        response = self.model.generate(query)
+        response = self.model.generate(query, system_prompt=self.system_prompt)
         try:
             response = self.fetch_code(response, code_type="json", default=response)
             response = self.extract_first_json(response)
@@ -45,6 +55,7 @@ This schema offers an in-depth description of the database's architecture, detai
 Question: 
 {question} 
 
+###
 Hint:
 {evidence if evidence else "No extra knowledge provided."}
 
