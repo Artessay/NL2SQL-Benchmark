@@ -26,8 +26,12 @@ def run(args):
 
         # get schema
         schema = schema_linker.get_schema(args.database_path, db_name, query, evidence)
-        response = agent.inference(schema, query, evidence)
+        response = agent(schema, query, evidence)
         response = response.replace('\n',' ')
+        
+        # fix empty response
+        if len(response) == 0:
+            response = ";"
         
         print()
         print("On database:", db_name)

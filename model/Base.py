@@ -1,10 +1,17 @@
+from typing import Any
 import language_model
 
 class Base():
     def __init__(self, args):
         self.model = language_model.load_language_model(args.language_model)
 
-    def inference(self, schema:str, question:str, evidence:str = None):
+    def __call__(self, schema:str, question:str, evidence:str = None) -> str:
+        try:
+            return self.inference(schema, question, evidence)
+        except:
+            return ";"
+
+    def inference(self, schema:str, question:str, evidence:str = None) -> str:
         schema = "\n".join(schema) if isinstance(schema, list) else schema
         query = self.get_prompt(schema, question, evidence)
         response = self.model.generate(query)
