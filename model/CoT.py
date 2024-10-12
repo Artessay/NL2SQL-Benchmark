@@ -29,12 +29,13 @@ Please respond with a JSON object structured as follows:
             response = self.fetch_code(response, code_type="json", default=response)
             response = self.extract_first_json(response)
             response_json: dict = json5.loads(response)
-            logger.info(f"reasoning: {response_json.get('chain_of_thought_reasoning')}")
+            logger.debug(f"reasoning: {response_json.get('chain_of_thought_reasoning')}")
             response_sql = response_json.get("SQL")
             if response_sql is None or len(response_sql) == 0:
                 raise ValueError("SQL query not found in the response.")
             return response_sql
-        except:
+        except Exception as e:
+            logger.error(f"Failed to parse response: {e}")
             response = self.fetch_code(response, code_type="sql", default=";")
             return response
 
