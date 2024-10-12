@@ -3,13 +3,15 @@ import itertools
 from typing import List
 
 from model import Base
+from tools import SqlExecutor
 
 class Vote(Base):
     def __init__(self, args):
         temperature = 0.7
         super().__init__(args, temperature=temperature)
 
-        max_num_permutations = 10
+        self.max_num_permutations = 10
+        self.sql_executor = None
 
     def inference(self, schema:List[str], question:str, evidence:str = None) -> str:
         assert isinstance(schema, list)
@@ -26,8 +28,10 @@ class Vote(Base):
             ) for permutation in random_permutations
         ]
         response_list = self.model.generate(query_list)
-        from pprint import pprint
-        pprint(response_list)
-        exit(0)
+        sql_list = [
+            self.fetch_code(response, code_type="sql", default=";") for response in response_list
+        ]
+        
+        assert self.sql_executor is not None
 
-        return self.fetch_code(response, code_type="sql", default=";")
+    

@@ -48,6 +48,9 @@ class LocalLanguageModel(LanguageModel):
         return response
 
     def chat_batch(self, messages_batch: List[List[Dict[str, str]]]) -> List[str]:
+        return [self.chat(messages) for messages in messages_batch]
+
+        # batch inference will OOM        
         texts = self.tokenizer.apply_chat_template(
             messages_batch,
             tokenize=False,

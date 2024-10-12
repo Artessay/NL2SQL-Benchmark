@@ -29,6 +29,8 @@ def run(args):
         
         # set Sql Executor
         sql_executor = tools.SqlExecutor(args.database_path, db_name)
+        if hasattr(agent, 'sql_executor'):
+            agent.sql_executor = sql_executor
         
         response = agent(schema, query, evidence)
         response = response.replace('\n',' ')
