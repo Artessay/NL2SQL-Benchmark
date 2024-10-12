@@ -1,4 +1,5 @@
 import os
+import concurrent.futures
 
 from openai import OpenAI
 from typing import Dict, List
@@ -34,3 +35,9 @@ class RemoteLanguageModel(LanguageModel):
 
         response = response.choices[0].message.content
         return response
+    
+    def chat_batch(self, messages_batch: List[List[Dict[str, str]]]) -> List[str]:
+        # process in parallel
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            responses = list(executor.map(self.chat, messages_batch))
+        return responses

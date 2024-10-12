@@ -11,27 +11,29 @@ class SqlExecutor:
     def execute_sql(self, sql: str) -> dict:
         # Get database connection
         conn = sqlite3.connect(self.database_path)
-        conn.text_factory = lambda b: b.decode(errors="ignore")
         cursor = conn.cursor()
         try:
             cursor.execute(sql)
             result = cursor.fetchall()
-            return {
+            answer = {
                 "sql": str(sql),
                 "data": result,
             }
         except sqlite3.Error as er:
-            return {
+            answer = {
                 "sql": str(sql),
                 "sqlite_error": str(' '.join(er.args)),
                 "exception_class": str(er.__class__)
             }
         except Exception as e:
-            return {
+            answer = {
                 "sql": str(sql),
                 "sqlite_error": str(e.args),
                 "exception_class": str(type(e).__name__)
             }
+        
+        conn.close()
+        return answer
 
     def is_need_refine(self, exec_result: dict):
         # spider exist dirty values, even gold sql execution result is None

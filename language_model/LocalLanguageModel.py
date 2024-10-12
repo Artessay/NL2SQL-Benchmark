@@ -8,7 +8,7 @@ class LocalLanguageModel(LanguageModel):
         super().__init__(**kwargs)
         
         self.max_new_tokens = kwargs.pop("max_new_tokens", 512)
-        self.temperature = kwargs.pop("temperature", 0.0)
+        # self.temperature = kwargs.pop("temperature", 0.0)
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_name,
@@ -38,7 +38,6 @@ class LocalLanguageModel(LanguageModel):
             **model_inputs,
             max_new_tokens=self.max_new_tokens,
             pad_token_id=self.tokenizer.eos_token_id,
-            temperature=self.temperature
         )
         generated_ids = [
             output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
