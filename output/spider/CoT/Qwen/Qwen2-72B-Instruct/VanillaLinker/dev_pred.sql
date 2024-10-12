@@ -758,3 +758,61 @@ SELECT T3.Language FROM country AS T1 JOIN city AS T2 ON T1.Code = T2.CountryCod
 SELECT T2.Language FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T1.Continent = 'Asia' GROUP BY T2.Language ORDER BY COUNT(T1.Code) DESC LIMIT 1;
 SELECT T2.Language FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T1.GovernmentForm = 'Republic' GROUP BY T2.Language HAVING COUNT(*) = 1;
 SELECT DISTINCT T2.Language FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T1.GovernmentForm = 'Republic' GROUP BY T2.Language HAVING COUNT(T2.CountryCode) = 1;
+SELECT T1.Name, T1.Population FROM city AS T1 JOIN country AS T2 ON T1.CountryCode = T2.Code JOIN countrylanguage AS T3 ON T2.Code = T3.CountryCode WHERE T3.Language = 'English' ORDER BY T1.Population DESC LIMIT 1;
+SELECT c.Name, c.Population FROM city AS c JOIN countrylanguage AS cl ON c.CountryCode = cl.CountryCode WHERE cl.Language = 'English' ORDER BY c.Population DESC LIMIT 1;
+SELECT T1.Name, T1.Population, T1.LifeExpectancy FROM `country` AS T1 WHERE T1.Continent = 'Asia' ORDER BY T1.SurfaceArea DESC LIMIT 1;
+SELECT Name, Population, LifeExpectancy FROM country WHERE Continent = 'Asia' ORDER BY SurfaceArea DESC LIMIT 1;
+SELECT AVG(T1.LifeExpectancy) FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T2.Language != 'English' OR T2.IsOfficial != 'T';
+SELECT AVG(T1.LifeExpectancy) FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T2.Language != 'English' AND T2.IsOfficial = 'T';
+SELECT SUM(T1.Population) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode WHERE T2.Language != 'English' OR T2.IsOfficial != 'T'
+SELECT SUM(T1.Population) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode WHERE T2.Language != 'English';
+SELECT T2.Language FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T1.HeadOfState = 'Beatrix' AND T2.IsOfficial = 'T';
+SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode WHERE T1.HeadOfState = 'Beatrix' AND T2.IsOfficial = 'T';
+SELECT COUNT(DISTINCT T2.Language) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode WHERE T1.IndepYear < 1930 AND T2.IsOfficial = 'T';
+SELECT COUNT(DISTINCT T2.Language) FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode WHERE T1.IndepYear < 1930 AND T2.IsOfficial = 'T';
+SELECT Name FROM country WHERE SurfaceArea > (SELECT MAX(SurfaceArea) FROM country WHERE Continent = 'Europe')
+SELECT T1.Name FROM `country` AS T1 WHERE T1.SurfaceArea > (SELECT MAX(T2.SurfaceArea) FROM `country` AS T2 WHERE T2.Continent = 'Europe')
+SELECT Name FROM country WHERE Continent = 'Africa' AND Population < (SELECT MIN(Population) FROM country WHERE Continent = 'Asia')
+SELECT T1.Name FROM `country` AS T1 WHERE T1.Continent = 'Africa' AND T1.Population < (SELECT MIN(T2.Population) FROM `country` AS T2 WHERE T2.Continent = 'Asia')
+SELECT Name FROM country WHERE Continent = 'Asia' AND Population > (SELECT MAX(Population) FROM country WHERE Continent = 'Africa');
+SELECT T1.Name FROM `country` AS T1 WHERE T1.Continent = 'Asia' AND T1.Population > (SELECT MAX(T2.Population) FROM `country` AS T2 WHERE T2.Continent = 'Africa')
+SELECT DISTINCT CountryCode FROM countrylanguage WHERE Language != 'English';
+SELECT c.Code FROM country AS c WHERE c.Code NOT IN (SELECT cl.CountryCode FROM countrylanguage AS cl WHERE cl.Language = 'English')
+SELECT DISTINCT CountryCode FROM countrylanguage WHERE Language != 'English';
+SELECT CountryCode FROM countrylanguage WHERE Language != 'English' AND IsOfficial = 'T';
+SELECT c.Code FROM country AS c JOIN countrylanguage AS cl ON c.Code = cl.CountryCode WHERE c.GovernmentForm != 'Republic' AND cl.Language != 'English';
+SELECT c.Code FROM country AS c JOIN countrylanguage AS cl ON c.Code = cl.CountryCode WHERE cl.Language != 'English' AND c.GovernmentForm != 'Republic';
+SELECT city.Name FROM city JOIN country ON city.CountryCode = country.Code WHERE country.Continent = 'Europe' AND NOT EXISTS (SELECT * FROM countrylanguage WHERE countrylanguage.CountryCode = city.CountryCode AND countrylanguage.Language = 'English' AND countrylanguage.IsOfficial = 'T');
+SELECT T1.Name FROM city AS T1 JOIN country AS T2 ON T1.CountryCode = T2.Code JOIN countrylanguage AS T3 ON T2.Code = T3.CountryCode WHERE T2.Continent = 'Europe' AND NOT (T3.Language = 'English' AND T3.IsOfficial = 'T');
+SELECT DISTINCT T1.Name FROM city AS T1 JOIN country AS T2 ON T1.CountryCode = T2.Code JOIN countrylanguage AS T3 ON T2.Code = T3.CountryCode WHERE T2.Continent = 'Asia' AND T3.Language = 'Chinese'
+SELECT DISTINCT T1.Name FROM city AS T1 JOIN country AS T2 ON T1.CountryCode = T2.Code JOIN countrylanguage AS T3 ON T2.Code = T3.CountryCode WHERE T2.Continent = 'Asia' AND T3.Language = 'Chinese' AND T3.IsOfficial = 'T';
+SELECT Name, IndepYear, SurfaceArea FROM country ORDER BY Population ASC LIMIT 1;
+SELECT Name, IndepYear, SurfaceArea FROM country ORDER BY Population ASC LIMIT 1;
+SELECT T2.Population, T2.Name, T2.HeadOfState FROM country AS T1 JOIN city AS T2 ON T1.Code = T2.CountryCode WHERE T1.SurfaceArea = (SELECT MAX(SurfaceArea) FROM country);
+SELECT T1.Name, T1.Population, T1.HeadOfState FROM country AS T1 WHERE T1.SurfaceArea = (SELECT MAX(T2.SurfaceArea) FROM country AS T2);
+SELECT T1.Name, COUNT(DISTINCT T2.Language) FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode GROUP BY T1.Code HAVING COUNT(*) >= 3;
+SELECT c.Name, COUNT(cl.Language) AS LanguageCount FROM country AS c JOIN countrylanguage AS cl ON c.Code = cl.CountryCode GROUP BY cl.CountryCode HAVING COUNT(*) > 2;
+SELECT District, COUNT(*) AS num_cities FROM city WHERE Population > (SELECT AVG(Population) FROM city) GROUP BY District;
+SELECT District, COUNT(*) FROM city WHERE Population > (SELECT AVG(Population) FROM city) GROUP BY District;
+SELECT T1.GovernmentForm, SUM(T1.Population) FROM country AS T1 JOIN city AS T2 ON T1.Code = T2.CountryCode GROUP BY T1.GovernmentForm HAVING AVG(T1.LifeExpectancy) > 72;
+SELECT T1.GovernmentForm, SUM(T1.Population) FROM country AS T1 JOIN (SELECT GovernmentForm, AVG(LifeExpectancy) AS avg_life_expectancy FROM country GROUP BY GovernmentForm HAVING AVG(LifeExpectancy) > 72) AS T2 ON T1.GovernmentForm = T2.GovernmentForm GROUP BY T1.GovernmentForm;
+SELECT Continent, AVG(LifeExpectancy) AS avg_life_expectancy, SUM(Population) AS total_population FROM country GROUP BY Continent HAVING avg_life_expectancy < 72;
+SELECT Continent, SUM(Population) AS TotalPopulation, AVG(LifeExpectancy) AS AvgLifeExpectancy FROM country GROUP BY Continent HAVING AvgLifeExpectancy < 72;
+SELECT Name, SurfaceArea FROM country ORDER BY SurfaceArea DESC LIMIT 5;
+SELECT Name, SurfaceArea FROM country ORDER BY SurfaceArea DESC LIMIT 5;
+SELECT Name FROM country ORDER BY Population DESC LIMIT 3;
+SELECT Name FROM country ORDER BY Population DESC LIMIT 3;
+SELECT Name FROM country ORDER BY Population ASC LIMIT 3
+SELECT Name FROM country ORDER BY Population ASC LIMIT 3;
+SELECT COUNT(*) FROM country WHERE Continent = 'Asia';
+SELECT COUNT(Code) FROM country WHERE Continent = 'Asia';
+SELECT Name FROM country WHERE Continent = 'Europe' AND Population = 80000;
+SELECT Name FROM country WHERE Continent = 'Europe' AND Population = 80000;
+SELECT SUM(Population) AS TotalPopulation, AVG(SurfaceArea) AS AverageArea FROM country WHERE Continent = 'North America' AND SurfaceArea > 3000;
+SELECT SUM(Population), AVG(SurfaceArea) FROM country WHERE Continent = 'North America' AND SurfaceArea > 3000;
+SELECT Name FROM city WHERE Population BETWEEN 160000 AND 900000;
+SELECT Name FROM city WHERE Population BETWEEN 160000 AND 900000;
+SELECT T2.Language FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode GROUP BY T2.Language ORDER BY COUNT(T1.Code) DESC LIMIT 1;
+SELECT T2.Language, COUNT(T1.Code) AS count FROM country AS T1 JOIN countrylanguage AS T2 ON T1.Code = T2.CountryCode GROUP BY T2.Language ORDER BY count DESC LIMIT 1;
+SELECT cl.CountryCode, cl.Language, cl.Percentage FROM countrylanguage cl JOIN (SELECT CountryCode, MAX(Percentage) AS max_percentage FROM countrylanguage GROUP BY CountryCode) cl_max ON cl.CountryCode = cl_max.CountryCode AND cl.Percentage = cl_max.max_percentage;
+SELECT T1.Code, T2.Language FROM `country` AS T1 JOIN `countrylanguage` AS T2 ON T1.Code = T2.CountryCode WHERE T2.Percentage IN (SELECT MAX(Percentage) FROM `countrylanguage` GROUP BY CountryCode);

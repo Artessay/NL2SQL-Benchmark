@@ -867,3 +867,51 @@ SELECT d.driverId, d.forename, d.surname, d.dob FROM results AS r JOIN races AS 
 SELECT T3.url FROM results AS T1 JOIN races AS T2 ON T1.raceId = T2.raceId JOIN drivers AS T3 ON T1.driverId = T3.driverId WHERE T2.raceId = 161 AND T1.time LIKE '0:01:%';
 SELECT d.nationality FROM drivers AS d JOIN results AS r ON d.driverId = r.driverId WHERE r.raceId IN (SELECT raceId FROM races WHERE raceNo = 933) ORDER BY r.fastestLapSpeed DESC LIMIT 1;
 SELECT c.lat, c.lng FROM circuits AS c JOIN races AS r ON c.circuitId = r.circuitId WHERE r.name = 'Malaysian Grand Prix';
+SELECT c.url FROM constructors AS c JOIN (SELECT r.constructorId, MAX(r.points) AS max_points FROM results AS r JOIN races AS ra ON r.raceId = ra.raceId WHERE ra.raceId = 9 GROUP BY r.constructorId ORDER BY max_points DESC LIMIT 1) AS cr ON c.constructorId = cr.constructorId
+SELECT r.Q1 FROM results AS r JOIN races AS ra ON r.raceId = ra.raceId JOIN drivers AS d ON r.driverId = d.driverId WHERE ra.raceId = 345 AND d.driverName = 'Lucas di Grassi';
+SELECT T4.nationality FROM races AS T1 JOIN qualifying AS T2 ON T1.raceId = T2.raceId JOIN results AS T3 ON T2.driverId = T3.driverId JOIN drivers AS T4 ON T3.driverId = T4.driverId WHERE T1.raceId = 347 AND T2.q2time = '0:01:15';
+SELECT T3.code FROM qualifying AS T1 JOIN races AS T2 ON T1.raceId = T2.raceId JOIN drivers AS T3 ON T1.driverId = T3.driverId WHERE T2.raceId = 45 AND T1.q3 LIKE '01:33%'
+SELECT r.time FROM results AS r JOIN drivers AS d ON r.driverId = d.driverId WHERE r.raceId = 743 AND d.forename = 'Bruce' AND d.surname = 'McLaren';
+SELECT d.name FROM results AS r JOIN races AS ra ON r.raceId = ra.raceId JOIN drivers AS d ON r.driverId = d.driverId WHERE ra.name = 'San Marino Grand Prix' AND ra.year = 2006 AND r.position = 2;
+SELECT s.url FROM seasons AS s JOIN races AS r ON s.seasonId = r.seasonId WHERE r.raceId = 901;
+SELECT COUNT(*) FROM results JOIN races ON results.raceId = races.raceId WHERE races.date = '2015-11-29' AND results.time IS NOT NULL;
+SELECT T1.driverId FROM results AS T1 JOIN drivers AS T2 ON T1.driverId = T2.driverId WHERE T1.raceId = 872 AND T1.time IS NOT NULL ORDER BY T2.dob DESC LIMIT 1;
+SELECT T1.forename, T1.surname FROM drivers AS T1 JOIN results AS T2 ON T1.driverId = T2.driverId WHERE T2.raceId = 348 AND T2.fastestLap IN (SELECT MIN(T3.fastestLap) FROM results AS T3 WHERE T3.raceId = 348);
+SELECT d.nationality FROM drivers AS d JOIN (SELECT driverId FROM results WHERE fastestLapSpeed = (SELECT MAX(fastestLapSpeed) FROM results)) AS r ON d.driverId = r.driverId;
+SELECT CAST((T1.fastestLapSpeed - T2.fastestLapSpeed) AS REAL) * 100 / T1.fastestLapSpeed FROM(SELECT fastestLapSpeed FROM results WHERE raceId = 853 AND driverId = (SELECT driverId FROM drivers WHERE forename = 'Paul' AND surname = 'di Resta')) AS T1, (SELECT fastestLapSpeed FROM results WHERE raceId = 854) AS T2
+SELECT CAST(SUM(CASE WHEN T2.time IS NOT NULL THEN 1 ELSE 0 END) AS REAL) / COUNT(T2.driverId) FROM races AS T1 JOIN results AS T2 ON T1.raceId = T2.raceId WHERE T1.date = '1983-07-16';
+SELECT MIN(year) FROM races WHERE raceName = 'Singapore Grand Prix';
+SELECT COUNT(T1.raceId), T1.raceName FROM races AS T1 JOIN results AS T2 ON T1.raceId = T2.raceId WHERE T1.year = 2005 GROUP BY T1.raceName ORDER BY T1.raceName DESC;
+SELECT raceName FROM races WHERE strftime('%Y-%m', date) = (SELECT strftime('%Y-%m', MIN(date)) FROM races);
+SELECT T1.name, T1.date FROM races AS T1 JOIN (SELECT MAX(round) AS max_round FROM races WHERE YEAR = 1999) AS T2 ON T1.round = T2.max_round AND T1.year = 1999;
+SELECT year FROM races GROUP BY year ORDER BY COUNT(*) DESC LIMIT 1;
+SELECT name FROM races WHERE year = 2017 AND name NOT IN (SELECT name FROM races WHERE year = 2000);
+SELECT c.circuitRef, c.location, c.country FROM circuits AS c JOIN races AS r ON c.circuitId = r.circuitId WHERE r.year = (SELECT MIN(year) FROM races WHERE raceName = 'European Grand Prix');
+SELECT r.year FROM races AS r JOIN circuits AS c ON r.circuitId = c.circuitId WHERE c.name = 'Brands Hatch' AND r.name = 'British Grand Prix' ORDER BY r.year DESC LIMIT 1;
+SELECT COUNT(DISTINCT R.year) FROM circuits AS C JOIN races AS R ON C.circuitId = R.circuitId WHERE C.name = 'Silverstone' AND R.name = 'British Grand Prix';
+SELECT d.driverName FROM results r JOIN drivers d ON r.driverId = d.driverId JOIN races ra ON r.raceId = ra.raceId WHERE ra.year = 2010 AND ra.name = 'Singapore Grand Prix' ORDER BY r.positionOrder;
+SELECT d.forename, d.surname, MAX(r.points) AS max_points FROM results r JOIN drivers d ON r.driverId = d.driverId GROUP BY r.driverId ORDER BY max_points DESC LIMIT 1;
+SELECT r.year, rd.forename, rd.surname, rl.points FROM (SELECT * FROM races WHERE year = 2017 AND name = 'Chinese Grand Prix') AS rp JOIN results AS rl ON rp.raceId = rl.raceId JOIN drivers AS rd ON rl.driverId = rd.driverId ORDER BY rl.points DESC LIMIT 3;
+SELECT D.forename, D.surname, R.name FROM results AS Res JOIN drivers AS D ON Res.driverId = D.driverId JOIN races AS R ON Res.raceId = R.raceId WHERE Res.milliseconds = (SELECT MIN(milliseconds) FROM results);
+SELECT AVG(T1.milliseconds) AS avg_lap_time FROM results AS T1 JOIN races AS T2 ON T1.raceId = T2.raceId JOIN drivers AS T3 ON T1.driverId = T3.driverId WHERE T2.name = 'Malaysian Grand Prix' AND T3.forename = 'Lewis' AND T3.surname = 'Hamilton';
+SELECT CAST(SUM(CASE WHEN T2.position > 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T2.resultId) FROM races AS T1 JOIN results AS T2 ON T1.raceId = T2.raceId JOIN drivers AS T3 ON T2.driverId = T3.driverId WHERE T3.surname = 'Hamilton' AND T1.year >= 2010;
+SELECT d.forename, d.surname, d.nationality, MAX(r.points) AS max_points FROM (SELECT driverId, COUNT(*) AS wins FROM results JOIN races ON results.raceId = races.raceId WHERE position = 1 GROUP BY driverId ORDER BY wins DESC LIMIT 1) AS w JOIN results AS r ON w.driverId = r.driverId JOIN drivers AS d ON w.driverId = d.driverId;
+SELECT T1.forename || ' ' || T1.surname AS name, strftime('%Y', 'now') - strftime('%Y', T1.dob) AS age FROM drivers AS T1 WHERE T1.nationality = 'Japanese' ORDER BY T1.dob DESC LIMIT 1;
+SELECT c.circuitRef FROM circuits AS c JOIN races AS r ON c.circuitId = r.circuitId WHERE r.date BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY c.circuitId HAVING COUNT(r.raceId) = 4;
+SELECT c.circuitName, c.location, r.name FROM circuits AS c JOIN races AS r ON c.circuitId = r.circuitId WHERE r.year = 2006 AND c.country = 'USA';
+SELECT r.raceName, c.circuitName, c.location FROM races AS r JOIN circuits AS c ON r.circuitId = c.circuitId WHERE strftime('%m', r.date) = '09' AND strftime('%Y', r.date) = '2005';
+SELECT r.name FROM drivers AS d JOIN results AS res ON d.driverId = res.driverId JOIN races AS r ON res.raceId = r.raceId WHERE d.forename = 'Alex' AND d.surname = 'Yoong' AND res.position < 20;
+;
+SELECT r.name AS race_name, r.year AS race_year FROM results AS res JOIN races AS r ON res.raceId = r.raceId JOIN drivers AS d ON res.driverId = d.driverId WHERE d.forename = 'Michael' AND d.surname = 'Schumacher' ORDER BY res.milliseconds ASC LIMIT 1;
+SELECT AVG(T1.points) FROM results AS T1 JOIN races AS T2 ON T1.raceId = T2.raceId JOIN drivers AS T3 ON T1.driverId = T3.driverId WHERE T3.name = 'Eddie Irvine' AND T2.year = 2000;
+SELECT T3.points FROM (SELECT T1.driverId, T2.raceId, MIN(T2.year) AS year FROM drivers AS T1 JOIN results AS T2 ON T1.driverId = T2.driverId WHERE T1.forename = 'Lewis' AND T1.surname = 'Hamilton') AS T3 JOIN races AS T4 ON T3.raceId = T4.raceId JOIN results AS T5 ON T3.driverId = T5.driverId AND T4.raceId = T5.raceId;
+SELECT r.name AS race_name, c.country FROM races r JOIN circuits c ON r.circuitId = c.circuitId WHERE strftime('%Y', r.date) = '2017' ORDER BY r.date;
+SELECT r.raceName, r.year, c.circuitLocation FROM results AS res JOIN races AS r ON res.raceId = r.raceId JOIN circuits AS c ON r.circuitId = c.circuitId ORDER BY res.laps DESC LIMIT 1;
+SELECT CAST(SUM(CASE WHEN T2.country = 'Germany' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.raceId) FROM races AS T1 JOIN circuits AS T2 ON T1.circuitId = T2.circuitId WHERE T1.name = 'European Grand Prix';
+SELECT lat, lng FROM circuits WHERE name = 'Silverstone Circuit';
+SELECT MAX(lat) FROM circuits WHERE name IN ('Silverstone Circuit', 'Hockenheimring', 'Hungaroring')
+SELECT circuitRef FROM circuits WHERE name = 'Marina Bay Street Circuit';
+SELECT c.name FROM countries AS c JOIN locations AS l ON c.locationId = l.locationId JOIN circuits AS ci ON l.locationId = ci.locationId WHERE ci.alt = (SELECT MAX(alt) FROM circuits);
+SELECT COUNT(*) FROM drivers WHERE code IS NULL;
+SELECT nationality FROM drivers WHERE dob = (SELECT MIN(dob) FROM drivers)
+SELECT surname FROM drivers WHERE nationality = 'Italian';

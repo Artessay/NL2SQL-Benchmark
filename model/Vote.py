@@ -13,42 +13,32 @@ from tools import SqlExecutor
 class Vote(Base):
     def __init__(self, args):
         temperature = 0.0
-        super().__init__(args, temperature=temperature)
+        self.parent = super()
+        self.parent.__init__(args, temperature=temperature)
 
         self.max_num_permutations = 10
         self.sql_executor: SqlExecutor = None
 
     def inference(self, schema:List[str], question:str, evidence:str = None) -> str:
-        query_list = self._sample_queries(schema, question, evidence)
-        response_list = self.model.generate(query_list)
+        schema_list = self._sample_queries(schema)
         sql_list = [
-            self.fetch_code(response, code_type="sql", default=";") for response in response_list
+            self.parent.inference(list(shema), question, evidence) for shema in schema_list
         ]
         return self._vote_sql(sql_list)
         
 
-    def _sample_queries(self, schema:List[str], question:str, evidence:str = None) -> List[str]:
+    def _sample_queries(self, schema:List[str]) -> List[List[str]]:
         assert isinstance(schema, list)
 
         all_permutations = list(itertools.permutations(schema))
         random.shuffle(all_permutations)
-        random_permutations = all_permutations[:self.max_num_permutations]
+        random_schemas = all_permutations[:self.max_num_permutations]
 
-        query_list = [
-            self.get_prompt(
-                "\n".join(permutation),
-                question,
-                evidence
-            ) for permutation in random_permutations
-        ]
-
-        return query_list
+        return random_schemas
 
     def _vote_sql(self, sql_list:List[str]) -> str:
         assert self.sql_executor is not None
 
-        # remove duplicated sql
-        sql_list = list(set(sql_list))
         logger.info(f"{len(sql_list)} SQLs are sampled")
         
         # (sql, result) pair list
@@ -67,15 +57,17 @@ class Vote(Base):
         if len(result_list) == 0:
             raise Exception("No valid SQL")
 
-        # count results
-        result_counter = Counter([result for _, result in result_list])
-        
-        # get most common result
-        most_common_result = result_counter.most_common(1)[0][0]
-
-        # get sql having the same result with most common result
-        for sql, result in result_list:
-            if result == most_common_result:
-                return sql
+        try:
+            # count results
+            result_counter = Counter([result for _, result in result_list])
             
-        assert False
+            # get most common result
+            most_common_result = result_counter.most_common(1)[0][0]
+
+            # get sql having the same result with most common result
+            for sql, result in result_list:
+                if result == most_common_result:
+                    return sql
+        except:
+            sql_counter = Counter([sql for sql, _ in result_list])
+            return sql_counter.most_common(1)[0][0]
