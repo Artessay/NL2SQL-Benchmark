@@ -32,6 +32,15 @@ python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
 
 ## Evaluation Result
 
+### Spider Dataset
+
+
+| **Spider**           | easy | medium | hard | extra | all |
+|----------------------|------|--------|------|-------|-----|
+| count                | 248  | 446    | 174  | 166   | 1034|
+| **ACCURACY**         |      |        |      |       |     |
+| Code Qwen2.5 7B      | 0.935| 0.877  | 0.759| 0.584 |0.824|
+
 ### Bird Dataset
 
 | **Bird**             | simple | moderate | challenging | total |
@@ -76,9 +85,15 @@ Qwen2 72B
 | Rule                 | 36.43  | 18.53    | 15.17       | 29.01 |
 | CoT                  | 38.92  | 19.61    | 24.14       | 31.68 |
 | Schema               | 29.41  | 12.28    | 16.55       | 23.01 |
-| CoT+Rule             | 32.76  | 15.73    | 13.79       | 25.81 |
 
 Qwen2.5 Coder 7B
+
+| **Spider**           | easy | medium | hard | extra | all |
+|----------------------|------|--------|------|-------|-----|
+| count                | 248  | 446    | 174  | 166   | 1034|
+| **ACCURACY**         |      |        |      |       |     |
+| Base                 | 93.5 |  87.7  | 759  | 58.4  | 82.4|
+| Rule                 | 92.7 |  83.9  | 70.1 | 57.2  | 79.4|
 
 | **Bird**             | simple | moderate | challenging | total |
 |----------------------|--------|----------|-------------|-------|
@@ -88,4 +103,3 @@ Qwen2.5 Coder 7B
 | Rule                 | 54.27  | 37.72    | 31.03       | 47.07 |
 | CoT                  | 55.89  | 36.85    | 29.66       | 47.65 |
 | Schema               | 41.62  | 21.12    | 20.69       | 33.44 |
-| CoT+Rule             | 53.62  | 33.84    | 28.28       | 45.24 |

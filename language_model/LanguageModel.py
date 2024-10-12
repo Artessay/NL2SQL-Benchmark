@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Union
 from abc import abstractmethod
 
 class LanguageModel():
@@ -10,14 +10,29 @@ class LanguageModel():
     @abstractmethod
     def chat(self, messages: List[Dict[str, str]]) -> str:
         raise NotImplementedError()
+    
+    @abstractmethod
+    def chat_batch(self, messages: List[List[Dict[str, str]]]) -> List[str]:
+        raise NotImplementedError()
 
-    def generate(self, prompt: str, system_prompt: str = None) -> str:
+    def generate(self, prompt: Union[str | List[str]] , system_prompt: str = None) -> str:
         system_prompt = system_prompt or self.system_prompt
-        messages = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": prompt}
-        ]
-        return self.chat(messages)
+        
+        if isinstance(prompt, list):
+            messages = [
+                [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": single_prompt}
+                ]
+                for single_prompt in prompt
+            ]
+            return self.chat_batch(messages)
+        else:
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": prompt}
+            ]
+            return self.chat(messages)
 
     def generate_sql(self, prompt):
         response = self.generate(prompt)

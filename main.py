@@ -1,7 +1,7 @@
-import os
 from tqdm import tqdm
 
 import model
+import tools
 import schema_linking
 from fix_gt import fix_gt
 from evaluation import evaluation
@@ -26,6 +26,10 @@ def run(args):
 
         # get schema
         schema = schema_linker.get_schema(args.database_path, db_name, query, evidence)
+        
+        # set Sql Executor
+        sql_executor = tools.SqlExecutor(args.database_path, db_name)
+        
         response = agent(schema, query, evidence)
         response = response.replace('\n',' ')
         

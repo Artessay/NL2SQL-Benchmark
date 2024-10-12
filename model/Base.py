@@ -1,14 +1,21 @@
-from typing import Any
+import logging
+
+logging.basicConfig(level=logging.INFO) 
+logger = logging.getLogger(__name__)
+
 import language_model
 
 class Base():
-    def __init__(self, args):
-        self.model = language_model.load_language_model(args.language_model)
+    def __init__(self, args, **kwargs):
+        self.model = language_model.load_language_model(args.language_model, **kwargs)
 
     def __call__(self, schema:str, question:str, evidence:str = None) -> str:
         try:
             return self.inference(schema, question, evidence)
-        except:
+        except KeyboardInterrupt:
+            raise
+        except Exception as e:
+            logger.error(e)
             return ";"
 
     def inference(self, schema:str, question:str, evidence:str = None) -> str:
@@ -48,3 +55,4 @@ class Base():
             code = default
 
         return code
+    
