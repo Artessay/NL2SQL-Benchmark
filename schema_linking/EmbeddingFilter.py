@@ -1,4 +1,5 @@
 import torch
+import torch.nn.functional as F
 from transformers import PreTrainedTokenizer, PreTrainedModel
 from typing import List
 
@@ -25,7 +26,7 @@ class EmbeddingFilter(SchemaLinker):
         # calculate columns similarities
         fully_qualified_names = [f"{table_name}.{column_info[1]}" for column_info in columns_info]
         columns_embeddings = self._get_text_embeddings(fully_qualified_names)
-        columns_similarity = torch.nn.functional.cosine_similarity(query_embeddings, columns_embeddings)
+        columns_similarity = F.cosine_similarity(query_embeddings, columns_embeddings)
         # for column_name, column_similarity in zip(fully_qualified_names, columns_similarity):
         #     print(column_name, column_similarity)
         # print()
@@ -52,3 +53,22 @@ class EmbeddingFilter(SchemaLinker):
             self.model.to(self.device)
             embeddings = self.model(**tokens).last_hidden_state.mean(dim=1)
         return embeddings
+
+
+    def _embedding_similarity_kl(self, embed1, embed2):
+        """Compute similarity between two embeddings using KL divergence."""
+        # Convert embeddings to probability distributions using softmax
+        p = F.softmax(embed1, dim=0)
+        q = F.softmax(embed2, dim=0)
+        
+        # Compute KL(P||Q) and KL(Q||P)
+        kl_pq = F.kl_div(q.log(), p, reduction='sum')
+        kl_qp = F.kl_div(p.log(), q, reduction='sum')
+        
+        # Use the average of KL(P||Q) and KL(Q||P) as symmetric measure
+        avg_kl = (kl_pq + kl_qp) / 2
+        
+        # Convert divergence to similarity (higher value means more similar)
+        similarity = 1 / (1 + avg_kl)
+        
+        return similarity
