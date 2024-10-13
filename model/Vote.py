@@ -44,7 +44,11 @@ class Vote(Base):
         # (sql, result) pair list
         result_list = [] 
         for sql in sql_list:
-            result_dict = self.sql_executor.execute_sql(sql)
+            try:
+                result_dict = self.sql_executor.execute_sql(sql)
+            except:
+                continue
+            
             if "data" in result_dict:
                 result_list.append((sql, result_dict["data"]))
             else:
