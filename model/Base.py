@@ -3,6 +3,10 @@ import logging
 logging.basicConfig(level=logging.INFO) 
 logger = logging.getLogger(__name__)
 
+if __name__ == '__main__':
+    import os, sys
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import language_model
 
 class Base():
@@ -11,7 +15,13 @@ class Base():
 
     def __call__(self, schema:str, question:str, evidence:str = None) -> str:
         try:
-            return self.inference(schema, question, evidence)
+            try:
+                return self.inference(schema, question, evidence)
+            except KeyboardInterrupt:
+                raise
+            except Exception as e:
+                logger.error(e)
+                return Base.inference(self, schema, question, evidence)
         except KeyboardInterrupt:
             raise
         except Exception as e:
@@ -56,3 +66,8 @@ class Base():
 
         return code
     
+if __name__ == "__main__":
+    import utils
+    args = utils.get_args()
+    model = Base(args)
+    print(model("", "Hello", ""))

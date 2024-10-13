@@ -505,3 +505,68 @@ SELECT T2.type FROM `cards` AS T1 JOIN `sets` AS T2 ON T1.setCode  =  T2.code WH
 SELECT COUNT(*) FROM cards WHERE setCode IN (SELECT code FROM sets WHERE name = 'World Championship Decks 2004') AND convertedManaCost = 3;
 SELECT T2.translation FROM sets AS T1 JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T1.name = 'Mirrodin' AND T2.language = 'Chinese Simplified'
 ;
+SELECT CAST(SUM(CASE WHEN T2.isOnlineOnly = 1 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM set_translations AS T1 JOIN sets AS T2 ON T1.setCode = T2.code WHERE T1.language = 'Portuguese (Brazil)'
+;
+SELECT id FROM sets WHERE baseSetSize = (SELECT MAX(baseSetSize) FROM sets)
+SELECT T1.artist FROM cards AS T1 WHERE T1.side IS NULL AND T1.convertedManaCost = ( SELECT MAX(T2.convertedManaCost) FROM cards AS T2 WHERE T2.side IS NULL )
+SELECT T2.frameEffects FROM (SELECT cardKingdomFoilId FROM cards WHERE cardKingdomFoilId IS NOT NULL AND cardKingdomId IN (SELECT cardKingdomId FROM cards WHERE cardKingdomFoilId IS NOT NULL)) AS T1 JOIN (SELECT cardKingdomFoilId, frameEffects FROM cards WHERE cardKingdomFoilId IS NOT NULL) AS T2 ON T1.cardKingdomFoilId = T2.cardKingdomFoilId GROUP BY T2.frameEffects ORDER BY COUNT(T2.cardKingdomFoilId) DESC LIMIT 1
+SELECT COUNT(*) FROM cards WHERE (power IS NULL OR power = '*') AND hasFoil = 0 AND duelDeck = 'A'
+SELECT id FROM sets WHERE type = 'commander' ORDER BY totalSetSize DESC LIMIT 1
+SELECT T1.name FROM cards AS T1 JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.format = 'duels' AND T1.manaCost IS NOT NULL ORDER BY T1.manaCost DESC LIMIT 10;
+;
+SELECT COUNT(*) FROM cards AS T1 JOIN foreign_data AS T2 ON T1.uuid = T2.uuid WHERE T1.artist = 'Volkan Baǵa' AND T2.language = 'French'
+SELECT COUNT(*) FROM cards WHERE name = 'Abundance' AND rarity = 'rare' AND types LIKE '%Enchantment%' AND uuid IN (SELECT uuid FROM legalities WHERE status = 'Legal')
+SELECT T2.format ,  T1.name FROM cards AS T1 JOIN legalities AS T2 ON T1.uuid = T2.uuid WHERE T2.status = 'Banned' GROUP BY T2.format ORDER BY COUNT(*) DESC LIMIT 1
+SELECT T2.language FROM sets AS T1 JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T1.name = 'Battlebond' GROUP BY T2.language
+SELECT T2.format FROM (SELECT artist, COUNT(*) AS num_cards FROM cards GROUP BY artist) AS T1 JOIN legalities AS T2 ON T1.artist = T2.uuid WHERE T1.num_cards = (SELECT MIN(num_cards) FROM (SELECT artist, COUNT(*) AS num_cards FROM cards GROUP BY artist))
+;
+SELECT T1.name, T2.format FROM `cards` AS T1 JOIN `legalities` AS T2 ON T1.uuid = T2.uuid WHERE T2.status = 'Banned' AND T1.edhrecRank = 1 GROUP BY T1.name, T2.format
+SELECT AVG(T1.id) ,  T2.language FROM sets AS T1 JOIN set_translations AS T2 ON T1.code = T2.setCode WHERE T1.releaseDate BETWEEN '2012-01-01' AND '2015-12-31' GROUP BY T2.language ORDER BY COUNT(T2.language) DESC LIMIT 1
+SELECT artist FROM cards WHERE bordercolor = 'black' AND availability = 'arena' GROUP BY artist;
+SELECT uuid FROM legalities WHERE `format` = 'oldschool' AND (`status` = 'banned' OR `status` = 'restricted')
+SELECT COUNT(*) FROM cards WHERE artist = 'Matthew D. Wilson' AND availability = 'paper'
+SELECT T2.text FROM cards AS T1 JOIN rulings AS T2 ON T1.uuid = T2.uuid WHERE T1.artist = 'Kev Walker' ORDER BY T2.date DESC;
+;
+SELECT T1.name FROM `sets` AS T1 JOIN `foreign_data` AS T2 ON T1.code = T2.multiverseid WHERE T2.language = 'Korean' AND NOT EXISTS ( SELECT * FROM `foreign_data` WHERE `foreign_data`.multiverseid = T1.code AND language LIKE '%Japanese%' ) GROUP BY T1.name
+SELECT T1.frameVersion, T1.name FROM `cards` AS T1 JOIN `legalities` AS T2 ON T1.uuid = T2.uuid WHERE T1.artist = 'Allen Williams' AND T2.status = 'Banned' GROUP BY T1.frameVersion, T1.name
+SELECT T1.DisplayName FROM Users AS T1 WHERE T1.DisplayName IN ('Harlan', 'Jarrod Dixon') AND T1.Reputation = (SELECT MAX(T2.Reputation) FROM Users AS T2 WHERE T2.DisplayName IN ('Harlan', 'Jarrod Dixon'))
+SELECT DisplayName FROM users WHERE STRFTIME('%Y', CreationDate) = '2011'
+SELECT COUNT(*) FROM users WHERE LastAccessDate > '2014-09-01'
+SELECT T1.DisplayName FROM Users AS T1 JOIN Posts AS T2 ON T1.Id = T2.OwnerUserId WHERE PostTypeId = 1 ORDER BY ViewCount DESC LIMIT 1
+SELECT COUNT(*) FROM Users WHERE UpVotes > 100 AND DownVotes > 1;
+SELECT COUNT(*) FROM users WHERE Views > 10 AND STRFTIME('%Y', CreationDate) > '2013'
+SELECT COUNT(*) FROM posts WHERE OwnerUserId = (SELECT Id FROM users WHERE DisplayName = 'csgillespie')
+;
+SELECT U.DisplayName AS Owner FROM Posts P JOIN Users U ON P.OwnerUserId = U.Id WHERE P.Title = 'Eliciting priors from experts'
+SELECT p.Title FROM Posts AS p JOIN Users AS u ON p.OwnerUserId = u.Id WHERE u.DisplayName = 'csgillespie' AND p.ViewCount = (SELECT MAX(ViewCount) FROM Posts WHERE OwnerUserId = u.Id)
+SELECT U.DisplayName FROM Users AS U JOIN Posts AS P ON U.Id = P.OwnerUserId WHERE P.FavoriteCount = (SELECT MAX(FavoriteCount) FROM Posts)
+SELECT SUM(T2.CommentCount) FROM users AS T1 INNER JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T1.DisplayName = 'csgillespie'
+SELECT T2.AnswerCount FROM users AS T1 JOIN posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T1.DisplayName = 'csgillespie' ORDER BY T2.AnswerCount DESC LIMIT 1
+SELECT U.DisplayName FROM Users AS U JOIN Posts AS P ON U.Id = P.LastEditorUserId WHERE P.Title = 'Examples for teaching: Correlation does not mean causation'
+SELECT COUNT(*) FROM Posts WHERE OwnerUserId = (SELECT Id FROM Users WHERE DisplayName = 'csgillespie') AND ParentId IS NULL;
+SELECT T1.DisplayName FROM Users AS T1 INNER JOIN Posts AS T2 ON T1.Id = T2.OwnerUserId WHERE T2.ClosedDate IS NOT NULL
+SELECT COUNT(*) FROM Posts WHERE OwnerUserId IN (SELECT Id FROM Users WHERE Age > 65) AND Score >= 20
+SELECT U.Location FROM Users AS U JOIN Posts AS P ON U.Id = P.OwnerUserId WHERE P.Title = 'Eliciting priors from experts'
+SELECT p.Body FROM Posts AS p JOIN Tags AS t ON p.Id = t.ExcerptPostId WHERE t.TagName = 'bayesian'
+SELECT T1.Body FROM Posts AS T1 JOIN Tags AS T2 ON T1.Id = T2.ExcerptPostId WHERE T2.Count = (SELECT MAX(T3.Count) FROM Tags AS T3)
+SELECT COUNT(*) FROM Badges WHERE UserId = (SELECT Id FROM Users WHERE DisplayName = 'csgillespie')
+SELECT b.Name FROM badges AS b JOIN users AS u ON b.UserId = u.Id WHERE u.DisplayName = 'csgillespie'
+SELECT COUNT(*) FROM badges WHERE UserId = (SELECT Id FROM users WHERE DisplayName = 'csgillespie') AND strftime('%Y', Date) = '2011'
+SELECT T2.DisplayName FROM (SELECT UserId, COUNT(*) AS BadgeCount FROM Badges GROUP BY UserId) AS T1 JOIN Users AS T2 ON T1.UserId = T2.Id ORDER BY T1.BadgeCount DESC LIMIT 1;
+SELECT AVG(Score) FROM posts WHERE OwnerUserId = (SELECT Id FROM users WHERE DisplayName = 'csgillespie')
+SELECT CAST(COUNT(b.Id) AS REAL) / COUNT(DISTINCT u.DisplayName) FROM Users u JOIN Badges b ON u.Id = b.UserId WHERE u.Views > 200;
+SELECT CAST(SUM(CASE WHEN u.Age > 65 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(p.Id) FROM posts p JOIN users u ON p.OwnerUserId = u.Id WHERE p.Score > 5
+SELECT COUNT(*) FROM Votes WHERE UserId = 58 AND CreationDate = '2010-07-19'
+;
+SELECT COUNT(Id) FROM Badges WHERE Name = 'Revival';
+SELECT p.Title FROM Posts AS p JOIN Comments AS c ON p.Id = c.PostId WHERE c.Score = (SELECT MAX(Score) FROM Comments)
+SELECT COUNT(*) FROM comments WHERE PostId IN (SELECT Id FROM posts WHERE ViewCount = 1910)
+SELECT COUNT(*) FROM (SELECT PostId FROM Comments WHERE UserId = '3025' AND CreationDate = '2014-04-23 20:29:39.0') AS c JOIN Posts AS p ON p.Id = c.PostId WHERE p.FavoriteCount > 0
+SELECT "text" FROM "comments" WHERE "postId" = 107829 AND "commentCount" = 1;
+SELECT CASE WHEN p.ClosedDate IS NULL THEN 'not well-finished' ELSE 'well-finished' END AS post_status FROM posts p JOIN comments c ON p.Id = c.PostId WHERE c.UserId = '23853' AND c.CreationDate = '2013-07-12 09:08:18.0';
+SELECT Reputation FROM users WHERE Id IN (SELECT OwnerUserId FROM posts WHERE Id = 65041)
+SELECT COUNT(*) FROM users AS u JOIN posts AS p ON u.Id = p.OwnerUserId WHERE u.DisplayName = 'Tiago Pasqualini'
+SELECT T2.DisplayName FROM Votes AS T1 INNER JOIN Users AS T2 ON T1.UserId = T2.Id WHERE T1.Id = 6347
+SELECT COUNT(*) FROM Posts AS p JOIN Votes AS v ON p.Id = v.PostId WHERE p.Title LIKE '%data visualization%' AND v.VoteTypeId IN (2, 3)
+SELECT b.Name FROM Badges AS b JOIN Users AS u ON b.UserId = u.Id WHERE u.DisplayName = 'DatEpicCoderGuyWhoPrograms'
+SELECT CAST(COUNT(T1.Id) AS REAL) / COUNT(T3.Id) FROM Posts AS T1 INNER JOIN Users AS T2 ON T2.Id = T1.OwnerUserId INNER JOIN Votes AS T3 ON T3.PostId = T1.Id WHERE T2.Id = 24

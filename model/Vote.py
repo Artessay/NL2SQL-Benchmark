@@ -7,16 +7,21 @@ from collections import Counter
 logging.basicConfig(level=logging.INFO) 
 logger = logging.getLogger(__name__)
 
+if __name__ == '__main__':
+    import os, sys
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from model import Base
 from tools import SqlExecutor
 
 class Vote(Base):
-    def __init__(self, args):
-        temperature = 0.0
+    def __init__(self, args, **kwargs):
+        temperature = kwargs.pop("temperature", 0.0)
+        self.max_num_permutations = kwargs.pop("max_num_permutations", 10)
+
         self.parent = super()
         self.parent.__init__(args, temperature=temperature)
 
-        self.max_num_permutations = 10
         self.sql_executor: SqlExecutor = None
 
     def inference(self, schema:List[str], question:str, evidence:str = None) -> str:
@@ -75,3 +80,14 @@ class Vote(Base):
         except:
             sql_counter = Counter([sql for sql, _ in result_list])
             return sql_counter.most_common(1)[0][0]
+
+if __name__ == "__main__":
+    import utils
+    args = utils.get_args()
+    model = Vote(args, max_num_permutations=2)
+
+    try:
+        model.inference(["A", "B"], "Hello", "")
+        assert False and "Should not reach here"
+    except:
+        pass
