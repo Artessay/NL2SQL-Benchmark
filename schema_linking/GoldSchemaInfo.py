@@ -18,15 +18,19 @@ class GoldSchemaInfo(GoldFilter, SchemaInfo):
         columns_schema_str = ""
 
         # get selected columns
-        question = kwargs.pop("question")
-        selected_columns = self._get_selected_columns(None, table_name, None, question=question)
-        if len(selected_columns) == 0:
-            return columns_schema_str
-        
+        try:
+            question = kwargs.pop("question")
+            selected_columns = self._get_selected_columns(None, table_name, None, question=question)
+            if len(selected_columns) == 0:
+                return columns_schema_str
+        except:
+            selected_columns = [] # no selected columns
+
         for _, row in schema_description.iterrows():
             # check if column is selected
             column_name = str(row['original_column_name']).strip()
-            if column_name not in selected_columns:
+            if (column_name not in selected_columns 
+                and len(selected_columns) > 0):
                 continue
 
             columns_schema_str += self._format_column_description(row, table_name, cursor, foreign_keys_map)
