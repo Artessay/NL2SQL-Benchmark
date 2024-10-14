@@ -18,6 +18,8 @@ pip install accelerate
 pip install func_timeout
 pip install transformers
 pip install sentencepiece
+pip install python-dotenv
+pip install langchain_openai
 
 python -c "import nltk; nltk.download('punkt')"
 ```
@@ -27,7 +29,7 @@ python -c "import nltk; nltk.download('punkt')"
 Our evaluation framework supports almost all models that can be downloaded from HuggingFace and Spider dataset and Bird dataset. You can run the benchmark with the following command and specify the model and dataset.
 
 ```sh
-python runner.py -m [model_name] -d [dataset_name] -s [schema_linking_strategy]
+python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [schema_linking_strategy]
 ```
 
 ## Evaluation Result
