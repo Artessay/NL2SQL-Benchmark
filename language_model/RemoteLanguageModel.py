@@ -1,12 +1,13 @@
 import os
-import concurrent.futures
 
-from openai import OpenAI
 from typing import Dict, List
-
+from langchain_openai import ChatOpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 
-from .LanguageModel import LanguageModel
+if __name__ == "__main__":
+    from LanguageModel import LanguageModel
+else:
+    from .LanguageModel import LanguageModel
 
 class RemoteLanguageModel(LanguageModel):
     def __init__(self, model_name, **kwargs) -> None:
@@ -15,10 +16,14 @@ class RemoteLanguageModel(LanguageModel):
         api_key = os.environ.get("OPENAI_API_KEY", None)
         base_url = os.environ.get("OPENAI_API_BASE_URL", None)
         
-        self.model_name = model_name
+        model_name = "qwen2:72b"
         self.temperature = kwargs.pop("temperature", 0.0)
         self.timeout = kwargs.pop("timeout", 60)
-        self.client = OpenAI(api_key=api_key, base_url=base_url)
+        self.client = ChatOpenAI(
+            model=model_name,
+            api_key=api_key, 
+            base_url=base_url
+        )
 
     @retry(
         stop=stop_after_attempt(3),  # retry 3 times before giving up
@@ -26,18 +31,17 @@ class RemoteLanguageModel(LanguageModel):
         reraise=True  # reraise exception if retry fails
     )
     def chat(self, messages: List[Dict[str, str]]) -> str:
-        response = self.client.chat.completions.create(
-            model=self.model_name,
-            messages=messages,
-            temperature=self.temperature,
-            timeout=self.timeout,
+        response = self.client.invoke(
+            input=messages
         )
-
-        response = response.choices[0].message.content
-        return response
+        return response.content
     
     def chat_batch(self, messages_batch: List[List[Dict[str, str]]]) -> List[str]:
         # process in parallel
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            responses = list(executor.map(self.chat, messages_batch))
-        return responses
+        responses = self.client.batch(messages_batch)
+        return [response.content for response in responses]
+    
+if __name__ == "__main__":
+    model = RemoteLanguageModel("qwen-turbo")
+    print(model.generate("What is the capital of France?"))
+    print(model.generate(["What is the capital of France?", "What is the capital of Germany?"]))

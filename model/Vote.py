@@ -3,6 +3,7 @@ import logging
 import itertools
 from typing import List
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logging.basicConfig(level=logging.INFO) 
 logger = logging.getLogger(__name__)
@@ -17,7 +18,7 @@ from tools import SqlExecutor
 class Vote(Base):
     def __init__(self, args, **kwargs):
         temperature = kwargs.pop("temperature", 0.0)
-        self.max_num_permutations = kwargs.pop("max_num_permutations", 10)
+        self.max_num_permutations = kwargs.pop("max_num_permutations", 5)
 
         self.parent = super()
         self.parent.__init__(args, temperature=temperature)
@@ -26,9 +27,12 @@ class Vote(Base):
 
     def inference(self, schema:List[str], question:str, evidence:str = None) -> str:
         schema_list = self._sample_queries(schema)
-        sql_list = [
-            self.parent.inference(list(shema), question, evidence) for shema in schema_list
-        ]
+
+        # generate sql
+        query_list = [self.get_prompt(list(shema), question, evidence) for shema in schema_list]
+        response_list = self.model.generate(query_list)
+        sql_list = [self.fetch_code(response, code_type="sql", default=";") for response in response_list]
+        
         return self._vote_sql(sql_list)
         
 
@@ -40,31 +44,43 @@ class Vote(Base):
         random_schemas = all_permutations[:self.max_num_permutations]
 
         return random_schemas
+    
+    def _execute_and_collect(self, sql):
+        try:
+            result_dict = self.sql_executor.execute_sql(sql)
+            result = result_dict.get("data")
+            if result:
+                return (sql, result)
+            else:
+                logger.warning(f"SQL execution failed: {result_dict.get('sqlite_error')}")
+        except:
+            logger.warning(f"SQL execution timeout")
+        
+        return None
 
     def _vote_sql(self, sql_list:List[str]) -> str:
         assert self.sql_executor is not None
 
         logger.info(f"{len(sql_list)} SQLs are sampled")
+
         
         # (sql, result) pair list
         result_list = [] 
-        for sql in sql_list:
-            try:
-                result_dict = self.sql_executor.execute_sql(sql)
-            except:
-                continue
+        with ThreadPoolExecutor(max_workers=self.max_num_permutations) as executor:
+            future_to_sql = {executor.submit(self._execute_and_collect, sql): sql for sql in sql_list}
+            for future in as_completed(future_to_sql):
+                result = future.result()
+                if result:  # check if result is valid
+                    result_list.append(result)
             
-            if "data" in result_dict:
-                result_list.append((sql, result_dict["data"]))
-            else:
-                logger.warning(f"SQL execution failed: {result_dict['sqlite_error']}")
-
         logger.info(f"{len(result_list)} SQLs are valid")
         # list is unhashable, so convert to tuple
         result_list = [(sql, tuple(sorted(result))) for sql, result in result_list]
 
         if len(result_list) == 0:
             raise Exception("No valid SQL")
+        elif len(result_list) == 1:
+            return result_list[0][0]
 
         try:
             # count results
@@ -89,5 +105,5 @@ if __name__ == "__main__":
     try:
         model.inference(["A", "B"], "Hello", "")
         assert False and "Should not reach here"
-    except:
-        pass
+    except Exception as e:
+        logger.info(e)

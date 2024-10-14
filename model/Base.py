@@ -29,12 +29,13 @@ class Base():
             return ";"
 
     def inference(self, schema:str, question:str, evidence:str = None) -> str:
-        schema = "\n".join(schema) if isinstance(schema, list) else schema
         query = self.get_prompt(schema, question, evidence)
         response = self.model.generate(query)
         return self.fetch_code(response, code_type="sql", default=";")
 
     def get_prompt(self, schema:str, question:str, evidence:str = None) -> str:
+        schema = "\n".join(schema) if isinstance(schema, list) else schema
+        
         # base prompt for the question
         base_prompt = "The databse schema is as follows:\n" + schema + "\nWrite Sql for the following question: " + question
         

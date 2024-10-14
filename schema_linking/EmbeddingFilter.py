@@ -55,11 +55,11 @@ class EmbeddingFilter(SchemaLinker):
         return embeddings
 
 
-    def _embedding_similarity_kl(self, embed1, embed2):
+    def _embedding_similarity_kl(self, embedding1, embedding2):
         """Compute similarity between two embeddings using KL divergence."""
         # Convert embeddings to probability distributions using softmax
-        p = F.softmax(embed1, dim=0)
-        q = F.softmax(embed2, dim=0)
+        p = F.softmax(embedding1, dim=0)
+        q = F.softmax(embedding2, dim=0)
         
         # Compute KL(P||Q) and KL(Q||P)
         kl_pq = F.kl_div(q.log(), p, reduction='sum')
