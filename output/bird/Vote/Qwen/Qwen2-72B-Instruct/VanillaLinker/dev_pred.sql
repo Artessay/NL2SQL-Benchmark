@@ -1,0 +1,34 @@
+SELECT MAX(T2.`Free Meal Count (K-12`) / T2.`Enrollment (K-12)`) AS highest_free_rate FROM `schools` AS T1 JOIN `school_meal_counts_and_enrollments` AS T2 ON T1.Uniq_id = T2.Uniqid WHERE T1.County = 'Alameda' AND T1.Active_close = 'Active'
+SELECT T2.`Free Meal Count (Ages 5-17)`, T2.`Enrollment (Ages 5-17)`, T2.`Free Meal Count (Ages 5-17)` / T2.`Enrollment (Ages 5-17)` AS FreeRate FROM `schools` AS T1 JOIN `eligibility_counts` AS T2 ON T1.nCESS_ID=T2.nCESS_SCH_GEOID WHERE T1.enrl_statdsc = 'Active' AND T1.sch_inst_typ=60 ORDER BY (T2.`Free Meal Count (Ages 5-17)` / T2.`Enrollment (Ages 5-17)`) LIMIT 3
+SELECT zip_ FROM schools WHERECounty = 'Fresno' AND `Charter School (Y/N)` = 1 AND Sponsors = 'Fresno County Office of Education'
+SELECT T1.mailingStreetCompleteAddress FROM schools AS T1 JOIN studentSchools AS T2 ON T1.schoolId = T2.schoolId WHERE T2.FRPMC12All >= ALL(SELECT FRPMC12All FROM studentSchools) AND T2.studentGroupCodeName='Race or Ethnicity Total' ORDER BY FRPMC12All DESC LIMIT 1
+SELECT `Phone Number` FROM `schools` WHERE `Funding` = 'Directly funded' AND `Charter School (Y/N)` = 1 AND `Opening Date` >= '2000-01-01'
+SELECT COUNT(*) FROM satscores WHERE AvgScrMath > 400 AND (SELECT Virtual FROM schools WHERE cds = satscores.cds) = 'F'
+SELECT T2.SCH_DESC FROM SAT participation AS T1 JOIN schools AS T2 ON T1 LebanonCode = T2.school_code WHERE T1.TestTakersNum > 500 AND T2.Magnet = 1
+SELECT T2.Phone FROM satscores AS T1 JOIN schools AS t2 ON T1.cds = T2.CDSCode WHERE T1.NumGE1500 > 0 ORDER BY NumTstTakr DESC LIMIT 1;
+SELECT T1.SAT_test_takers_total FROM school SAT INNER JOIN schools T1 ON SAT.SCHOOL_ID = T1.school_id WHERE T1.FRPM_count_K_12_students = ( SELECT MAX(T2.FRPM_count_K_12_students) FROM school_sat T3 INNER JOIN schools T2 ON T3.school_id = T2.school_id )
+SELECT COUNT(*) FROM schools WHERE funding_type = 'Directly funded' AND school_id IN (SELECT school_id FROM test_scores WHERE test_name = 'SAT' AND subject = 'Math' GROUP BY school_id HAVING AVG(score) > 560);
+SELECT s.FRPM_5_17 FROM schools AS s INNER JOIN test_scores AS ts ON s.SCH_ID = ts.sch_id WHERE ts.Test LIKE '%SAT Reading%' GROUP BY s.SCH_ID ORDER BY AVG(IFNULL(ScoreAverage, 0)) DESC LIMIT 1;
+SELECT school_code FROM schools WHERE (`Enrollment (K-12)` + `Enrollment (Ages 5-17)`) > 500;
+SELECT MAX(`Free Meal Count (Ages 5-17)` / `Enrollment (Ages 5-17)`) FROM schools WHERE (`NumGE1500` / `NumTstTakr`) > 0.3;
+SELECT T2.Phone FROM satscores AS T1 JOIN schools AS T2 ON T1.cds  =  T2.CDSCode ORDER BY CAST(T1.NumGE1500 AS REAL) / T1.NumTstTakr DESC LIMIT 3
+SELECT `nces_id` FROM `schools` WHERE `enrollment_ages_5_17` IS NOT NULL ORDER BY `enrollment_ages_5_17` DESC LIMIT 5;
+SELECT D.district_name FROM (SELECT school_district, AVG(reported) AS avg_reading       FROM STAR_Results       JOIN Schools S ON STAR_Results.School_ID = S.nces_id         WHERE subject='Reading'       GROUP BY school_district ) AS A JOIN schools D ON A.school_district=D.nces_id  WHERE D.status='Active' ORDER BY avg_reading DESC LIMIT 1;
+SELECT COUNT(*) FROM `mergedschools` WHERE county_name = 'Alameda' AND num_of_testtakers < 100;
+SELECT s.CDSCode FROM schools AS s JOIN satScores AS ss ON ss.cds = s.CDSCode WHERE ss.AvgScrWrite > 499 ORDER BY ss.AvgScrWrite DESC;
+SELECT COUNT(*) FROM schools WHERE `County` = 'Fresno' AND `Financial Identifier (FOnt)` = 'Directly funded' AND `Number of Test Takers` <= 250;
+SELECT s.phone_number FROM schools s JOIN test_results t ON s.school_code = t.school_code WHERE t.subject = 'Math' GROUP BY s.school_code ORDER BY AVG(t.score) DESC LIMIT 1
+SELECT COUNT(*) FROM schools WHERE County = 'Amador' AND `Low Grade` = 9 AND `High Grade` = 12
+SELECT COUNT(*) FROM `schools` WHERE `CountyName` = 'Los Angeles' AND `Free Meals` > 500 AND `Free or Reduced Price Meals for K-12` < 700;
+SELECT s-school_name, MAX(st.test_takers) AS max_test_takers  FROM schools AS s  JOIN school_tests AS st ON s.id = st.school_id  WHERE s.county = 'Contra Costa'  GROUP BY s.school_name  ORDER BY max_test_takers DESC  LIMIT 1;
+SELECT school_name, `Mailing Street Line 1`, `Location Street Line 1` FROM schools WHERE (`grade_high` >= '09' AND `Grade Low` <= '12') AND (Enrollment_K_12 - Enrollment_Ages_5__17) > '30';
+SELECT T1.SchNm FROM Schools AS T1 JOIN test_score AS T2 ON T1.SchID = T2.SchoolId WHERE ((T2.TestScore >= 1500) AND (CAST(T1.FreeMealCountK_12 AS REAL / NULLIF(T1.TotalEnrollmentK_12, 0)) > 0.1))
+SELECT T1.Funding FROM schools AS T1 JOIN School_SAT_Results AS T2 ON T1.School_ID  =  T2.School_ID WHERE T1.County  =  'Riverside' GROUP BY T1.School_Name HAVING AVG(T2.Average_MATH_Score)  >  400
+SELECT T2.school_name, T2.street_address, T2.city, T2.state ,T2.zip_code  FROM total_free_reduced-price_meals_ages_15_to_17 AS T1  JOIN schools AS T2 ON T1.school_number = T2.school_number  WHERE T1.total_enrollment >= 800 AND school_county = 'Monterey' AND T2.academic_grade IN ('HS')
+SELECT s.school_name, s-writing_score, s.phone_number FROM schools AS s WHERE (s.opened > '1991-01-01' OR s.closed < '2000-01-01') AND s.writing_score IS NOT NULL GROUP BY s.school_name, s.phone_number HAVING AVG(s.writing_score)
+SELECT T1.school_name, T1.funding_type FROM `schools` AS T1 JOIN `enrollment_summary_by_year_and_school` AS T2 ON T1.uid = T2.school_uid WHERE (T1.funding_via != 'Locally funded') AND ((T2.`Enrollment (K-12)` - T2.``Enrollment (Ages 5-17)``) > (SELECT AVG(`Enrollment (K-12)`) - AVG(`Enrollment (Ages 5-17）`) FROM `enrollment_summary_by_year_and_school` WHERE funding_via = 'Locally funded'))
+SELECT `Opened` FROM(SELECT `CSTARID`, `Name of LEA - School combination. If a LEACTR is selected in this row, then value should appear in both these columns`, `Opened`, (`G1 Kindergarten` +`G2 Firstgrade `+`G3 Secondare`) AS Total_students_enrolled_K_2 , RANK() OVER (ORDER BY (`G1 Kindergarten` +`G2 Firstgrade `+`G3 Secondare`) DESC)  Enroll_rank  FROM schools ) t WHERE Enroll_rank=1
+SELECT t2.city, SUM(t1.student_enrollment) AS total_enrollment FROM (SELECT school_id, SUM(student Enrollments) AS student_enrollment FROM school_enrollment GROUP BY school_id) AS t1 JOIN schools AS t2 ON t1.school_id = t2.school_id WHERE grade_levels = 'K-12' GROUP BY t2.city ORDER BY total_enrollment LIMIT 5
+SELECT Eligibility_free_K_12 FROM(SELECT Free_meal_count_k_12 / Enrollment_k_12 AS Eligibility_free_K_12 ,  school_id FROM `schools餐` WHERE Grades_enrolled LIKE '%1-%12%' OR Grades_enrolled LIKE '%1-%6%'OR Grades_enrolled LIKE '%7-%12%'ORDER BY enrollment_1_12 DESC LIMIT 10,2) t
+SELECT `Eligible FRPM rate` FROM `table_45387` WHERE `Ownership` = 66 ORDER BY `Free/Reduced Pricing Count for Grades K or 1 Through 12` DESC LIMIT 5
+SELECT `url`, `school_name` FROM `schools` WHERE `free_meal_count` BETWEEN 1900 AND 2000 AND `age_range_code` IN (SELECT s.age_code FROM `students_age_range_codes` AS s WHERE s.age_str = '5-17');

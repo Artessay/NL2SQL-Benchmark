@@ -10,12 +10,13 @@ class SketchRetriever(Agent):
     def __init__(self, args):
         super().__init__(args)
 
+    
+    def inference(self, schema:List[str], question:str, evidence:str = None):
+        # clear memory
         self.memory = [
             {"role": "system", "content": self.system_prompt}
         ]
-
-    
-    def inference(self, schema:List[str], question:str, evidence:str = None):
+        
         # retrieve
         self.memory.append({"role": "user", "content": self.retrieve_prompt(schema, question)})
         response = self.model.chat(self.memory)
@@ -30,6 +31,9 @@ class SketchRetriever(Agent):
     def retrieve_prompt(self, schema:List[str], question:str):
         schema = "\n".join(schema) if isinstance(schema, list) else schema
 
+# Database Schema:
+# {schema}
+
         return f"""
 To assist the user in creating SQL query, please analyze the user's query and examine the query for:
 
@@ -40,9 +44,6 @@ To assist the user in creating SQL query, please analyze the user's query and ex
     Sorting Requirements: Identify any sorting preferences specified by the user.
 
 User Query: {question}
-
-Database Schema:
-{schema}
 
 Return the result in this format:
 

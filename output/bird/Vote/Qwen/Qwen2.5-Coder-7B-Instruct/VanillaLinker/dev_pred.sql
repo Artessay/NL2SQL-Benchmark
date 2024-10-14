@@ -638,3 +638,180 @@ SELECT COUNT(c.Id) AS NegativeCommentsCount FROM comments c JOIN posts p ON c.Po
 SELECT DISTINCT t.TagName FROM tags AS t JOIN posts AS p ON t.Id = p.Tags WHERE p.OwnerDisplayName = 'Mark Meckes' AND p.CommentCount = 0
 SELECT T2.DisplayName FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.Name = 'Organizer'
 SELECT CAST(SUM(CASE WHEN T2.TagName = 'r' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.Id) FROM posts AS T1 INNER JOIN tags AS T2 ON T1.Id = T2.ExcerptPostId INNER JOIN posthistory AS T3 ON T1.Id = T3.PostId WHERE T3.UserDisplayName = 'Community'
+SELECT SUM(CASE WHEN p.OwnerDisplayName = 'Mornington' THEN p.ViewCount ELSE 0 END) - SUM(CASE WHEN p.OwnerDisplayName = 'Amos' THEN p.ViewCount ELSE 0 END) AS Difference FROM posts p
+SELECT COUNT(UserId) FROM badges WHERE Name = 'Commentator' AND STRFTIME('%Y', Date) = '2014'; 
+SELECT COUNT(*) FROM postHistory WHERE CreationDate BETWEEN '2010-07-21 00:00:00' AND '2012-07-21 23:59:59';
+SELECT DisplayName ,  Age FROM users ORDER BY Views DESC LIMIT 1
+SELECT LastEditDate, LastEditorUserId FROM posts WHERE Title = 'Detecting a given face in a database of facial images'
+SELECT COUNT(*) FROM comments WHERE UserId = 13 AND Score < 60; 
+SELECT p.Title, c.UserDisplayName FROM posts AS p JOIN comments AS c ON p.Id = c.PostId WHERE c.Score > 60
+SELECT Name FROM badges WHERE Date LIKE '2011%' AND UserId IN (SELECT Id FROM users WHERE Location = 'North Pole'); 
+SELECT u.DisplayName, u.WebsiteUrl FROM users AS u JOIN posts AS p ON u.Id = p.OwnerUserId WHERE p.FavoriteCount > 150
+SELECT COUNT(*), MAX(LastEditDate) FROM posts WHERE Title = 'What is the best introductory Bayesian statistics textbook?'
+SELECT T1.LastAccessDate, T1.Location FROM users AS T1 INNER JOIN badges AS T2 ON T1.Id = T2.UserId WHERE T2.Name = 'Outliers'
+SELECT p.Title FROM posts p JOIN postLinks pl ON p.Id = pl.PostId WHERE p.Title = 'How to tell if something happened in a data set which monitors a value over time' 
+SELECT p.Id, b.Name FROM badges b JOIN users u ON b.UserId = u.Id JOIN posts p ON b.PostId = p.Id WHERE u.DisplayName = 'Samuel' AND YEAR(b.Date) = 2013
+SELECT OwnerDisplayName FROM posts ORDER BY ViewCount DESC LIMIT 1
+SELECT T1.DisplayName, T1.Location FROM users AS T1 INNER JOIN tags AS T2 ON T1.Id = T2.ExcerptPostId WHERE T2.TagName = 'hypothesis-testing'
+SELECT T2.Title, T1.LinkTypeId FROM postLinks AS T1 INNER JOIN posts AS T2 ON T1.RelatedPostId = T2.Id WHERE T2.Title = 'What are principal component scores?'
+SELECT OwnerDisplayName FROM posts WHERE ParentId IS NOT NULL ORDER BY Score DESC LIMIT 1
+SELECT T2.DisplayName, T2.WebsiteUrl FROM votes AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T1.VoteTypeId = 8 ORDER BY T1.BountyAmount DESC LIMIT 1
+SELECT Title FROM posts ORDER BY ViewCount DESC LIMIT 5
+SELECT COUNT(*) FROM tags WHERE Count BETWEEN 5000 AND 7000; 
+SELECT OwnerUserId FROM posts ORDER BY FavoriteCount DESC LIMIT 1
+SELECT Age FROM users ORDER BY Reputation DESC LIMIT 1
+SELECT COUNT(DISTINCT PostId) FROM votes WHERE YEAR(CreationDate) = 2011 AND BountyAmount = 50
+SELECT Id FROM users ORDER BY Age ASC LIMIT 1
+SELECT SUM(Score) FROM posts WHERE LasActivityDate LIKE '2010-07-19%' 
+SELECT CAST(SUM(CASE WHEN STRFTIME('%Y', CreationDate) = '2010' AND AnswerCount <= 2 THEN 1 ELSE 0 END) AS REAL) / 12 FROM postLinks
+SELECT PostId FROM votes WHERE UserId = 1465 ORDER BY FavoriteCount DESC LIMIT 1; 
+SELECT Title FROM posts WHERE Id = (SELECT PostId FROM postLinks ORDER BY CreationDate ASC LIMIT 1)
+SELECT DisplayName FROM users WHERE Id = (SELECT UserId FROM badges GROUP BY UserId ORDER BY COUNT(Name) DESC LIMIT 1)
+SELECT CreationDate FROM votes WHERE UserId = (SELECT Id FROM users WHERE DisplayName = 'chl') ORDER BY CreationDate ASC LIMIT 1
+SELECT T1.CreationDate FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.Age = ( SELECT MIN(Age) FROM users )
+SELECT DisplayName FROM users WHERE Id = ( SELECT UserId FROM badges WHERE Name = 'Autobiographer' ORDER BY Date ASC LIMIT 1 )
+SELECT COUNT(DISTINCT u.Id) FROM users u JOIN posts p ON u.Id = p.OwnerUserId WHERE u.Location = 'United Kingdom' GROUP BY u.Id HAVING SUM(p.FavoriteCount) >= 4
+SELECT AVG(PostId) FROM votes WHERE UserId IN ( SELECT Id FROM users ORDER BY Age DESC LIMIT 1 )
+SELECT DisplayName FROM users ORDER BY Reputation DESC LIMIT 1
+SELECT COUNT(*) FROM users WHERE Reputation > 2000 AND Views > 1000
+SELECT DisplayName FROM users WHERE Age BETWEEN 19 AND 65
+SELECT COUNT(*) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.DisplayName = 'Jay Stevens' AND STRFTIME('%Y', T1.CreaionDate) = '2010'
+SELECT Id, Title FROM posts WHERE OwnerDisplayName = 'Harvey Motulsky' ORDER BY ViewCount DESC LIMIT 1
+SELECT Id, Title FROM posts ORDER BY Score DESC LIMIT 1
+SELECT AVG(Score) FROM posts WHERE OwnerDisplayName = 'Stephen Turner'
+SELECT DISTINCT u.DisplayName FROM users AS u JOIN posts AS p ON u.Id = p.OwnerUserId WHERE p.ViewCount > 20000 AND STRFTIME('%Y', p.CreaionDate) = '2011'
+SELECT Id, OwnerDisplayName FROM posts WHERE CreationDate LIKE '2010%' ORDER BY FavoriteCount DESC LIMIT 1
+SELECT CAST(SUM(CASE WHEN YEAR(p.CreaionDate) = 2011 AND u.Reputation > 1000 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM posts p JOIN users u ON p.OwnerUserId = u.Id 
+SELECT CAST(SUM(CASE WHEN Age BETWEEN 13 AND 18 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(Id) FROM users
+SELECT SUM(ViewCount) AS TotalViews, MAX(LastEditDate) AS LastEditTime, u.DisplayName AS UserName FROM posts p JOIN users u ON p.OwnerUserId = u.Id WHERE p.Body LIKE '%Computer Game Datasets%' GROUP BY p.Id; 
+SELECT COUNT(*) FROM posts WHERE ViewCount > (SELECT AVG(ViewCount) FROM posts) 
+SELECT COUNT(*) FROM comments WHERE PostId = (SELECT Id FROM posts ORDER BY Score DESC LIMIT 1)
+SELECT COUNT(*) FROM posts WHERE ViewCount > 35000 AND CommentCount = 0; 
+SELECT DisplayName, Location FROM users WHERE Id = (SELECT LastEditorUserId FROM posts WHERE Id = 183 ORDER BY LastEditDate DESC LIMIT 1)
+SELECT Name FROM badges WHERE UserId = (SELECT Id FROM users WHERE DisplayName = 'Emmett') ORDER BY Date DESC LIMIT 1
+SELECT COUNT(*) FROM users WHERE Age BETWEEN 19 AND 65 AND UpVotes > 5000
+SELECT T1.Date - T2.CreationDate FROM badges AS T1 INNER JOIN users AS T2 ON T1.UserId = T2.Id WHERE T2.DisplayName = 'Zolomon'
+SELECT COUNT(p.Id) AS NumberOfPosts, COUNT(c.Id) AS NumberOfComments FROM users u JOIN posts p ON u.Id = p.OwnerUserId LEFT JOIN comments c ON u.Id = c.UserId WHERE u.CreationDate = (SELECT MAX(CreationDate) FROM users); 
+SELECT T2.Text, T1.DisplayName FROM users AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.UserId WHERE T2.PostId = ( SELECT Id FROM posts WHERE Title = 'Analysing wind data with R' ) ORDER BY T2.CreationDate DESC LIMIT 10
+SELECT COUNT(UserId) FROM badges WHERE Name = 'Citizen Patrol'; 
+SELECT COUNT(*) FROM tags WHERE TagName = 'careers'
+SELECT Reputation, ViewCount FROM users WHERE DisplayName = 'Jarrod Dixon'; 
+SELECT COUNT(CASE WHEN p.PostTypeId = 2 THEN 1 ELSE NULL END) AS AnswerCount, COUNT(CASE WHEN p.PostTypeId = 1 THEN 1 ELSE NULL END) AS CommentCount FROM posts p JOIN comments c ON p.Id = c.PostId WHERE p.Title = 'Clustering 1D data'
+SELECT CreationDate FROM users WHERE DisplayName = 'IrishStat'
+SELECT COUNT(*) FROM votes WHERE BountyAmount >= 30
+SELECT CAST(SUM(CASE WHEN T1.Score > 50 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.Id) FROM posts AS T1 INNER JOIN users AS T2 ON T1.OwnerUserId = T2.Id WHERE T2.Reputation = ( SELECT MAX(Reputation) FROM users )
+SELECT COUNT(*) FROM posts WHERE Score < 20
+SELECT COUNT(*) FROM tags WHERE Id < 15 AND Count <= 20; 
+SELECT ExcerptPostId, WikiPostId FROM tags WHERE TagName = 'sample' 
+SELECT u.Reputation, u.UpVotes FROM users AS u JOIN comments AS c ON u.Id = c.UserId WHERE c.Text = 'fine, you win :)'
+SELECT T2.Text FROM posts AS T1 INNER JOIN comments AS T2 ON T1.Id = T2.PostId WHERE T1.Title LIKE '%linear regression%'
+SELECT Text FROM comments WHERE PostId IN ( SELECT Id FROM posts WHERE ViewCount BETWEEN 100 AND 150 ) ORDER BY Score DESC LIMIT 1
+SELECT u.CreationDate, julianday(u.CreationDate) - julianday(u.LastAccessDate) AS Age FROM users u JOIN comments c ON u.Id = c.UserId WHERE c.Text LIKE '%http://%'; 
+SELECT COUNT(DISTINCT PostId) FROM comments WHERE Score = 0 AND PostId IN (SELECT Id FROM posts WHERE ViewCount < 5); 
+SELECT COUNT(*) FROM posts WHERE CommentCount = 1 AND Id IN (SELECT PostId FROM comments WHERE Score = 0); 
+SELECT COUNT(DISTINCT c.UserId) FROM comments c JOIN users u ON c.UserId = u.Id WHERE c.Score = 0 AND u.Age = 40
+SELECT p.Id AS PostID, c.Text AS Comment FROM posts p JOIN comments c ON p.Id = c.PostId WHERE p.Title = 'Group differences on a five point Likert item'; 
+SELECT UpVotes FROM users WHERE Id = (SELECT UserId FROM comments WHERE Text LIKE '%R is also lazy evaluated.%')
+SELECT Text FROM comments WHERE UserId IN (SELECT Id FROM users WHERE DisplayName = 'Harvey Motulsky')
+SELECT DISTINCT u.DisplayName FROM users u JOIN comments c ON u.Id = c.UserId WHERE c.Score BETWEEN 1 AND 5 AND u.DownVotes = 0
+SELECT CAST(SUM(CASE WHEN u.UpVotes = 0 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(u.Id) FROM users u JOIN comments c ON u.Id = c.UserId WHERE c.Score BETWEEN 5 AND 10
+SELECT T3.power_name FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T1.superhero_name = '3-D Man'
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T3.power_name = 'Super Strength'; 
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T3.power_name = 'Super Strength' AND T1.height_cm > 200
+SELECT T1.full_name FROM superhero AS T1 JOIN hero_power AS T2 ON T1.id = T2.hero_id GROUP BY T1.id HAVING COUNT(T2.power_id) > 15
+SELECT COUNT(*) FROM superhero WHERE eye_colour_id IN ( SELECT id FROM colour WHERE colour = 'Blue' )
+SELECT T1.colour FROM colour AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.skin_colour_id WHERE T2.superhero_name = 'Apocalypse'
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id INNER JOIN colour AS T4 ON T1.eye_colour_id = T4.id WHERE T4.colour = 'Blue' AND T3.power_name = 'Agility'
+SELECT s.superhero_name FROM superhero AS s JOIN colour AS c ON s.eye_colour_id = c.id WHERE c.colour = 'Blue' AND s.hair_colour_id = ( SELECT id FROM colour WHERE colour = 'Blond' )
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T2.publisher_name = 'Marvel Comics'
+SELECT T1.superhero_name FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T2.publisher_name = 'Marvel Comics' ORDER BY T1.height_cm DESC
+SELECT T.publisher_name FROM ( SELECT T2.publisher_name FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T1.superhero_name = 'Sauron' ) t
+SELECT T1.colour FROM colour AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.eye_colour_id INNER JOIN publisher AS T3 ON T2.publisher_id = T3.id WHERE T3.publisher_name = 'Marvel Comics' GROUP BY T1.colour ORDER BY COUNT(T2.id) DESC
+SELECT AVG(T1.height_cm) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T2.publisher_name = 'Marvel Comics'
+SELECT superhero_name FROM superhero WHERE publisher_id = (SELECT id FROM publisher WHERE publisher_name = 'Marvel Comics') AND id IN (SELECT hero_id FROM hero_power WHERE power_id = (SELECT id FROM superpower WHERE power_name = 'Super Strength'))
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T2.publisher_name = 'DC Comics'
+SELECT T3.publisher_name FROM hero_attribute AS T1 INNER JOIN attribute AS T2 ON T1.attribute_id = T2.id INNER JOIN superhero AS T4 ON T1.hero_id = T4.id INNER JOIN publisher AS T3 ON T4.publisher_id = T3.id WHERE T2.attribute_name = 'Speed' ORDER BY T1.attribute_value ASC LIMIT 1
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id INNER JOIN publisher AS T3 ON T1.publisher_id = T3.id WHERE T2.colour = 'Gold' AND T3.publisher_name = 'Marvel Comics'
+SELECT T2.publisher_name FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T1.superhero_name = 'Blue Beetle II'
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.hair_colour_id = T2.id WHERE T2.colour = 'Blond'
+SELECT T2.superhero_name FROM hero_attribute AS T1 INNER JOIN superhero AS T2 ON T1.hero_id = T2.id WHERE T1.attribute_id = ( SELECT id FROM attribute WHERE attribute_name = 'Intelligence' ) ORDER BY T1.attribute_value ASC LIMIT 1
+SELECT T2.race FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T1.superhero_name = 'Copycat'
+SELECT s.superhero_name FROM superhero AS s JOIN hero_attribute AS ha ON s.id = ha.hero_id JOIN attribute AS a ON ha.attribute_id = a.id WHERE a.attribute_name = 'Durability' AND ha.attribute_value < 50;
+SELECT T1.superhero_name FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T3.power_name = 'Death Touch'
+SELECT COUNT(*) FROM superhero AS s JOIN hero_attribute AS ha ON s.id = ha.hero_id JOIN attribute AS a ON ha.attribute_id = a.id WHERE s.gender_id = 2 AND a.attribute_name = 'Strength' AND ha.attribute_value = 100
+SELECT T2.superhero_name FROM hero_power AS T1 INNER JOIN superhero AS T2 ON T1.hero_id = T2.id GROUP BY T2.superhero_name ORDER BY COUNT(T1.power_id) DESC LIMIT 1
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T2.race = 'Vampire'
+SELECT CAST(SUM(CASE WHEN T3.alignment = 'Bad' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T2.id), SUM(CASE WHEN T3.alignment = 'Bad' AND T1.publisher_name = 'Marvel Comics' THEN 1 ELSE 0 END) FROM publisher AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.publisher_id INNER JOIN alignment AS T3 ON T2.alignment_id = T3.id
+SELECT SUM(CASE WHEN T1.publisher_name = 'Marvel Comics' THEN 1 ELSE 0 END) - SUM(CASE WHEN T1.publisher_name = 'DC Comics' THEN 1 ELSE 0 END) AS diff FROM publisher AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.publisher_id
+SELECT id FROM publisher WHERE publisher_name = 'Star Trek'
+SELECT AVG(attribute_value) FROM hero_attribute
+SELECT COUNT(*) FROM superhero WHERE full_name IS NULL
+SELECT T2.colour FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id WHERE T1.id = 75
+SELECT T2.power_name FROM superhero AS T1 INNER JOIN hero_power AS T3 ON T1.id = T3.hero_id INNER JOIN superpower AS T2 ON T3.power_id = T2.id WHERE T1.superhero_name = 'Deathlok'
+SELECT AVG(weight_kg) FROM superhero WHERE gender_id = (SELECT id FROM gender WHERE gender = 'Female')
+SELECT T1.power_name FROM superpower AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.power_id INNER JOIN superhero AS T3 ON T2.hero_id = T3.id INNER JOIN gender AS T4 ON T3.gender_id = T4.id WHERE T4.gender = 'Male' LIMIT 5
+SELECT superhero_name FROM superhero WHERE race_id = (SELECT id FROM race WHERE race = 'Alien')
+SELECT superhero_name FROM superhero WHERE height_cm BETWEEN 170 AND 190 AND eye_colour_id IN ( SELECT id FROM colour WHERE colour = 'No Colour' )
+SELECT T2.power_name FROM hero_power AS T1 INNER JOIN superpower AS T2 ON T1.power_id = T2.id WHERE T1.hero_id = 56
+SELECT full_name FROM superhero WHERE race_id = (SELECT id FROM race WHERE race = 'Demi-God') LIMIT 5
+SELECT COUNT(*) FROM superhero WHERE alignment_id = 2; 
+SELECT T2.race FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T1.weight_kg = 169
+SELECT T2.colour FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.hair_colour_id = T2.id INNER JOIN race AS T3 ON T1.race_id = T3.id WHERE T1.height_cm = 185 AND T3.race = 'Human'
+SELECT T1.colour FROM colour AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.eye_colour_id ORDER BY T2.weight_kg DESC LIMIT 1
+SELECT CAST(SUM(CASE WHEN T2.publisher_name = 'Marvel Comics' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T1.height_cm BETWEEN 150 AND 180
+SELECT superhero_name FROM superhero WHERE gender_id = 1 AND weight_kg > ( SELECT AVG(weight_kg) * 0.79 FROM superhero )
+SELECT T2.power_name FROM hero_power AS T1 INNER JOIN superpower AS T2 ON T1.power_id = T2.id GROUP BY T2.power_name ORDER BY COUNT(T2.power_name) DESC LIMIT 1
+SELECT T1.attribute_value FROM hero_attribute AS T1 INNER JOIN superhero AS T2 ON T1.hero_id = T2.id WHERE T2.superhero_name = 'Abomination'
+SELECT T2.power_name FROM hero_power AS T1 INNER JOIN superpower AS T2 ON T1.power_id = T2.id WHERE T1.hero_id = 1
+SELECT COUNT(*) FROM superpower AS sp JOIN hero_power AS hp ON sp.id = hp.power_id WHERE sp.power_name = 'Stealth'
+SELECT T2.full_name FROM hero_attribute AS T1 INNER JOIN superhero AS T2 ON T1.hero_id = T2.id INNER JOIN attribute AS T3 ON T1.attribute_id = T3.id WHERE T3.attribute_name = 'Strength' ORDER BY T1.attribute_value DESC LIMIT 1
+SELECT CAST(SUM(CASE WHEN T1.skin_colour_id = 1 THEN 1 ELSE 0 END) AS REAL) / COUNT(T1.id) FROM superhero AS T1 LEFT JOIN colour AS T2 ON T1.skin_colour_id = T2.id
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN publisher AS T2 ON T1.publisher_id = T2.id WHERE T2.publisher_name = 'Dark Horse Comics'
+SELECT s.superhero_name FROM superhero AS s JOIN hero_attribute AS ha ON s.id = ha.hero_id JOIN attribute AS a ON ha.attribute_id = a.id JOIN publisher AS p ON s.publisher_id = p.id WHERE a.attribute_name = 'Durability' AND p.publisher_name = 'Dark Horse Comics' ORDER BY ha.attribute_value DESC LIMIT 1
+SELECT T3.colour FROM superhero AS T1 INNER JOIN colour AS T3 ON T1.eye_colour_id = T3.id WHERE T1.full_name = 'Abraham Sapien'
+SELECT T1.superhero_name FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T3.power_name = 'Flight'
+SELECT T2.colour AS eyes ,  T3.colour AS hair ,  T4.colour AS skin FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id INNER JOIN colour AS T3 ON T1.hair_colour_id = T3.id INNER JOIN colour AS T4 ON T1.skin_colour_id = T4.id INNER JOIN publisher AS T5 ON T1.publisher_id = T5.id INNER JOIN gender AS T6 ON T1.gender_id = T6.id WHERE T5.publisher_name = 'Dark Horse Comics' AND T6.gender = 'Female'
+SELECT T1.superhero_name, T3.publisher_name FROM superhero AS T1 INNER JOIN publisher AS T3 ON T1.publisher_id = T3.id WHERE T1.hair_colour_id = T1.skin_colour_id AND T1.hair_colour_id = T1.eye_colour_id
+SELECT T2.race FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T1.superhero_name = 'A-Bomb'
+SELECT CAST(COUNT(CASE WHEN T1.skin_colour_id IN ( SELECT id FROM colour WHERE colour = 'Blue' ) THEN 1 ELSE NULL END) AS REAL) * 100 / COUNT(*) FROM superhero AS T1 INNER JOIN gender AS T2 ON T1.gender_id = T2.id WHERE T2.gender = 'Female'
+SELECT T1.superhero_name ,  T3.race FROM superhero AS T1 INNER JOIN race AS T3 ON T1.race_id = T3.id WHERE T1.full_name = 'Charles Chandler'
+SELECT T1.gender FROM gender AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.gender_id WHERE T2.superhero_name = 'Agent 13'
+SELECT T1.superhero_name FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T3.power_name = 'Adaptation'
+SELECT COUNT(power_id) FROM hero_power AS hp JOIN superhero AS s ON hp.hero_id = s.id WHERE s.superhero_name = 'Amazo'
+SELECT T3.power_name FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN superpower AS T3 ON T2.power_id = T3.id WHERE T1.full_name = 'Hunter Zolomon'
+SELECT T1.height_cm FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id WHERE T2.colour = 'Amber'
+SELECT superhero_name FROM superhero WHERE eye_colour_id IN ( SELECT id FROM colour WHERE colour = 'Black' ) AND hair_colour_id IN ( SELECT id FROM colour WHERE colour = 'Black' )
+SELECT T2.colour FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.skin_colour_id = T2.id WHERE T2.colour = 'Gold'
+SELECT T1.full_name FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T2.race = 'Vampire'
+SELECT T1.superhero_name FROM superhero AS T1 INNER JOIN alignment AS T2 ON T1.alignment_id = T2.id WHERE T2.alignment = 'Neutral'
+SELECT COUNT(*) FROM hero_attribute AS ha JOIN attribute AS a ON ha.attribute_id = a.id WHERE a.attribute_name = 'Strength' AND ha.attribute_value = ( SELECT MAX(attribute_value) FROM hero_attribute WHERE attribute_id = ( SELECT id FROM attribute WHERE attribute_name = 'Strength' ) )
+SELECT T2.race, T3.alignment FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id INNER JOIN alignment AS T3 ON T1.alignment_id = T3.id WHERE T1.superhero_name = 'Cameron Hicks'
+SELECT CAST(SUM(CASE WHEN T2.gender = 'Female' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM superhero AS T1 INNER JOIN gender AS T2 ON T1.gender_id = T2.id INNER JOIN publisher AS T3 ON T1.publisher_id = T3.id WHERE T3.publisher_name = 'Marvel Comics'
+SELECT AVG(T1.weight_kg) FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T2.race = 'Alien'
+SELECT ( SELECT weight_kg FROM superhero WHERE full_name = 'Emil Blonsky' ) - ( SELECT weight_kg FROM superhero WHERE full_name = 'Charles Chandler' ) AS weight_difference
+SELECT AVG(height_cm) FROM superhero GROUP BY id;
+SELECT T2.power_name FROM superhero AS T1 INNER JOIN hero_power AS T3 ON T1.id = T3.hero_id INNER JOIN superpower AS T2 ON T3.power_id = T2.id WHERE T1.superhero_name = 'Abomination'
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN gender AS T2 ON T1.gender_id = T2.id WHERE T1.race_id = 21 AND T2.gender = 'Male'
+SELECT T1.superhero_name FROM superhero AS T1 INNER JOIN hero_attribute AS T2 ON T1.id = T2.hero_id INNER JOIN attribute AS T3 ON T2.attribute_id = T3.id WHERE T3.attribute_name = 'Speed' ORDER BY T2.attribute_value DESC LIMIT 1
+SELECT COUNT(*) FROM superhero WHERE alignment_id = 3; 
+SELECT T3.attribute_name, T2.attribute_value FROM superhero AS T1 INNER JOIN hero_attribute AS T2 ON T1.id = T2.hero_id INNER JOIN attribute AS T3 ON T2.attribute_id = T3.id WHERE T1.superhero_name = '3-D Man'
+SELECT superhero_name FROM superhero WHERE eye_colour_id IN ( SELECT id FROM colour WHERE colour = 'Blue' ) AND hair_colour_id IN ( SELECT id FROM colour WHERE colour = 'Brown' )
+SELECT T1.publisher_name FROM publisher AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.publisher_id WHERE T2.superhero_name IN ('Hawkman', 'Karate Kid', 'Speedy')
+SELECT COUNT(*) FROM superhero WHERE publisher_id = 1
+SELECT CAST(SUM(CASE WHEN T1.eye_colour_id = 7 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.superhero_name) FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id WHERE T2.colour = 'Blue'
+SELECT CAST(SUM(CASE WHEN gender_id = 1 THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN gender_id = 2 THEN 1 ELSE 0 END) FROM superhero
+SELECT superhero_name FROM superhero ORDER BY height_cm DESC LIMIT 1
+SELECT id FROM superpower WHERE power_name = 'Cryokinesis'
+SELECT superhero_name FROM superhero WHERE id = 294
+SELECT full_name FROM superhero WHERE weight_kg IS NULL OR weight_kg = 0
+SELECT T1.colour FROM colour AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.eye_colour_id WHERE T2.full_name = 'Karen Beecher-Duncan'
+SELECT T2.power_name FROM superhero AS T1 INNER JOIN hero_power AS T3 ON T1.id = T3.hero_id INNER JOIN superpower AS T2 ON T3.power_id = T2.id WHERE T1.full_name = 'Helen Parr'
+SELECT T2.race FROM superhero AS T1 INNER JOIN race AS T2 ON T1.race_id = T2.id WHERE T1.weight_kg = 108 AND T1.height_cm = 188
+SELECT T.publisher_name FROM publisher AS T JOIN superhero AS S ON T.id = S.publisher_id WHERE S.id = 38
+SELECT T3.race FROM hero_attribute AS T1 INNER JOIN superhero AS T2 ON T1.hero_id = T2.id INNER JOIN race AS T3 ON T2.race_id = T3.id ORDER BY T1.attribute_value DESC LIMIT 1
+SELECT T3.alignment, T4.power_name FROM superhero AS T1 INNER JOIN hero_power AS T2 ON T1.id = T2.hero_id INNER JOIN alignment AS T3 ON T1.alignment_id = T3.id INNER JOIN superpower AS T4 ON T2.power_id = T4.id WHERE T1.superhero_name = 'Atom IV'
+SELECT superhero_name FROM superhero AS T1 INNER JOIN colour AS T2 ON T1.eye_colour_id = T2.id WHERE T2.colour = 'Blue' LIMIT 5
+SELECT AVG(attribute_value) FROM hero_attribute WHERE hero_id IN (SELECT id FROM superhero WHERE alignment_id = 3)
+SELECT T1.colour FROM colour AS T1 INNER JOIN superhero AS T2 ON T1.id = T2.skin_colour_id INNER JOIN hero_attribute AS T3 ON T2.id = T3.hero_id WHERE T3.attribute_value = 100
+SELECT COUNT(*) FROM superhero AS T1 INNER JOIN gender AS T2 ON T1.gender_id = T2.id INNER JOIN alignment AS T3 ON T1.alignment_id = T3.id WHERE T3.id = 1 AND T2.id = 2
+SELECT T2.superhero_name FROM hero_attribute AS T1 INNER JOIN superhero AS T2 ON T1.hero_id = T2.id WHERE T1.attribute_value BETWEEN 75 AND 80
