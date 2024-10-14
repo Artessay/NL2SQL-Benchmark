@@ -1,0 +1,2 @@
+SELECT MAX(CAST(`Free Meal Count (grades K-12)` AS FLOAT) / `Enrollment (grades K-12)`) FROM schools WHERE County = 'Alameda' AND `School Function Code` IN(40, 50);
+SELECT T2.`Eligible Free Rate Age 5-17` FROM Schools AS T1 INNER JOIN StudentCountsByGradeLevelFreeMealsAll AS T2 ON T1.LocalAccountCode = T2.LocalAccountCode WHERE `SchoolLevelCdeName` = 'Continuation School' GROUP BY `LocalAccountCode` ORDER BY `Eligible Free Rate Age 5-17` ASC LIMIT 3
