@@ -1142,3 +1142,393 @@ SELECT T1.sprint_speed, T1.agility, T1.acceleration FROM Player_Attributes AS T1
 SELECT buildUpPlaySpeedClass FROM Team_Attributes WHERE team_api_id = (SELECT team_api_id FROM Team WHERE team_long_name = 'KSV Cercle Brugge') ORDER BY date DESC LIMIT 1; 
 SELECT COUNT(*) FROM Match WHERE season = '2015/2016' AND league_id = (SELECT id FROM League WHERE name = 'Italy Serie A')
 SELECT MAX(home_team_goal) AS Highest_Home_Team_Score FROM Match WHERE league_id = (SELECT id FROM League WHERE name = 'Netherlands Eredivisie') 
+SELECT T2.finishing, T2.curve FROM Player AS T1 INNER JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id ORDER BY T1.weight DESC LIMIT 1; 
+SELECT T2.name FROM Match AS T1 INNER JOIN League AS T2 ON T1.league_id = T2.id WHERE T1.season = '2015/2016' GROUP BY T2.name ORDER BY COUNT(T1.id) DESC LIMIT 4
+SELECT T1.team_long_name FROM Team AS T1 JOIN Match AS T2 ON T1.team_api_id = T2.away_team_api_id ORDER BY T2.away_team_goal DESC LIMIT 1
+SELECT T2.player_name FROM Player_Attributes AS T1 INNER JOIN Player AS T2 ON T1.player_api_id = T2.player_api_id ORDER BY T1.overall_rating DESC LIMIT 1
+SELECT CAST(SUM(CASE WHEN T1.height < 180 AND T2.overall_rating > 70 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.id) FROM Player AS T1 INNER JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id
+SELECT      SUM(CASE WHEN T2.SEX = 'M' AND T2.Admission = '+' THEN 1 ELSE 0 END) * 100.0 /      SUM(CASE WHEN T2.SEX = 'M' AND T2.Admission = '-' THEN 1 ELSE 0 END) AS DeviationPercentage FROM      Examination AS T1 JOIN      Patient AS T2 ON T1.ID = T2.ID; 
+SELECT CAST(SUM(CASE WHEN strftime('%Y', Birthday) > '1930' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(SEX) FROM Patient WHERE SEX = 'F'
+SELECT CAST(SUM(CASE WHEN T2.Admission = '+' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE STRFTIME('%Y', T1.Birthday) BETWEEN '1930' AND '1940'; 
+SELECT CAST(SUM(CASE WHEN Admission = '+' THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN Admission = '-' THEN 1 ELSE 0 END) AS Ratio FROM Examination WHERE Diagnosis = 'SLE'; 
+SELECT DISTINCT T1.Diagnosis, T2.Date FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Patient_ID = 30609; 
+SELECT P.SEX, P.Birthday, E.`Examination Date`, E.Symptoms FROM Patient P JOIN Examination E ON P.ID = E.ID WHERE P.ID = '163109'; 
+SELECT P.ID, P.SEX, P.Birthday FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.LDH > 500; 
+SELECT P.ID, (strftime('%Y', 'now') - strftime('%Y', P.Birthday)) AS Age FROM Patient P JOIN Examination E ON P.ID = E.ID WHERE E.RVVT = '+'; 
+SELECT T1.ID, T2.SEX, T1.Diagnosis FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.Thrombosis = 2
+SELECT DISTINCT P.ID FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE STRFTIME('%Y', P.Birthday) = '1937' AND L.`T-CHO` >= 250; 
+SELECT P.ID, P.SEX, P.Diagnosis FROM Laboratory L JOIN Patient P ON L.ID = P.ID WHERE L.ALB < 3.5; 
+SELECT CAST(SUM(CASE WHEN T2.SEX = 'F' AND (T1.TP < 6.0 OR T1.TP > 8.5) THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.ID) FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID 
+SELECT AVG(T2.aCL IgG) AS Average_IgG_Concentration FROM Patient AS T1 JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.Admission = '+' AND STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T1.Birthday) >= '50'; 
+SELECT COUNT(DISTINCT P.ID) AS FemalePatients FROM Patient P JOIN Examination E ON P.ID = E.ID WHERE P.SEX = 'F' AND STRFTIME('%Y', P.Description) = '1997' AND P.Admission = '-'; 
+SELECT MIN(YEAR(`First Date`) - YEAR(Birthday)) AS Youngest_Age FROM Patient;
+SELECT COUNT(DISTINCT P.ID) AS NumberOfWomenWithSeriousThrombosisCases FROM Patient P JOIN Examination E ON P.ID = E.ID WHERE E.Thrombosis = 1 AND strftime('%Y', E.`Examination Date`) = '1997' AND P.SEX = 'F'; 
+SELECT MAX(STRFTIME('%Y', Birthday)) - MIN(STRFTIME('%Y', Birthday)) AS AgeGap FROM Patient WHERE ID IN ( SELECT ID FROM Laboratory WHERE TG >= 200 )
+SELECT T1.Symptoms, T1.Diagnosis  FROM Examination AS T1  JOIN Patient AS T2 ON T1.ID = T2.ID  WHERE T1.Symptoms IS NOT NULL  ORDER BY T2.Birthday DESC  LIMIT 1; 
+SELECT AVG(COUNT(DISTINCT T1.ID)) AS Average_Male_Patients FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.Date BETWEEN '1998-01-01' AND '1998-12-31' AND T1.SEX = 'M'; 
+SELECT      MIN(T1.`Examination Date`) AS Lab_Completion_Date,     TIMESTAMPDIFF(YEAR, T2.Birthday, T2.`First Date`) AS Age_At_Arrival FROM      Examination AS T1 JOIN      Patient AS T2 ON T1.ID = T2.ID WHERE      T2.Diagnosis LIKE '%SJS%' ORDER BY      T2.Birthday ASC; 
+SELECT CAST(SUM(CASE WHEN T2.SEX = 'M' AND T1.UA <= 8.0 THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN T2.SEX = 'F' AND T1.UA <= 6.5 THEN 1 ELSE 0 END) AS Ratio FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.UA IS NOT NULL
+SELECT COUNT(DISTINCT p.ID) AS PatientCount FROM Patient p LEFT JOIN Examination e ON p.ID = e.ID WHERE e.`Examination Date` IS NOT NULL AND STRFTIME('%Y', e.`Examination Date`) - STRFTIME('%Y', p.`First Date`) >= 1; 
+SELECT COUNT(DISTINCT P.ID) AS Underage_Patients FROM Patient P JOIN Examination E ON P.ID = E.ID WHERE STRFTIME('%Y', P.Birthday) < '1990' AND STRFTIME('%Y', E.`Examination Date`) BETWEEN '1990' AND '1993'; 
+SELECT COUNT(DISTINCT P.ID) AS Male_Patients_with_Elevated_Total_Bilirubin FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE P.SEX = 'M' AND L.`T-BIL` >= 2.0; 
+SELECT Diagnosis FROM Examination WHERE `Examination Date` BETWEEN '1985-01-01' AND '1995-12-31' GROUP BY Diagnosis ORDER BY COUNT(Diagnosis) DESC LIMIT 1; 
+SELECT AVG(STRFTIME('%Y', '1999') - STRFTIME('%Y', Birthday)) AS AverageAge FROM Patient WHERE ID IN ( SELECT ID FROM Laboratory WHERE Date BETWEEN '1991-10-01' AND '1991-10-30' )
+SELECT T2.`Examination Date`, T2.HGB, T2.Diagnosis FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID ORDER BY T2.HGB DESC LIMIT 1
+SELECT ANA FROM Examination WHERE ID = 3605340 AND `Examination Date` = '1996-12-02'; 
+SELECT CASE WHEN T2.T-CHO < 250 THEN 'Normal' ELSE 'Not Normal' END AS Total_Cholesterol_Status FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Patient_ID = 2927464 AND T1.Date = '1995-09-04'; 
+SELECT T1.SEX FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T2.Diagnosis = 'AORTITIS' ORDER BY T2.`Examination Date` ASC LIMIT 1
+SELECT T1.`aCL IgM` FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.Description = '1994-02-19' AND T1.Diagnosis = 'SLE' AND T1.`Examination Date` = '1993-11-12'; 
+SELECT P.SEX FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.GPT = 9 AND L.Date = '1992-06-12'; 
+SELECT strftime('%Y', T1.Date) - strftime('%Y', T2.Birthday) AS Age FROM Laboratory AS T1 JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.UA = '8.4' AND T1.Date = '1991-10-21'; 
+SELECT COUNT(DISTINCT L.ID)  FROM Examination E  JOIN Patient P ON E.ID = P.ID  JOIN Laboratory L ON P.ID = L.ID  WHERE P.`First Date` = '1991-06-13' AND E.Diagnosis = 'SJS' AND YEAR(L.Date) = 1995; 
+SELECT patient.Diagnosis AS Original_Diagnose FROM Examination JOIN Patient ON Examination.ID = Patient.ID WHERE Examination.Date = '1997-01-27' AND patient.Diagnosis LIKE '%SLE%' ORDER BY patient.First_Date ASC LIMIT 1; 
+SELECT T1.Symptoms FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.Birthday = '1959-03-01' AND T1.`Examination Date` = '1993-09-27'; 
+SELECT      SUM(CASE WHEN T1.Birthday = '1959-02-18' AND strftime('%m', T2.Date) = '11' THEN T2.`T-CHO` ELSE 0 END) AS Nov_1981_Total_Cholesterol,     SUM(CASE WHEN T1.Birthday = '1959-02-18' AND strftime('%m', T2.Date) = '12' THEN T2.`T-CHO` ELSE 0 END) AS Dec_1981_Total_Cholesterol,     (SUM(CASE WHEN T1.Birthday = '1959-02-18' AND strftime('%m', T2.Date) = '11' THEN T2.`T-CHO` ELSE 0 END) - SUM(CASE WHEN T1.Birthday = '1959-02-18' AND strftime('%m', T2.Date) = '12' THEN T2.`T-CHO` ELSE 0 END)) / SUM(CASE WHEN T1.Birthday = '1959-02-18' AND strftime('%m', T2.Date) = '12' THEN T2.`T-CHO` ELSE 0 END) AS Decrease_Rate FROM      Patient AS T1 JOIN      Laboratory AS T2 ON T1.ID = T2.ID; 
+SELECT DISTINCT T1.ID FROM Examination AS T1 JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.Description >= '1997-01-01' AND T2.Description < '1998-01-01' AND T1.Diagnosis LIKE '%Behcet%' 
+SELECT T1.ID FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.`Examination Date` BETWEEN '1987-07-06' AND '1996-01-31' AND T2.GPT > 30 AND T2.ALB < 4 GROUP BY T1.ID ORDER BY T1.ID
+SELECT COUNT(ID) AS NumberOfPatients, ID FROM Patient WHERE SEX = 'F' AND YEAR(Birthday) = 1964 AND Admission = '+' GROUP BY ID ORDER BY ID; 
+SELECT COUNT(DISTINCT E.ID) AS NumberOfPatients FROM Examination E WHERE E.Thrombosis = 2 AND E.ANA = 'S' AND E.`aCL IgM` > (AVG(E.`aCL IgM`) * 1.2); 
+SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM Laboratory WHERE U_PRO > 0 AND U_PRO < 30; 
+SELECT CAST(SUM(CASE WHEN T1.DIAGNOSIS = 'BEHCET' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.ID) FROM Patient AS T1 JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'M' AND STRFTIME('%Y', T1.`First Date`) = '1981'; 
+SELECT DISTINCT P.ID, P.Description FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID JOIN Laboratory AS L ON P.ID = L.ID WHERE P.Admission = '-' AND L.Date LIKE '1991-10%' AND L.T_BIL < 2.0; 
+SELECT COUNT(*)  FROM Patient AS P  JOIN Examination AS E ON P.ID = E.ID  WHERE P.SEX = 'F'  AND P.Birthday BETWEEN '1980-01-01' AND '1989-12-31'  AND E.ANA_PATTERN != 'P'; 
+SELECT P.SEX FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE E.Diagnosis = 'PSS' AND L.CRP = 2 AND L.CRE = 1 AND L.LDH = 123; 
+SELECT AVG(L.ALB) FROM Laboratory L JOIN Patient P ON L.ID = P.ID WHERE P.SEX = 'F' AND L.PLT > 400 AND P.Diagnosis = 'SLE'
+SELECT Symptoms FROM Examination WHERE Diagnosis = 'SLE' GROUP BY Symptoms ORDER BY COUNT(Symptoms) DESC LIMIT 1
+SELECT T2.Description, T1.Diagnosis FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.ID = 48473 ORDER BY T2.Description ASC LIMIT 1; 
+SELECT COUNT(*) FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID WHERE P.SEX = 'F' AND E.Diagnosis LIKE '%APS%'; 
+SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE STRFTIME('%Y', T1.`Examination Date`) = '1997' AND (T2.tp < 6 OR T2.tp > 8.5); 
+SELECT CAST(SUM(CASE WHEN T1.Diagnosis LIKE '%SLE%' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.Symptoms LIKE '%thrombocytopenia%' 
+SELECT CAST(SUM(CASE WHEN T1.SEX = 'F' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.ID) FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE STRFTIME('%Y', T1.Birthday) = '1980' AND T2.Diagnosis = 'RA'
+SELECT COUNT(DISTINCT P.ID)  FROM Examination E  JOIN Patient P ON E.ID = P.ID  WHERE P.SEX = 'M'  AND E.`Examination Date` BETWEEN '1995-01-01' AND '1997-12-31'  AND E.Diagnosis LIKE '%Behcet%'  AND P.Admission = '-'; 
+SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'F' AND T2.WBC < 3.5; 
+SELECT DATEDIFF(T1.`Examination Date`, T2.`First Date`) AS DaysBeforeEvaluation FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.ID = 821298 ORDER BY T1.`Examination Date` ASC LIMIT 1
+SELECT CASE WHEN UA > 8.0 AND SEX = 'M' OR UA > 6.5 AND SEX = 'F' THEN 'Yes' ELSE 'No' END AS "Within Normal Range" FROM Examination JOIN Laboratory ON Examination.ID = Laboratory.ID WHERE Examination.ID = 57266; 
+SELECT T1.`Examination Date` FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.ID = 48473 AND T2.GOT >= 60 ORDER BY T1.`Examination Date` DESC; 
+SELECT P.SEX, P.Birthday FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE L.GOT < 60 AND strftime('%Y', L.Date) = '1994'; 
+SELECT DISTINCT L.ID FROM Laboratory AS L JOIN Examination AS E ON L.ID = E.ID JOIN Patient AS P ON L.ID = P.ID WHERE P.SEX = 'M' AND E.Diagnosis LIKE '%ALT%' AND L.GPT >= 60; 
+SELECT T2.Diagnosis FROM Laboratory AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.GPT > 60 ORDER BY T2.`Examination Date`;
+SELECT AVG(LDH) FROM Laboratory WHERE LDH < 500
+SELECT P.ID, TIMESTAMPDIFF(YEAR, P.Birthday, CURRENT_TIMESTAMP) AS Age FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE L.LDH BETWEEN 600 AND 800; 
+SELECT P.Admission FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.ALP < 300; 
+SELECT P.ID, L.ALP FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE P.Birthday = '1982-04-01' AND L.ALP < 300; 
+SELECT P.ID, P.SEX, P.Birthday FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.TP < 6.0; 
+SELECT P.ID, L.TP, (L.TP - 8.5) AS Deviation FROM Laboratory L INNER JOIN Patient P ON L.ID = P.ID WHERE P.SEX = 'F' AND L.TP > 8.5; 
+SELECT P.ID, P.Birthday FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE P.SEX = 'M' AND (L.ALB <= 3.5 OR L.ALB >= 5.5) ORDER BY P.Birthday DESC
+SELECT P.ID, CASE WHEN L.ALB BETWEEN 3.5 AND 5.5 THEN 'Yes' ELSE 'No' END AS Albumin_Normal_Range FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE STRFTIME('%Y', P.Birthday) = '1982'; 
+SELECT      SUM(CASE WHEN T1.SEX = 'F' AND T2.UA > 6.5 THEN 1 ELSE 0 END) * 100.0 / COUNT(T1.ID) AS Percentage FROM      Patient AS T1 JOIN      Laboratory AS T2 ON T1.ID = T2.ID; 
+SELECT AVG(L.UA) AS Average_UA_Index FROM Laboratory L JOIN Patient P ON L.ID = P.ID WHERE (L.UA < 8.0 AND P.SEX = 'M') OR (L.UA < 6.5 AND P.SEX = 'F') ORDER BY L.Date DESC; 
+SELECT P.ID, P.SEX, P.Birthday FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.UN = 29
+SELECT P.ID, P.SEX, P.Birthday FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID JOIN Laboratory AS L ON P.ID = L.ID WHERE E.Diagnosis = 'RA' AND L.UN < 30; 
+SELECT COUNT(DISTINCT p.ID) AS NumberOfMalePatientsWithCreatinineOutOfNormalRange FROM Patient p JOIN Examination e ON p.ID = e.ID WHERE p.SEX = 'M' AND e.CRE >= 1.5; 
+SELECT SUM(CASE WHEN T1.SEX = 'M' AND T2.CRE >= 1.5 THEN 1 ELSE 0 END) > SUM(CASE WHEN T1.SEX = 'F' AND T2.CRE >= 1.5 THEN 1 ELSE 0 END) AS Result FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID
+SELECT P.ID, P.SEX, P.Birthday, L.[T-BIL] AS Highest_Bilirubin_Level FROM Examination E JOIN Laboratory L ON E.ID = L.ID WHERE L.[T-BIL] = (SELECT MAX([T-BIL]) FROM Laboratory); 
+SELECT SEX ,  GROUP_CONCAT(DISTINCT ID) FROM Laboratory WHERE T_BIL >= 2.0 GROUP BY SEX
+SELECT P.ID, L.T_cho FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID ORDER BY P.Birthday ASC, L.T_cho DESC LIMIT 1; 
+SELECT AVG(DIVIDE(SUM(YEAR(CURRENT_DATE()) - YEAR(Birthday)), COUNT(ID))) AS AverageAge FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE P.SEX = 'M' AND L.`T-CHO` >= 250; 
+SELECT DISTINCT P.ID, P.Description, E.Diagnosis FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID JOIN Laboratory AS L ON P.ID = L.ID WHERE L.TG > 300; 
+SELECT COUNT(DISTINCT T2.ID)  FROM Laboratory AS T1  JOIN Patient AS T2 ON T1.ID = T2.ID  WHERE T1.TG >= 200 AND strftime('%Y', 'now') - strftime('%Y', T2.Birthday) > 50; 
+SELECT DISTINCT T1.ID FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Admission = '-' AND T2.CPK < 250
+SELECT COUNT(DISTINCT T1.ID)  FROM Laboratory AS T1  INNER JOIN Patient AS T2 ON T1.ID = T2.ID  WHERE STRFTIME('%Y', T2.Birthday) BETWEEN '1936' AND '1956'  AND T2.SEX = 'M'  AND T1.CPK >= 250; 
+SELECT P.ID, P.SEX, strftime('%Y', 'now') - strftime('%Y', P.Birthday) AS Age FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE L.GLU >= 180 AND L.`T-CHO` < 250; 
+SELECT P.ID, L.GLU FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE STRFTIME('%Y', P.Description) = '1991' AND L.GLU IS NOT NULL AND L.GLU < 180; 
+SELECT P.ID, P.SEX, P.Birthday FROM Examination E JOIN Laboratory L ON E.ID = L.ID JOIN Patient P ON E.ID = P.ID WHERE L.WBC <= 3.5 OR L.WBC >= 9.0 GROUP BY P.SEX ORDER BY TIMESTAMPDIFF(YEAR, P.Birthday, CURRENT_DATE) ASC; 
+SELECT T1.ID, T1.Age, T2.Diagnosis FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T2.RBC < 3.5
+SELECT P.ID, P.SEX, P.Birthday, L.RBC, P.Admission FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE P.SEX = 'F' AND STRFTIME('%Y', 'now') - STRFTIME('%Y', P.Birthday) >= 50 AND (L.RBC <= 3.5 OR L.RBC >= 6.0)
+SELECT DISTINCT P.ID, P.SEX FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE P.Admission = '-' AND L.HGB < 10; 
+SELECT P.ID, P.SEX FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE E.Diagnosis = 'SLE' AND L.HGB BETWEEN 10 AND 17 ORDER BY P.Birthday ASC LIMIT 1; 
+SELECT P.ID, (strftime('%Y', 'now') - strftime('%Y', P.Birthday)) AS Age FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE L.HCT >= 52 GROUP BY P.ID HAVING COUNT(L.ID) > 2; 
+SELECT AVG(HCT) FROM Laboratory WHERE Date LIKE '1991%' AND HCT < 29;
+SELECT      SUM(CASE WHEN T2.PLT < 100 THEN 1 ELSE 0 END) - SUM(CASE WHEN T2.PLT > 400 THEN 1 ELSE 0 END) AS Calculation FROM      Examination AS T1 INNER JOIN      Laboratory AS T2 ON T1.ID = T2.ID WHERE      T2.PLT IS NOT NULL AND (T2.PLT <= 100 OR T2.PLT >= 400); 
+SELECT DISTINCT P.ID, P.First_Name, P.Last_Name FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID JOIN Laboratory AS L ON P.ID = L.ID WHERE STRFTIME('%Y', E.`Examination Date`) = '1984' AND strftime('%Y', 'now') - strftime('%Y', P.Birthday) < 50 AND L.PLT BETWEEN 100 AND 400; 
+SELECT CAST(SUM(CASE WHEN T2.SEX = 'F' AND T1.PT >= 14 THEN 1 ELSE 0 END) AS REAL) * 100 / SUM(CASE WHEN T1.PT >= 14 THEN 1 ELSE 0 END) AS Percentage FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE STRFTIME('%Y', CURRENT_TIMESTAMP) - STRFTIME('%Y', T2.Birthday) > 55; 
+SELECT DISTINCT P.ID FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE YEAR(P.`First Date`) > 1992 AND L.PT < 14; 
+SELECT COUNT(*) FROM Examination WHERE `Examination Date` > '1997-01-01' AND APTT IS NOT NULL AND APTT >= 45; 
+SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.APTT > 45 AND T1.Thrombosis = 0; 
+SELECT COUNT(DISTINCT T1.ID)  FROM Patient AS T1  JOIN Laboratory AS T2 ON T1.ID = T2.ID  WHERE T1.SEX = 'M'  AND T2.WBC BETWEEN 3.5 AND 9.0  AND (T2.FG <= 150 OR T2.FG >= 450); 
+SELECT COUNT(DISTINCT P.ID) AS NumberOfPatients FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE P.Birthday > '1980-01-01' AND L.FG < 150 OR L.FG > 450; 
+SELECT DISTINCT T1.Diagnosis FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.`U-PRO` >= 30; 
+SELECT DISTINCT P.ID FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID WHERE E.`U-PRO` BETWEEN 0 AND 30 AND E.Diagnosis = 'SLE'; 
+SELECT COUNT(DISTINCT ID) FROM Laboratory WHERE IGG >= 2000; 
+SELECT COUNT(DISTINCT E.ID) AS Number_of_Patients FROM Examination E JOIN Laboratory L ON E.ID = L.ID WHERE E.Symptoms IS NOT NULL AND L.IGG BETWEEN 900 AND 2000; 
+SELECT P.Diagnosis FROM Patient AS P JOIN Examination AS E ON P.ID = E.ID WHERE E.IgA BETWEEN 80 AND 500 ORDER BY E.IgA DESC LIMIT 1; 
+SELECT COUNT(DISTINCT p.ID) AS PatientCount FROM Patient p JOIN Examination e ON p.ID = e.ID WHERE e.`aCL IgA` BETWEEN 80 AND 500 AND STRFTIME('%Y', p.`First Date`) >= '1990'; 
+SELECT Diagnosis FROM Examination WHERE IGM <= 40 OR IGM >= 400 GROUP BY Diagnosis ORDER BY COUNT(Diagnosis) DESC LIMIT 1; 
+SELECT COUNT(DISTINCT P.ID) AS PatientCount FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE L.CRP = '+' AND P.Description IS NULL; 
+SELECT COUNT(DISTINCT p.ID) AS NumberOfPatients FROM Patient p JOIN Laboratory l ON p.ID = l.ID WHERE l.CRE >= 1.5 AND TIMESTAMPDIFF(YEAR, p.Birthday, CURDATE()) < 70; 
+SELECT COUNT(DISTINCT T1.ID) AS PatientCount FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.RF IN ('-', '+-') AND T1.KCT = '+'; 
+SELECT DISTINCT T1.Diagnosis FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.Birthday >= '1985-01-01' AND T1.RF IN ('-', '+-'); 
+SELECT DISTINCT P.ID FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.RF < 20 AND TIMESTAMPDIFF(YEAR, P.Birthday, CURDATE()) > 60
+SELECT COUNT(DISTINCT T1.ID) AS PatientCount FROM Laboratory AS T1 JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.RF < 20 AND T2.Thrombosis = 0; 
+SELECT COUNT(DISTINCT T1.ID) AS NumberOfPatients FROM Patient AS T1 JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T2.ANA = 256 AND T2.ANA Pattern = 'P' AND T2.C3 > 35; 
+SELECT T2.ID FROM Laboratory AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.HCT < 29 OR T1.HCT > 52 ORDER BY T2.`aCL IgA` DESC LIMIT 1
+SELECT COUNT(DISTINCT P.ID) AS Number_of_Patients FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE E.Diagnosis LIKE '%thrombosis%' AND L.C4 > 10; 
+SELECT COUNT(DISTINCT T1.ID) FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.RNP IN ('-', '+-') AND T2.Admission = '+'; 
+SELECT P.Birthday FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.RNP NOT IN ('-', '+-') ORDER BY P.Birthday DESC LIMIT 1; 
+SELECT COUNT(DISTINCT T1.ID) AS PatientCount FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE (T2.SM IN ('-', '+-') OR T2.SM = 0) AND T1.Thrombosis = 0; 
+SELECT P.ID FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE L.SM NOT IN ('negative', '0') ORDER BY P.Birthday DESC LIMIT 3; 
+SELECT DISTINCT T1.ID FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.`Examination Date` > '1997-01-01' AND T2.SC170 IN ('negative', '0') 
+SELECT COUNT(DISTINCT T1.ID) AS Female_Patients FROM Patient AS T1 JOIN Examination AS T2 ON T1.ID = T2.ID JOIN Laboratory AS T3 ON T1.ID = T3.ID WHERE T3.SC170 IN ('negative', '0') AND T1.SEX = 'F' AND T2.Symptoms IS NULL; 
+SELECT COUNT(DISTINCT P.ID) AS NumberOfPatients FROM Patient P JOIN Examination E ON P.ID = E.ID JOIN Laboratory L ON P.ID = L.ID WHERE L.SSA IN ('-', '+') AND STRFTIME('%Y', P.First_Date) < '2000'; 
+SELECT P.ID FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.SSA NOT IN ('negative', '0') ORDER BY P.`First Date` LIMIT 1; 
+SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.SSB IN ('-', '+-') AND T1.Diagnosis = 'SLE' 
+SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.SSB IN ('negative', '0') AND T1.Symptoms IS NOT NULL
+SELECT COUNT(DISTINCT P.ID)  FROM Patient AS P  JOIN Laboratory AS L ON P.ID = L.ID  WHERE P.SEX = 'M' AND L.CENTROMEA IN ('-', '+-') AND L.SSB IN ('-', '+-'); 
+SELECT DISTINCT T2.Diagnosis FROM Laboratory AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.DNA >= 8; 
+SELECT COUNT(DISTINCT P.ID) FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.DNA < 8 AND P.Description IS NULL
+SELECT COUNT(DISTINCT P.ID) AS PatientCount FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE L.IGG BETWEEN 900 AND 2000 AND P.Admission = '+'; 
+SELECT CAST(SUM(CASE WHEN T2.GOT >= 60 AND T1.Diagnosis = 'SLE' THEN 1 ELSE 0 END) AS REAL) * 100 / SUM(CASE WHEN T2.GOT >= 60 THEN 1 ELSE 0 END) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID; 
+SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'M' AND T2.GOT < 60
+SELECT MIN(P.Birthday) FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE L.GOT >= 60; 
+SELECT T2.Birthday FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.GPT < 60 ORDER BY T1.GPT DESC LIMIT 3
+SELECT COUNT(DISTINCT P.ID) FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE L.GOT < 60 AND P.SEX = 'M'
+SELECT MIN(T1.`First Date`) AS First_Recorded_Date FROM Patient AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.LDH < 500; 
+SELECT T1.`Examination Date` FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.LDH >= 500 ORDER BY T1.`Examination Date` DESC LIMIT 1; 
+SELECT COUNT(DISTINCT P.ID) AS Number_of_Patients FROM Laboratory L JOIN Examination E ON L.ID = E.ID JOIN Patient P ON L.ID = P.ID WHERE L.ALP >= 300 AND P.Admission = '+'; 
+SELECT COUNT(DISTINCT T1.ID) FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.Admission = '-' AND T1.ALP < 300
+SELECT DISTINCT T1.Diagnosis FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.TP < 6.0; 
+SELECT COUNT(DISTINCT T1.ID) AS NumberOfPatients FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Diagnosis = 'SJS' AND T2.TP BETWEEN 6.0 AND 8.5; 
+SELECT T1.`Examination Date` FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.ALB BETWEEN 3.5 AND 5.5 ORDER BY T2.ALB DESC LIMIT 1; 
+SELECT COUNT(*) FROM Patient AS P JOIN Laboratory AS L ON P.ID = L.ID WHERE P.SEX = 'M' AND L.ALB BETWEEN 3.5 AND 5.5 AND L.TP BETWEEN 6.0 AND 8.5
+SELECT aCL_IgG, aCL_IgM, aCL_IgA FROM Examination WHERE ID IN (     SELECT ID FROM Laboratory WHERE UA > 6.50 AND SEX = 'F' ORDER BY UA DESC LIMIT 1 ) 
+SELECT MAX(T1.ANA) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.CRE < 1.5
+SELECT ID FROM Laboratory WHERE CRE < 1.5 AND aCL_IgA = ( SELECT MAX(aCL_IgA) FROM Laboratory )
+SELECT COUNT(DISTINCT T1.ID) FROM Patient AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T2.`T-BIL` >= 2.0 AND T2.`ANA Pattern` LIKE '%P%'
+SELECT T2.ANA FROM Laboratory AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.`T-BIL` < 2.0 ORDER BY T1.`T-BIL` DESC LIMIT 1
+SELECT COUNT(DISTINCT L.ID) AS PatientCount FROM Laboratory L JOIN Examination E ON L.ID = E.ID WHERE L.T_cho >= 250 AND E.KCT = '-'; 
+SELECT COUNT(DISTINCT T1.ID) AS PatientCount FROM Laboratory AS T1 INNER JOIN Examination AS T2 ON T1.ID = T2.ID WHERE T1.T_CHO < 250 AND T2.ANA_Pattern = 'P'; 
+SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 WHERE T1.TG < 200 AND T1.Symptoms IS NOT NULL
+SELECT T1.Diagnosis FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.TG < 200 ORDER BY T2.TG DESC LIMIT 1; 
+SELECT T1.ID FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Thrombosis = 0 AND T2.CPK < 250 
+SELECT COUNT(DISTINCT T1.ID) AS PatientCount FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T2.CPK < 250 AND (T1.KCT = '+' OR T1.RVVT = '+' OR T1.LAC = '+'); 
+SELECT T2.Birthday FROM Laboratory AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T1.GLU > 180 ORDER BY T2.Birthday ASC LIMIT 1
+SELECT COUNT(DISTINCT T1.ID) AS PatientCount FROM Examination AS T1 JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.GLU < 180 AND T1.Thrombosis = 0; 
+SELECT COUNT(DISTINCT T2.ID) FROM Examination AS T1 INNER JOIN Patient AS T2 ON T1.ID = T2.ID WHERE T2.Admission = '+' AND T1.WBC BETWEEN 3.5 AND 9.0
+SELECT COUNT(DISTINCT E.ID) AS PatientCount FROM Examination E JOIN Laboratory L ON E.ID = L.ID WHERE E.Diagnosis = 'SLE' AND L.WBC BETWEEN 3.5 AND 9.0; 
+SELECT P.ID FROM Patient P JOIN Laboratory L ON P.ID = L.ID WHERE (L.RBC <= 3.5 OR L.RBC >= 6.0) AND P.Admission = '-'; 
+SELECT COUNT(DISTINCT E.ID) AS PatientCount FROM Examination E JOIN Laboratory L ON E.ID = L.ID WHERE E.PLT BETWEEN 100 AND 400 AND E.Diagnosis IS NOT NULL; 
+SELECT L.PLT FROM Laboratory AS L JOIN Examination AS E ON L.ID = E.ID WHERE E.Diagnosis = 'MCTD' AND L.PLT BETWEEN 100 AND 400
+SELECT AVG(T2.PT) FROM Patient AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.SEX = 'M' AND T2.PT < 14
+SELECT COUNT(DISTINCT T1.ID) FROM Examination AS T1 INNER JOIN Laboratory AS T2 ON T1.ID = T2.ID WHERE T1.Thrombosis IN (1, 2) AND T2.PT < 14
+SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.first_name = 'Angela' AND T1.last_name = 'Sanders'
+SELECT COUNT(*) FROM member WHERE link_to_major IN (SELECT major_id FROM major WHERE college = 'College of Engineering'); 
+SELECT T2.first_name, T2.last_name FROM club AS T1 INNER JOIN member AS T2 ON T1.member_id = T2.member_id WHERE T2.link_to_major IN ( SELECT major_id FROM major WHERE department = 'Art and Design' )
+SELECT COUNT(*) FROM attendance AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.event_name = 'Women''s Soccer'; 
+SELECT T3.phone FROM attendance AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id INNER JOIN member AS T3 ON T1.link_to_member = T3.member_id WHERE T2.event_name = 'Women''s Soccer'; 
+SELECT COUNT(m.member_id) AS medium_tshirt_count FROM member m JOIN attendance a ON m.member_id = a.link_to_member JOIN event e ON a.link_to_event = e.event_id WHERE e.event_name = 'Women''s Soccer' AND m.t_shirt_size = 'Medium'; 
+SELECT T1.event_name FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event WHERE T2.link_to_member IN ( SELECT member_id FROM member WHERE position = 'Student' ) GROUP BY T1.event_name ORDER BY COUNT(T2.link_to_event) DESC LIMIT 1
+SELECT T2.college FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'Vice President' AND T1.first_name = 'Student' AND T1.last_name = 'Club'
+SELECT T1.event_name FROM event AS T1 JOIN attendance AS T2 ON T1.event_id = T2.link_to_event JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T3.first_name = 'Maya' AND T3.last_name = 'Mclean'
+SELECT COUNT(*) FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event WHERE T1.type = 'Student_Club' AND T2.link_to_member IN ( SELECT member_id FROM member WHERE first_name = 'Sacha' AND last_name = 'Harrison' ) AND STRFTIME('%Y', T1.event_date) = '2019'
+SELECT COUNT(DISTINCT link_to_event) AS meeting_count FROM attendance JOIN event ON attendance.link_to_event = event.event_id WHERE event.type = 'Meeting' GROUP BY link_to_event HAVING COUNT(link_to_event) > 10; 
+SELECT e.event_name FROM event e WHERE e.type != 'Fundraiser' AND (     SELECT COUNT(a.link_to_event)     FROM attendance a     WHERE a.link_to_event = e.event_id ) > 20; 
+SELECT AVG(COUNT(event_id)) / COUNT(DISTINCT event_name) AS avg_attendance FROM event JOIN attendance ON event.event_id = attendance.link_to_event WHERE STRFTIME('%Y', event_date) = '2020' AND type = 'Meeting'; 
+SELECT expense_description, MAX(cost) FROM expense WHERE expense_description LIKE '%club%' OR expense_description LIKE '%events%' ORDER BY cost DESC LIMIT 1
+SELECT COUNT(*) FROM member WHERE link_to_major IN (SELECT major_id FROM major WHERE major_name = 'Environmental Engineering') 
+SELECT T2.first_name, T2.last_name FROM attendance AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id INNER JOIN event AS T3 ON T1.link_to_event = T3.event_id WHERE T3.event_name = 'Laugh Out Loud' AND T2.position = 'Member'
+SELECT T1.last_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.major_name = 'Law and Constitutional Studies'
+SELECT T1.county FROM zip_code AS T1 INNER JOIN member AS T2 ON T2.zip = T1.zip_code WHERE T2.first_name = 'Sherri' AND T2.last_name = 'Ramsey'; 
+SELECT T1.college FROM major AS T1 JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.first_name = 'Tyler' AND T2.last_name = 'Hewitt'
+SELECT SUM(amount) AS total_funds_received FROM income WHERE link_to_member IN (     SELECT member_id     FROM member     WHERE position = 'Vice President' ); 
+SELECT SUM(T1.spent) AS total_spent_on_food FROM budget AS T1 JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.event_name = 'September Meeting' AND T1.category = 'Food'; 
+SELECT T2.city, T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.position = 'President'; 
+SELECT T.first_name, T.last_name FROM member AS T JOIN zip_code AS Z ON T.zip = Z.zip_code WHERE Z.state = 'Illinois'
+SELECT SUM(b.spent) AS total_spent_on_advertisement FROM budget b JOIN event e ON b.link_to_event = e.event_id WHERE e.event_name = 'September Meeting' AND b.category = 'Advertisement'; 
+SELECT DISTINCT m.department FROM member AS m JOIN attendance AS a ON m.member_id = a.link_to_member WHERE m.first_name IN ('Pierce', 'Guidi') AND m.last_name IN ('Pierce', 'Guidi'); 
+SELECT SUM(b.amount) FROM budget b JOIN event e ON b.link_to_event = e.event_id WHERE e.event_name = 'October Speaker'
+SELECT e.expense_description, e.approved  FROM expense e  JOIN budget b ON e.link_to_budget = b.budget_id  JOIN event ev ON b.link_to_event = ev.event_id  WHERE ev.event_name = 'October Meeting' AND ev.event_date LIKE '2019-10-08%' AND e.approved = 'true'; 
+SELECT AVG(cost) FROM expense WHERE link_to_member IN ( SELECT member_id FROM member WHERE first_name = 'Elijah' AND last_name = 'Allen' ) AND STRFTIME('%m', expense_date) IN ('09', '10')
+SELECT SUM(CASE WHEN strftime('%Y', T1.event_date) = '2019' THEN T2.spent ELSE 0 END) - SUM(CASE WHEN strftime('%Y', T1.event_date) = '2020' THEN T2.spent ELSE 0 END) AS difference FROM event AS T1 JOIN budget AS T2 ON T1.event_id = T2.link_to_event; 
+SELECT location FROM event WHERE event_name = 'Spring Budget Review';
+SELECT SUM(cost) AS total_cost FROM expense WHERE expense_description LIKE '%Posters%' AND expense_date = '2019-09-04'; 
+SELECT MAX(budget.remaining) AS remaining_of_biggest_food_budget FROM budget WHERE budget.category = 'Food'; 
+SELECT notes FROM income WHERE date_received = '2019-09-14' AND source = 'Fundraising';
+SELECT COUNT(major_name) AS major_count FROM major WHERE college = 'College of Humanities and Social Sciences'; 
+SELECT phone FROM member WHERE first_name = 'Carlo' AND last_name = 'Jacobs'; 
+SELECT T2.county FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.first_name = 'Adela' AND T1.last_name = 'O''Gallagher'
+SELECT COUNT(*)  FROM budget  JOIN event ON budget.link_to_event = event.event_id  WHERE event.event_name = 'November Meeting' AND budget.remaining < 0; 
+SELECT SUM(budget.amount) FROM budget INNER JOIN event ON budget.link_to_event = event.event_id WHERE event.event_name = 'September Speaker' AND budget.event_status = 'Open'
+SELECT T1.event_status FROM event AS T1 JOIN expense AS T2 ON T1.event_id = T2.link_to_event WHERE T2.expense_description = 'Post Cards, Posters' AND T2.expense_date = '2019-08-20'; 
+SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.first_name = 'Brent' AND T1.last_name = 'Thomason'
+SELECT COUNT(*)  FROM member  WHERE link_to_major IN (     SELECT major_id      FROM major      WHERE major_name = 'Business' ) AND t_shirt_size = 'Medium'; 
+SELECT T1.type FROM zip_code AS T1 INNER JOIN member AS T2 ON T1.zip_code = T2.zip WHERE T2.first_name = 'Christof' AND T2.last_name = 'Nielsen'
+SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'Vice President'
+SELECT T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.first_name = 'Sacha' AND T1.last_name = 'Harrison'; 
+SELECT T1.department FROM major AS T1 JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.position = 'President'; 
+SELECT T1.date_received FROM income AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T2.first_name = 'Connor' AND T2.last_name = 'Hilton' AND T1.source = 'Dues' ORDER BY T1.date_received DESC LIMIT 1
+SELECT first_name, last_name FROM member WHERE member_id = (SELECT link_to_member FROM income WHERE source = 'Dues' ORDER BY date_received ASC LIMIT 1) 
+SELECT CAST(SUM(CASE WHEN T1.event_name = 'Yearly Kickoff' THEN T2.amount ELSE 0 END) AS REAL) / SUM(CASE WHEN T1.event_name = 'October Meeting' THEN T2.amount ELSE 0 END) AS ratio FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event WHERE T2.category = 'Advertisement'; 
+SELECT CAST(SUM(CASE WHEN T1.category = 'Parking' THEN T1.amount ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM budget AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.event_name = 'November Speaker'
+SELECT SUM(cost) AS total_cost_of_pizzas FROM expense WHERE expense_description = 'Pizza'; 
+SELECT COUNT(city) FROM zip_code WHERE county = 'Orange' AND state = 'Virginia'; 
+SELECT DISTINCT T1.department FROM major AS T1 JOIN event AS T2 ON T1.major_id = T2.link_to_member WHERE T1.college = 'College of Humanities and Social Sciences'
+SELECT T1.city, T1.county, T1.state FROM zip_code AS T1 INNER JOIN member AS T2 ON T2.zip = T1.zip_code WHERE T2.first_name = 'Amy' AND T2.last_name = 'Firth'; 
+SELECT T1.expense_description FROM expense AS T1 JOIN budget AS T2 ON T1.link_to_budget = T2.budget_id ORDER BY T2.remaining ASC LIMIT 1
+SELECT T1.first_name, T1.last_name FROM member AS T1 JOIN attendance AS T2 ON T1.member_id = T2.link_to_member JOIN event AS T3 ON T2.link_to_event = T3.event_id WHERE T3.event_name = 'October Meeting'
+SELECT major.college FROM member JOIN major ON member.link_to_major = major.major_id GROUP BY major.college ORDER BY COUNT(major.college) DESC LIMIT 1
+SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.phone = '809-555-3360'
+SELECT e.event_name  FROM event e  JOIN budget b ON e.event_id = b.link_to_event  ORDER BY b.amount DESC  LIMIT 1; 
+SELECT T1.expense_description FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T2.position = 'Vice President'; 
+SELECT COUNT(link_to_member) AS member_count FROM attendance WHERE link_to_event = (SELECT event_id FROM event WHERE event_name = 'Women''s Soccer') 
+SELECT date_received FROM income WHERE link_to_member IN (SELECT member_id FROM member WHERE first_name = 'Casey' AND last_name = 'Mason'); 
+SELECT COUNT(*) FROM member WHERE zip IN ( SELECT zip_code FROM zip_code WHERE state = 'Maryland' )
+SELECT COUNT(*) AS event_count FROM attendance JOIN member ON attendance.link_to_member = member.member_id WHERE member.phone = '954-555-6240'; 
+SELECT T1.first_name, T1.last_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.department = 'School of Applied Sciences, Technology and Education'
+SELECT e.event_name, b.spent / b.amount AS ratio FROM event e JOIN budget b ON e.event_id = b.link_to_event WHERE e.status = 'Closed' ORDER BY ratio DESC LIMIT 1; 
+SELECT COUNT(*) FROM member WHERE position = 'President'; 
+SELECT MAX(spent) AS highest_budget_spend FROM budget; 
+SELECT COUNT(*) FROM event WHERE type = 'Meeting' AND STRFTIME('%Y', event_date) = '2020'; 
+SELECT SUM(spent) FROM budget WHERE category = 'Food'; 
+SELECT T.first_name, T.last_name FROM ( SELECT member_id, COUNT(link_to_event) AS event_count FROM attendance GROUP BY member_id ) AS T WHERE T.event_count > 7 JOIN member ON T.member_id = member.member_id
+SELECT m.first_name, m.last_name FROM member m JOIN attendance a ON m.member_id = a.link_to_member JOIN event e ON a.link_to_event = e.event_id JOIN major mj ON m.link_to_major = mj.major_id WHERE mj.major_name = 'Interior Design' AND e.event_name = 'Community Theater'
+SELECT first_name, last_name FROM member WHERE zip IN ( SELECT zip_code FROM zip_code WHERE city = 'Georgetown' AND state = 'South Carolina' )
+SELECT SUM(amount) AS income_generated FROM income JOIN member ON income.link_to_member = member.member_id WHERE first_name = 'Grant' AND last_name = 'Gilmour'; 
+SELECT T.first_name, T.last_name FROM member AS T JOIN income AS I ON T.member_id = I.link_to_member WHERE I.amount > 40
+SELECT SUM(expense.cost) AS total_expense FROM expense JOIN budget ON expense.link_to_budget = budget.budget_id JOIN event ON budget.link_to_event = event.event_id WHERE event.event_name = 'Yearly Kickoff'; 
+SELECT T1.first_name, T1.last_name FROM member AS T1 JOIN attendance AS T2 ON T1.member_id = T2.link_to_member JOIN event AS T3 ON T2.link_to_event = T3.event_id WHERE T3.event_name = 'Yearly Kickoff' AND T1.position = 'Student' GROUP BY T1.first_name, T1.last_name ORDER BY COUNT(*) DESC LIMIT 1
+SELECT T2.first_name, T2.last_name, T1.source FROM income AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id GROUP BY T1.source ORDER BY SUM(T1.amount) DESC LIMIT 1
+SELECT T1.event_name FROM event AS T1 JOIN expense AS T2 ON T1.event_id = T2.link_to_event ORDER BY T2.cost ASC LIMIT 1
+SELECT (SUM(CASE WHEN T2.event_name = 'Yearly Kickoff' THEN T1.cost ELSE 0 END) / SUM(T1.cost)) * 100 AS percentage FROM expense AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id; 
+SELECT CAST(SUM(CASE WHEN T1.major_name = 'Finance' THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN T1.major_name = 'Physics' THEN 1 ELSE 0 END) FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major
+SELECT source, SUM(amount) AS total_amount FROM income WHERE date_received BETWEEN '2019-09-01' AND '2019-09-30' GROUP BY source ORDER BY total_amount DESC LIMIT 1; 
+SELECT first_name, last_name, email FROM member WHERE position = 'Secretary'
+SELECT COUNT(*)  FROM member  INNER JOIN major ON member.link_to_major = major.major_id  WHERE major.major_name = 'Physics Teaching'; 
+SELECT COUNT(*) FROM attendance AS T1 JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.event_name = 'Community Theater' AND STRFTIME('%Y', T2.event_date) = '2019'; 
+SELECT T1.major_name, COUNT(T3.link_to_event) AS num_events_attended FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major INNER JOIN attendance AS T3 ON T2.member_id = T3.link_to_member WHERE T2.first_name = 'Luisa' AND T2.last_name = 'Guidi'
+SELECT AVG(spent) FROM budget WHERE category = 'Food' AND event_status = 'Closed'; 
+SELECT T1.event_name FROM event AS T1 JOIN budget AS T2 ON T1.event_id = T2.link_to_event WHERE T2.category = 'Advertisement' ORDER BY T2.spent DESC LIMIT 1
+SELECT CASE WHEN EXISTS (     SELECT 1 FROM attendance      JOIN member ON attendance.link_to_member = member.member_id      JOIN event ON attendance.link_to_event = event.event_id      WHERE member.first_name = 'Maya' AND member.last_name = 'Mclean' AND event.event_name = 'Women''s Soccer' ) THEN 'Yes' ELSE 'No' END AS attended; 
+SELECT CAST(COUNT(CASE WHEN type = 'Community Service' THEN 1 ELSE NULL END) AS REAL) * 100 / COUNT(event_id) FROM event WHERE event_date LIKE '2019%'
+SELECT SUM(T1.cost) AS total_poster_cost FROM expense AS T1 JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.event_name = 'September Speaker' AND T1.expense_description = 'Posters'; 
+SELECT t_shirt_size FROM member GROUP BY t_shirt_size ORDER BY COUNT(t_shirt_size) DESC LIMIT 1; 
+SELECT e.event_name FROM event e JOIN budget b ON e.event_id = b.link_to_event WHERE e.status = 'Closed' AND b.remaining < 0 ORDER BY b.remaining ASC LIMIT 1; 
+SELECT e.category, SUM(e.cost) AS total_value FROM expense e JOIN budget b ON e.link_to_budget = b.budget_id JOIN event ev ON b.link_to_event = ev.event_id WHERE ev.event_name = 'October Meeting' AND e.approved = 'true' GROUP BY e.category; 
+SELECT category, SUM(amount) AS total_amount FROM budget JOIN event ON budget.link_to_event = event.event_id WHERE event_name = 'April Speaker' GROUP BY category ORDER BY total_amount ASC
+SELECT budget_id FROM budget WHERE category = 'Food' ORDER BY amount DESC LIMIT 1
+SELECT link_to_event, SUM(amount) AS total_amount FROM budget WHERE category = 'Advertisement' GROUP BY link_to_event ORDER BY total_amount DESC LIMIT 3
+SELECT SUM(cost) FROM expense WHERE expense_description = 'Parking'
+SELECT SUM(cost) AS total_expense FROM expense WHERE expense_date = '2019-08-20'; 
+SELECT T2.first_name, T2.last_name, SUM(T1.cost) AS total_cost FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T1.link_to_member = 'rec4BLdZHS2Blfp4v'
+SELECT T2.expense_description FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.first_name = 'Sacha' AND T1.last_name = 'Harrison'
+SELECT T2.expense_description FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member WHERE T1.t_shirt_size = 'X-Large'
+SELECT DISTINCT m.zip FROM member m JOIN expense e ON m.member_id = e.link_to_member WHERE e.cost < 50; 
+SELECT T2.major_name FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.first_name = 'Phillip' AND T1.last_name = 'Cullen'; 
+SELECT T1.position FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.major_name = 'Business'
+SELECT COUNT(*) FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.major_name = 'Business' AND T1.t_shirt_size = 'Medium'
+SELECT type FROM event WHERE event_id IN (SELECT link_to_event FROM budget WHERE remaining > 30)
+SELECT DISTINCT type FROM event WHERE location = 'MU 215'
+SELECT type FROM event WHERE event_date = '2020-03-24T12:00:00'; 
+SELECT T1.major_name FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.position = 'Vice President'
+SELECT CAST(SUM(CASE WHEN T2.position = 'Member' AND T1.major_name = 'Business' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.major_id) FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major 
+SELECT type FROM event WHERE location = 'MU 215' GROUP BY type
+SELECT COUNT(*) FROM income WHERE amount = 50; 
+SELECT COUNT(*) FROM member WHERE position = 'Member' AND t_shirt_size = 'X-Large'; 
+SELECT COUNT(major_id) FROM major WHERE department = 'School of Applied Sciences, Technology and Education' AND college = 'College of Agriculture and Applied Sciences';
+SELECT m.last_name, ma.department, ma.college FROM member AS m JOIN major AS ma ON m.link_to_major = ma.major_id WHERE ma.major_name = 'Environmental Engineering'; 
+SELECT DISTINCT T1.category FROM budget AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.location = 'MU 215' AND T2.type = 'Guest Speaker' AND T1.spent = 0; 
+SELECT T2.city, T2.state FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.position = 'Member' AND T1.link_to_major IN ( SELECT major_id FROM major WHERE department = 'Electrical and Computer Engineering Department' )
+SELECT T1.event_name FROM event AS T1 INNER JOIN attendance AS T2 ON T1.event_id = T2.link_to_event INNER JOIN member AS T3 ON T2.link_to_member = T3.member_id WHERE T3.position = 'Vice President' AND T1.location = '900 E. Washington St.' AND T1.type = 'Social'
+SELECT T2.last_name, T2.position FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T1.expense_date = '2019-09-10' AND T1.expense_description = 'Pizza' LIMIT 1
+SELECT m.last_name FROM member m JOIN attendance a ON m.member_id = a.link_to_member JOIN event e ON a.link_to_event = e.event_id WHERE e.event_name = 'Women''s Soccer'; 
+SELECT CAST(SUM(CASE WHEN T2.amount = 50 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.member_id) FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T1.t_shirt_size = 'Medium' AND T1.position = 'Member'
+SELECT DISTINCT T2.country FROM zip_code AS T1 INNER JOIN event AS T2 ON T1.zip_code = T2.location WHERE T1.type = 'PO Box'
+SELECT DISTINCT T1.zip FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T2.state = 'Puerto Rico' AND T2.type = 'PO Box'
+SELECT event_name FROM event WHERE type = 'Game' AND status = 'Closed' AND event_date BETWEEN '2019-03-15' AND '2020-03-20'; 
+SELECT DISTINCT T1.link_to_event FROM expense AS T1 JOIN income AS T2 ON T1.link_to_member = T2.link_to_member WHERE T1.cost > 50; 
+SELECT m.first_name, m.last_name, e.event_id, e.event_name, e.event_date FROM member AS m JOIN expense AS e ON m.member_id = e.link_to_member WHERE e.approved = 'true' AND e.expense_date BETWEEN '2019-01-10' AND '2019-11-19'; 
+SELECT T1.college FROM major AS T1 INNER JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.first_name = 'Katy' AND T1.major_id = 'rec1N0upiVLy5esTO'
+SELECT T1.phone FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.college = 'College of Agriculture and Applied Sciences' AND T2.major_name = 'Business'; 
+SELECT T1.email FROM member AS T1 JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T2.date_received BETWEEN '2019-09-10' AND '2019-11-19' AND T2.amount > 20; 
+SELECT COUNT(*)  FROM member  JOIN major ON member.link_to_major = major.major_id  WHERE major.major_name = 'Education' AND major.college = 'College of Education & Human Services'; 
+SELECT CAST(SUM(CASE WHEN T1.remaining < 0 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.event_id) AS percentage_over_budget FROM budget AS T1 INNER JOIN event AS T2 ON T1.link_to_event = T2.event_id; 
+SELECT event_id, location, status FROM event WHERE event_date BETWEEN '2019-11-01' AND '2020-03-31'; 
+SELECT expense_description FROM expense GROUP BY expense_description HAVING AVG(cost) > 50
+SELECT first_name, last_name FROM member WHERE t_shirt_size = 'X-Large'; 
+SELECT CAST(SUM(CASE WHEN type = 'PO Box' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(zip_code) FROM zip_code; 
+SELECT e.event_name, e.location FROM event e JOIN budget b ON e.event_id = b.link_to_event WHERE b.remaining > 0; 
+SELECT T1.event_name, T1.event_date FROM event AS T1 JOIN budget AS T2 ON T1.event_id = T2.link_to_event JOIN expense AS T3 ON T2.budget_id = T3.link_to_budget WHERE T3.expense_description = 'Pizza' AND T3.cost > 50 AND T3.cost < 100; 
+SELECT T1.first_name, T1.last_name, T3.major_name FROM member AS T1 INNER JOIN expense AS T2 ON T1.member_id = T2.link_to_member INNER JOIN major AS T3 ON T1.link_to_major = T3.major_id WHERE T2.cost > 100 GROUP BY T1.first_name, T1.last_name, T3.major_name
+SELECT T2.city, T2.country FROM income AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code GROUP BY T1.link_to_event HAVING COUNT(T1.income_id) > 40
+SELECT m.member_id, m.first_name, m.last_name, SUM(e.cost) AS total_expenses FROM member m JOIN expense e ON m.member_id = e.link_to_member GROUP BY m.member_id HAVING COUNT(DISTINCT e.link_to_event) > 1 ORDER BY total_expenses DESC LIMIT 1; 
+SELECT AVG(T1.cost) FROM expense AS T1 INNER JOIN member AS T2 ON T1.link_to_member = T2.member_id WHERE T2.position != 'Member'
+SELECT event_name FROM event WHERE event_id IN ( SELECT link_to_event FROM expense WHERE category = 'Parking' AND cost < ( SELECT SUM(cost) / COUNT(event_id) AS avg_cost FROM expense WHERE category = 'Parking' ) )
+SELECT (SUM(CASE WHEN T1.type = 'Meeting' THEN T2.cost ELSE 0 END) / COUNT(T1.event_id)) * 100 AS percentage FROM event AS T1 INNER JOIN expense AS T2 ON T1.event_id = T2.link_to_event; 
+SELECT T1.category, SUM(T2.cost) AS total_cost FROM budget AS T1 JOIN expense AS T2 ON T1.budget_id = T2.link_to_budget WHERE T2.expense_description = 'Water, chips, cookies' GROUP BY T1.category ORDER BY total_cost DESC LIMIT 1; 
+SELECT m.first_name, m.last_name, SUM(e.cost) AS total_spending FROM member m JOIN expense e ON m.member_id = e.link_to_member GROUP BY m.member_id ORDER BY total_spending DESC LIMIT 5; 
+SELECT m.first_name, m.last_name, m.phone FROM member m JOIN expense e ON m.member_id = e.link_to_member WHERE e.cost > (SELECT AVG(cost) FROM expense); 
+SELECT      (CAST(SUM(CASE WHEN T2.state = 'New Jersey' THEN 1 ELSE 0 END) AS REAL) / COUNT(T1.position)) -      (CAST(SUM(CASE WHEN T2.state = 'Vermont' THEN 1 ELSE 0 END) AS REAL) / COUNT(T1.position)) AS diff_percentage FROM      member AS T1 JOIN      zip_code AS T2 ON T1.zip = T2.zip_code WHERE      T1.position = 'Member'; 
+SELECT T1.major_name, T1.department FROM major AS T1 JOIN member AS T2 ON T1.major_id = T2.link_to_major WHERE T2.first_name = 'Garrett' AND T2.last_name = 'Gerke'; 
+SELECT m.first_name, m.last_name, e.cost FROM member AS m JOIN expense AS e ON m.member_id = e.link_to_member WHERE e.expense_description = 'Water, Veggie tray, supplies'; 
+SELECT T1.last_name, T1.phone FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T2.major_name = 'Elementary Education'; 
+SELECT T1.category, SUM(T1.amount) AS total_budgeted FROM budget AS T1 JOIN event AS T2 ON T1.link_to_event = T2.event_id WHERE T2.event_name = 'January Speaker' GROUP BY T1.category; 
+SELECT T1.event_name FROM event AS T1 INNER JOIN budget AS T2 ON T1.event_id = T2.link_to_event WHERE T2.category = 'Food'
+SELECT T1.first_name, T1.last_name, T2.amount FROM member AS T1 INNER JOIN income AS T2 ON T1.member_id = T2.link_to_member WHERE T2.date_received = '2019-09-09'
+SELECT T2.category FROM expense AS T1 INNER JOIN budget AS T2 ON T1.link_to_budget = T2.budget_id WHERE T1.expense_description = 'Posters'
+SELECT T1.first_name, T1.last_name, T2.college FROM member AS T1 INNER JOIN major AS T2 ON T1.link_to_major = T2.major_id WHERE T1.position = 'Secretary'
+SELECT e.event_name, SUM(b.spent) AS total_amount_spent FROM budget b JOIN event e ON b.link_to_event = e.event_id WHERE b.category = 'Speaker Gifts' GROUP BY e.event_name ORDER BY total_amount_spent DESC; 
+SELECT T2.city FROM member AS T1 INNER JOIN zip_code AS T2 ON T1.zip = T2.zip_code WHERE T1.first_name = 'Garrett' AND T1.last_name = 'Gerke'; 
+SELECT first_name, last_name, position FROM member WHERE zip IN ( SELECT zip_code FROM zip_code WHERE city = 'Lincolnton' AND state = 'North Carolina' )
+SELECT COUNT(*) FROM gasstations WHERE Country = 'CZE' AND Segment = 'Premium'
+SELECT CAST(SUM(CASE WHEN Currency = 'EUR' THEN 1 ELSE 0 END) AS REAL) / SUM(CASE WHEN Currency = 'CZK' THEN 1 ELSE 0 END) AS Ratio FROM customers; 
+SELECT CustomerID FROM yearmonth WHERE Date LIKE '2012%' AND CustomerID IN (SELECT CustomerID FROM customers WHERE Segment = 'LAM') ORDER BY Consumption ASC LIMIT 1; 
+SELECT AVG(AvgMonthlyConsumption) AS AverageMonthlyConsumption FROM ( 	SELECT SUM(Consumption) / 12 AS AvgMonthlyConsumption FROM yearmonth WHERE CustomerID IN ( SELECT CustomerID FROM customers WHERE Segment = 'SME' ) AND Date BETWEEN '201301' AND '201312' ) AS Subquery; 
+SELECT T2.CustomerID, SUM(T1.Amount) AS TotalConsumption FROM transactions_1k AS T1 INNER JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Date BETWEEN '201101' AND '201112' AND T2.Currency = 'CZK' GROUP BY T2.CustomerID ORDER BY TotalConsumption DESC; 
+SELECT COUNT(CustomerID) FROM yearmonth WHERE Date BETWEEN '201201' AND '201212' AND Consumption < 30000; 
+SELECT SUM(CASE WHEN T1.Currency = 'CZK' THEN T2.Consumption ELSE 0 END) - SUM(CASE WHEN T1.Currency = 'EUR' THEN T2.Consumption ELSE 0 END) AS DifferenceInConsumption FROM customers AS T1 JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE strftime('%Y', T2.Date) = '2012'; 
+SELECT Date FROM transactions_1k WHERE Currency = 'EUR' GROUP BY strftime('%Y', Date) ORDER BY SUM(Price) DESC LIMIT 1 
+SELECT Segment FROM yearmonth GROUP BY CustomerID, Segment ORDER BY SUM(Consumption) ASC LIMIT 1; 
+SELECT SUBSTR(Date, 1, 4) AS Year, SUM(Consumption) AS TotalConsumption FROM yearmonth GROUP BY Year ORDER BY TotalConsumption DESC LIMIT 1; 
+SELECT Date, MAX(Consumption) AS PeakConsumption FROM yearmonth WHERE CustomerID IN (SELECT CustomerID FROM customers WHERE Segment = 'SME') AND Date BETWEEN '201301' AND '201312' GROUP BY Date ORDER BY PeakConsumption DESC LIMIT 1; 
+SELECT      (SUM(CASE WHEN T2.Segment = 'SME' THEN T1.Consumption ELSE 0 END) / COUNT(CASE WHEN T2.Segment = 'SME' THEN T1.CustomerID ELSE NULL END)) -      (SUM(CASE WHEN T2.Segment = 'LAM' THEN T1.Consumption ELSE 0 END) / COUNT(CASE WHEN T2.Segment = 'LAM' THEN T1.CustomerID ELSE NULL END)) AS diff_SME_LAM,          (SUM(CASE WHEN T2.Segment = 'LAM' THEN T1.Consumption ELSE 0 END) / COUNT(CASE WHEN T2.Segment = 'LAM' THEN T1.CustomerID ELSE NULL END)) -      (SUM(CASE WHEN T2.Segment = 'KAM' THEN T1.Consumption ELSE 0 END) / COUNT(CASE WHEN T2.Segment = 'KAM' THEN T1.CustomerID ELSE NULL END)) AS diff_LAM_KAM,          (SUM(CASE WHEN T2.Segment = 'KAM' THEN T1.Consumption ELSE 0 END) / COUNT(CASE WHEN T2.Segment = 'KAM' THEN T1.CustomerID ELSE NULL END)) -      (SUM(CASE WHEN T2.Segment = 'SME' THEN T1.Consumption ELSE 0 END) / COUNT(CASE WHEN T2.Segment = 'SME' THEN T1.CustomerID ELSE NULL END)) AS diff_KAM_SME FROM      yearmonth AS T1 INNER JOIN      customers AS T2 ON T1.CustomerID = T2.CustomerID WHERE      T1.Date BETWEEN '201301' AND '201312'; 
+SELECT Segment,         ((SUM(CASE WHEN Date LIKE '2013%' THEN Consumption ELSE 0 END) -           SUM(CASE WHEN Date LIKE '2012%' THEN Consumption ELSE 0 END)) /         SUM(CASE WHEN Date LIKE '2013%' THEN Consumption ELSE 0 END)) * 100 AS PercentageIncrease FROM customers JOIN yearmonth ON customers.CustomerID = yearmonth.CustomerID WHERE Date LIKE '2012%' OR Date LIKE '2013%' GROUP BY Segment ORDER BY PercentageIncrease DESC; 
+SELECT SUM(Consumption) FROM yearmonth WHERE CustomerID = 6 AND Date BETWEEN '201308' AND '201311'
+SELECT SUM(CASE WHEN Country = 'CZE' THEN 1 ELSE 0 END) - SUM(CASE WHEN Country = 'SVK' THEN 1 ELSE 0 END) AS Difference FROM gasstations WHERE Segment = 'Discount'
+SELECT SUM(CASE WHEN CustomerID = 7 THEN Consumption ELSE 0 END) - SUM(CASE WHEN CustomerID = 5 THEN Consumption ELSE 0 END) AS Difference FROM yearmonth WHERE Date = '201304'; 
+SELECT SUM(CASE WHEN T1.Currency = 'CZK' THEN 1 ELSE 0 END) - SUM(CASE WHEN T1.Currency = 'EUR' THEN 1 ELSE 0 END) AS Difference FROM customers AS T1 WHERE T1.Segment = 'SME'; 
+SELECT T1.CustomerID FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Currency = 'EUR' AND T2.Date LIKE '201310%' ORDER BY T2.Consumption DESC LIMIT 1
+SELECT c.CustomerID, SUM(y.Consumption) AS TotalConsumption FROM yearmonth y JOIN customers c ON y.CustomerID = c.CustomerID GROUP BY c.CustomerID ORDER BY TotalConsumption DESC; 
+SELECT SUM(Consumption) AS TotalConsumption FROM yearmonth WHERE CustomerID IN (SELECT CustomerID FROM customers WHERE Segment = 'KAM') AND Date = '201305'; 
+SELECT CAST(SUM(CASE WHEN T2.Consumption > 46.73 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.CustomerID) FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Segment = 'LAM'; 
+SELECT Country, COUNT(*) AS NumberOfValueForMoneyGasStations FROM gasstations WHERE Segment = 'Value for money' GROUP BY Country ORDER BY NumberOfValueForMoneyGasStations DESC LIMIT 1
+SELECT CAST(SUM(CASE WHEN T1.Currency = 'EUR' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM customers AS T1 INNER JOIN transactions_1k AS T2 ON T1.CustomerID = T2.CustomerID
+SELECT CAST(SUM(CASE WHEN T1.Consumption > 528.3 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T1.CustomerID) FROM yearmonth AS T1 WHERE T1.Date LIKE '201202%' 
+SELECT CAST(SUM(CASE WHEN Segment = 'Premium' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM gasstations WHERE Country = 'CZE'
+SELECT CustomerID FROM yearmonth WHERE Date = '201309' ORDER BY Consumption DESC LIMIT 1; 
+SELECT T2.Segment FROM yearmonth AS T1 INNER JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Date LIKE '201309%' ORDER BY T1.Consumption ASC LIMIT 1
+SELECT T1.CustomerID, SUM(T1.Amount) AS TotalConsumption FROM transactions_1k AS T1 JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID WHERE T2.Segment = 'SME' AND STRFTIME('%Y%m', T1.Date) = '201206' GROUP BY T1.CustomerID ORDER BY TotalConsumption ASC LIMIT 1; 
+SELECT MAX(Consumption) AS HighestMonthlyConsumption FROM yearmonth WHERE Date LIKE '2012%'; 
+SELECT MAX(Consumption) FROM yearmonth WHERE CustomerID IN ( SELECT CustomerID FROM customers WHERE Currency = 'EUR' )
+SELECT T2.Description FROM transactions_1k AS T1 INNER JOIN products AS T2 ON T1.ProductID = T2.ProductID WHERE STRFTIME('%Y%m', T1.Date) = '201309'
+SELECT DISTINCT T2.Country FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.Date LIKE '201306%' 
+SELECT T2.ChainID FROM customers AS T1 INNER JOIN gasstations AS T2 ON T1.CustomerID = T2.GasStationID WHERE T1.Currency = 'EUR' GROUP BY T2.ChainID
+SELECT T2.Description FROM transactions_1k AS T1 INNER JOIN products AS T2 ON T1.ProductID = T2.ProductID WHERE T1.CustomerID IN ( SELECT CustomerID FROM customers WHERE Currency = 'EUR' )
+SELECT AVG(Price) AS AverageTotalPrice FROM transactions_1k WHERE Date LIKE '2012-01%' 
+SELECT COUNT(DISTINCT ym.CustomerID) AS CustomerCount FROM yearmonth ym JOIN customers c ON ym.CustomerID = c.CustomerID WHERE c.Currency = 'EUR' AND ym.Consumption > 1000; 
+SELECT T3.Description FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID INNER JOIN products AS T3 ON T1.ProductID = T3.ProductID WHERE T2.Country = 'CZE'
+SELECT DISTINCT Time FROM transactions_1k WHERE GasStationID IN (SELECT GasStationID FROM gasstations WHERE ChainID = 11) 
+SELECT COUNT(*) FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T2.Country = 'CZE' AND T1.Price > 1000; 
+SELECT COUNT(*) FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T2.Country = 'CZE' AND T1.Date > '2012-01-01'
+SELECT AVG(Price) FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T2.Country = 'CZE'
+SELECT AVG(Price) AS AverageTotalPrice FROM transactions_1k JOIN customers ON transactions_1k.CustomerID = customers.CustomerID WHERE customers.Currency = 'EUR'; 
+SELECT CustomerID FROM transactions_1k WHERE Date = '2012-08-25' GROUP BY CustomerID ORDER BY SUM(Amount) DESC LIMIT 1; 
+SELECT T3.Country, T2.GasStationID  FROM transactions_1k AS T1  JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID  JOIN customers AS T3 ON T1.CustomerID = T3.CustomerID  WHERE T1.Date = '2012-08-25'  ORDER BY T1.Date ASC, T1.Time ASC  LIMIT 1; 
+SELECT T1.Currency FROM customers AS T1 INNER JOIN transactions_1k AS T2 ON T1.CustomerID = T2.CustomerID WHERE T2.Date = '2012-08-24' AND T2.Time = '16:25:00'; 
+SELECT T2.Segment FROM transactions_1k AS T1 INNER JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Date = '2012-08-23' AND T1.Time = '21:20:00'
+SELECT COUNT(*) FROM transactions_1k WHERE Date = '2012-08-26' AND TIME < '13:00:00' AND CustomerID IN (SELECT CustomerID FROM customers WHERE Currency = 'CZK'); 
+SELECT T1.Segment FROM customers AS T1 ORDER BY T1.CustomerID ASC LIMIT 1; 
+SELECT T2.Country FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.Date = '2012-08-24' AND T1.Time = '12:42:00' 
+SELECT ProductID FROM transactions_1k WHERE Date = '2012-08-23' AND Time = '21:20:00'; 
+SELECT SUM(T1.Amount), T1.Date, T1.Amount FROM transactions_1k AS T1 JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID WHERE T1.Amount = 124.05 AND T1.Date = '2012-08-24'; 
+SELECT COUNT(*) FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.Date = '2012-08-26' AND T1.Time BETWEEN '08:00:00' AND '09:00:00' AND T2.Country = 'CZE'
+SELECT T1.Currency FROM customers AS T1 INNER JOIN transactions_1k AS T2 ON T1.CustomerID = T2.CustomerID WHERE T2.Amount = 214582.17 AND strftime('%Y%m', T2.Date) = '201306'
+SELECT T3.Country FROM transactions_1k AS T1 INNER JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID INNER JOIN gasstations AS T3 ON T1.GasStationID = T3.GasStationID WHERE T1.CardID = 667467
+SELECT T1.Country FROM gasstations AS T1 INNER JOIN transactions_1k AS T2 ON T1.GasStationID = T2.GasStationID WHERE T2.Date = '2012-08-24' AND T2.Amount = 548.4
+SELECT CAST(SUM(CASE WHEN T1.Currency = 'EUR' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(*) FROM customers AS T1 INNER JOIN transactions_1k AS T2 ON T1.CustomerID = T2.CustomerID WHERE T2.Date = '2012-08-25'; 
+SELECT (T1.Consumption - T2.Consumption) / T1.Consumption AS DecreaseRate FROM yearmonth AS T1 JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID AND T1.Date LIKE '2012%' JOIN transactions_1k AS T3 ON T3.CustomerID = T1.CustomerID AND T3.Date = '2012-08-25' WHERE T3.Amount = 634.8; 
+SELECT g.GasStationID, SUM(t.Amount * t.Price) AS TotalRevenue FROM transactions_1k t JOIN gasstations g ON t.GasStationID = g.GasStationID GROUP BY g.GasStationID ORDER BY TotalRevenue DESC LIMIT 1
+SELECT CAST(SUM(CASE WHEN T2.Segment = 'Premium' THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(T2.Segment) FROM customers AS T1 INNER JOIN gasstations AS T2 ON T1.CustomerID = T2.GasStationID WHERE T2.Country = 'SVK'
+SELECT SUM(Amount) AS TotalSpent, SUM(CASE WHEN Date LIKE '201201%' THEN Amount ELSE 0 END) AS January2012Spent FROM transactions_1k WHERE CustomerID = 38508; 
+SELECT p.Description FROM products p JOIN transactions_1k t ON p.ProductID = t.ProductID GROUP BY p.ProductID ORDER BY SUM(t.Amount) DESC LIMIT 5; 
+SELECT c.CustomerID, AVG(t.Price) AS AvgPricePerItem, t.Currency  FROM transactions_1k t  JOIN customers c ON t.CustomerID = c.CustomerID  GROUP BY c.CustomerID, t.Currency  ORDER BY SUM(t.Amount * t.Price) DESC  LIMIT 1; 
+SELECT T2.Country FROM transactions_1k AS T1 INNER JOIN gasstations AS T2 ON T1.GasStationID = T2.GasStationID WHERE T1.ProductID = 2 ORDER BY T1.Price DESC LIMIT 1
+SELECT T1.CustomerID, T3.ConsumptionStatus FROM transactions_1k AS T1 JOIN customers AS T2 ON T1.CustomerID = T2.CustomerID JOIN yearmonth AS T3 ON T1.CustomerID = T3.CustomerID AND T3.Date LIKE '201208%' WHERE T1.ProductID = 5 AND T1.Price / T1.Amount > 29.00; 

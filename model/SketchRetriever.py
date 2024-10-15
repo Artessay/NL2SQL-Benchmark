@@ -14,7 +14,7 @@ class SketchRetriever(Agent):
     def inference(self, schema:List[str], question:str, evidence:str = None):
         # clear memory
         self.memory = [
-            {"role": "system", "content": self.system_prompt}
+            {"role": "system", "content": "You are a helpful data analyst expert."}
         ]
         
         # retrieve
@@ -24,6 +24,7 @@ class SketchRetriever(Agent):
         logger.info(f"Retrieve: \n{response}")
 
         # generate
+        self.memory[0] = {"role": "system", "content": "As a data analysis expert, you are to extract the necessary information from the data provided and output the corresponding SQL query based on the user's question."}
         self.memory.append({"role": "user", "content": self.get_prompt(schema, question, evidence)})
         response = self.model.chat(self.memory)
         return self.fetch_code(response, code_type="sql", default=";")
