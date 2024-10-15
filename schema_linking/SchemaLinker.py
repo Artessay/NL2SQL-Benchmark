@@ -10,6 +10,7 @@ This is the interface class for schema linking.
 class SchemaLinker():
     def __init__(self, **kwargs) -> None:
         self.num_insert_rows = kwargs.pop("num_insert_rows", 5)
+        self.insert_length_limitation = kwargs.pop("insert_length_limitation", 100)
         assert self.num_insert_rows >= 0
 
     def get_schema(
@@ -118,8 +119,12 @@ class SchemaLinker():
             for row in rows:
                 # Properly format the INSERT statement with the actual row values
                 row_values = ', '.join([self._format_sql_value(value) for value in row])
-                insert_statements += f"INSERT INTO `{table_name}` VALUES ({row_values});\n"
-                # insert_statements += f"INSERT INTO `{table_name}` ({column_names_str}) VALUES ({row_values});\n"
+                insert_statement = f"INSERT INTO `{table_name}` VALUES ({row_values});\n"
+                # insert_statement = f"INSERT INTO `{table_name}` ({column_names_str}) VALUES ({row_values});\n"
+
+                if len(insert_statement) > self.insert_length_limitation:
+                    continue
+                insert_statements += insert_statement
 
         return insert_statements
     

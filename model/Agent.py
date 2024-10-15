@@ -9,9 +9,9 @@ class Agent(Base):
         # self.database_type = kwargs.pop("database_type", "SQLite")
 
 
-    @property
-    def system_prompt(self):
-        return "You are a helpful data analyst expert."
+    # @property
+    # def system_prompt(self):
+    #     return "You are a helpful data analyst expert."
 
     
 #     def get_prompt(self, schema:str, question:str, evidence:str = None) -> str:

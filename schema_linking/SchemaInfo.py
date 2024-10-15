@@ -19,7 +19,7 @@ class SchemaInfo(SchemaLinker):
             self, 
             database_dir: str, 
             database_name: str,
-            query: Optional[str] = None, 
+            query: Optional[str], 
             evidence: Optional[str] = None,
     ) -> List[str]:
         question = database_name + '\t' + query
@@ -114,6 +114,6 @@ if __name__ == '__main__':
     database_names = os.listdir(database_dir)
     for database_name in database_names:
         print(database_name)
-        schema_list = schema_linker.get_schema(database_dir, database_name)
+        schema_list = schema_linker.get_schema(database_dir, database_name, "")
         schema = "\n".join(schema_list)
     print(schema)

@@ -18,7 +18,7 @@ if __name__ == '__main__':
     schema_linker = VanillaLinker()
 
     database_dir = 'data/bird/dev_databases'
-    database_names = os.listdir(database_dir)
+    database_names = ["debit_card_specializing"] # os.listdir(database_dir)
     for database_name in database_names:
         print(database_name)
         schema_list = schema_linker.get_schema(database_dir, database_name, "")
