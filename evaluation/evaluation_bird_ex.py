@@ -80,7 +80,11 @@ def package_sqls(sql_path, db_root_path, mode='gpt', data_mode='dev'):
         sqls = open(sql_path, encoding='utf8')
         sql_txt = sqls.readlines()
         for idx, sql_str in enumerate(sql_txt):
-            sql, db_name = sql_str.strip().split('\t')
+            # only str after the last \t is db_name
+            sql_str_list = sql_str.strip().split('\t')
+            db_name = sql_str_list[-1]
+            sql = "\t".join(sql_str_list[:-1])
+            
             clean_sqls.append(sql)
             db_path_list.append(db_root_path + db_name + '/' + db_name + '.sqlite')
 
