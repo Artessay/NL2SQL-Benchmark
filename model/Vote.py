@@ -19,6 +19,7 @@ class Vote(Base):
     def __init__(self, args, **kwargs):
         temperature = kwargs.pop("temperature", 0.0)
         self.max_num_permutations = kwargs.pop("max_num_permutations", 5)
+        # self.max_sql_result_rows = kwargs.pop("max_sql_result_rows", 10)
 
         self.parent = super()
         self.parent.__init__(args, temperature=temperature)
@@ -39,9 +40,11 @@ class Vote(Base):
     def _sample_queries(self, schema:List[str]) -> List[List[str]]:
         assert isinstance(schema, list)
 
-        all_permutations = list(itertools.permutations(schema))
-        random.shuffle(all_permutations)
-        random_schemas = all_permutations[:self.max_num_permutations]
+        logger.info(f"Sampling queries from {len(schema)} schemas")
+        
+        random_schemas = []
+        for _ in range(self.max_num_permutations):
+            random_schemas.append(random.sample(schema, len(schema)))
 
         return random_schemas
     
@@ -50,11 +53,16 @@ class Vote(Base):
             result_dict = self.sql_executor.execute_sql(sql)
             result = result_dict.get("data")
             if result:
+                # list is unhashable, so convert to tuple
+                result = tuple(sorted(result))
+                # limit result size
+                # result = result[:self.max_sql_result_rows]
+
                 return (sql, result)
             else:
                 logger.warning(f"SQL execution failed: {result_dict.get('sqlite_error')}")
-        except:
-            logger.warning(f"SQL execution timeout")
+        except Exception as e:
+            logger.warning(f"SQL execution timeout: {e}")
         
         return None
 
@@ -74,8 +82,6 @@ class Vote(Base):
                     result_list.append(result)
             
         logger.info(f"{len(result_list)} SQLs are valid")
-        # list is unhashable, so convert to tuple
-        result_list = [(sql, tuple(sorted(result))) for sql, result in result_list]
 
         if len(result_list) == 0:
             raise Exception("No valid SQL")
