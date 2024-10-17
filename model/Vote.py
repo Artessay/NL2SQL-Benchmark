@@ -1,8 +1,8 @@
 import random
 import logging
-import itertools
 from typing import List
 from collections import Counter
+from func_timeout import FunctionTimedOut
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logging.basicConfig(level=logging.INFO) 
@@ -61,7 +61,7 @@ class Vote(Base):
                 return (sql, result)
             else:
                 logger.warning(f"SQL execution failed: {result_dict.get('sqlite_error')}")
-        except Exception as e:
+        except FunctionTimedOut:
             logger.warning(f"SQL execution timeout: {e}")
         
         return None
