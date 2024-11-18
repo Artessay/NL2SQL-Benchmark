@@ -42,6 +42,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | count                | 248  | 446    | 174  | 166   | 1034|
 | **ACCURACY**         |      |        |      |       |     |
 | Code Qwen2.5 7B      | 0.935| 0.877  | 0.759| 0.584 |0.824|
+| Code Qwen2.5 32B     | 0.827| 0.841  | 0.718| 0.548 |0.770|
 
 ### Bird Dataset
 
@@ -65,16 +66,8 @@ The performance of LLMs on NL2SQL is highly sensitive to the schema linking stra
 |--------------------------|--------|----------|-------------|-------|
 | count                    | 925    | 465      | 144         | 1534  |
 | **ACCURACY**             |        |          |             |       |
-| Vanilla                  | 59.89  | 40.95    | 38.62       | 52.15 |
-| Gold Linker              | 65.84  | 46.12    | 40.69       | 57.50 |
-
-
-| **Bird**             | simple | moderate | challenging | total |
-|----------------------|--------|----------|-------------|-------|
-| count                | 925    | 465      | 144         | 1534  |
-| **VES**              |        |          |             |       |
-| Vanilla              | 64.67  | 45.59    | 37.15       | 56.30 |
-| Gold Linker          | 70.40  | 51.30    | 42.28       | 61.96 |
+| Vanilla                  | 64.76  | 47.84    | 41.38       | 57.43 |
+| Gold Linker              | 68.54  | 48.28    | 42.07       | 59.91 |
 
 ### The Impact of Different Methods on NL2SQL
 
