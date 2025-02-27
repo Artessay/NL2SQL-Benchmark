@@ -16,7 +16,6 @@ class RemoteLanguageModel(LanguageModel):
         api_key = os.environ.get("OPENAI_API_KEY", None)
         base_url = os.environ.get("OPENAI_API_BASE_URL", None)
         
-        model_name = "qwen2:72b"
         self.temperature = kwargs.pop("temperature", 0.0)
         self.timeout = kwargs.pop("timeout", 60)
         self.client = ChatOpenAI(
