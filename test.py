@@ -1,31 +1,21 @@
-
-from langchain.chains import ConversationChain
-from langchain_openai import ChatOpenAI
-from langchain.memory import ConversationBufferMemory
+import os, re
 
 
+def remove_think_content(input_string):
+    # using regular expression to remove <think>...</think>
+    return re.sub(r'<think>.*?</think>', '', input_string, flags=re.DOTALL)
 
-llm = ChatOpenAI(
-    model="qwen2-72b-instruct", 
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1", 
-    logprobs=True
-)
 
-# 初始化对话记忆
-memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+path = "output/bird/Base/DeepSeek/DeepSeek-R1-32B/VanillaLinker/dev_pred.sql"
 
-# 创建对话链
-conversation = ConversationChain(
-    llm=llm,
-    memory=memory,
-    verbose=True
-)
 
-# 多轮对话示例
-while True:
-    user_input = input("用户: ")
-    if user_input.lower() in ["退出", "exit", "quit"]:
-        print("对话结束。")
-        break
-    response = conversation.run(user_input)
-    print(f"AI: {response}")
+# 读取文件内容
+with open(path, 'r', encoding='utf-8') as f:
+    original_content = f.read()
+
+# 处理内容
+modified_content = remove_think_content(original_content)
+
+# 写回文件（建议先备份原始文件）
+with open(path, 'w', encoding='utf-8') as f:
+    f.write(modified_content)
