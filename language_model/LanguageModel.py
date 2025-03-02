@@ -1,5 +1,5 @@
-from typing import Dict, List, Union
 from abc import abstractmethod
+from typing import Dict, List, Union
 
 class LanguageModel():
     def __init__(self, **kwargs) -> None:
@@ -35,7 +35,7 @@ class LanguageModel():
             return self.chat(messages)
 
     def generate_sql(self, prompt):
-        response = self.generate(prompt)
+        response: str = self.generate(prompt)
 
         # fetch code block
         if "```" in response:
@@ -45,6 +45,8 @@ class LanguageModel():
 
         if 'sql\n' in sql[:4]:
             sql = sql[4:]
+
+        sql = sql.strip()
 
         if sql == "":
             sql = ";"

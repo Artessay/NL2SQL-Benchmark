@@ -1,3 +1,4 @@
+import re
 import logging
 
 logging.basicConfig(level=logging.INFO) 
@@ -49,7 +50,11 @@ class Base():
 
         return base_prompt + knowledge_prompt + base_ans_prompt
 
-    def fetch_code(self, response: str, code_type: str, default: str = "") -> str:
+    @staticmethod
+    def fetch_code(response: str, code_type: str, default: str = "") -> str:
+        # remove <thingk>...</thingk> from the response
+        response = Base.remove_think_content(response)
+        
         # fetch code block
         if "```" in response:
             code = response.split("```")[1]
@@ -67,6 +72,12 @@ class Base():
 
         return code
     
+    @staticmethod
+    def remove_think_content(input_string):
+        # using regular expression to remove <think>...</think>
+        return re.sub(r'<think>.*?</think>', '', input_string, flags=re.DOTALL)
+
+
 if __name__ == "__main__":
     import utils
     args = utils.get_args()

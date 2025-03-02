@@ -4,7 +4,7 @@ from .RemoteLanguageModel import RemoteLanguageModel
 model_name_dict = {
     "Qwen/Qwen2.5-72B-Instruct": "qwen2.5:72b",
     "DeepSeek/DeepSeek-R1-32B": "deepseek-r1:32b",
-    "DeepSeek/DeepSeek-R1-70B": "deepseek-r1-distill-llama-70b", # "deepseek-r1:70b",
+    "DeepSeek/DeepSeek-R1-70B": "deepseek-r1:70b", # "deepseek-r1-distill-llama-70b", 
 }
 
 def load_language_model(model_name: str, **kwargs):
