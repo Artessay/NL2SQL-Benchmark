@@ -10,6 +10,7 @@ from utils import (
     load_dataset,
     seed_everything,
     get_output_file,
+    remove_sql_comments,
 )
 
 def run(args):
@@ -33,6 +34,7 @@ def run(args):
             agent.sql_executor = sql_executor
         
         response = agent(schema, query, evidence)
+        response = remove_sql_comments(response)
         response = response.replace('\n',' ')
         
         # fix empty response

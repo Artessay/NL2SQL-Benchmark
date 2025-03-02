@@ -1385,7 +1385,7 @@
     "question": "In the branch where the second-highest number of crimes were committed in 1995 occurred, how many male clients are there?",
     "evidence": "Male refers to gender = 'M'; A15 stands for no. of commited crimes 1995",
     "difficulty": "moderate",
-    "pred": "-- Step 1: Find the second-highest A15 district WITH ranked_districts AS ( SELECT district_id, A15, RANK() OVER (ORDER BY A15 DESC) as crime_rank FROM district WHERE A15 IS NOT NULL ) SELECT district_id INTO @second_highest_district FROM ranked_districts WHERE crime_rank = 2; -- Step 2: Count male clients in this district SELECT COUNT(c.client_id) AS male_client_count FROM client c JOIN account a ON c.account_id = a.account_id WHERE a.district_id = @second_highest_district AND c.gender = 'M';",
+    "pred": "WITH ranked_districts AS ( SELECT district_id, A15, RANK() OVER (ORDER BY A15 DESC) as crime_rank FROM district WHERE A15 IS NOT NULL ) SELECT district_id INTO @second_highest_district FROM ranked_districts WHERE crime_rank = 2; SELECT COUNT(c.client_id) AS male_client_count FROM client c JOIN account a ON c.account_id = a.account_id WHERE a.district_id = @second_highest_district AND c.gender = 'M';",
     "gold": "SELECT COUNT(T1.client_id) FROM client AS T1 INNER JOIN district AS T2 ON T1.district_id = T2.district_id WHERE T1.gender = 'M' AND T2.A15 = (SELECT T3.A15 FROM district AS T3 ORDER BY T3.A15 DESC LIMIT 1, 1)",
     "res": 0
   },
@@ -7095,7 +7095,7 @@
     "question": "In comments with 0 score, how many of the posts have view count lower than 5?",
     "evidence": "view count lower than 5 refers to ViewCount < 5;",
     "difficulty": "simple",
-    "pred": "SELECT COUNT(DISTINCT c.PostId) as count_posts FROM comments c WHERE c.Score = 0; -- Then join with posts to check ViewCount <5 SELECT COUNT(*) FROM ( SELECT DISTINCT c.PostId AS pid FROM comments c WHERE c.Score = 0 ) AS sub INNER JOIN posts p ON sub.pid = p.Id WHERE p.ViewCount < 5;",
+    "pred": "SELECT COUNT(DISTINCT c.PostId) as count_posts FROM comments c WHERE c.Score = 0; SELECT COUNT(*) FROM ( SELECT DISTINCT c.PostId AS pid FROM comments c WHERE c.Score = 0 ) AS sub INNER JOIN posts p ON sub.pid = p.Id WHERE p.ViewCount < 5;",
     "gold": "SELECT COUNT(T1.Id) FROM comments AS T1 INNER JOIN posts AS T2 ON T1.PostId = T2.Id WHERE T2.ViewCount < 5 AND T2.Score = 0",
     "res": 0
   },
@@ -7665,7 +7665,7 @@
     "question": "What is the hero's full name with the highest attribute in strength?",
     "evidence": "highest attribute in strength refers to MAX(attribute_value) WHERE attribute_name = 'strength';",
     "difficulty": "moderate",
-    "pred": "SELECT ha.hero_id, a.power_name, ha.attribute_value AS durability_value FROM hero_attribute ha JOIN attribute a ON ha.attribute_id = a.id WHERE a.power_name = 'Durability' AND ha.attribute_value = ( SELECT MAX(ha2.attribute_value) FROM hero_attribute ha2 WHERE ha2.attribute_id = 4 -- Replace with the correct ID for Durability );",
+    "pred": "SELECT ha.hero_id, a.power_name, ha.attribute_value AS durability_value FROM hero_attribute ha JOIN attribute a ON ha.attribute_id = a.id WHERE a.power_name = 'Durability' AND ha.attribute_value = ( SELECT MAX(ha2.attribute_value) FROM hero_attribute ha2 WHERE ha2.attribute_id = 4 );",
     "gold": "SELECT T1.full_name FROM superhero AS T1 INNER JOIN hero_attribute AS T2 ON T1.id = T2.hero_id INNER JOIN attribute AS T3 ON T2.attribute_id = T3.id WHERE T3.attribute_name = 'Strength' ORDER BY T2.attribute_value DESC LIMIT 1",
     "res": 0
   },
@@ -9445,7 +9445,7 @@
     "question": "How much faster in percentage is the champion than the driver who finished the race last in the 2008 Australian Grand Prix?",
     "evidence": "how much faster in percentage = divide(subtract(incremental time, champion time), last_driver time) * 100; last driver finished time = incremental time + champion time; only champion's finished time is represented by 'HH:MM:SS.mmm'; finished the game refers to time is not null",
     "difficulty": "challenging",
-    "pred": "-- Create a function to convert 'HH:MM:SS.mmm' to milliseconds CREATE FUNCTION TimeToMs(timeText TEXT) RETURNS INTEGER AS $$ DECLARE hours INT; mins INT; secs INT; ms INT; BEGIN hours := (SUBSTRING(timeText, 1, INSTR(timeText, ':') - 1))::INT; mins := (SUBSTRING(timeText, INSTR(timeText, ':') + 1, INSTR(timeText, ':', INSTR(timeText, ':') + 1) - INSTR(timeText, ':') - 1))::INT; secs := (SUBSTRING(timeText, INSTR(timeText, ':', INSTR(timeText, ':') + 1) + 1, LENGTH(timeText) - INSTR(timeText, '.', 1)))::INT; ms := (SUBSTRING(timeText, INSTR(timeText, '.') + 1))::INT; RETURN hours * 3600 * 1000 + mins * 60 * 1000 + secs * 1000 + ms; END; $$ LANGUAGE plpgsql; -- Query to calculate the percentage WITH race AS ( SELECT r.id AS race_id FROM races r WHERE EXTRACT(YEAR FROM r.date) = 2008 AND r.name LIKE '%Australian Grand Prix%' ), champion AS ( SELECT TimeToMs(r.time) AS champion_time FROM results r WHERE r.raceId = (SELECT race_id FROM race) AND r.position = 1 AND r.time IS NOT NULL ), last_driver AS ( SELECT TimeToMs(r.time) AS last_time FROM results r WHERE r.raceId = (SELECT race_id FROM race) AND r.position = (SELECT MAX(position) FROM results WHERE raceId = (SELECT race_id FROM race)) AND r.time IS NOT NULL ) SELECT ((last_driver.last_time - champion.champion_time) / champion.champion_time * 100) AS percentage_faster FROM champion, last_driver;",
+    "pred": ";",
     "gold": "WITH time_in_seconds AS ( SELECT T1.positionOrder, CASE WHEN T1.positionOrder = 1 THEN (CAST(SUBSTR(T1.time, 1, 1) AS REAL) * 3600) + (CAST(SUBSTR(T1.time, 3, 2) AS REAL) * 60) + CAST(SUBSTR(T1.time, 6) AS REAL) ELSE CAST(SUBSTR(T1.time, 2) AS REAL) END AS time_seconds FROM results AS T1 INNER JOIN races AS T2 ON T1.raceId = T2.raceId WHERE T2.name = 'Australian Grand Prix' AND T1.time IS NOT NULL AND T2.year = 2008 ), champion_time AS ( SELECT time_seconds FROM time_in_seconds WHERE positionOrder = 1), last_driver_incremental AS ( SELECT time_seconds FROM time_in_seconds WHERE positionOrder = (SELECT MAX(positionOrder) FROM time_in_seconds) ) SELECT (CAST((SELECT time_seconds FROM last_driver_incremental) AS REAL) * 100) / (SELECT time_seconds + (SELECT time_seconds FROM last_driver_incremental) FROM champion_time)",
     "res": 0
   },
@@ -9755,7 +9755,7 @@
     "question": "Which year has the lowest speed of lap time?",
     "evidence": "lowest speed of lap time refers to Max(time);",
     "difficulty": "simple",
-    "pred": "-- Create a function to convert time string 'M:SS.FFF' to total seconds CREATE FUNCTION parse_time_to_seconds(time_str VARCHAR(50)) RETURNS FLOAT DETERMINISTIC BEGIN DECLARE mins INT; DECLARE secs FLOAT; SET mins = SUBSTRING_INDEX(time_str, ':', 1); SET secs = SUBSTRING_INDEX(time_str, ':', -1); RETURN mins * 60 + secs; END; -- Query to find the slowest lap and corresponding race year WITH all_times AS ( SELECT race_id, parse_time_to_seconds(Q1_time) as Q1_sec, parse_time_to_seconds(Q2_time) as Q2_sec, parse_time_to_seconds(Q3_time) as Q3_sec FROM qualifying ), max_times AS ( SELECT race_id, MAX(Q1_sec, Q2_sec, Q3_sec) as max_lap FROM all_times ) SELECT mt.max_lap, r.year FROM max_times mt JOIN races r ON mt.race_id = r.id WHERE mt.max_lap = (SELECT MAX(max_lap) FROM max_times);",
+    "pred": ";",
     "gold": "SELECT T2.year FROM lapTimes AS T1 INNER JOIN races AS T2 on T1.raceId = T2.raceId ORDER BY T1.time DESC LIMIT 1",
     "res": 0
   },
@@ -10485,7 +10485,7 @@
     "question": "What is the overall rating of the football player Gabriel Tamas in year 2011?",
     "evidence": "in year 2011 refers to strftime('%Y', date) = '2011';",
     "difficulty": "simple",
-    "pred": "SELECT AVG(rating) AS average_rating FROM ( SELECT CASE WHEN home_player_1 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN home_player_rating_1 WHEN home_player_2 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN home_player_rating_2 WHEN home_player_3 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN home_player_rating_3 -- Continue this pattern for all home and away players up to 11 WHEN away_player_1 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN away_player_rating_1 WHEN away_player_2 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN away_player_rating_2 -- Continue this pattern for all away players up to 11 END AS rating FROM Match WHERE strftime('%Y', date) = '2011' ) AS subquery WHERE rating IS NOT NULL;",
+    "pred": "SELECT AVG(rating) AS average_rating FROM ( SELECT CASE WHEN home_player_1 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN home_player_rating_1 WHEN home_player_2 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN home_player_rating_2 WHEN home_player_3 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN home_player_rating_3 WHEN away_player_1 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN away_player_rating_1 WHEN away_player_2 = (SELECT player_api_id FROM Player WHERE player_name = 'Gabriel Tamas') THEN away_player_rating_2 END AS rating FROM Match WHERE strftime('%Y', date) = '2011' ) AS subquery WHERE rating IS NOT NULL;",
     "gold": "SELECT t2.overall_rating FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.player_name = 'Gabriel Tamas' AND strftime('%Y', t2.date) = '2011'",
     "res": 0
   },
@@ -10585,7 +10585,7 @@
     "question": "Who has the highest average finishing rate between the highest and shortest football player?",
     "evidence": "finishing rate refers to finishing; highest average finishing rate = MAX(AVG(finishing)); highest football player refers to MAX(height); shortest football player refers to MIN(height);",
     "difficulty": "challenging",
-    "pred": "-- Identify the tallest and shortest players' details WITH max_min AS ( SELECT MAX(height) as max_h, MIN(height) as min_h FROM Player ), tallest_player AS ( SELECT player_name, finishing FROM Player WHERE height = (SELECT max_h FROM max_min) LIMIT 1 -- Ensures only one tallest player is selected if there are ties ), shortest_player AS ( SELECT player_name, finishing FROM Player WHERE height = (SELECT min_h FROM max_min) LIMIT 1 -- Ensures only one shortest player is selected if there are ties ) -- Calculate average finishing for both players and compare SELECT tp.player_name AS tallest_name, tp.finishing AS tallest_avg_finish, sp.player_name AS shortest_name, sp.finishing AS shortest_avg_finish, CASE WHEN tp.finishing > sp.finishing THEN 'Tallest' WHEN tp.finishing < sp.finishing THEN 'Shortest' ELSE 'Both have the same average finishing rate' END AS who_has_higher_avg FROM tallest_player tp CROSS JOIN shortest_player sp;",
+    "pred": "WITH max_min AS ( SELECT MAX(height) as max_h, MIN(height) as min_h FROM Player ), tallest_player AS ( SELECT player_name, finishing FROM Player WHERE height = (SELECT max_h FROM max_min) LIMIT 1 ), shortest_player AS ( SELECT player_name, finishing FROM Player WHERE height = (SELECT min_h FROM max_min) LIMIT 1 ) SELECT tp.player_name AS tallest_name, tp.finishing AS tallest_avg_finish, sp.player_name AS shortest_name, sp.finishing AS shortest_avg_finish, CASE WHEN tp.finishing > sp.finishing THEN 'Tallest' WHEN tp.finishing < sp.finishing THEN 'Shortest' ELSE 'Both have the same average finishing rate' END AS who_has_higher_avg FROM tallest_player tp CROSS JOIN shortest_player sp;",
     "gold": "SELECT A FROM ( SELECT AVG(finishing) result, 'Max' A FROM Player AS T1 INNER JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T1.height = ( SELECT MAX(height) FROM Player ) UNION SELECT AVG(finishing) result, 'Min' A FROM Player AS T1 INNER JOIN Player_Attributes AS T2 ON T1.player_api_id = T2.player_api_id WHERE T1.height = ( SELECT MIN(height) FROM Player ) ) ORDER BY result DESC LIMIT 1",
     "res": 0
   },
@@ -10625,7 +10625,7 @@
     "question": "Which players had an overall rating of over 80 from 2008 to 2010? Please list player names.",
     "evidence": "overall_rating > 80; from 2008 to 2010 refers to strftime('%Y', date) BETWEEN '2008' AND '2010';",
     "difficulty": "moderate",
-    "pred": "WITH matches_2008_2010 AS ( SELECT home_player_1, home_player_2, ..., home_player_11, away_player_1, away_player_2, ..., away_player_11 FROM Match WHERE STRFTIME('%Y', date) BETWEEN '2008' AND '2010' ), players_08_10 AS ( SELECT DISTINCT player_api_id FROM ( SELECT home_player_1 AS player_api_id FROM matches_2008_2010 UNION SELECT home_player_2 AS player_api_id FROM matches_2008_2010 -- Continue with all home players... UNION SELECT away_player_1 AS player_api_id FROM matches_2008_2010 -- Continue with all away players... ) AS all_players ) SELECT p.player_name FROM Player p WHERE p.overall_rating > 80 AND p.player_api_id IN (SELECT player_api_id FROM players_08_2010);",
+    "pred": "WITH matches_2008_2010 AS ( SELECT home_player_1, home_player_2, ..., home_player_11, away_player_1, away_player_2, ..., away_player_11 FROM Match WHERE STRFTIME('%Y', date) BETWEEN '2008' AND '2010' ), players_08_10 AS ( SELECT DISTINCT player_api_id FROM ( SELECT home_player_1 AS player_api_id FROM matches_2008_2010 UNION SELECT home_player_2 AS player_api_id FROM matches_2008_2010 UNION SELECT away_player_1 AS player_api_id FROM matches_2008_2010 ) AS all_players ) SELECT p.player_name FROM Player p WHERE p.overall_rating > 80 AND p.player_api_id IN (SELECT player_api_id FROM players_08_2010);",
     "gold": "SELECT DISTINCT t1.player_name FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t2.overall_rating > 80 AND SUBSTR(t2.`date`, 1, 4) BETWEEN '2008' AND '2010'",
     "res": 0
   },
@@ -10685,7 +10685,7 @@
     "question": "From 2010 to 2015, what was the average overall rating of players who are higher than 170?",
     "evidence": "from 2010 to 2015 refers to strftime('%Y', date) >= '2010' AND <= '2015'; average overall rating = SUM(t2.overall_rating)/ COUNT(t2.id); higher than 170 refers to Player.height > 170;",
     "difficulty": "moderate",
-    "pred": "WITH PlayersInPeriod AS ( SELECT DISTINCT m.home_player_1 AS player_id FROM Match m WHERE strftime('%Y', m.date) BETWEEN '2010' AND '2015' UNION SELECT m.home_player_2 AS player_id FROM Match m WHERE strftime('%Y', m.date) BETWEEN '2010' AND '2015' -- Continue with home_player_3 to home_player_11 and away_player_1 to away_player_11 similarly ) SELECT AVG(p.overall_rating) AS avg_rating FROM Player p WHERE p.height > 170 AND p.player_api_id IN (SELECT player_id FROM PlayersInPeriod);",
+    "pred": "WITH PlayersInPeriod AS ( SELECT DISTINCT m.home_player_1 AS player_id FROM Match m WHERE strftime('%Y', m.date) BETWEEN '2010' AND '2015' UNION SELECT m.home_player_2 AS player_id FROM Match m WHERE strftime('%Y', m.date) BETWEEN '2010' AND '2015' ) SELECT AVG(p.overall_rating) AS avg_rating FROM Player p WHERE p.height > 170 AND p.player_api_id IN (SELECT player_id FROM PlayersInPeriod);",
     "gold": "SELECT CAST(SUM(t2.overall_rating) AS REAL) / COUNT(t2.id) FROM Player AS t1 INNER JOIN Player_Attributes AS t2 ON t1.player_api_id = t2.player_api_id WHERE t1.height > 170 AND STRFTIME('%Y',t2.`date`) >= '2010' AND STRFTIME('%Y',t2.`date`) <= '2015'",
     "res": 0
   },
@@ -11905,7 +11905,7 @@
     "question": "What percentage of patients with a proteinuria level within the normal range have a uric acid level below the normal range?",
     "evidence": "proteinuria level within the normal range refers to `U-PRO` > 0 AND `U-PRO` < 30; uric acid level below the normal range refers to UA < = 6.5; calculation = MULTIPLY(DIVIDE(UA < = 6.5, `U-PRO` > 0 AND `U-PRO` < 30)，100)",
     "difficulty": "challenging",
-    "pred": "WITH -- CTE to get distinct PatientIDs with U_PRO between 0 and 30 (normal range) NormalProteinuria AS ( SELECT DISTINCT PatientID FROM Laboratory WHERE U_PRO > 0 AND U_PRO < 30 ), -- CTE to get distinct PatientIDs with UA <=6.5 (low level) LowUA AS ( SELECT DISTINCT PatientID FROM Laboratory WHERE UA <= 6.5 ) SELECT -- Count the number of patients who are in both groups COUNT(DISTINCT L.PatientID) * 100.0 / -- Total number of patients with normal proteinuria (SELECT COUNT(*) FROM NormalProteinuria) AS PercentageLowUA FROM LowUA L -- Join to include all patients from NormalProteinuria LEFT JOIN NormalProteinuria N ON L.PatientID = N.PatientID;",
+    "pred": "WITH NormalProteinuria AS ( SELECT DISTINCT PatientID FROM Laboratory WHERE U_PRO > 0 AND U_PRO < 30 ), LowUA AS ( SELECT DISTINCT PatientID FROM Laboratory WHERE UA <= 6.5 ) SELECT COUNT(DISTINCT L.PatientID) * 100.0 / (SELECT COUNT(*) FROM NormalProteinuria) AS PercentageLowUA FROM LowUA L LEFT JOIN NormalProteinuria N ON L.PatientID = N.PatientID;",
     "gold": "SELECT CAST(SUM(CASE WHEN UA <= 6.5 THEN 1 ELSE 0 END) AS REAL) * 100 / COUNT(ID) FROM Laboratory WHERE `U-PRO` > 0 AND `U-PRO` < 30",
     "res": 0
   },
@@ -14805,7 +14805,7 @@
     "question": "What was the gas consumption peak month for SME customers in 2013?",
     "evidence": "Year 2013 can be presented as Between 201301 And 201312; The first 4 strings of the Date values in the yearmonth table can represent year; The 5th and 6th string of the date can refer to month.",
     "difficulty": "moderate",
-    "pred": "SELECT EXTRACT(MONTH FROM sale_date) AS sales_month, SUM(amount) AS total_sales FROM sales WHERE EXTRACT(YEAR FROM sale_date) = 2023 -- Specify the desired year GROUP BY EXTRACT(MONTH FROM sale_date) ORDER BY total_sales DESC LIMIT 1;",
+    "pred": "SELECT EXTRACT(MONTH FROM sale_date) AS sales_month, SUM(amount) AS total_sales FROM sales WHERE EXTRACT(YEAR FROM sale_date) = 2023 GROUP BY EXTRACT(MONTH FROM sale_date) ORDER BY total_sales DESC LIMIT 1;",
     "gold": "SELECT SUBSTR(T2.Date, 5, 2) FROM customers AS T1 INNER JOIN yearmonth AS T2 ON T1.CustomerID = T2.CustomerID WHERE SUBSTR(T2.Date, 1, 4) = '2013' AND T1.Segment = 'SME' GROUP BY SUBSTR(T2.Date, 5, 2) ORDER BY SUM(T2.Consumption) DESC LIMIT 1",
     "res": 0
   },
