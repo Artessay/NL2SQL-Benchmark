@@ -52,6 +52,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | count                | 925    | 465      | 144         | 1534  |
 | **ACCURACY**         |        |          |             |       |
 | Qwen2.5 Code 7B      | 56.11  | 34.48    | 33.79       | 47.46 |
+| DeepSeek-V2 Code 16B | 50.38  | 30.82    | 17.24       | 41.33 |
 | DeepSeek-R1 32B      | 42.27  | 18.10    | 17.93       | 32.66 |
 | Qwen2.5 32B          | 61.08  | 39.87    | 33.10       | 52.02 |
 | Qwen2.5 Code 32B     | 64.76  | 47.84    | 41.38       | **57.43** |
