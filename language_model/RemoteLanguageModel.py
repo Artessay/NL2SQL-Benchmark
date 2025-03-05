@@ -42,6 +42,7 @@ class RemoteLanguageModel(LanguageModel):
     
 if __name__ == "__main__":
     # model = RemoteLanguageModel("qwen-turbo")
-    model = RemoteLanguageModel("deepseek-r1-distill-llama-70b")
+    # model = RemoteLanguageModel("deepseek-r1-distill-llama-70b")
+    model = RemoteLanguageModel("deepseek-r1-local-preview")
     print(model.generate("What is the capital of France?"))
     print(model.generate(["What is the capital of France?", "What is the capital of Germany?"]))
