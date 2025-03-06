@@ -44,6 +44,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | Code Qwen2.5 7B      | 0.935| 0.877  | 0.759| 0.584 |0.824|
 | Code Qwen2.5 32B     | 0.827| 0.841  | 0.718| 0.548 |0.770|
 | DeepSeek-R1 70B      | 0.774| 0.796  | 0.603| 0.482 |0.708|
+| Qwen2.5 72B          | 0.915| 0.863  | 0.724| 0.633 |0.815|
 
 ### Bird Dataset
 
