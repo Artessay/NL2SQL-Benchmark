@@ -58,6 +58,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | Qwen2.5 Code 32B     | 64.76  | 47.84    | 41.38       | **57.43** |
 | DeepSeek-R1 70B      | 48.97  | 27.37    | 23.45       | 40.03 |
 | Qwen2.5 72B          | 60.00  | 39.44    | 35.86       | 51.50 |
+| DeepSeek-R1 671B     | 60.11  | 42.24    | 37.93       | 52.61 |
 
 ### The Impact of Schema Linking on NL2SQL
 

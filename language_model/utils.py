@@ -2,6 +2,7 @@ from .LocalLanguageModel import LocalLanguageModel
 from .RemoteLanguageModel import RemoteLanguageModel
 
 model_name_dict = {
+    "Qwen/QwQ-32B": "qwq",
     "Qwen/Qwen2.5-72B-Instruct": "qwen2.5:72b",
     "DeepSeek/DeepSeek-R1-32B": "deepseek-r1:32b",
     "DeepSeek/DeepSeek-R1-70B": "deepseek-r1:70b", # "deepseek-r1-distill-llama-70b", 
