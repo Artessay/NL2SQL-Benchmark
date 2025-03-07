@@ -45,6 +45,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | Code Qwen2.5 32B     | 0.827| 0.841  | 0.718| 0.548 |0.770|
 | DeepSeek-R1 70B      | 0.774| 0.796  | 0.603| 0.482 |0.708|
 | Qwen2.5 72B          | 0.915| 0.863  | 0.724| 0.633 |0.815|
+| DeepSeek-R1          | 0.863| 0.787  | 0.736| 0.578 |0.763|
 
 ### Bird Dataset
 
@@ -55,6 +56,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | Qwen2.5 Code 7B      | 56.11  | 34.48    | 33.79       | 47.46 |
 | DeepSeek-V2 Code 16B | 50.38  | 30.82    | 17.24       | 41.33 |
 | DeepSeek-R1 32B      | 42.27  | 18.10    | 17.93       | 32.66 |
+| QwQ 32B              | 58.92  | 40.30    | 35.86       | 51.11 |
 | Qwen2.5 32B          | 61.08  | 39.87    | 33.10       | 52.02 |
 | Qwen2.5 Code 32B     | 64.76  | 47.84    | 41.38       | **57.43** |
 | DeepSeek-R1 70B      | 48.97  | 27.37    | 23.45       | 40.03 |
