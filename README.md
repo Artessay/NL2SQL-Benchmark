@@ -65,7 +65,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 
 ### The Impact of Schema Linking on NL2SQL
 
-The performance of LLMs on NL2SQL is highly sensitive to the schema linking strategy. We provide the performance of different schema linking strategies on the Bird dataset with Qwen2-72B-Instruct model. The performance is calculated by the accuracy of the SQL query.
+The performance of LLMs on NL2SQL is highly sensitive to the schema linking strategy. We provide the performance of different schema linking strategies on the Bird dataset with Qwen2.5-Coder-32B-Instruct model. The performance is calculated by the accuracy of the SQL query.
 
 | **Bird**                 | simple | moderate | challenging | total |
 |--------------------------|--------|----------|-------------|-------|
