@@ -42,6 +42,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | count                | 248  | 446    | 174  | 166   | 1034|
 | **ACCURACY**         |      |        |      |       |     |
 | Code Qwen2.5 7B      | 0.935| 0.877  | 0.759| 0.584 |0.824|
+| Qwen3 7B             | 0.879| 0.812  | 0.672| 0.524 |0.758|
 | Code Qwen2.5 32B     | 0.827| 0.841  | 0.718| 0.548 |0.770|
 | DeepSeek-R1 70B      | 0.774| 0.796  | 0.603| 0.482 |0.708|
 | Qwen2.5 72B          | 0.915| 0.863  | 0.724| 0.633 |0.815|
@@ -54,6 +55,7 @@ python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [s
 | count                | 925    | 465      | 144         | 1534  |
 | **ACCURACY**         |        |          |             |       |
 | Qwen2.5 Code 7B      | 56.11  | 34.48    | 33.79       | 47.46 |
+| Qwen3 7B             | 59.89  | 40.30    | 29.66       | 51.11 |
 | DeepSeek-V2 Code 16B | 50.38  | 30.82    | 17.24       | 41.33 |
 | DeepSeek-R1 32B      | 42.27  | 18.10    | 17.93       | 32.66 |
 | QwQ 32B              | 58.92  | 40.30    | 35.86       | 51.11 |
