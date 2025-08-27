@@ -38,7 +38,7 @@ class Base():
         schema = "\n".join(schema) if isinstance(schema, list) else schema
         
         # base prompt for the question
-        base_prompt = "The databse schema is as follows:\n" + schema + "\nWrite Sql for the following question: " + question
+        base_prompt = "The database schema is as follows:\n" + schema + "\nWrite Sql for the following question: " + question
         
         # if extra knowledge is provided, add it to the prompt
         if evidence is not None:
