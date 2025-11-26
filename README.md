@@ -121,3 +121,13 @@ Qwen2.5 Coder 7B
 | Column Desc. (gold)  | 62.27  | 36.85    | 30.34       | 51.56 |
 | Sketch               | 53.51  | 34.05    | 30.34       | 45.44 |
 | Sketch (gold)        | 62.38  | 35.99    | 35.86       | 51.89 |
+
+### Methods Comparison
+
+
+| **Bird**             | simple | moderate | challenging | total |
+|----------------------|--------|----------|-------------|-------|
+| count                | 925    | 465      | 144         | 1534  |
+| **ACCURACY**         |        |          |             |       |
+| Base (gpt-4o)        | 60.22  | 40.09    | 31.72       | 51.43 |
+| Base (qwen-plus)     | 66.16  | 50.65    | 49.66       | 59.91 |
