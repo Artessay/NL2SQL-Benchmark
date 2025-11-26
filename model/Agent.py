@@ -49,15 +49,15 @@ class Agent(Base):
     def get_check_query(self, schema: str, question: str, sql: str) -> str:
         return f"""### Input Information  
 
-#### Database Schema:  
+Database Schema:  
 ```
 {schema}
 ```
 
-#### Question
+Question: 
 {question}
 
-#### Predicted SQL Query:  
+Predicted SQL Query:  
 ```
 {sql}
 ```
@@ -75,28 +75,26 @@ class Agent(Base):
 Provide the final result in JSON format with the following keys:  
 - `"is_correct"`: Boolean (true/false), indicating whether the query is correct.  
 - `"reason"`: String, explaining the reason for correctness or detailing the issues if incorrect.  
-- `"suggestion"`: String, suggestion for improvement if incorrect (leave empty if correct).  
 
 ### Example Output  
 ```json
 {{
   "is_correct": false,
-  "reason": "The field 'user_age' referenced in the query does not exist in the 'users' table; the correct field name is 'age'.",
-  "suggestion": "Modify 'SELECT user_age FROM users' to 'SELECT age FROM users'."
+  "reason": "The field 'user_age' referenced in the query does not exist in the 'users' table; the correct field name is 'age'."
 }}
 ```
 
 Now, please verify the given SQL query and output the result."""
     
-    def get_refine_prompt(self, schema: str, question: str, sql: str, suggestion: str) -> str:
+    def get_refine_prompt(self, schema: str, question: str, sql: str, reason: str) -> str:
         
         # base prompt for the question
         base_prompt = "The database schema is as follows:\n```\n" + schema + "\n```\nThe question is:\n" + question
         
-        refine_prompt = "\nThe following SQL statement may contain errors for answering the question. Please correct the previous mistakes according to the suggestions and generate a correct SQL query." \
-            + "The previous generated SQL query is:\n```\n" + sql + "\n```\nThe modification suggestions are as follows:\n" + suggestion
+        refine_prompt = "\nThe following SQL statement may contain errors for answering the question." \
+            + "The previous generated SQL query is:\n```\n" + sql + "\n```\nThe possible causes of the error are as follows:\n" + reason
         
-        base_ans_prompt = "\n" + "And lastly, only write the correct sql with no comments." 
+        base_ans_prompt = "\n" + "Please correct the previous mistakes according to the possible causes and generate a new correct SQL query. Only write the correct sql with no comments." 
 
         return base_prompt + refine_prompt + base_ans_prompt
     
