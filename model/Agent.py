@@ -39,52 +39,48 @@ class Agent(Base):
             return sql
         
         # Refine the SQL query
-        suggestion = check_status.get("suggestion", "")
-        refine_query = self.get_refine_prompt(schema_str, question_str, sql, suggestion)
+        reason = check_status.get("reason", "")
+        refine_query = self.get_refine_prompt(schema_str, question_str, sql, reason)
         refine_response = self.model.generate(refine_query)
         refined_sql = self.fetch_code(refine_response, code_type="sql", default=";")
 
         return refined_sql
 
     def get_check_query(self, schema: str, question: str, sql: str) -> str:
-        return f"""### Input Information  
-
-Database Schema:  
+        return f"""The database schema is as follows:
 ```
 {schema}
 ```
 
-Question: 
-{question}
+Given the question and predicted SQL query, please reflect that whether the SQL query is correct.
 
+Question: {question}
 Predicted SQL Query:  
 ```
 {sql}
 ```
 
-### Verification Steps  
+[Verification Steps]
 1. **Understand the Requirement**: Clearly identify the result the user wants to obtain from the QUESTION.  
 2. **Analyze the Schema**: Review the tables, columns, data types, and relationships described in the SCHEMA.  
 3. **Validate the Query**:  
    - Syntax Correctness: Check if the SQL query follows correct syntax.  
    - Structural Matching: Ensure that all referenced tables and columns exist in the SCHEMA.  
-   - Logical Accuracy: Confirm that the query logic correctly implements the user's requirement (including conditions, aggregations, joins, etc.).  
-   - Semantic Completeness: Verify that the SQL query fully meets the user's intent as described in the QUESTION.  
+   - Logical Accuracy: Confirm that the query logic correctly implements the user's requirement.  
 
-### Output Requirements  
+[Output Requirements] 
 Provide the final result in JSON format with the following keys:  
-- `"is_correct"`: Boolean (true/false), indicating whether the query is correct.  
 - `"reason"`: String, explaining the reason for correctness or detailing the issues if incorrect.  
+- `"is_correct"`: Boolean (true/false), indicating whether the query is correct.  
 
-### Example Output  
+[Example Output]
 ```json
 {{
-  "is_correct": false,
-  "reason": "The field 'user_age' referenced in the query does not exist in the 'users' table; the correct field name is 'age'."
+  "reason": "The reason for correctness or the issues if incorrect.",
+  "is_correct": true / false
 }}
 ```
-
-Now, please verify the given SQL query and output the result."""
+"""
     
     def get_refine_prompt(self, schema: str, question: str, sql: str, reason: str) -> str:
         
