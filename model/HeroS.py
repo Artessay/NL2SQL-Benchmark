@@ -1,5 +1,3 @@
-
-import json5
 import logging
 from func_timeout import FunctionTimedOut
 
