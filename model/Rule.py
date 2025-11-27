@@ -6,13 +6,9 @@ class Rule(Base):
     def __init__(self, args):
         super().__init__(args)
 
-    def inference(self, schema:str, question:str, evidence:str = None):
-        schema = "\n".join(schema) if isinstance(schema, list) else schema
-        query = self.get_prompt(schema, question, evidence)
-        response = self.model.generate(query)
-        return self.fetch_code(response, code_type="sql", default=";")
-
     def get_prompt(self, schema:str, question:str, evidence:str = None) -> str:
+        schema = "\n".join(schema) if isinstance(schema, list) else schema
+
         # base prompt for the question
         base_prompt = "The databse schema is as follows:\n" + schema + "\nWrite Sql for the following question: " + question
         
@@ -39,20 +35,3 @@ class Rule(Base):
 
         return base_prompt + knowledge_prompt + rule_prompt + base_ans_prompt
 
-    def fetch_code(self, response: str, code_type: str, default: str = "") -> str:
-        # fetch code block
-        if "```" in response:
-            code = response.split("```")[1]
-        else:
-            code = response
-
-        # remove code type from the beginning of the code block
-        length = len(code_type) + 1
-        if f'{code_type}\n' in code[:length]:
-            code = code[length:]
-
-        # if code is empty, return default value
-        if code == "":
-            code = default
-
-        return code
