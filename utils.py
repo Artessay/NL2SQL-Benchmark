@@ -85,7 +85,8 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--method', type=str, default="Base")
     parser.add_argument('-d', '--dataset', type=str, default='bird')
-    parser.add_argument('-l', '--language_model', type=str, default='Qwen/Qwen2.5-Coder-32B-Instruct')
+    parser.add_argument('-l', '--language_model', type=str, default='openai/gpt-4o')
+    # parser.add_argument('-l', '--language_model', type=str, default='Qwen/Qwen2.5-Coder-32B-Instruct')
     # parser.add_argument('-l', '--language_model', type=str, default='Qwen/Qwen2-72B-Instruct')
     parser.add_argument('-s', '--schema_linker', type=str, default='VanillaLinker')
 

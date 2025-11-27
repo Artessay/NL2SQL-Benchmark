@@ -67,9 +67,3 @@ Instructions for analysis:
 
 Output:
 A detailed error analysis."""
-
-if __name__ == "__main__":
-    import utils
-    args = utils.get_args()
-    model = HeroS(args)
-    print(model("", "Hello", ""))
