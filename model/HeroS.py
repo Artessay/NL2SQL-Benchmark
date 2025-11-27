@@ -1,12 +1,12 @@
 
 import json5
 import logging
+from func_timeout import FunctionTimedOut
 
 logging.basicConfig(level=logging.INFO) 
 logger = logging.getLogger(__name__)
 
 from model.Hero import Hero
-from tools import SqlExecutor
 
 
 class HeroS(Hero):
@@ -23,6 +23,8 @@ class HeroS(Hero):
                 status = "Success"
             else:
                 status = "[Syntax Error] " + result.get("sqlite_error", "")
+        except FunctionTimedOut:
+            status = "[Execution Timeout] Query execution exceeded time limit."
         except Exception as e:
             status = "[Runtime Error] " + str(e)
         
