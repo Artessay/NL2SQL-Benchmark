@@ -1,7 +1,7 @@
 import requests
 
 class LogicalAnalyzer:
-    def __init__(self, threshold: float = 0.6):
+    def __init__(self, threshold: float = 0.5):
         self.url = "http://222.29.136.49:9312/hero"
         self.threshold = threshold
 

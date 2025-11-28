@@ -80,7 +80,7 @@ Database schema:
 Predicted SQL query:
 {sql}
 
-Predicted logical plan:
+Logical plan for the predicted SQL query:
 {logical_plan}
 
 Human expert feedback:
