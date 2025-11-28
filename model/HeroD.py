@@ -32,13 +32,14 @@ class HeroD(HeroS):
                 return sql
             
             # get suggestion for refinement
+            reason = check_status.get("reason", "")
             logical_plan = check_status.get("logical_plan", None)
             if logical_plan:
-                suggestion = self.suggest_with_lp_for_correction(schema_str, question_str, sql, logical_plan)
+                suggestion = self.suggest_with_lp_for_correction(schema_str, question_str, sql, reason, logical_plan)
                 if suggestion.lower().strip() == "correct":
+                    logger.info("[correct]")
                     return sql
             else:
-                reason = check_status.get("reason", "")
                 suggestion = self.suggest_for_correction(schema_str, question_str, sql, reason)
             logger.info(f"Suggestion: {suggestion}")
             
@@ -65,19 +66,12 @@ class HeroD(HeroS):
         else:
             return {"is_correct": False, "reason": status}
 
-    def refine_sql_query(self, schema_str: str, question_str: str, sql: str, suggestion: str) -> str:
-        refine_query = self.get_refine_prompt(schema_str, question_str, sql, suggestion)
-        refine_response = self.model.generate(refine_query, system_prompt=self.refine_prompt)
-        sql = self.fetch_code(refine_response, code_type="sql", default=";")
-
-        return sql
-
-    def suggest_with_lp_for_correction(self, schema: str, question: str, sql: str, logical_plan: str):
-        lp_suggest_query = self.get_lp_suggestion_prompt(schema, question, sql, logical_plan)
+    def suggest_with_lp_for_correction(self, schema: str, question: str, sql: str, reason: str,logical_plan: str):
+        lp_suggest_query = self.get_lp_suggestion_prompt(schema, question, sql, reason, logical_plan)
         lp_suggest_response = self.model.generate(lp_suggest_query, system_prompt=self.lp_suggest_prompt)
         return lp_suggest_response
 
-    def get_lp_suggestion_prompt(self, schema, question, sql, logical_plan):
+    def get_lp_suggestion_prompt(self, schema, question, sql, reason, logical_plan):
         return f"""[Input Information]
 Question: {question}
 

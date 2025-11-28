@@ -25,7 +25,31 @@ class LogicalAnalyzer:
         logger.info(f"Semantic validation score: {result['score']}")
         is_correct = result['score'] > self.threshold
         logical_plan = result['logical_plan']
-        return {"is_correct": is_correct, "reason": "", "logical_plan": logical_plan}
+
+        nodes_score = result['node_scores']
+        nodes_property = result['node_properties']
+        reason = self.build_correction_signal(nodes_score, nodes_property)
+
+        return {"is_correct": is_correct, "reason": reason, "logical_plan": logical_plan}
+
+    def build_correction_signal(self, nodes_score: list, nodes_property: list):
+        risk_nodes = []
+        for node_score, node_property in zip(nodes_score, nodes_property):
+            if node_score < self.threshold:
+                risk_nodes.append(node_property)
+
+        if len(risk_nodes) > 0:
+            return f"Logical plan nodes {risk_nodes} may have error, please pay more attention to the corresponding SQL clauses."
+        else:
+            return "Not very sure whether the SQL query is semantically correct, please check it carefully."
+        
+        # reason = ""
+        # for node_score, node_property in zip(nodes_score, nodes_property):
+        #     if node_score < self.threshold:
+        #         reason += f"Logical plan node {node_property} has a high risk of error.\n"
+        #         # reason += f"The probability that an error occurs on logical plan node {node_property} is {1 - node_score}.\n"
+
+        # return reason
 
 if __name__ == "__main__":
     analyzer = LogicalAnalyzer()

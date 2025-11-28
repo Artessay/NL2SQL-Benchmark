@@ -29,9 +29,38 @@ class Hero(Agent):
             
             # Refine the SQL query
             reason = check_status.get("reason", "")
-            sql = self.refine_sql_query(schema_str, question_str, sql, reason)
+            suggestion = self.suggest_for_correction(schema_str, question_str, sql, reason)
+            logger.info(f"Suggestion: {suggestion}")
+
+            sql = self.refine_sql_query(schema_str, question_str, sql, suggestion)
 
         return sql
+
+    def suggest_for_correction(self, schema: str, question: str, sql: str, reason: str):
+        suggest_query = self.get_suggestion_prompt(schema, question, sql, reason)
+        suggest_response = self.model.generate(suggest_query, system_prompt=self.suggest_prompt)
+        return suggest_response
+
+    def get_suggestion_prompt(self, schema, question, sql, reason):
+        return f"""Question: {question}
+
+Database schema:
+{schema}
+
+Predicted SQL query:
+{sql}
+
+Identified mistake:
+{reason}
+
+Instructions for analysis:
+1.   Explain clearly why the mistake occurs.
+2.   Identify which part of the query is incorrect, redundant, or unnecessary.
+3.   Describe the implications of this mistake on query execution or results.
+4.   Provide a concise, understandable explanation suitable for someone familiar with SQL and query planning.
+
+Output:
+A detailed error analysis."""
 
 
 if __name__ == "__main__":
