@@ -1,4 +1,8 @@
 import requests
+import logging
+
+logging.basicConfig(level=logging.INFO) 
+logger = logging.getLogger(__name__)
 
 class LogicalAnalyzer:
     def __init__(self, threshold: float = 0.5):
@@ -14,9 +18,11 @@ class LogicalAnalyzer:
 
         response = requests.post(self.url, json=payload)
         if response.status_code != 200:
+            logger.error(f"Error: {response.status_code}, {response.text}")
             return {"is_correct": True, "reason": "Can not get logical plan."} # TODO: Make this better
         
         result = response.json()
+        logger.info(f"Semantic validation score: {result['score']}")
         is_correct = result['score'] > self.threshold
         logical_plan = result['logical_plan']
         return {"is_correct": is_correct, "reason": "", "logical_plan": logical_plan}
