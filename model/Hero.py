@@ -13,7 +13,7 @@ class Hero(Agent):
         super().__init__(args, **kwargs)
 
         self.sql_executor: SqlExecutor = None
-        self.max_num_iteration = kwargs.pop("max_num_iteration", 8)
+        self.max_num_iteration = kwargs.pop("max_num_iteration", 5)
 
     def check_and_refine_sql(self, schema: str, question: str, evidence:str, sql: str) -> str:
         for _ in range(self.max_num_iteration):
