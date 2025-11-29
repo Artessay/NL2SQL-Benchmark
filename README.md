@@ -136,5 +136,5 @@ Qwen2.5 Coder 7B
 | **ACCURACY**         |        |          |             |       |
 | Base (qwen-plus)     | 66.16  | 50.65    | 49.66       | 59.91 |
 | Prompt (qwen-plus)   | 64.00  | 48.28    | 49.66       | 57.89 |
-| Hero-S (qwen-plus)   | 66.38  | 54.53    | 52.41       | 61.47 |
+| Hero-S (qwen-plus)   | 65.84  | 53.02    | 51.72       | 60.63 |
 | Hero-D (qwen-plus)   | 66.81  | 54.31    | 51.34       | 61.47 |
