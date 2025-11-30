@@ -139,3 +139,4 @@ Qwen2.5 Coder 7B
 | Prompt (qwen-plus)   | 64.00  | 48.28    | 49.66       | 57.89 |
 | Hero-S (qwen-plus)   | 65.84  | 53.02    | 51.72       | 60.63 |
 | Hero-D (qwen-plus)   | 66.81  | 54.31    | 51.34       | 61.47 |
+| Hero-L (qwen-plus)   | 64.97  | 50.22    | 48.28       | 58.93 |
