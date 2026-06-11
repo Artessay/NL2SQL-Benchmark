@@ -18,7 +18,10 @@ class HeroS(Hero):
         try:
             result = self.sql_executor.execute_sql(sql)
             if "data" in result:
-                status = "Success"
+                if self.sql_executor.is_need_refine(result):
+                    status = "[Runtime Warning] " + result.get("sqlite_error", "query returned suspicious data")
+                else:
+                    status = "Success"
             else:
                 status = "[Syntax Error] " + result.get("sqlite_error", "")
         except FunctionTimedOut:
@@ -27,6 +30,6 @@ class HeroS(Hero):
             status = "[Runtime Error] " + str(e)
         
         if status == "Success":
-            return {"is_correct": True, "reason": ""}
+            return {"is_correct": True, "reason": "", "confidence": 1.0, "needs_refinement": False, "errors": []}
         else:
-            return {"is_correct": False, "reason": status}
+            return {"is_correct": False, "reason": status, "confidence": 1.0, "needs_refinement": True, "errors": ["execution_error"]}

@@ -21,14 +21,17 @@ class HeroD(HeroS):
 
     def check_and_refine_sql(self, schema: str, question: str, evidence:str, sql: str) -> str:
         for _ in range(self.max_num_iteration):
-            question_str = question + " " + evidence if evidence else question
-            schema_str = "\n".join(schema) if isinstance(schema, list) else schema
+            question_str = self.format_question(question, evidence)
+            schema_str = self.format_schema(schema)
             
             check_status = self.check_sql_status(sql, question_str)
             logger.info(f"Check Status: {check_status}")
 
             is_correct = check_status.get("is_correct", True)
             if is_correct:
+                return sql
+            if not self.should_refine(check_status, sql):
+                logger.info("Skip refinement because the verifier signal is low-confidence.")
                 return sql
             
             # get suggestion for refinement
@@ -44,7 +47,11 @@ class HeroD(HeroS):
             logger.info(f"Suggestion: {suggestion}")
             
             # Refine the SQL query
-            sql = self.refine_sql_query(schema_str, question_str, sql, suggestion)
+            candidate_sql = self.refine_sql_query(schema_str, question_str, sql, suggestion)
+            next_sql = self.select_sql_candidate(sql, candidate_sql, schema_str, question_str, check_status)
+            if self.normalize_sql_text(next_sql) == self.normalize_sql_text(sql):
+                return sql
+            sql = next_sql
 
         return sql
 
@@ -62,9 +69,9 @@ class HeroD(HeroS):
             status = "[Runtime Error] " + str(e)
         
         if status == "Success":
-            return {"is_correct": True, "reason": ""}
+            return {"is_correct": True, "reason": "", "confidence": 1.0, "needs_refinement": False, "errors": []}
         else:
-            return {"is_correct": False, "reason": status}
+            return {"is_correct": False, "reason": status, "confidence": 1.0, "needs_refinement": True, "errors": ["execution_error"]}
 
     def suggest_with_lp_for_correction(self, schema: str, question: str, sql: str, reason: str,logical_plan: str):
         lp_suggest_query = self.get_lp_suggestion_prompt(schema, question, sql, reason, logical_plan)

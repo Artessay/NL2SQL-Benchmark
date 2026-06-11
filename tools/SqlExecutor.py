@@ -4,8 +4,9 @@ from func_timeout import func_set_timeout
 
 
 class SqlExecutor:
-    def __init__(self, database_dir: str, database_name: str) -> None:
+    def __init__(self, database_dir: str, database_name: str, dataset_name: str = None) -> None:
         self.database_path = os.path.join(database_dir, database_name, f'{database_name}.sqlite')
+        self.dataset_name = dataset_name
 
     @func_set_timeout(120)
     def execute_sql(self, sql: str) -> dict:

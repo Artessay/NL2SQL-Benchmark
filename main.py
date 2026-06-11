@@ -29,7 +29,7 @@ def run(args):
         schema = schema_linker.get_schema(args.database_path, db_name, query, evidence)
         
         # set Sql Executor
-        sql_executor = tools.SqlExecutor(args.database_path, db_name)
+        sql_executor = tools.SqlExecutor(args.database_path, db_name, dataset_name=args.dataset)
         if hasattr(agent, 'sql_executor'):
             agent.sql_executor = sql_executor
         
