@@ -1,0 +1,21 @@
+# Default remote-model benchmark runtime
+chardet
+func-timeout
+json5
+langchain-openai
+numpy
+openai
+pandas
+python-dotenv
+requests
+sqlparse
+tenacity
+torch
+tqdm
+
+# Local Hugging Face models and embedding-based schema linkers
+accelerate
+protobuf
+sentence-transformers
+sentencepiece
+transformers

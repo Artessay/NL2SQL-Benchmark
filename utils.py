@@ -1,17 +1,19 @@
-import os
-import json
 import argparse
+import json
+import os
 
-def seed_everything(seed: int):  
-    import random, os
+def seed_everything(seed: int):
+    import random
+
     import numpy as np
     import torch
 
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.backends.cudnn.benchmark = True
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     os.environ['PYTHONHASHSEED'] = str(seed)
 
@@ -83,13 +85,10 @@ def remove_sql_comments(sql):
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--method', type=str, default="Base")
-    parser.add_argument('-d', '--dataset', type=str, default='bird')
-    # parser.add_argument('-l', '--language_model', type=str, default='openai/gpt-4o')
+    parser.add_argument('-m', '--method', default="Base")
+    parser.add_argument('-d', '--dataset', choices=('bird', 'spider'), default='bird')
     parser.add_argument('-l', '--language_model', type=str, default='Qwen/plus')
-    # parser.add_argument('-l', '--language_model', type=str, default='Qwen/Qwen2.5-Coder-32B-Instruct')
-    # parser.add_argument('-l', '--language_model', type=str, default='Qwen/Qwen2-72B-Instruct')
-    parser.add_argument('-s', '--schema_linker', type=str, default='VanillaLinker')
+    parser.add_argument('-s', '--schema-linker', dest='schema_linker', default='VanillaLinker')
 
     args = parser.parse_args()
     print(args)

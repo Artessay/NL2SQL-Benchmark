@@ -6,23 +6,14 @@ This repository contains the code for the LLM NL2SQL Benchmark.
 
 ## Installation
 
-Use the following commands to install the required packages.
+Install the runtime dependencies with Python 3.10+:
 
 ```sh
-pip install nltk
-pip install torch
-pip install chardet
-pip install protobuf
-pip install sqlparse
-pip install accelerate
-pip install func_timeout
-pip install transformers
-pip install sentencepiece
-pip install python-dotenv
-pip install langchain_openai
-
-python -c "import nltk; nltk.download('punkt')"
+python -m pip install -r requirements.txt
+cp .env.example .env
 ```
+
+Set `OPENAI_API_KEY` and, when needed, `OPENAI_API_BASE_URL` in `.env`.
 
 ## Running
 
@@ -31,6 +22,21 @@ Our evaluation framework supports almost all models that can be downloaded from 
 ```sh
 python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [schema_linking_strategy]
 ```
+
+Supported datasets are `bird` and `spider`. Generated predictions and metrics
+are written below `output/` and are ignored for new runs.
+
+## Repository layout
+
+- `model/`, `language_model/`, `schema_linking/`: benchmark strategies and model adapters
+- `tools/`: SQL execution and analysis helpers
+- `evaluation/`: official-style BIRD and Spider evaluators
+- `scripts/`: standalone data preparation and inspection utilities
+- `tests/`: dependency-light regression tests
+
+Run the test suite with `python -m unittest discover -v`. Historical and
+standalone areas, plus proposed deletion candidates, are documented in
+[`docs/REPOSITORY_AUDIT.md`](docs/REPOSITORY_AUDIT.md).
 
 ## Evaluation Result
 

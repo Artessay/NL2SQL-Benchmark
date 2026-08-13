@@ -1,4 +1,5 @@
 import subprocess
+import sys
 from utils import get_args
 
 def run_evaluation_spider(args):
@@ -17,7 +18,7 @@ def run_evaluation_spider(args):
         "--etype", etype
     ]
     
-    subprocess.run(command)
+    subprocess.run([sys.executable, *command[1:]], check=True)
 
 def run_evaluation_bird(args):
     base_command = {
@@ -42,7 +43,7 @@ def run_evaluation_bird(args):
             "--diff_json_path", diff_json_path
         ]
         
-        subprocess.run(command)
+        subprocess.run([sys.executable, *command[1:]], check=True)
 
 
 def evaluation(args):

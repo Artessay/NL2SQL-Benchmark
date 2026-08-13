@@ -1,0 +1,15 @@
+[project]
+name = "nl2sql-benchmark"
+version = "0.1.0"
+description = "Benchmark runner for LLM-based text-to-SQL methods"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100

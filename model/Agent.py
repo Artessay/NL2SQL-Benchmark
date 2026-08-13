@@ -1,5 +1,8 @@
 
-import json5
+try:
+    import json5 as json_parser
+except ImportError:  # Strict JSON remains supported in minimal environments.
+    import json as json_parser
 import logging
 import re
 from typing import Any, Dict, List, Optional
@@ -69,7 +72,7 @@ class Agent(Base):
     def parse_check_status(self, check_status_str: str) -> Dict[str, Any]:
         try:
             json_text = self.extract_json_object(check_status_str)
-            check_status = json5.loads(json_text)
+            check_status = json_parser.loads(json_text)
             if not isinstance(check_status, dict):
                 raise ValueError("verifier output is not a JSON object")
             return self.normalize_check_status(check_status)

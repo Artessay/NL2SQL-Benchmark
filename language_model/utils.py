@@ -1,7 +1,3 @@
-from .LocalLanguageModel import LocalLanguageModel
-from .RemoteLanguageModel import RemoteLanguageModel
-from .StreamLanguageModel import StreamLanguageModel
-
 model_name_dict = {
     "Qwen/plus": "qwen-plus",
     "Qwen/QwQ-32B": "qwq-32b",
@@ -18,8 +14,15 @@ model_name_dict = {
 def load_language_model(model_name: str, **kwargs):
     if model_name in model_name_dict.keys():
         if "QwQ" in model_name:
+            from .StreamLanguageModel import StreamLanguageModel
+
             return StreamLanguageModel(model_name_dict[model_name], **kwargs)
         else:
+            from .RemoteLanguageModel import RemoteLanguageModel
+
             return RemoteLanguageModel(model_name_dict[model_name], **kwargs)
     else:
+        # Transformers is intentionally optional for remote-only runs.
+        from .LocalLanguageModel import LocalLanguageModel
+
         return LocalLanguageModel(model_name, **kwargs)

@@ -1,6 +1,13 @@
-__pycache__
-data/*/*/
-.env
-.vscode
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
 
-# output/
+.env
+.venv/
+.vscode/
+
+# Datasets and generated benchmark artifacts. Existing tracked fixtures and
+# historical results remain tracked until they are deliberately archived.
+data/*/*/
+output/

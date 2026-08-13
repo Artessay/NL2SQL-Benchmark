@@ -17,40 +17,34 @@ def run(args):
     seed_everything(42)
     agent = model.load_agent(args.method, args)
     dataset = load_dataset(args.data_path)
-    result_file = get_output_file(args.result_path)
     schema_linker = schema_linking.load_schema_linker(args.schema_linker)
 
-    for item in tqdm(dataset):
-        db_name = item['db_id']
-        query = item['question']
-        evidence = item.get('evidence', None)
+    with get_output_file(args.result_path) as result_file:
+        for item in tqdm(dataset):
+            db_name = item['db_id']
+            query = item['question']
+            evidence = item.get('evidence', None)
 
-        # get schema
-        schema = schema_linker.get_schema(args.database_path, db_name, query, evidence)
+            schema = schema_linker.get_schema(args.database_path, db_name, query, evidence)
         
-        # set Sql Executor
-        sql_executor = tools.SqlExecutor(args.database_path, db_name, dataset_name=args.dataset)
-        if hasattr(agent, 'sql_executor'):
-            agent.sql_executor = sql_executor
+            sql_executor = tools.SqlExecutor(args.database_path, db_name, dataset_name=args.dataset)
+            if hasattr(agent, 'sql_executor'):
+                agent.sql_executor = sql_executor
         
-        response = agent(schema, query, evidence)
-        response = remove_sql_comments(response)
-        response = response.replace('\n',' ')
+            response = agent(schema, query, evidence)
+            response = remove_sql_comments(response).replace('\n', ' ')
         
-        # fix empty response
-        if len(response) == 0:
-            response = ";"
+            if not response:
+                response = ";"
         
-        print()
-        print("On database:", db_name)
-        print("Question:", query)
-        print("LLM response:", response)
-        print("Ground truth:", item['query'] if args.dataset == 'spider' else item['SQL'])
-        print("====================================")
+            print()
+            print("On database:", db_name)
+            print("Question:", query)
+            print("LLM response:", response)
+            print("Ground truth:", item['query'] if args.dataset == 'spider' else item['SQL'])
+            print("====================================")
 
-        result_file.write(response + '\n')
-
-    result_file.close()
+            result_file.write(response + '\n')
 
     if args.dataset in ['bird']:
         fix_gt(args)
