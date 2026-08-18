@@ -4,6 +4,7 @@ try:
 except ImportError:  # Strict JSON remains supported in minimal environments.
     import json as json_parser
 import logging
+import math
 import re
 from typing import Any, Dict, List, Optional
 
@@ -94,18 +95,45 @@ class Agent(Base):
             confidence = float(check_status.get("confidence", 1.0 if is_correct else 0.5))
         except (TypeError, ValueError):
             confidence = 1.0 if is_correct else 0.5
-        confidence = max(0.0, min(1.0, confidence))
+        if not math.isfinite(confidence):
+            confidence = 0.0
+        else:
+            confidence = max(0.0, min(1.0, confidence))
 
-        errors = check_status.get("errors", [])
-        if isinstance(errors, str):
-            errors = [errors]
-        elif not isinstance(errors, list):
-            errors = []
+        raw_errors = check_status.get("errors", [])
+        if isinstance(raw_errors, str):
+            raw_errors = [raw_errors]
+        elif not isinstance(raw_errors, list):
+            raw_errors = []
+        errors = []
+        for error in raw_errors:
+            if isinstance(error, str) and error.strip():
+                errors.append(error.strip())
+            elif isinstance(error, dict):
+                error_type = error.get("type", error.get("error_type", error.get("error")))
+                description = error.get("description", error.get("message", error.get("reason")))
+                if not isinstance(error_type, str) or not error_type.strip():
+                    continue
+                if not isinstance(description, str) or not description.strip():
+                    continue
+                normalized_error = {
+                    "type": error_type.strip(),
+                    "description": description.strip(),
+                }
+                verification_id = error.get(
+                    "verification_question_id", error.get("question_id", error.get("id"))
+                )
+                if isinstance(verification_id, str) and verification_id.strip():
+                    normalized_error["verification_question_id"] = verification_id.strip()
+                errors.append(normalized_error)
+
+        raw_reason = check_status.get("reason", "")
+        reason = raw_reason.strip() if isinstance(raw_reason, str) else ""
 
         normalized = dict(check_status)
         normalized.update({
             "is_correct": is_correct,
-            "reason": str(check_status.get("reason", "")),
+            "reason": reason,
             "confidence": confidence,
             "needs_refinement": needs_refinement,
             "errors": errors,
@@ -223,11 +251,6 @@ class Agent(Base):
                     return original_sql
                 if original_eval["signature"] == candidate_eval["signature"]:
                     return original_sql
-                if original_eval["is_empty"] and not candidate_eval["is_empty"]:
-                    return candidate_sql
-                if not original_eval["is_empty"] and candidate_eval["is_empty"]:
-                    logger.info("Reject refined SQL because it returns an empty result while the original does not.")
-                    return original_sql
 
         lost_anchors = self.lost_question_anchors(question_str, original_sql, candidate_sql)
         if lost_anchors:
@@ -316,7 +339,60 @@ class Agent(Base):
 
     @staticmethod
     def normalize_sql_text(sql: str) -> str:
-        return re.sub(r"\s+", " ", sql or "").strip().rstrip(";").lower()
+        """Normalize formatting without changing quoted SQL values or identifiers."""
+        sql = (sql or "").strip()
+        if sql.endswith(";"):
+            sql = sql[:-1].rstrip()
+        output = []
+        quote = None
+        pending_space = False
+        index = 0
+        while index < len(sql):
+            char = sql[index]
+            next_char = sql[index + 1] if index + 1 < len(sql) else ""
+            if quote is not None:
+                output.append(char)
+                if quote == "]":
+                    if char == "]":
+                        quote = None
+                elif char == quote:
+                    if next_char == quote:
+                        output.append(next_char)
+                        index += 1
+                    else:
+                        quote = None
+            elif char == "-" and next_char == "-":
+                index += 2
+                while index < len(sql) and sql[index] not in "\r\n":
+                    index += 1
+                pending_space = True
+                continue
+            elif char == "/" and next_char == "*":
+                end = sql.find("*/", index + 2)
+                index = len(sql) if end < 0 else end + 2
+                pending_space = True
+                continue
+            elif char in {"'", '"', "`"}:
+                if pending_space and output:
+                    output.append(" ")
+                pending_space = False
+                quote = char
+                output.append(char)
+            elif char == "[":
+                if pending_space and output:
+                    output.append(" ")
+                pending_space = False
+                quote = "]"
+                output.append(char)
+            elif char.isspace():
+                pending_space = True
+            else:
+                if pending_space and output:
+                    output.append(" ")
+                pending_space = False
+                output.append(char.lower())
+            index += 1
+        return "".join(output).strip()
 
     @staticmethod
     def format_schema(schema: str) -> str:
