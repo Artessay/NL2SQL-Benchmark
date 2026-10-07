@@ -1,0 +1,130 @@
+{
+  "dataset": "bird",
+  "split": "dev",
+  "method": "MCSSelector",
+  "language_model": "Qwen/Qwen3.8-27B",
+  "schema_linker": "VanillaLinker",
+  "completed": 1534,
+  "expected": 1534,
+  "correct": 992,
+  "ex_percent": 64.66753585397653,
+  "executable_percent": 99.60886571056062,
+  "mean_seconds": 9.133551053105425,
+  "p95_seconds": 19.60991109907627,
+  "mean_llm_calls": 5.1714471968709255,
+  "input_tokens": 15171517,
+  "output_tokens": 541812,
+  "truncated_calls": 2,
+  "llm_errors": 0,
+  "gold_errors": 2,
+  "pipeline_errors": 0,
+  "cases_with_warnings": 5,
+  "difficulty": {
+    "simple": {
+      "count": 925,
+      "correct": 654,
+      "ex_percent": 70.70270270270271
+    },
+    "moderate": {
+      "count": 464,
+      "correct": 259,
+      "ex_percent": 55.81896551724138
+    },
+    "challenging": {
+      "count": 145,
+      "correct": 79,
+      "ex_percent": 54.48275862068966
+    }
+  },
+  "configuration": {
+    "temperature": 0,
+    "enable_thinking": false,
+    "max_tokens": 4096,
+    "request_timeout": 180,
+    "sql_timeout": 30,
+    "schema_sample_rows": 5
+  },
+  "metric": "BIRD EX: equality of full result sets; row order and duplicates ignored",
+  "ves": null,
+  "provenance": {
+    "run_id": "qwen3.8-27b-full-20261006",
+    "completed_at": "2026-10-06T17:38:48.339591+00:00",
+    "dataset_sha256": "630272f2b1c44d8cef2c3b246f623355cf0bbc1e832c81061df895530dfc2f06",
+    "code_sha256": {
+      "model/Agent.py": "f1eb47d3e0263b25f789ce122310f0b15c443db2e7f769a9370d956ae8c16a3d",
+      "model/Base.py": "dfb5bfa7acfae414b4f7701a181e363b79042b7123b962dfed2b31aafc6ed50c",
+      "model/CHESSUnitTester.py": "d731d456f124deba0e4c0731bf198fe464e9ea9b2b1118f47366a2b3f0374988",
+      "model/CandidateAgent.py": "81701b96a47b82f11fc2d3e062d587157279de5a3cdaef314eaa3bfc708f8297",
+      "model/CoT.py": "3b4dc5f8d36b46eae6fe57ee891a5a2ab32e52c5c5949d5f67a11f8a7548200a",
+      "model/CoTVerifier.py": "c48536267cf88cd3da768f5aa47a6065996f7d8b050ac92319c1ae3f2d7703c1",
+      "model/CoVe.py": "e19192b8a8298254e9c779c94e8ed901eb3ab50b349f47c6fd9adb0fc6204769",
+      "model/DACCorrection.py": "e7272c7f67c2583f8179d54fba4b2ebe04c67a4bc49c528835dfe71b10f8fc20",
+      "model/DINSQLCorrection.py": "0515383852ec546aeaa58c687386cc9cda31667017333a8297fed0b04e31eb62",
+      "model/Hero.py": "b873b9f6cc887eea7aaadf1a7941f5572d41fbee571148598cf57f7761ef871d",
+      "model/HeroD.py": "3880ae5d3001f4bbc4818f9dd8f22f996fba53cf9ae9beeba9528e4d1681c697",
+      "model/HeroL.py": "5fb6b0b412cd6c43c505e8b6d75bd5adc936ff9432bded9f527517616c2c8103",
+      "model/HeroS.py": "c3be635768b8d975693490100ab407977873ec6b1c11ee2f1da5af176bffc17e",
+      "model/MCSSelector.py": "fc5f9112acb0b149b8e11d2231020e189761dbd13da3faa6a18de311b274d5bf",
+      "model/Rule.py": "a1bebc2073cf6724672537c0e6de7ed6f45153e837cd7d0f820fd0a446272a8b",
+      "model/SQLPromptMix.py": "4bde103b7881e18571a9fdd6538d3e65504b5f1cf526781878f335775bf83bb7",
+      "model/SelfDebugging.py": "ed8a4fe2295d8fad5d8b335a55079f03aad383f7e403b66361f0bb4bc9c53237",
+      "model/SketchRetriever.py": "9d068bf34a8cf2f8195cd2cd4c8fa80f652fdbce4ab49fc44c1e40a7e7312c3f",
+      "model/Vote.py": "cb0d618ec69139fbaa0df928a6a3900d429acfefa8866b5824333253997ced28",
+      "model/__init__.py": "28312edc49133b6263754da844df42c4ee23cfc3651679e3bf6f3888e7fce04d",
+      "model/_sql_safety.py": "4b74c0c677de0acc3fc4808ba55976fd8640e94ba24cc3b94e7179b538a1ebd1",
+      "language_model/LanguageModel.py": "1d087d20c2d9e2f9d49d28f783a961afbaf7433f064d79061660b60c78f302a2",
+      "language_model/LocalLanguageModel.py": "f99e8dfb060a13b5fb5be2944576cf6f9a218a7433d3ffbcbb767ded90a0f8a9",
+      "language_model/RemoteLanguageModel.py": "964c7d8d58e5e31b49b822d3f3aec68bd45578cd0288b659e82cdd18ed7d4fd5",
+      "language_model/StreamLanguageModel.py": "dcb55f3c3a9f8083bc338fb466fd9fecec5067b55373aec1eb10d74622c8af7b",
+      "language_model/__init__.py": "fdc44861ee939a374bf1a9ba175b124b56e827f84e0cd29c8aaf324211f32622",
+      "language_model/utils.py": "e8c8f07862f444c975fbd3b4d5962741e0e7aec0f258f00ae5220d46f8457757",
+      "schema_linking/BertFilter.py": "18ee9b6dbf901869d82abdc3c1df2d94b512daa7ada52b1d40cfbdc1f928734d",
+      "schema_linking/EmbeddingFilter.py": "46cd645410b50ac3648571efb3816351d6797b4828088c12eaca98813198ddeb",
+      "schema_linking/GoldFilter.py": "4d857cdc10a1311f8d9f3442b9ce1e17b28b749227362da45d991a971c315609",
+      "schema_linking/GoldSchemaInfo.py": "cca08b3e689596c1eeaa7b3d50bc6689c95c8795bed99c2b09c5178f5288b775",
+      "schema_linking/GteFilter.py": "68ec8f76fe9bf5e85e238cc17ac391a9332cd79a1ce4ed4fabdda4a96a05bc19",
+      "schema_linking/NunerFilter.py": "8247fa22debe3c3b05206ad0b782512b102738bd0dcd98506d0cde49db279816",
+      "schema_linking/QwenFilter.py": "b5eda86e01e7941c074bb7fa11840502a7a500f64958e1850490dbaf3f7482ee",
+      "schema_linking/RobertaFilter.py": "ab0f5655c7883fb934ed72dc94311b232e79670f518ec0773727cc8d5d0fe769",
+      "schema_linking/SchemaInfo.py": "2a1480b9304c526ce6bef5d2b3d94f55e0897e1fdcfadcee2bd6e8058e0e930f",
+      "schema_linking/SchemaLinker.py": "65115327fd3cce4823bf89f5d8068a01d9b43b7094cd9f0d687a4dc7774d597b",
+      "schema_linking/VanillaLinker.py": "b14375a95e24b6329714f695ef98a335ae6b83fdfb55c54035b0090e3eae00da",
+      "schema_linking/__init__.py": "5dbb0fc7c249e952b40e6a16da34c19c6fc1d48ba7f0acb575052f9242c0a3e9",
+      "schema_linking/llm_filter.py": "7c43a085724b1be2e37ddd99ccd0dcf0e4f4687ba0067745624acb6528a31714",
+      "tools/LogicalAnalyzer.py": "b3967b7dba2b6692baa9c9648580f4ba8b01972cfbf5b3b34cd209532269dade",
+      "tools/SqlExecutor.py": "9b570801b81934cde92010279f6a1d65919fbacce0a96c6cb670a7a7cd95f558",
+      "tools/__init__.py": "4505f02378e66a23ebc1bb6a49c52f38056a464aef109b80f8c3cae30c9604ac"
+    },
+    "runner_sha256": "24f6391a1450188e0a32bd52e530d4a99f520d0f48f204385484f686d624b361",
+    "packages": {
+      "langchain-openai": "1.5.1",
+      "openai": "3.2.0",
+      "json5": "0.15.0"
+    }
+  },
+  "evaluation_notes": {
+    "gold_execution_errors_counted_as_incorrect": [
+      {
+        "index": 518,
+        "db_id": "card_games",
+        "error": "interrupted"
+      },
+      {
+        "index": 701,
+        "db_id": "codebase_community",
+        "error": "interrupted"
+      }
+    ],
+    "cases_with_truncated_output": [
+      {
+        "index": 271,
+        "truncated_calls": 1
+      },
+      {
+        "index": 852,
+        "truncated_calls": 1
+      }
+    ],
+    "latency_measured_during_concurrent_run": true
+  }
+}

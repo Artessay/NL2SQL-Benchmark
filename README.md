@@ -23,8 +23,22 @@ Our evaluation framework supports almost all models that can be downloaded from 
 python main.py -m [method_name] -d [dataset_name] -l [language_model_name] -s [schema_linking_strategy]
 ```
 
-Supported datasets are `bird` and `spider`. Generated predictions and metrics
-are written below `output/` and are ignored for new runs.
+Supported datasets are `bird` and `spider`. Final results use
+`output/<dataset>/<method>/<vendor>/<model>/<schema_linker>/`. Git allows
+`dev_pred.sql`, `dev_pred_gt.sql`, `eval_result_dev.json`, and `summary.json`
+at that path; intermediate traces, checkpoints, and logs remain ignored.
+
+Export a completed full BIRD run from the batch runner without running inference
+or evaluation again:
+
+```sh
+python scripts/export_benchmark_results.py --run-dir output/bird/qwen3.8-27b-full-20261006
+```
+
+The exporter checks the dataset and saved evaluations, preserves the existing
+`eval_result_dev.json` format, and includes generation settings and metric
+limitations in each method's `summary.json`. It refuses to overwrite different
+results already saved at the destination.
 
 ## Repository layout
 
