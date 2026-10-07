@@ -3,6 +3,7 @@ model_name_dict = {
     "Qwen/QwQ-32B": "qwq-32b",
     "Qwen/QwQ-plus": "qwq-plus",
     "Qwen/Qwen2.5-72B-Instruct": "qwen2.5:72b",
+    "Qwen/Qwen3.8-27B": "qwen3.8-27b",
 
     "DeepSeek/DeepSeek-R1-32B": "deepseek-r1:32b",
     "DeepSeek/DeepSeek-R1-70B": "deepseek-r1:70b", # "deepseek-r1-distill-llama-70b", 

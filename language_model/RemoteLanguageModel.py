@@ -13,15 +13,19 @@ class RemoteLanguageModel(LanguageModel):
     def __init__(self, model_name, **kwargs) -> None:
         super().__init__(**kwargs)
 
-        api_key = os.environ.get("OPENAI_API_KEY", None)
-        base_url = os.environ.get("OPENAI_API_BASE_URL", None)
+        api_key = kwargs.pop("api_key", os.environ.get("OPENAI_API_KEY"))
+        base_url = kwargs.pop("base_url", os.environ.get("OPENAI_API_BASE_URL"))
         
         self.temperature = kwargs.pop("temperature", 0.0)
         self.timeout = kwargs.pop("timeout", 60)
         self.client = ChatOpenAI(
             model=model_name,
             api_key=api_key, 
-            base_url=base_url
+            base_url=base_url,
+            temperature=self.temperature,
+            timeout=self.timeout,
+            max_tokens=self.max_new_tokens,
+            extra_body=kwargs.pop("extra_body", None),
         )
 
     @retry(
