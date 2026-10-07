@@ -142,6 +142,34 @@ Qwen2.5 Coder 7B
 | Sketch               | 53.51  | 34.05    | 30.34       | 45.44 |
 | Sketch (gold)        | 62.38  | 35.99    | 35.86       | 51.89 |
 
+Qwen3.8-27B
+
+BIRD dev execution accuracy (EX, %) with `VanillaLinker`, temperature 0,
+thinking disabled, and a maximum of 4,096 output tokens. These results evaluate
+the methods implemented in this repository, including correction and selection
+components. Counts reflect the difficulty labels in this run's `dev.json`.
+
+| **Bird**             | simple | moderate | challenging | total |
+|----------------------|--------|----------|-------------|-------|
+| count                | 925    | 464      | 145         | 1534  |
+| **ACCURACY (EX)**    |        |          |             |       |
+| Base                 | 70.27  | 57.11    | 49.66       | 64.34 |
+| CoTVerifier          | 70.49  | 58.19    | 52.41       | 65.06 |
+| CoVe                 | 70.59  | 57.33    | 52.41       | 64.86 |
+| DACCorrection        | 70.59  | 57.11    | 52.41       | 64.80 |
+| CHESSUnitTester      | 70.92  | 56.68    | 51.03       | 64.73 |
+| DINSQLCorrection     | 70.49  | 58.84    | 53.10       | 65.32 |
+| **SelfDebugging**    | **72.86** | **59.70** | **55.17** | **67.21** |
+| MCSSelector          | 70.70  | 55.82    | 54.48       | 64.67 |
+| SQLPromptMix         | 71.24  | 57.33    | 49.66       | 64.99 |
+
+Per-method predictions, evaluations, and summaries are saved under
+`output/bird/<method>/Qwen/Qwen3.8-27B/VanillaLinker/`; see the
+[Base summary](output/bird/Base/Qwen/Qwen3.8-27B/VanillaLinker/summary.json) and
+[SelfDebugging summary](output/bird/SelfDebugging/Qwen/Qwen3.8-27B/VanillaLinker/summary.json).
+Gold SQL for dataset indices 518 and 701 exceeded the 30-second execution limit
+and was counted as incorrect for every method. VES was not measured.
+
 ### Methods Comparison
 
 
