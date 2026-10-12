@@ -163,12 +163,6 @@ components. Counts reflect the difficulty labels in this run's `dev.json`.
 | MCSSelector          | 70.70  | 55.82    | 54.48       | 64.67 |
 | SQLPromptMix         | 71.24  | 57.33    | 49.66       | 64.99 |
 
-Per-method predictions, evaluations, and summaries are saved under
-`output/bird/<method>/Qwen/Qwen3.8-27B/VanillaLinker/`; see the
-[Base summary](output/bird/Base/Qwen/Qwen3.8-27B/VanillaLinker/summary.json) and
-[SelfDebugging summary](output/bird/SelfDebugging/Qwen/Qwen3.8-27B/VanillaLinker/summary.json).
-Gold SQL for dataset indices 518 and 701 exceeded the 30-second execution limit
-and was counted as incorrect for every method. VES was not measured.
 
 ### Methods Comparison
 
